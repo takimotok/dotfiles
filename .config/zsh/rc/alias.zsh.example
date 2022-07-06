@@ -1,0 +1,22 @@
+# alias
+# -----
+alias delds='pushd $(pwd) && cd ~ && sudo find / -name ".DS_Store" -delete && popd'
+alias delicon='pushd $(pwd) && cd ~ && sudo find / -name "Icon\\r" -delete && popd'
+alias desk='cd $HOME/Desktop'
+alias dl='cd $HOME/Downloads'
+alias google=""
+alias vault=""
+alias hosts='cat /private/etc/hosts'
+alias ll='ls -lah'
+# alias ll=ls -lT | awk 'BEGIN{FS=" \+"};/^total/{print};!/^total/{printf("%-11s %2s %-4s %5s% 6s %4d-0%d-0%d %8s %s\n",$1,$2,$3,$4,$5,$9,$6,$7,$8,$10)}'
+alias obsidian=""
+alias openssl=/usr/local/opt/openssl@1.1/bin/openssl
+alias prj=''
+alias tips=""
+# mac の BSD系なので brew 経由で linux sed を inst.
+alias sed='gsed'
+# mac の grep は -P をサポートしていないので GNU grep を brew 経由で inst.
+alias grep='ggrep'
+
+# init
+# alias tmux="tmux -f ${XDG_CONFIG_HOME}/tmux/tmux.conf"

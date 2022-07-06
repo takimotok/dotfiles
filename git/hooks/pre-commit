@@ -1,0 +1,84 @@
+#!/bin/sh
+
+#
+# phpcs auto-exec script
+#
+# 2020.11.11
+# Maintainer: Kengo TAKIMOTO
+#
+
+# variables
+# ----------
+
+# dir. definition
+ROOT_DIR=$(git rev-parse --show-toplevel)
+# target file list definition
+LIST=$(git status | grep -e '\(modified:\|new file:\)'| grep '\.php' | cut -d':' -f2 )
+# phpcs standard
+PHPCS_STANDARD=${ROOT_DIR}/phpcs.xml
+# temporary result file whihc is executed with phpcs
+TMP_FILE=$(mktemp)
+
+
+# redirect output to stderr.
+# 以降の処理において, 標準出力を標準エラー出力に出力する
+exec 1>&2
+
+# check variables
+#   -z: 文字列長 = 0 なら true
+#   -n: 文字列長 > 0 なら true
+if [ -z "${ROOT_DIR}" ]; then
+    ROOT_DIR=$(git rev-parse --show-toplevel)
+fi
+
+if [ -z "${LIST}" ]; then
+    LIST=$(git status | grep -e '\(modified:\|new file:\)'| grep '\.php' | cut -d':' -f2 )
+fi
+
+if [ -z "${PHPCS_STANDARD}" ]; then
+    PHPCS_STANDARD=${ROOT_DIR}/phpcs.xml
+fi
+
+if [ -z "${TMP_FILE}" ]; then
+    TMP_FILE=$(mktemp)
+fi
+
+
+# execute
+# ----------
+
+# phpcs
+#   --standard: The name or path of the coding standard to use
+#   -q: Quiet mode; disables progress and verbose output
+error=0
+for file in $LIST
+do
+    echo -n '[PHPCS:'${PHPCS_STANDARD}'] '${file}
+    ${ROOT_DIR}/vendor/bin/phpcs \
+        --standard=${PHPCS_STANDARD} \
+        -q \
+        "${ROOT_DIR}/${file}" \
+        > ${TMP_FILE}
+
+    # passes when stdout is empty
+    #   -z: 文字列長が 0 なら true
+    result=$(head -10 ${TMP_FILE})
+    if [ ! -z "$result" ]; then
+        error=1
+        echo ' <ERROR>'
+        cat ${TMP_FILE} | sed -e '1d;/^FILE:/d;/^Time:/,$d'
+    fi
+done
+
+
+
+# remove TMP_FILE
+rm -f ${TMP_FILE}
+
+# end processing
+if [ ${error} != 0 ]; then
+    echo 'Oops, PHPCS has not passed.'
+    echo 'This commit is CANCELED.'
+    exit 1
+fi
+
