@@ -1,0 +1,8 @@
+color = ""
+
+[default]
+  device_name = ""
+  live_mode_api_key = ""
+  live_mode_publishable_key = ""
+  test_mode_api_key = ""
+  test_mode_publishable_key = ""
