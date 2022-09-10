@@ -29,8 +29,6 @@ set keywordprg=:help
 " -----
 " python path
 " -----
-" let g:python_host_prog = system('(type pyenv &>/dev/null && echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin/python") || echo -n $(which python2)')
-" let g:python3_host_prog = '/Users/takimoto/.anyenv/envs/pyenv/versions/3.9.4/bin/python'
 let g:python3_host_prog = '/Users/takimoto/.anyenv/envs/pyenv/shims/python3'
 
 " -----
@@ -46,9 +44,10 @@ call plug#begin('~/.vim/plugged')
   " Plug 'cocopon/iceberg.vim'
   Plug 'previm/previm' | Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
   " Plug 'skanehira/preview-markdown.vim' " preview markdown in terminal
-  " Plug 'tobyS/pdv' | Plug 'SirVer/ultisnips' " doc block
+  " for phpdoc
+  Plug 'tobyS/pdv' | Plug 'tobyS/vmustache' | Plug 'SirVer/ultisnips'
   " for vue.js
-  Plug 'tobyS/vmustache' " vue.js の mustache 記法を便利に書ける plugin
+  " Plug 'tobyS/vmustache' " vue.js の mustache 記法を便利に書ける plugin. tobyS/pdv でも利用.
   Plug 'posva/vim-vue' " .vue ファイル syntax highlight
   Plug 'vuejs/eslint-plugin-vue' " .vue linting に必要. cf.) https://github.com/dense-analysis/ale#5xiii-how-can-i-check-vue-files-with-eslint
   Plug 'alvan/vim-closetag' " 閉じタグ補完. vue 用
@@ -67,7 +66,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'prabirshrestha/async.vim' | Plug 'prabirshrestha/vim-lsp' | Plug 'mattn/vim-lsp-settings' | Plug 'prabirshrestha/asyncomplete.vim' | Plug 'prabirshrestha/asyncomplete-lsp.vim'
   " for python path along with pyenv's one
   " Plug 'lambdalisue/vim-pyenv'
-  Plug 'textlint/textlint' " .md 校正用 linter
+  " .md 校正用 linter
+  Plug 'textlint/textlint'
   " Plug 'isRuslan/vim-es6' " for js ES6 syntax highlight
   Plug 'sheerun/vim-polyglot' " 多言語の syntax highlight に
   " fzf
@@ -84,16 +84,23 @@ call plug#begin('~/.vim/plugged')
     \ 'do': 'yarn install --frozen-lockfile --production',
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
   " for python formatting
-  Plug 'psf/black', { 'branch': 'stable' }
+  Plug 'psf/black', { 'branch': 'main' }
   " for python formatting especially in import list
   Plug 'fisadev/vim-isort'
   " for colorize css/scss files
   Plug 'ap/vim-css-color'
+  " for checking grammars
+  Plug 'rhysd/vim-grammarous'
 call plug#end()
 
+
 " -----
-" 表示
+" Color Scheme
 " -----
+colorscheme jellybeans
+" set background=dark " for iceberg
+" colorscheme iceberg
+" colorscheme onedark
 set smartindent " 自動改行
 set number " 行番号
 set cursorline " 現在の行を強調表示 & 下線を消し行番号のみを強調
@@ -107,10 +114,6 @@ set showcmd
 " set nolist
 " color scheme
 syntax on
-colorscheme jellybeans
-" set background=dark " for iceberg
-" colorscheme iceberg
-" colorscheme onedark
 hi Comment ctermfg=248
 hi clear SignColumn
 hi CursorLineNr term=bold cterm=NONE ctermfg=NONE ctermbg=yellow " line number
@@ -122,6 +125,7 @@ hi Underlined term=bold cterm=NONE gui=NONE " link 下線を消す
 " https://github.com/vim/vim/issues/2049#issuecomment-494923065
 "
 set mmp=8500
+
 
 " -----
 " lightline
@@ -161,7 +165,7 @@ let g:lightline = {
     \ }
   \ }
 
-" deine icons which are used in lightline
+" icons which are used in lightline
 let s:linter_icon_infos = get(g:, 'linter_icon_infos', "\uf449")
 let s:linter_icon_warnings = get(g:, 'linter_icon_warnings', "⚠ ")
 let s:linter_icon_errors = get(g:, 'linter_icon_errors', "✗")
@@ -261,6 +265,11 @@ let g:ale_python_black_options = '-m black --line-length 119'
 let g:ale_python_mypy_executable = g:python3_host_prog
 let g:ale_python_mypy_options = '-m mypy'
 
+" for php
+let g:ale_php_cs_fixer_options = '--standard=' . $HOME .  '/Desktop/prj/lc/cm_api_ecs/phpcs.xml'
+" let g:ale_php_phpcs_standard = $HOME . '/Desktop/prj/lc/cm_api_ecs/phpcs.xml'
+let g:ale_php_phpmd_ruleset = 'codesize,controversial,design,naming,unusedcode'
+
 " for jsonlint
 let g:ale_json_jsonlint_executable = 1
 let g:ale_json_jsonlint_use_global = 1
@@ -329,7 +338,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " -----
 "  $(phpenv which phpcs) だと err. になり期待通りに実行されない
 "  cf.) :ALEInfo
-" let g:ale_php_phpcs_executable = "$(phpenv which phpcs)"
 let g:ale_php_phpcs_executable = "/Users/takimoto/.anyenv/envs/phpenv/versions/7.2.34/composer/vendor/bin/phpcs"
 
 let g:ale_php_phpcs_standard = 'PSR2'
@@ -374,21 +382,9 @@ augroup END
 " let g:preview_markdown_vertical = 1
 " let g:preview_markdown_auto_update = 1
 
-" phpcd
-" let g:phpcd_autoload_path = '/Users/kengo/Desktop/prj/casuTessera/cafet/.autoload.php'
-
-" PHP Documentor for VIM
-" tobyS/pdv
-" use additional plugins:
-"   - SirVer/ultisnips
-" let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
-" nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
-
-" plugin manager <tpope/vim-pathogen>
-" set pathogen runtime path
-" load all installed plugins w/ this line
-" execute pathogen#infect()
-"
+" PHP Documentor for VIM using tobyS/pdv
+let g:pdv_template_dir = $HOME . "/.vim/plugged/pdv/templates_snip"
+nnoremap <buffer> <Leader><Leader>p :call pdv#DocumentWithSnip()<CR>
 
 " filetype plugin on " laod plugins whenever the filetype will be changed
 filetype plugin indent on " load plugins whenever the filetype will be changed
@@ -403,6 +399,11 @@ nmap # <Plug>(anzu-sharp-with-echo)
 " nerdtree
 " nnoremap <silent><C-t> :NERDTreeToggle<CR>
 
+" open .vimrc
+nnoremap <Leader>. :tab sp ~/.vimrc<CR>
+
+" reload .vimrc
+nnoremap <Leader><Leader>. :source ~/.vimrc<CR>:edit!<CR>
 
 "
 " html 閉じタグ補完

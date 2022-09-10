@@ -68,3 +68,9 @@ export EDITOR=vim
 # gpg
 # -----
 export GPG_TTY=$(tty)
+
+# java
+# -----
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk/Contents/Home
+export JAVA_HOME=`/usr/libexec/java_home -v "17"`
+export CPPFLAGS="-I/usr/local/opt/openjdk@17/include"
