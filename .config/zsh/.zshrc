@@ -38,11 +38,13 @@ zinit light-mode for \
 # after zinit
 # -----
 
-# load files under the rc dir.
+# load files
+. ${ZDOTDIR}/functions/bindkeys.zsh
+. ${ZDOTDIR}/rc/alias.zsh
+. ${ZDOTDIR}/rc/bindkeys.zsh
+. ${ZDOTDIR}/rc/others.zsh
 . ${ZDOTDIR}/rc/path.zsh
 . ${ZDOTDIR}/rc/plugin.zsh
-. ${ZDOTDIR}/rc/alias.zsh
-. ${ZDOTDIR}/rc/others.zsh
 
 
 # profiling
