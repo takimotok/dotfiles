@@ -2,7 +2,7 @@
 # -----
 
 # 履歴ファイル 保存先
-hISTFILE=~/.zsh_history
+HISTFILE=~/.zsh_history
 # メモリに保存される履歴件数
 HISTSIZE=1000000
 # 履歴ファイルに保存される履歴件数
