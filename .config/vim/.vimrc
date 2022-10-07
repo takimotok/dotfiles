@@ -26,6 +26,10 @@ set spelllang=en,cjk
 " help 参照時 Shift-k で説明にジャンプ
 set keywordprg=:help
 
+" tabline を常に表示
+set showtabline=2
+
+
 " -----
 " python path
 " -----
@@ -86,7 +90,7 @@ call plug#begin('~/.vim/plugged')
   " for python formatting
   Plug 'psf/black', { 'branch': 'main' }
   " for python formatting especially in import list
-  Plug 'fisadev/vim-isort'
+  " Plug 'fisadev/vim-isort'
   " for colorize css/scss files
   Plug 'ap/vim-css-color'
   " for checking grammars
@@ -368,7 +372,7 @@ let g:vim_markdown_strikethrough = 1
 "" do NOT automatically insert bulletpoints
 let g:vim_markdown_auto_insert_bullets = 0
 "" TOC
-" let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_toc_autofit = 1
 
 " previm
 " nnoremap <silent> <C-p> :PrevimOpen<CR> " Ctrl-pでプレビュー
@@ -549,6 +553,16 @@ if executable('pyls')
     \ 'whitelist': ['python'],
     \ })
 endif
+
+" -----
+" coc
+" -----
+let g:coc_node_path = '/Users/takimoto/.anyenv/envs/nodenv/shims/node'
+
+" -----
+" vim-isort
+" -----
+" let g:vim_isort_python_version = 'python3'
 
 " -----
 " load all plugins & enable its helps
