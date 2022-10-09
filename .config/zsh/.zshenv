@@ -15,7 +15,6 @@ export LANG=en_US.UTF-8
 
 # xdg user directory env. variables
 # -----
-
 export XDG_CONFIG_HOME=${HOME}/.config
 # only used for history
 export XDG_DATA_HOME=${HOME}/.cache
@@ -23,7 +22,6 @@ export XDG_DATA_HOME=${HOME}/.cache
 
 # zsh
 # -----
-
 # .zshrc read path
 export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
 # history file storing path

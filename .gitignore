@@ -1,8 +1,6 @@
 # common
 # -----
 
-# init.sh
-
 # os
 # -----
 .DS_Store
@@ -14,7 +12,7 @@
 
 # git
 # -----
-.config/git/**/gitconfig
+.config/git/**/.gitconfig
 
 # ssh
 # -----
@@ -24,12 +22,6 @@
 # -----
 .config/stripe/config.toml
 
-# tmux
-# -----
-
-# vim
-# -----
-
 # zsh
 # -----
 .config/zsh/.zcompdump
@@ -38,16 +30,3 @@
 .config/zsh/.zsh_sessions
 .config/zsh/rc/alias.zsh
 .config/**/*.zwc
-
-# log
-# -----
-log/**/*.log
-
-# etc
-# -----
-etc/init/**/*.org
-etc/lib/**/*.org
-
-# others
-# -----
-tmp.sh
