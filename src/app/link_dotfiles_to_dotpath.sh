@@ -30,4 +30,6 @@
         done
     done
 
+    printf "finish linking dotfiles.\\n"
+
 }; main)
