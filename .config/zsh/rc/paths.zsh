@@ -16,9 +16,10 @@ export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # for android
+# use command line tools
 # -----
-# adb (Android Debug Bridge)
-export PATH=$PATH:/Users/takimoto/Library/Android/sdk/platform-tools
-
-# android-commandlinetools
-export ANDROID_SDK_ROOT="/usr/local/share/android-commandlinetools/cmdline-tools/latest/bin"
+export ANDROID_USER_HOME=$HOME/.android
+export ANDROID_HOME=$HOME/Library/Android/sdk/
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
