@@ -29,6 +29,7 @@ set keywordprg=:help
 " tabline を常に表示
 set showtabline=2
 
+set belloff=all
 
 " -----
 " python path
@@ -365,8 +366,14 @@ let g:vim_markdown_new_list_item_indent = 2
 "" Foldings
 let g:vim_markdown_folding_disabled = 1 " disable folding
 "" Syntax highlighting
-let g:vim_markdown_fenced_languages = ['bash=bash', 'js=javascript', 'ts=javascript', 'sh=zsh', 'py=python'] " fenced code block languages
-" let g:vim_markdown_fenced_languages = ['javascript=js']
+let g:vim_markdown_fenced_languages = [
+\  'bash=bash',
+\  'js=javascript',
+\  'ts=javascript',
+\  'sh=zsh',
+\  'py=python',
+\  'java'
+\]
 """ enable strikethrough
 let g:vim_markdown_strikethrough = 1
 "" do NOT automatically insert bulletpoints
