@@ -31,6 +31,8 @@ set showtabline=2
 
 set belloff=all
 
+set viminfofile=NONE
+
 " -----
 " python path
 " -----
