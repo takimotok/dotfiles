@@ -69,3 +69,7 @@ export EDITOR=vim
 # -----
 export GPG_TTY=$(tty)
 
+# mypy (python linter)
+# -----
+MYPY_CACHE_DIR="/dev/null"
+
