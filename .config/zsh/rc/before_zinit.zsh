@@ -39,6 +39,8 @@ setopt ignore_eof
 setopt auto_pushd
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
+# cd なしで change dir.
+setopt auto_cd
 
 
 # key bind
