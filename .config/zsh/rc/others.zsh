@@ -73,3 +73,7 @@ export GPG_TTY=$(tty)
 # -----
 MYPY_CACHE_DIR="/dev/null"
 
+# asdf
+# -----
+. /usr/local/opt/asdf/libexec/asdf.sh
+
