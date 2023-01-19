@@ -5,7 +5,8 @@ local on = require 'on'
 local debug = require 'debug'
 local wezterm = require 'wezterm'
 
-local font_name = 'RictyDiminished Nerd Font'
+-- local font_name = 'RictyDiminished Nerd Font'
+local font_name = 'MesloLGS NF'
 
 return {
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 },
@@ -17,7 +18,7 @@ return {
 
   --[[ fonts ]]
   use_ime = true,
-  font_size = 16.0,
+  font_size = 14.0,
   font = wezterm.font_with_fallback {
     {
       family = font_name,

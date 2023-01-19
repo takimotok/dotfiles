@@ -23,9 +23,9 @@ zinit light zsh-users/zsh-completions
 # commands suggestions based on history
 zinit light zsh-users/zsh-autosuggestions
 
-# zsh theme (pure)
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+# powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # pure path color
 # https://github.com/sindresorhus/pure#example
