@@ -17,6 +17,20 @@ local wezterm = require 'wezterm'
 -- end)
 
 
+-- tab title
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    if tab.is_active then
+      return {
+        -- { Background = { Color = 'blue' } },
+        { Text = ' ' .. tab.active_pane.title .. ' ' },
+      }
+    end
+    return tab.active_pane.title
+  end
+)
+
 -- set status on the right and decorate it
 wezterm.on('update-right-status', function(window, pane)
   local cells = {}
@@ -75,16 +89,3 @@ wezterm.on('trigger-vim-with-visible-text', function(window, pane)
   wezterm.sleep_ms(1000)
   os.remove(name)
 end)
-
-wezterm.on(
-  'format-tab-title',
-  function(tab, tabs, panes, config, hover, max_width)
-    if tab.is_active then
-      return {
-        -- { Background = { Color = 'blue' } },
-        { Text = ' ' .. tab.active_pane.title .. ' ' },
-      }
-    end
-    return tab.active_pane.title
-  end
-)
