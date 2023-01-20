@@ -3,10 +3,8 @@
 #   snippet: `source` local or remote file
 #
 
-# plugins
-# -----
-
 # highlite commands
+# -----
 #   !: suppress messages when loaded
 #   0: wait 0s after zsh starts
 # zinit ice wait'!0'
@@ -17,21 +15,25 @@ zinit ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
 zinit light "zdharma/fast-syntax-highlighting"
 
 # commands completions
+# -----
 zinit ice wait'!0'
 zinit light zsh-users/zsh-completions
 
 # commands suggestions based on history
+# -----
 zinit light zsh-users/zsh-autosuggestions
 
-# powerlevel10k
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+# theme: pure
+# -----
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
-# pure path color
+# path color
 # https://github.com/sindresorhus/pure#example
 zstyle :prompt:pure:path color cyan
 zstyle ':prompt:pure:git:*' color yellow
-# pure ls command color
+
+# ls command color
 # https://qiita.com/sakurasou/items/10156a46fb7e2d1c300f
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
