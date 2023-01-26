@@ -44,13 +44,8 @@ let g:python3_host_prog = '/Users/takimoto/.anyenv/envs/pyenv/shims/python3'
 call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'editorconfig/editorconfig-vim'
-  " Plug 'lvht/phpcd.vim'
-  " theme
-  Plug 'nanotech/jellybeans.vim'
-  " Plug 'joshdick/onedark.vim'
-  " Plug 'cocopon/iceberg.vim'
+  Plug 'nanotech/jellybeans.vim' " theme
   Plug 'previm/previm' | Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
-  " Plug 'skanehira/preview-markdown.vim' " preview markdown in terminal
   " for phpdoc
   Plug 'tobyS/pdv' | Plug 'tobyS/vmustache' | Plug 'SirVer/ultisnips'
   " for vue.js
@@ -68,11 +63,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'chr4/nginx.vim' "nginx syntax highlight
   Plug 'koalaman/shellcheck'
   Plug 'jwalton512/vim-blade' " laravel blade file 用
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " for LSP
   Plug 'prabirshrestha/async.vim' | Plug 'prabirshrestha/vim-lsp' | Plug 'mattn/vim-lsp-settings' | Plug 'prabirshrestha/asyncomplete.vim' | Plug 'prabirshrestha/asyncomplete-lsp.vim'
-  " for python path along with pyenv's one
-  " Plug 'lambdalisue/vim-pyenv'
   " .md 校正用 linter
   Plug 'textlint/textlint'
   " Plug 'isRuslan/vim-es6' " for js ES6 syntax highlight
@@ -82,18 +74,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
   " for making table
   Plug 'mattn/vim-maketable'
-  " filer
-  " Plug 'preservim/nerdtree'
-  " for formatting sql
-  " Plug 'mattn/vim-sqlfmt'
   " for formatting with prettier
   Plug 'prettier/vim-prettier', {
     \ 'do': 'yarn install --frozen-lockfile --production',
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
   " for python formatting
   Plug 'psf/black', { 'branch': 'main' }
-  " for python formatting especially in import list
-  " Plug 'fisadev/vim-isort'
   " for colorize css/scss files
   Plug 'ap/vim-css-color'
   " for checking grammars
@@ -105,9 +91,6 @@ call plug#end()
 " Color Scheme
 " -----
 colorscheme jellybeans
-" set background=dark " for iceberg
-" colorscheme iceberg
-" colorscheme onedark
 set smartindent " 自動改行
 set number " 行番号
 set cursorline " 現在の行を強調表示 & 下線を消し行番号のみを強調
@@ -138,7 +121,6 @@ set mmp=8500
 " lightline
 " -----
 set guifont=Ricty\ Diminished\ Regular\ Nerd\ Font\ Complete\ 14
-" set encoding=UTF-8
 set laststatus=2 " status line を前面に表示
 set noshowmode " lightlint で mode 表示するので default 表示は不要
 let g:lightline = {
@@ -246,13 +228,20 @@ augroup LinterLinghtline
  autocmd User ALEFixPost call lightline#update()
 augroup END
 
+
 " -----
 " ale
 " -----
 " color
+let g:ale_keep_list_window_open = 0
+let g:ale_open_list = 0
+let g:ale_set_highlights = 0 " syntax off on the first char.
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
 let g:ale_set_signs = 1
 let g:ale_sign_column_always = 1
-let g:ale_set_highlights = 0 " syntax off on the first char.
+" remove error/warning inline messages
+let g:ale_virtualtext_cursor=0
 
 " symbols
 let g:ale_sign_error = '✗'
@@ -264,11 +253,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " fix python path to run linters and formatters for python
 let g:ale_python_flake8_executable = g:python3_host_prog
-let g:ale_python_flake8_options = '-m flake8'
+let g:ale_python_flake8_options = '-m flake8 --extend-ignore E203 --max-line-length=120'
 let g:ale_python_isort_executable = g:python3_host_prog
 let g:ale_python_isort_options = '-m isort'
 let g:ale_python_black_executable = g:python3_host_prog
-let g:ale_python_black_options = '-m black --line-length 119'
+let g:ale_python_black_options = '-m black --line-length 120'
 let g:ale_python_mypy_executable = g:python3_host_prog
 let g:ale_python_mypy_options = '-m mypy'
 
@@ -303,7 +292,7 @@ let g:ale_linter_aliases = {
       \ }
 
 "" set linters
-let g:ale_linters = {
+let b:ale_linters = {
     \   'php': ['phpcs', 'phpmd'],
     \   'python': ['flake8', 'mypy'],
     \   'html': ['prettier'],
@@ -441,11 +430,13 @@ let g:blade_custom_directives_pairs = {
       \   'while': 'endwhile',
       \ }
 
+
 " -----
 " Align
 " -----
 " 日本語文字列対応
 let g:Align_xstrlen=3
+
 
 " -----
 " ファイル
@@ -478,6 +469,7 @@ let g:netrw_altv=1
 " file 名最大文字数
 let g:netrw_maxfilenamelen = 80
 
+
 " -----
 " 検索
 " -----
@@ -500,6 +492,7 @@ set hlsearch
 set showmatch
 source $VIMRUNTIME/macros/matchit.vim
 
+
 " -----
 " Tab
 " -----
@@ -521,6 +514,7 @@ hi Search ctermfg=white
 "inoremap ' ''<LEFT>
 "inoremap " ""<LEFT>
 
+
 " resize window w/o time-consuming
 if bufwinnr(1)
     map + <C-W>+
@@ -528,6 +522,7 @@ if bufwinnr(1)
 "    map < <C-W>< " indent とコンフリクト
 "    map > <C-W>> " indent とコンフリクト
 endif
+
 
 " -----
 " insert mode で <C-h> が効かない対策
@@ -547,31 +542,7 @@ set backspace=indent,eol,start
 " let g:lsp_signs_information = {'text': 'i'}
 " let g:lsp_signs_hint = {'text': '?'}
 
-" -----
-" php
-" -----
-" autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-" -----
-" python
-" -----
-if executable('pyls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': {server_info->['pyls']},
-    \ 'whitelist': ['python'],
-    \ })
-endif
-
-" -----
-" coc
-" -----
-let g:coc_node_path = '/Users/takimoto/.anyenv/envs/nodenv/shims/node'
-
-" -----
-" vim-isort
-" -----
-" let g:vim_isort_python_version = 'python3'
 
 " -----
 " load all plugins & enable its helps
@@ -582,6 +553,6 @@ let g:coc_node_path = '/Users/takimoto/.anyenv/envs/nodenv/shims/node'
 " packloadall
 " Ignore error help mssages.
 " silent! helptags ALL
-"
+
 set ttimeout
 set ttimeoutlen=50
