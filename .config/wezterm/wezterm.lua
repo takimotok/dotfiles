@@ -5,7 +5,7 @@ local on = require 'on'
 local debug = require 'debug'
 local wezterm = require 'wezterm'
 
-local font_name = 'RictyDiminished Nerd Font'
+local font_name = 'Iosevka Nerd Font'
 
 return {
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 },
@@ -21,6 +21,10 @@ return {
   font = wezterm.font_with_fallback {
     {
       family = font_name,
+      weight = 'Regular',
+    },
+    {
+      family = 'Sarasa Term J Nerd Font',
       weight = 'Regular',
     },
     {
