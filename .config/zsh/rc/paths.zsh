@@ -23,3 +23,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk/
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/tools/bin:$PATH
+
+# poetry (python package manager)
+# -----
+export PATH="/usr/local/opt/poetry/bin:$PATH"
