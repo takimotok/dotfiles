@@ -1,13 +1,15 @@
+local on = require 'on'
 local key_tables = require 'key_tables'
 local keys = require 'keys'
 local sample = require 'sample'
-local on = require 'on'
+local font = require 'font'
+-- local tab_bar_style = require 'tab_bar_style'
 local debug = require 'debug'
 local wezterm = require 'wezterm'
 
-local font_name = 'Iosevka Nerd Font'
+local config = {}
 
-return {
+config = {
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 },
 
   automatically_reload_config = true,
@@ -16,22 +18,10 @@ return {
   default_prog = { '/usr/local/bin/zsh', '-l' },
 
   --[[ fonts ]]
-  use_ime = true,
-  font_size = 16.0,
-  font = wezterm.font_with_fallback {
-    {
-      family = font_name,
-      weight = 'Regular',
-    },
-    {
-      family = 'Sarasa Term J Nerd Font',
-      weight = 'Regular',
-    },
-    {
-      family = 'Noto Color Emoji',
-      weight = 'Regular',
-    },
-  },
+  use_ime = font.use_ime,
+  font_size = font.font_size,
+  font = font.font,
+  harfbuzz_features = font.harfbuzz_features,
 
   -- https://wezfurlong.org/wezterm/colorschemes/index.html
   color_scheme = "iceberg-dark",
@@ -55,12 +45,15 @@ return {
   tab_max_width = 25,
   switch_to_last_active_tab_when_closing_tab = true,
 
+  -- tab_bar_style = tab_bar_style,
   colors = {
-    tab_bar = {
+    ttab_barab_bar = {
       background = "#000000",
       active_tab = {
-        bg_color = '#2b2042',
-        fg_color = '#c0c0c0',
+        -- bg_color = '#2b2042',
+        -- fg_color = '#c0c0c0',
+        bg_color = '#454545',
+        fg_color = '#d3d3d3',
       },
       inactive_tab = {
         bg_color = '#1b1032',
@@ -88,15 +81,10 @@ return {
     top = 0,
     bottom = 0,
   },
-  -- window_frame = {
-  --   font = wezterm.font { family = font_name, weight = 'Bold' },
-  --   font_size = 14.0,
-  --   active_titlebar_bg = '#0d0d0d',
-  --   inactive_titlebar_bg = '#333333',
-  -- },
-
 
   --[[ scrollback ]]
   scrollback_lines = 5000,
 
 }
+
+return config
