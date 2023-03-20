@@ -3,7 +3,7 @@ local key_tables = require 'key_tables'
 local keys = require 'keys'
 local sample = require 'sample'
 local font = require 'font'
--- local tab_bar_style = require 'tab_bar_style'
+local tab_bar_style = require 'tab_bar_style'
 local debug = require 'debug'
 local wezterm = require 'wezterm'
 
@@ -47,13 +47,11 @@ config = {
 
   -- tab_bar_style = tab_bar_style,
   colors = {
-    ttab_barab_bar = {
+    tab_bar = {
       background = "#000000",
       active_tab = {
-        -- bg_color = '#2b2042',
-        -- fg_color = '#c0c0c0',
         bg_color = '#454545',
-        fg_color = '#d3d3d3',
+        fg_color = '#D3D3D3',
       },
       inactive_tab = {
         bg_color = '#1b1032',
