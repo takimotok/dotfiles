@@ -1,0 +1,41 @@
+[tool.ruff]
+target-version = "py310"
+cache-dir= "/dev/null"
+fix = true
+format = "grouped"
+ignore = ["E203"]
+line-length = 120
+extend-exclude = [
+  ".aws",
+  ".circleci",
+  ".ebextensions",
+  ".github",
+  "bootstrap",
+  "config",
+  "database",
+  "docs",
+  "laradock",
+  "logs",
+  "ops",
+  "public",
+  "resources",
+  "routs",
+  "shellscripts",
+  "storage",
+  "vendor",
+  "*.php",
+  "*.js",
+  "*.xml",
+  "*.json",
+  "*.lock",
+  "*.yml",
+  "*.yaml",
+  "*.md",
+]
+
+[tool.ruff.mccabe]
+max-complexity = 15
+
+[tool.ruff.flake8-annotations]
+mypy-init-return = true
+
