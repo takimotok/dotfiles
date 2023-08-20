@@ -1,5 +1,8 @@
 return {
   "neanias/everforest-nvim",
+  -- dependencies = {
+  --   "rktjmp/lush.nvim",
+  -- },
   version = false,
   lazy = false,
   priority = 1000,
