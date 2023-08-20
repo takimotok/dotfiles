@@ -19,6 +19,7 @@ vim.opt.swapfile = false
 -- Color scheme
 -- NOTE: make sure the terminal supports this
 vim.o.termguicolors = true
+vim.o.background = "dark"
 
 -- Search
 vim.opt.hlsearch = true
