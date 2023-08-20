@@ -13,6 +13,9 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     cmd = "ColorizerToggle",
+    config = function()
+      require("colorizer").setup()
+    end,
   },
   {
     "folke/which-key.nvim",
@@ -32,7 +35,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        theme = "catppuccin",
+        theme = "auto",
         icons_enabled = true,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
@@ -193,19 +196,14 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc =
-        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
         builtin.registers,
         { desc = "[F]ind [R]egisteres. Lists vim registers, pastes the contents of the register on <cr>" }
       )
-      km.nmap(
-        "<leader>sd",
-        require("telescope.builtin").diagnostics,
-        { desc = "[S]earch [D]iagnostics" }
-      )
+      km.nmap("<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
       -- for file_browser
       km.nmap("<leader>e", ":Telescope file_browser<CR>", { desc = "use the telescope-file-browser" })

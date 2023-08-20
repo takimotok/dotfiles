@@ -3,7 +3,9 @@ require("core.plugin").init()
 local lazy = require("lazy")
 
 if vim.env.NVIM_COLORSCHEME == nil then
-  vim.env.NVIM_COLORSCHEME = "catppuccin"
+  -- vim.env.NVIM_COLORSCHEME = "catppuccin"
+  -- vim.env.NVIM_COLORSCHEME = "zenbones"
+  vim.env.NVIM_COLORSCHEME = "everforest"
 end
 
 lazy.setup("plugins", {
