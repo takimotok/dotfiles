@@ -63,6 +63,22 @@ function M.setup(lspconfig, capabilities)
       })
     end,
 
+    -- rust
+    ["rust_analyzer"] = function()
+      lspconfig.rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            -- checkOnSave = {
+            --   command = "clippy",
+            -- },
+            diagnostics = {
+              enable = false,
+            },
+          },
+        },
+      })
+    end,
+
     -- pyright
     -- ["pyright"] = function()
     --   lspconfig.pyright.setup({

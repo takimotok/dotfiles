@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # color
 # -----
 
@@ -27,11 +29,10 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                 /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+  /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
 # ps コマンドのプロセス名補完
 zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
 
 # os
 # -----
@@ -51,11 +52,9 @@ case ${OSTYPE} in
     ;;
 esac
 
-
 # fzf
 # -----
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 # direnv & assume-role
 #
@@ -63,7 +62,6 @@ esac
 # -----
 eval "$(direnv hook zsh)"
 export EDITOR=vim
-
 
 # gpg
 # -----
@@ -73,7 +71,16 @@ export GPG_TTY=$(tty)
 # -----
 MYPY_CACHE_DIR="/dev/null"
 
-# asdf
+# rust
 # -----
-. /usr/local/opt/asdf/libexec/asdf.sh
+. "$HOME/.cargo/env"
 
+# ruby
+# -----
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+
+# rtx
+# -----
+eval "$(rtx activate zsh)"
+export RTX_DATA_DIR=$HOME/.rtx
+export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
