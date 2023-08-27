@@ -1,6 +1,6 @@
 local M = {}
 
-M.servers = {
+M.ensure_installed = {
   "awk_ls",
   "bashls",
   "denols",
@@ -8,14 +8,15 @@ M.servers = {
   "jsonls",
   "lua_ls",
   "marksman",
-  "phpactor",
   "pyright",
   "ruff_lsp",
+  "rust_analyzer",
   "sqlls",
   "stylelint_lsp",
   "tailwindcss",
   "tsserver",
   "yamlls",
+  -- "phpactor",
 }
 
 local function setup()

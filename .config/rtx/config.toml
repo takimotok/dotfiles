@@ -1,0 +1,29 @@
+[tools]
+awscli = "latest"
+ghq = "latest"
+git = "latest"
+java = "lts"
+jq = "latest"
+lua = "5.4.6"
+node = "lts"
+php = "latest"
+python = "3.10"
+ruby = "3.2"
+rust = "lts"
+vim = "latest"
+yarn = "latest"
+
+[settings]
+legacy_version_file = true # default
+
+always_keep_download = false # default
+always_keep_install = false # default
+
+plugin_autoupdate_last_check_duration = '1 week' # 更新を無効にする場合は0に設定する
+
+jobs = 2 # default 4
+raw = false  # set to true to directly pipe plugins to stdin/stdout/stderr
+
+experimental = true
+log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
+

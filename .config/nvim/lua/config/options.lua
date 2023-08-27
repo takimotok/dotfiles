@@ -103,6 +103,10 @@ vim.o.timeoutlen = 300
 -- completion
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
+-- python
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = vim.env.RTX_DATA_DIR .. "/installs/python/3/bin/python"
+
 -- @TODO: think later
 -- @see `:h modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -36,7 +36,7 @@ set viminfofile=NONE
 " -----
 " python path
 " -----
-let g:python3_host_prog = '/Users/takimoto/.anyenv/envs/pyenv/shims/python3'
+let g:python3_host_prog = '/Users/takimoto/.rtx/installs/python/3.10.13/bin/python'
 
 " -----
 " vim-plug
@@ -84,6 +84,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'ap/vim-css-color'
   " for checking grammars
   Plug 'rhysd/vim-grammarous'
+  " syntax for TOML
+  Plug 'cespare/vim-toml', { 'branch': 'main' }
 call plug#end()
 
 
@@ -155,9 +157,9 @@ let g:lightline = {
   \ }
 
 " icons which are used in lightline
-let s:linter_icon_infos = get(g:, 'linter_icon_infos', "\uf449")
+let s:linter_icon_infos = get(g:, 'linter_icon_infos', "\uf449 ")
 let s:linter_icon_warnings = get(g:, 'linter_icon_warnings', "⚠ ")
-let s:linter_icon_errors = get(g:, 'linter_icon_errors', "✗")
+let s:linter_icon_errors = get(g:, 'linter_icon_errors', "✗ ")
 let s:linter_icon_ok = get(g:, 'linter_icon_ok', "\uf14a ")
 let s:linter_icon_checking = get(g:, 'linter_icon_checking', "\uf110")
 
@@ -242,9 +244,11 @@ let g:ale_set_signs = 1
 let g:ale_sign_column_always = 1
 " remove error/warning inline messages
 let g:ale_virtualtext_cursor=0
+" avoid the err.: File is a CommonJS module; it may be converted to an ES module.
+let g:ale_disable_lsp=1
 
 " symbols
-let g:ale_sign_error = '✗'
+let g:ale_sign_error = '✖ '
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign term=reverse cterm=BOLD ctermfg=9 ctermbg=NONE guifg=#C30500 guibg=NONE
 highlight ALEWarningSign term=reverse cterm=BOLD ctermfg=226 ctermbg=NONE guifg=#FFFF00 guibg=NONE
@@ -267,8 +271,8 @@ let g:ale_php_cs_fixer_options = '--standard=' . $HOME .  '/Desktop/prj/lc/cm_ap
 let g:ale_php_phpmd_ruleset = 'codesize,controversial,design,naming,unusedcode'
 
 " for jsonlint
-let g:ale_json_jsonlint_executable = 1
-let g:ale_json_jsonlint_use_global = 1
+let g:ale_json_jsonlint_executable = 0
+let g:ale_json_jsonlint_use_global = 0
 
 " for js
 let g:ale_javascript_prettier_use_local_config = 1
@@ -303,6 +307,7 @@ let b:ale_linters = {
     \   'ts': ['eslint', 'tsserver'],
     \   'tsx': ['eslint', 'tsserver'],
     \   'json': ['jsonlint'],
+    \   'yaml': ['eslint'],
     \   'vue': ['eslint', 'vls'],
     \   'markdown': ['textlint']
     \}
@@ -317,6 +322,8 @@ let g:ale_fixers = {
 \   'ts': ['prettier', 'eslint'],
 \   'tsx': ['prettier', 'eslint'],
 \   'json': ['prettier'],
+\   'yaml': ['eslint'],
+\   'markdown': ['textlint'],
 \   'php': ['phpcbf'],
 \   'python': ['black', 'isort']
 \}
@@ -379,10 +386,6 @@ augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
-
-" preview markdown
-" let g:preview_markdown_vertical = 1
-" let g:preview_markdown_auto_update = 1
 
 " PHP Documentor for VIM using tobyS/pdv
 let g:pdv_template_dir = $HOME . "/.vim/plugged/pdv/templates_snip"
@@ -451,7 +454,7 @@ set autoread
 " vim 標準のファイラ. :Ex で起動するやつ
 " -----
 " ファイルツリーの表示形式、[1] ls -laのような表示
-let g:netrw_liststyle=1
+let g:netrw_liststyle=3
 " ヘッダ非表示
 " let g:netrw_banner=0
 " サイズを(K,M,G)で表示
@@ -514,6 +517,11 @@ hi Search ctermfg=white
 "inoremap ' ''<LEFT>
 "inoremap " ""<LEFT>
 
+" disabled
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+nnoremap zr <Nop>
+nnoremap zR <Nop>
 
 " resize window w/o time-consuming
 if bufwinnr(1)
@@ -522,6 +530,14 @@ if bufwinnr(1)
 "    map < <C-W>< " indent とコンフリクト
 "    map > <C-W>> " indent とコンフリクト
 endif
+
+" timestamps
+" nmap <F3> i<C-R>=strftime("%Y-%m-%d %H:%M:%S %a")<CR><Esc>
+" imap <F3> <C-R>=strftime("%Y-%m-%d %H:%M:%S %a")<CR>
+nmap <F3> i<C-R>=strftime("%Y-%m-%d")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d")<CR>
+nmap <F2> i<C-R>=strftime("%H:%M:%S")<CR><Esc>
+imap <F2> <C-R>=strftime("%H:%M:%S")<CR>
 
 
 " -----

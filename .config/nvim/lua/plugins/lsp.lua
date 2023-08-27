@@ -23,15 +23,14 @@ return {
         > 3. Setup servers via lspconfig
       ]]
       require("neoconf").setup()
+      require("mason").setup()
 
-      local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      mason.setup()
       mason_lspconfig.setup({
-        ensure_installed = configs.servers,
+        ensure_installed = configs.ensure_installed,
         handlers = handlers.setup(lspconfig, capabilities),
       })
       configs.setup()
