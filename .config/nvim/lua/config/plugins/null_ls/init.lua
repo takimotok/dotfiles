@@ -10,6 +10,7 @@ M.ensure_installed = {
   "shfmt",
   "stylua",
   "black",
+  "codelldb",
   -- "isort",
 }
 
@@ -47,7 +48,9 @@ local function set_sources(null_ls)
 
     -- python
     formatting.ruff,
-    formatting.black,
+    formatting.black.with({
+      extra_args = { "--line-length=120" },
+    }),
     diagnostics.ruff,
     -- code_actions.ruff,
 
