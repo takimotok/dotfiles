@@ -254,4 +254,15 @@ return {
       km.nmap("<leader>ga", ":lua require('neogen').generate()<CR>", { desc = "[G]enerate [A]nnotations" })
     end,
   },
+
+  -- for PHP
+  {
+    'phpactor/phpactor',
+    build = 'composer install --no-dev --optimize-autoloader',
+    ft = 'php',
+    keys = {
+      { '<Leader>pm', ':PhpactorContextMenu<CR>' },
+      { '<Leader>pn', ':PhpactorClassNew<CR>' },
+    }
+  },
 }

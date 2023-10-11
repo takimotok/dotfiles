@@ -31,7 +31,13 @@ function M.setup(lspconfig, capabilities)
 
     -- phpactor
     ["phpactor"] = function()
-      require("phpactor").setup({})
+      lspconfig.phpactor.setup({
+        capabilities = capabilities,
+        init_options = {
+          ["language_server_phpstan.enabled"] = false,
+          ["language_server_psalm.enabled"] = false,
+        },
+      })
     end,
 
     -- lua_ls
@@ -86,6 +92,15 @@ function M.setup(lspconfig, capabilities)
     --     capabilities = capabilities,
     --   })
     -- end,
+
+    -- volar (vue.js language server)
+    ["volar"] = function()
+      lspconfig.volar.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+      })
+    end,
   }
 end
 

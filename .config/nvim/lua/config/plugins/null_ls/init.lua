@@ -1,17 +1,19 @@
 local M = {}
 
 M.ensure_installed = {
+  "black",
+  "blade-formatter",
+  "codelldb",
   "editorconfig_checker",
   "jq",
   "luacheck",
+  "php-cs-fixer",
+  "phpcs",
   "prettier",
   "ruff",
   "shellcheck",
   "shfmt",
   "stylua",
-  "black",
-  "codelldb",
-  -- "isort",
 }
 
 M.diagnostic_config = {
@@ -53,6 +55,11 @@ local function set_sources(null_ls)
     }),
     diagnostics.ruff,
     -- code_actions.ruff,
+
+    -- php, laravel
+    formatting.phpcsfixer,
+    formatting.blade_formatter,
+    diagnostics.phpcs,
 
     -- markdown
     formatting.prettier,
