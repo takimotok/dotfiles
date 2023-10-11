@@ -16,7 +16,8 @@ M.ensure_installed = {
   "tailwindcss",
   "tsserver",
   "yamlls",
-  -- "phpactor",
+  "phpactor",
+  "volar",
 }
 
 local function setup()
