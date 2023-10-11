@@ -15,9 +15,11 @@ return {
       "ray-x/cmp-treesitter",
       "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
-      "zbirenbaum/copilot.lua",
+      "zbirenbaum/copilot-cmp",
     },
     config = function()
+      require("copilot_cmp").setup()
+
       local cmp = require("cmp")
       local lspkind = require("lspkind")
       cmp.setup({
@@ -68,6 +70,11 @@ return {
         }),
         formatting = {
           format = lspkind.cmp_format({
+            mode = "symbol",
+            max_width = 50,
+            symbol_map = {
+              Copilot = "",
+            },
             menu = {
               buffer = "[Buffer]",
               calc = "[Calc]",

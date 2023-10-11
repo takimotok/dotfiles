@@ -265,4 +265,38 @@ return {
       { '<Leader>pn', ':PhpactorClassNew<CR>' },
     }
   },
+
+  -- github copilot
+  -- {
+  --   'github/copilot.vim',
+  --   config = function()
+  --     vim.cmd([[
+  --       let g:copilot_no_tab_map = v:true
+  --       imap <silent><script><expr> <M-CR> copilot#Accept("\<CR>")
+  --     ]])
+
+  --     km.imap(
+  --       "<C-g>",
+  --       ':lua copilot#Accept("<CR>")',
+  --       {
+  --         silent = true,
+  --         expr = true,
+  --         script = true,
+  --         replace_keycodes = false,
+  --         desc = "[C]opilot [A]ccept",
+  --       }
+  --     )
+  --   end,
+  -- },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
 }
