@@ -24,7 +24,9 @@ return {
     show_eob = true,
     -- @param highlight_groups Highlights
     -- @param palette Palette
-    on_highlights = function(highlight_groups, palette) end,
+    -- on_highlights = function(hl, palette)
+    --   hl.DiagnosticError = { fg = palette.none, bg = palette.none, sp = palette.red }
+    -- end,
   },
   config = function(_, opts)
     local everforest = require("everforest")

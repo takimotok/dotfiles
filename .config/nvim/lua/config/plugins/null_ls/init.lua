@@ -14,6 +14,7 @@ M.ensure_installed = {
   "shellcheck",
   "shfmt",
   "stylua",
+  -- "cspell",
 }
 
 M.diagnostic_config = {
@@ -66,6 +67,19 @@ local function set_sources(null_ls)
 
     -- editorconfig
     diagnostics.editorconfig_checker,
+
+    -- cspell
+    -- diagnostics.cspell.with({
+    --   diagnostics_postprocess = function(diagnostic)
+    --     diagnostic.severity = vim.diagnostic.severity["INFO"]
+    --   end,
+    --   condition = function()
+    --     -- enavle cspell only when it is executable
+    --     return vim.fn.executable("cspell") > 0
+    --   end,
+    --   -- read configuration file when startup
+    --   extra_args = { "--config", "~/.config/cspell/cspell.json" },
+    -- }),
   }
 end
 
