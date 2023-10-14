@@ -2,7 +2,7 @@
 
 (main() {
     printf "start linking dotfiles ...\\n"
-    printf "\\n"
+          printf "\\n"
 
     DOTPATH="${HOME}"
     DOTFILES_PATH="${DOTPATH}/projects/github.com/takimotok/dotfiles"

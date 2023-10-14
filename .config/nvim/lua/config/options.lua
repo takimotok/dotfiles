@@ -20,6 +20,7 @@ vim.opt.swapfile = false
 -- NOTE: make sure the terminal supports this
 vim.o.termguicolors = true
 vim.o.background = "dark"
+vim.o.cursorlineopt = "number"
 
 -- Search
 vim.opt.hlsearch = true
@@ -79,8 +80,8 @@ vim.opt.showtabline = 1
 vim.opt.visualbell = true
 vim.opt.signcolumn = "yes"
 vim.opt.showmatch = true
-vim.opt.winblend = 30 -- pseudo-transparency for a floating window
-vim.opt.pumblend = 10 -- pseudo-transparency for the popup-menu
+vim.opt.winblend = 30    -- pseudo-transparency for a floating window
+vim.opt.pumblend = 10    -- pseudo-transparency for the popup-menu
 vim.opt.conceallevel = 0 -- hide url links in buffers
 
 vim.opt.spelllang = "en_us,cjk"

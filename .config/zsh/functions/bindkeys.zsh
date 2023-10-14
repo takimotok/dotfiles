@@ -1,4 +1,6 @@
-function list-ghq-with-peco () {
+#!/bin/bash
+
+function list-ghq-with-peco() {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
@@ -7,3 +9,15 @@ function list-ghq-with-peco () {
   zle clear-screen
 }
 zle -N list-ghq-with-peco
+
+# memo: use `$ cd ./**<TAB>` instead
+#
+# fd - cd to selected directory
+# https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+# function fcd() {
+#   local dir
+#   dir=$(find ${1:-.} -path '*/\.*' -prune \
+#     -o -type d -print 2>/dev/null | fzf +m) &&
+#     cd "$dir"
+# }
+# zle -N fcd

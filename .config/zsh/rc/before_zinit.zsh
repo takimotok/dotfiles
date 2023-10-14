@@ -41,6 +41,8 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 # cd なしで change dir.
 setopt auto_cd
+# dotfiles を * に含める
+setopt dotglob
 
 
 # key bind

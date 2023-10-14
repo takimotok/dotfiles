@@ -15,6 +15,7 @@ return {
       "ray-x/cmp-treesitter",
       "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
+      "uga-rosa/cmp-dictionary",
       "zbirenbaum/copilot-cmp",
     },
     config = function()
@@ -67,6 +68,10 @@ return {
           { name = "path" },
           { name = "treesitter" },
           { name = "dap" },
+          {
+            name = "dictionary",
+            keyword_length = 2,
+          },
         }),
         formatting = {
           format = lspkind.cmp_format({
@@ -119,6 +124,19 @@ return {
         }, {
           { name = "cmdline" },
         }),
+      })
+
+      local dict = require("cmp_dictionary")
+      dict.setup({
+        -- The following are default values.
+        exact = 2,
+        first_case_insensitive = false,
+        document = false,
+        document_command = "wn %s -over",
+        sqlite = false,
+        max_items = -1,
+        capacity = 5,
+        debug = false,
       })
     end,
   },

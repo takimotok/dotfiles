@@ -1,0 +1,5 @@
+nvim
+neovim
+ltex
+ltex-ls
+aspell

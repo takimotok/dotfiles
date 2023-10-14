@@ -196,7 +196,8 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc =
+        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
@@ -267,27 +268,6 @@ return {
   },
 
   -- github copilot
-  -- {
-  --   'github/copilot.vim',
-  --   config = function()
-  --     vim.cmd([[
-  --       let g:copilot_no_tab_map = v:true
-  --       imap <silent><script><expr> <M-CR> copilot#Accept("\<CR>")
-  --     ]])
-
-  --     km.imap(
-  --       "<C-g>",
-  --       ':lua copilot#Accept("<CR>")',
-  --       {
-  --         silent = true,
-  --         expr = true,
-  --         script = true,
-  --         replace_keycodes = false,
-  --         desc = "[C]opilot [A]ccept",
-  --       }
-  --     )
-  --   end,
-  -- },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -296,6 +276,62 @@ return {
       require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
+      })
+    end,
+  },
+
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      local bufferline = require("bufferline")
+      -- local font_color = "#1E2326"
+      -- local bg_color = "#D3C6AA"
+      bufferline.setup({
+        options = {
+          mode = "tabs",
+          separator_style = "thin",
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+          show_duplicate_prefix = false,
+          numbers = "ordinal",
+          indicator = {
+            style = "none",
+          },
+          color_icons = true,
+          show_tab_indicators = false,
+        },
+        highlights = {
+          buffer_selected = {
+            -- fg = font_color,
+            -- bg = bg_color,
+            bold = true,
+            italic = true,
+          },
+          numbers_selected = {
+            -- fg = font_color,
+            -- bg = bg_color,
+            bold = true,
+            italic = true,
+          },
+          -- tab_selected = {
+          --   fg = font_color,
+          --   bg = bg_color,
+          -- },
+        },
+      })
+
+      -- keymaps
+      km.nmap("]b", ":BufferLineCycleNext<CR>", { desc = "[G]o [t]o the next tab page" })
+      km.nmap("[b", ":BufferLineCyclePrev<CR>", { desc = "[G]o [T]o the previous tab page" })
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require("illuminate").configure({
+        delay = 100, -- delay: delay in milliseconds
       })
     end,
   },
