@@ -8,15 +8,15 @@
 # @return void
 # -----
 unlink_from_dotpath() {
-    printf "unlinking ${2} ...\\n"
-    unlink "${1}/${2}"
+  printf "unlinking ${2} ...\\n"
+  unlink "${1}/${2}"
 
-    if [ $? -gt 0 ]; then
-        printf "Exit 1\\n"
-        exit 1
-    fi
+  if [ $? -gt 0 ]; then
+    printf "Exit 1\\n"
+    exit 1
+  fi
 
-    printf "done !\\n"
+  printf "done !\\n"
 }
 
 # @param $1 DOTPATH string
@@ -24,17 +24,16 @@ unlink_from_dotpath() {
 # @return void
 # -----
 link_to_dotpath() {
-    printf "creating symbolic link ...\\n"
-    printf "from:  ${2}\\n"
-    printf "to:  ${1}\\n"
+  printf "creating symbolic link ...\\n"
+  printf "from:  ${2}\\n"
+  printf "to:  ${1}\\n"
 
-    ln -s "${2}" "${1}"
+  ln -s "${2}" "${1}"
 
-    if [ $? -gt 0 ]; then
-        printf "Exit 1\\n"
-        exit 1
-    fi
+  if [ $? -gt 0 ]; then
+    printf "Exit 1\\n"
+    exit 1
+  fi
 
-    printf "done !\\n"
+  printf "done !\\n"
 }
-

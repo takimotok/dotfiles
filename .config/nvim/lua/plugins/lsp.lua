@@ -2,6 +2,8 @@ local configs = require("config.plugins.lsp")
 local handlers = require("config.plugins.lsp.handlers")
 
 return {
+  -- { "vigoux/ltex-ls.nvim" },
+  -- { "barreiroleo/ltex-extra.nvim" },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },

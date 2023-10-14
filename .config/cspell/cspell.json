@@ -1,0 +1,121 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": [
+    "aws",
+    "bash",
+    "css",
+    "data-science",
+    "dcoker",
+    "dotfiles",
+    "en_US",
+    "fonts",
+    "html",
+    "latex",
+    "lua",
+    "node",
+    "npm",
+    "php",
+    "python",
+    "ruby",
+    "shell",
+    "user",
+    "vim"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "aws",
+      "path": "~/.local/share/cspell/aws.txt",
+      "description": "aws dictionary"
+    },
+    {
+      "name": "bash",
+      "path": "~/.local/share/cspell/bash.txt",
+      "description": "bash dictionary"
+    },
+    {
+      "name": "css",
+      "path": "~/.local/share/cspell/css.txt",
+      "description": "css dictionary"
+    },
+    {
+      "name": "data-science",
+      "path": "~/.local/share/cspell/data-science.txt",
+      "description": "data-science dictionary"
+    },
+    {
+      "name": "docker",
+      "path": "~/.local/share/cspell/docker.txt",
+      "description": "docker dictionary"
+    },
+    {
+      "name": "dotfiles",
+      "path": "~/.config/cspell/dotfiles.txt",
+      "description": "dotfiles dictionary"
+    },
+    {
+      "name": "en_US",
+      "path": "~/.local/share/cspell/en_US.txt",
+      "description": "en_US dictionary"
+    },
+    {
+      "name": "fonts",
+      "path": "~/.local/share/cspell/fonts.txt",
+      "description": "fonts dictionary"
+    },
+    {
+      "name": "html",
+      "path": "~/.local/share/cspell/html.txt",
+      "description": "html dictionary"
+    },
+    {
+      "name": "latex",
+      "path": "~/.local/share/cspell/latex.txt",
+      "description": "latex dictionary"
+    },
+    {
+      "name": "lua",
+      "path": "~/.local/share/cspell/lua.txt",
+      "description": "lua dictionary"
+    },
+    {
+      "name": "node",
+      "path": "~/.local/share/cspell/node.txt",
+      "description": "node dictionary"
+    },
+    {
+      "name": "npm",
+      "path": "~/.local/share/cspell/npm.txt",
+      "description": "npm dictionary"
+    },
+    {
+      "name": "php",
+      "path": "~/.local/share/cspell/php.txt",
+      "description": "php dictionary"
+    },
+    {
+      "name": "python",
+      "path": "~/.local/share/cspell/python.txt",
+      "description": "python dictionary"
+    },
+    {
+      "name": "ruby",
+      "path": "~/.local/share/cspell/ruby.txt",
+      "description": "ruby dictionary"
+    },
+    {
+      "name": "shell",
+      "path": "~/.local/share/cspell/shell.txt",
+      "description": "shell dictionary"
+    },
+    {
+      "name": "user",
+      "path": "~/.config/cspell/user.txt",
+      "description": "User local dictionary"
+    },
+    {
+      "name": "vim",
+      "path": "~/.local/share/cspell/vim.txt.gz",
+      "description": "Vim Script Language dictionary"
+    }
+  ]
+}
