@@ -121,6 +121,28 @@ function M.setup(lspconfig, capabilities)
       })
     end,
 
+    -- stylelint_lsp
+    -- cf.) https://github.com/bmatcuk/stylelint-lsp/issues/30#issuecomment-1047317921
+    ["stylelint_lsp"] = function()
+      lspconfig.stylelint_lsp.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = {
+          "css",
+          "less",
+          "scss",
+          "sugarss",
+          "vue",
+          "wxss",
+        },
+        settings = {
+          stylelintplus = {
+            cssInJs = false,
+          },
+        },
+      })
+    end,
+
     -- zk
     -- ["zk"] = function()
     --   lspconfig.zk.setup({

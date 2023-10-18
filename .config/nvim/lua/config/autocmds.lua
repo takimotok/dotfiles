@@ -29,14 +29,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- })
 
 -- auto source init.lua after making changes
-local source_myvimrc = vim.api.nvim_create_augroup("SourceMyVimrc", {
-  clear = true,
-})
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  group = source_myvimrc,
-  pattern = { "$MYVIMRC" },
-  command = [[
-    source %
-  ]],
-  desc = "Source $MYVIMRC when make changes",
-})
+-- local source_myvimrc = vim.api.nvim_create_augroup("SourceMyVimrc", {
+--   clear = true,
+-- })
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   group = source_myvimrc,
+--   pattern = { "$MYVIMRC" },
+--   command = [[
+--     source %
+--   ]],
+--   desc = "Source $MYVIMRC when make changes",
+-- })
