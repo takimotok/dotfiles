@@ -3,7 +3,6 @@ local M = {}
 M.ensure_installed = {
   "awk_ls",
   "bashls",
-  "denols",
   "eslint",
   "jsonls",
   "ltex",

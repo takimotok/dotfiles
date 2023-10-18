@@ -208,6 +208,9 @@ return {
 
       -- for file_browser
       km.nmap("<leader>e", ":Telescope file_browser<CR>", { desc = "use the telescope-file-browser" })
+
+      -- for git
+      km.nmap("<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus. Lists git status for current directory" })
     end,
   },
   {
@@ -237,7 +240,11 @@ return {
     event = { "LspAttach" },
     opts = function()
       return {
-        autocmd = { enabled = true },
+        autocmd = {
+          enabled = false,
+          events = { "CursorHold", "CursorHoldI" },
+          pattern = { "*" },
+        },
         sign = { enabled = false },
         virtual_text = { enabled = true },
         ignore = {
@@ -258,13 +265,13 @@ return {
 
   -- for PHP
   {
-    'phpactor/phpactor',
-    build = 'composer install --no-dev --optimize-autoloader',
-    ft = 'php',
+    "phpactor/phpactor",
+    build = "composer install --no-dev --optimize-autoloader",
+    ft = "php",
     keys = {
-      { '<Leader>pm', ':PhpactorContextMenu<CR>' },
-      { '<Leader>pn', ':PhpactorClassNew<CR>' },
-    }
+      { "<Leader>pm", ":PhpactorContextMenu<CR>" },
+      { "<Leader>pn", ":PhpactorClassNew<CR>" },
+    },
   },
 
   -- github copilot

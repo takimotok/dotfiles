@@ -15,6 +15,7 @@ return {
       "ray-x/cmp-treesitter",
       "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
       "uga-rosa/cmp-dictionary",
       "zbirenbaum/copilot-cmp",
     },
@@ -23,10 +24,14 @@ return {
 
       local cmp = require("cmp")
       local lspkind = require("lspkind")
+      local luasnip = require('luasnip')
+
+      require('luasnip/loaders/from_snipmate').lazy_load()
+
       cmp.setup({
         snippet = {
           expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
         window = {
