@@ -196,8 +196,7 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc =
-        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
@@ -264,15 +263,16 @@ return {
   },
 
   -- for PHP
-  {
-    "phpactor/phpactor",
-    build = "composer install --no-dev --optimize-autoloader",
-    ft = "php",
-    keys = {
-      { "<Leader>pm", ":PhpactorContextMenu<CR>" },
-      { "<Leader>pn", ":PhpactorClassNew<CR>" },
-    },
-  },
+  -- {
+  --   "phpactor/phpactor",
+  --   build = "composer install --no-dev --optimize-autoloader",
+  --   tag = "2022.11.12",
+  --   ft = "php",
+  --   keys = {
+  --     { "<Leader>pm", ":PhpactorContextMenu<CR>" },
+  --     { "<Leader>pn", ":PhpactorClassNew<CR>" },
+  --   },
+  -- },
 
   -- github copilot
   {

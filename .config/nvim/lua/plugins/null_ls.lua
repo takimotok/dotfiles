@@ -1,5 +1,4 @@
 local configs = require("config.plugins.null_ls")
-local km = require("core.key_mapper")
 
 return {
   {
@@ -7,8 +6,8 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+      -- "williamboman/mason.nvim",
     },
     config = function()
       local null_ls = require("null-ls")
@@ -19,17 +18,21 @@ return {
       mason_null_ls.setup({
         ensure_installed = configs.ensure_installed,
         automatic_installation = true,
+        handlers = {
+          function() end,
+        },
       })
 
       null_ls.setup({
+        -- debug = true,
+        -- log_level = "info",
+        default_timeout = 60000, -- msec
+        temp_dir = "/tmp",
         diagnostic_config = configs.diagnostic_config,
         diagnostics_format = configs.diagnostics_format,
         sources = configs.sources,
         on_attach = configs.on_attach,
       })
-
-      -- keymaps
-      km.nmap("<leader>li", "<cmd>NullLsInfo<CR>")
     end,
   },
 }

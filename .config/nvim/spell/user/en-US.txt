@@ -3,3 +3,7 @@ neovim
 ltex
 ltex-ls
 aspell
+dev.to
+TODO
+SpreadSheet
+ClickUp

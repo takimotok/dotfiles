@@ -65,28 +65,7 @@ return {
       vim.g.table_mode_delimiter = ","
       vim.g.table_mode_header_fillchar = "="
     end,
+    -- :TableModeToggle mapped to <Leader>tm by default
+    -- @see: https://github.com/dhruvasagar/vim-table-mode#creating-table-on-the-fly
   },
-  -- {
-  --   'vimwiki/vimwiki',
-  --   ft = {'markdown'},
-  --   config = function()
-  --     vim.g.vimwiki_global_ext = 0
-  --     vim.g.vimwiki_list = {
-  --       {
-  --         path = '/Users/takimoto/Dropbox/Vault',
-  --         syntax = 'markdown',
-  --         ext = '.md',
-  --         -- index = 'index',
-  --         -- auto_toc = 1,
-  --       },
-  --     --   -- {
-  --     --   --   path = '~/takimoto.kengo@gmail.com - Google Drive/My Drive/Vault/',
-  --     --   --   ext = '.md',
-  --     --   --   syntax = 'markdown',
-  --     --   --   index = 'index',
-  --     --   --   auto_toc = 1,
-  --     --   -- },
-  --     }
-  --   end,
-  -- },
 }
