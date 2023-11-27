@@ -22,7 +22,7 @@ insert_final_newline = true
 end_of_line = lf
 
 [*.{blade.php,html}]
-indent_size = 2
+indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
 insert_final_newline = true
@@ -42,8 +42,15 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 end_of_line = lf
 
-[*.{js,json,vue,eslintrc,stylelintrc,gs}]
+[*.{js,vue,eslintrc,stylelintrc,gs}]
 indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+end_of_line = lf
+
+[*.{json}]
+indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
 insert_final_newline = true
