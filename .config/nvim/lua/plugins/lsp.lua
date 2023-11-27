@@ -10,7 +10,7 @@ return {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "williamboman/mason.nvim",
-      "folke/neoconf.nvim",
+      -- "folke/neoconf.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
@@ -24,7 +24,7 @@ return {
         > 2. mason-lspconfig.nvim
         > 3. Setup servers via lspconfig
       ]]
-      require("neoconf").setup()
+      -- require("neoconf").setup()
       require("mason").setup()
 
       local mason_lspconfig = require("mason-lspconfig")
@@ -35,7 +35,7 @@ return {
         ensure_installed = configs.ensure_installed,
         handlers = handlers.setup(lspconfig, capabilities),
       })
-      configs.setup()
+      configs.setup(lspconfig, capabilities)
     end,
   },
 }

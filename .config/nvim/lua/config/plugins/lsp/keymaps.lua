@@ -24,7 +24,6 @@ function M.setup(bufnr)
   km.nmap("<leader>dd", "<cmd>Telescope diagnostics<CR>", opts)
   -- km.nmap('<leader>dws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[D]ynamic [W]orkspace [S]ymbols')
 
-
   -- modify workspaces
   km.nmap("<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   km.nmap("<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
