@@ -8,7 +8,8 @@ M.ensure_installed = {
   "ltex",
   "lua_ls",
   "marksman",
-  "phpactor",
+  "phpactor@2022.11.12", -- for php7.x
+  -- "intelephense",
   "pyright",
   "ruff_lsp",
   "rust_analyzer",
@@ -21,7 +22,7 @@ M.ensure_installed = {
   "zk",
 }
 
-local function setup()
+local function setup_diagnostic()
   local signs = {
     { name = "DiagnosticSignError", text = "" },
     { name = "DiagnosticSignWarn", text = "⚠️" },
@@ -36,20 +37,6 @@ local function setup()
       numhl = sign.name,
     })
   end
-
-  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  --   virtual_text = false,
-  --   update_in_insert = false,
-  --   float = {
-  --     border = "rounded",
-  --     header = "",
-  --     prefix = "",
-  --     source = "always",
-  --     format = function(diagnostic)
-  --       return string.format("%s: [%s] %s", diagnostic.source, diagnostic.code, diagnostic.message)
-  --     end,
-  --   },
-  -- })
 
   local config = {
     virtual_text = false,
@@ -66,7 +53,6 @@ local function setup()
       header = "",
       prefix = "",
       format = function(diagnostic)
-        -- return string.format("%s: [%s] %s", diagnostic.source, diagnostic.code, diagnostic.message)
         return string.format("[%s]: %s", diagnostic.source, diagnostic.message)
       end,
     },
@@ -74,8 +60,9 @@ local function setup()
   vim.diagnostic.config(config)
 end
 
-function M.setup()
-  setup()
+function M.setup(lspconfig, capabilities)
+  setup_diagnostic()
+  --  setup_servers(lspconfig, capabilities)
 end
 
 return M

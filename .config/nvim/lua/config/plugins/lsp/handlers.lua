@@ -32,13 +32,48 @@ function M.setup(lspconfig, capabilities)
       })
     end,
 
+    -- intelephense
+    -- @see: https://github.com/bmewburn/intelephense-docs/blob/master/gettingStarted.md
+    -- ["intelephense"] = function()
+    --   lspconfig.intelephense.setup({
+    --     name = "intelephense",
+    --     commands = {
+    --       IntelephenseIndex = {
+    --         function()
+    --           vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+    --         end,
+    --       },
+    --     },
+    --     files = {
+    --       exclude = {
+    --         "**/.git/**",
+    --         "**/.DS_Store/**",
+    --         "**/node_modules/**",
+    --         "**/bower_components/**",
+    --         "**/vendor/**/{Tests,tests}/**",
+    --         "**/.history/**",
+    --         "**/vendor/**/vendor/**",
+    --       };
+    --     },
+    --     environment = {
+    --       phpVersion = "7.4.33",
+    --     },
+    --     root_dir =  function()
+    --       return vim.fs.dirname(vim.fs.find({'composer.json'}, { upward = true })[1])
+    --     end,
+    --     capabilities = capabilities,
+    --     on_attach = on_attach,
+    --   })
+    -- end,
+
     -- phpactor
     ["phpactor"] = function()
       lspconfig.phpactor.setup({
+        name = "phpactor",
         capabilities = capabilities,
         init_options = {
+          ["language_server_php_cs_fixer.enabled"] = false,
           ["language_server_phpstan.enabled"] = false,
-          ["language_server_psalm.enabled"] = false,
         },
       })
     end,
@@ -61,6 +96,15 @@ function M.setup(lspconfig, capabilities)
               motherTongue = "ja-JP",
             },
             dictionary = ltex_config.read_dictionaries(),
+            markdown = {
+              nodes = {
+                AutoLink = "ignore",
+                Code = "dummy",
+                CodeBlock = "ignore",
+                FencedCodeBlock = "ignore",
+                Link = "ignore",
+              },
+            },
           },
         },
       })

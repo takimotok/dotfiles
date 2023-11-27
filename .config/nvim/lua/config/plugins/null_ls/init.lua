@@ -5,22 +5,29 @@ M.ensure_installed = {
   "blade-formatter",
   "codelldb",
   "editorconfig_checker",
+  "isort",
   "jq",
   "luacheck",
   "php-cs-fixer",
-  "phpcs",
+  "phpstan",
   "prettier",
   "ruff",
   "shellcheck",
   "shfmt",
   "stylua",
   -- "cspell",
+  -- "phpcs",
 }
 
 M.diagnostic_config = {
   virtual_text = false,
 }
 
+
+-- #{m}: message
+-- #{s}: source name (defaults to null-ls if not specified)
+-- #{c}: code (if available)
+-- @see: https://github.com/nvimtools/none-ls.nvim/blob/main/doc/CONFIG.md#diagnostics_format-string
 M.diagnostics_format = "[#{c}] (#{s}) #{m}"
 
 M.sources = {}
@@ -50,17 +57,54 @@ local function set_sources(null_ls)
     }),
 
     -- python
-    formatting.ruff,
     formatting.black.with({
       extra_args = { "--line-length=120" },
     }),
+    formatting.isort,
+    formatting.ruff,
     diagnostics.ruff,
     -- code_actions.ruff,
 
     -- php, laravel
-    formatting.phpcsfixer,
-    formatting.blade_formatter,
-    diagnostics.phpcs,
+    formatting.phpcsfixer.with({
+      name = "phpcsfixer",
+      condition = function(utils)
+        return utils.root_has_file(".php-cs-fixer.dist.php")
+      end,
+      command = "vendor/bin/php-cs-fixer",
+      extra_args = function()
+        return {
+          "--quiet",
+          "--no-interaction",
+          "--config=" .. vim.fn.getcwd() .. "/.php-cs-fixer.dist.php",
+          "$FILENAME",
+        }
+      end,
+    }),
+    -- formatting.blade_formatter,
+    diagnostics.phpstan.with({
+      name = "phpstan",
+      -- milliseconds
+      -- timeout = 60000,
+      condition = function(utils)
+        return utils.root_has_file("phpstan.neon")
+      end,
+      command = "vendor/bin/phpstan",
+      extra_args = function()
+        return {
+          "-n",
+          -- "--error-format",
+          -- "raw",
+          "--no-progress",
+          "--memory-limit=2G",
+          "-c",
+          vim.fn.getcwd() .. "/phpstan.neon",
+          "-a",
+          "vendor/autoload.php",
+          -- "$FILENAME",
+        }
+      end,
+    }),
 
     -- markdown
     formatting.prettier,
