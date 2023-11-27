@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # [zinit commands](https://github.com/zdharma/zinit#zinit-commands)
 #
 #   snippet: `source` local or remote file
@@ -36,7 +38,6 @@ zstyle ':prompt:pure:git:*' color yellow
 # ls command color
 # https://qiita.com/sakurasou/items/10156a46fb7e2d1c300f
 export LSCOLORS=gxfxcxdxbxegedabagacad
-
 
 # fzf
 # FZF_DEFAULT_OPTS='--height=15 --reverse --inline-info --color=dark --color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe --color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
