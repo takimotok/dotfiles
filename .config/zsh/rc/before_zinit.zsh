@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # history
 # -----
 
@@ -22,7 +24,6 @@ setopt hist_no_store
 # 履歴をインクリメンタルに追加
 setopt inc_append_history
 
-
 # others
 # -----
 
@@ -44,7 +45,6 @@ setopt auto_cd
 # dotfiles を * に含める
 setopt dotglob
 
-
 # key bind
 # -----
 # as emacs
@@ -52,4 +52,3 @@ bindkey -e
 # ^r (or ^s)で履歴検索をするときに * でワイルドカードを使用出来るようにする
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-search-forward
-

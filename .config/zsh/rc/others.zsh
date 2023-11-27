@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # color
 # -----
@@ -37,19 +37,19 @@ zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
 # os
 # -----
 case ${OSTYPE} in
-  darwin*)
-    #Mac用の設定
-    export CLICOLOR=1
-    alias ls='ls -G -F'
-    # .DS_Store 削除
-    #そもそも生成しないようにする: $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-    alias delds='find . -name ".DS_Store" -type f -ls -delete'
-    alias delicon='find . -type f -name "Icon?" -print -delete;'
-    ;;
-  linux*)
-    #Linux用の設定
-    alias ls='ls -F --color=auto'
-    ;;
+darwin*)
+  #Mac用の設定
+  export CLICOLOR=1
+  alias ls='ls -G -F'
+  # .DS_Store 削除
+  #そもそも生成しないようにする: $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+  alias delds='find . -name ".DS_Store" -type f -ls -delete'
+  alias delicon='find . -type f -name "Icon?" -print -delete;'
+  ;;
+linux*)
+  #Linux用の設定
+  alias ls='ls -F --color=auto'
+  ;;
 esac
 
 # fzf

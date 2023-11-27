@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # homebrew
 # -----
 # cf.) https://github.com/sei40kr/dotfiles/blob/23d39ca62788ab767b4e961d84e8edd28b0be255/config/zsh/zprofile
@@ -9,4 +11,3 @@ if [[ "${OSTYPE}" == darwin* && -e /usr/local/bin/brew ]]; then
   fpath=("${__brew_prefix}/share/zsh/site-functions" "${fpath[@]}")
   manpath=("${__brew_prefix}/share/man" "${manpath[@]}")
 fi
-

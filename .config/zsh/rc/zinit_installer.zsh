@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # zinit
 #
 # Moved from .zshrc to here.
