@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # plugings for pip through pyenv ( anyenv )
 # -----
 # export PATH="/Users/takimoto/.anyenv/envs/pyenv/versions/**/bin:$PATH"
