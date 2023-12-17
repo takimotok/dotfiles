@@ -84,3 +84,8 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 eval "$(rtx activate zsh)"
 export RTX_DATA_DIR=$HOME/.rtx
 export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
+
+# gh
+# -----
+eval "$(gh completion -s zsh)"
+
