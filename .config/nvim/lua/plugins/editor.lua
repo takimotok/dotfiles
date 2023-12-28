@@ -165,6 +165,7 @@ return {
             "build",
             "dist",
             "yarn.lock",
+            "composer.lock",
           },
         },
         pickers = {
