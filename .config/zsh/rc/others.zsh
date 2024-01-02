@@ -52,6 +52,12 @@ linux*)
   ;;
 esac
 
+# brew
+# -----
+if [ "$(uname -m)" = "arm64" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # fzf
 # -----
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -61,7 +67,8 @@ esac
 # For AWS-CLI assume-role & direnv
 # -----
 eval "$(direnv hook zsh)"
-export EDITOR=vim
+# export EDITOR=vim
+export EDITOR=nvim
 
 # gpg
 # -----
@@ -81,11 +88,20 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 
 # rtx
 # -----
+export RTX_DATA_DIR=$XDG_CONFIG_HOME/rtx
+export RTX_CONFIG_DIR=$XDG_CONFIG_HOME/rtx
+export RTX_CACHE_DIR=$XDG_CACHE_HOME/rtx
+export RTX_LOG_LEVEL="warn"
 eval "$(rtx activate zsh)"
-export RTX_DATA_DIR=$HOME/.rtx
-export RTX_CACHE_DIR=$RTX_DATA_DIR/cache
 
 # gh
 # -----
 eval "$(gh completion -s zsh)"
 
+# 1Password
+# -----
+eval "$(op signin)"
+
+# vim
+# -----
+export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
