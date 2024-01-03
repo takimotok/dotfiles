@@ -1,6 +1,9 @@
 #!/bin/bash
 
-(main() {
+(
+  main() {
     printf "start %s...\\n" "${0}"
     printf "\\n"
-}; main)
+  }
+  main
+)

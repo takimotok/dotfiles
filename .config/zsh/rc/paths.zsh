@@ -33,3 +33,7 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 # poetry (python package manager)
 # -----
 export PATH="/usr/local/opt/poetry/bin:$PATH"
+
+# rust
+# -----
+export PATH=$PATH:$HOME/.cargo/bin

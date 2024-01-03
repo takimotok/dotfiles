@@ -160,6 +160,20 @@ return {
             },
           },
           layout_strategy = "vertical",
+          file_ignore_patterns = {
+            "node_modules",
+            "build",
+            "dist",
+            "yarn.lock",
+            "composer.lock",
+          },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+            -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          },
         },
       })
 
@@ -196,7 +210,8 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc =
+        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
