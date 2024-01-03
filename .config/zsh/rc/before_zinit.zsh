@@ -4,7 +4,8 @@
 # -----
 
 # 履歴ファイル 保存先
-HISTFILE=~/.zsh_history
+export HISTFILE=${ZDOTDIR}/.zsh_history
+
 # メモリに保存される履歴件数
 HISTSIZE=1000000
 # 履歴ファイルに保存される履歴件数

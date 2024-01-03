@@ -4,7 +4,6 @@
 # os
 # -----
 .DS_Store
-**/.DS_Store
 .ssh
 
 # aws
@@ -31,14 +30,3 @@
 .config/zsh/.zsh_sessions
 .config/zsh/rc/alias.zsh
 .config/**/*.zwc
-
-# karabiner
-# -----
-.config/karabiner/*
-!.config/karabiner/karabiner.json
-
-# rtx
-# -----
-.config/rtx/*
-!.config/rtx/config/toml
-
