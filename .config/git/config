@@ -3,7 +3,7 @@
 [user]
 	email = 55965039+takimotok@users.noreply.github.com
 	name = k.takimoto
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBeLoTRepd1PCAgT2XfkKaIiRbhChTzNpldgCZn0Ztf
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIID7HVkNPH3XSPk039LwjhTRpf0XHBQwSdIeG/FsO+Kp
 [init]
 	defaultBranch = master
 	templatedir = ~/.config/git/template
