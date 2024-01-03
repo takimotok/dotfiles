@@ -10,7 +10,12 @@
 ## Prerequisites
 
 - macOS
+- create the `~/projects` directory due to be set `ghq root` as `/Users/${USER}/projects` in `.gitconfig`
 
+```sh
+# create the ~/projects directory
+$ mkdir -p ~/projects
+```
 
 ## Installation
 
@@ -27,3 +32,14 @@ $ git clone https://github.com/takimotok/dotfiles.git
 $ chmod u+x install.sh
 $ ./install.sh
 ```
+
+After that, we might need to reboot and/or restart.
+
+In addition, the command below enable us to install some programming languages thanks to [jdx/mise: dev tools, env vars, task
+runner](https://github.com/jdx/mise).
+
+```sh
+$ mise install -y
+```
+
+Then, we can search installed repositories with `^]` key.

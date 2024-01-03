@@ -4,24 +4,23 @@ set -Ceu
 
 (
   main() {
-    . ./src/app/start_message.sh
+    . ./src/libs/functions.sh
+
+    _print_start_message
 
     # set global variables which are used in other `*.sh`
     PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     # initial setup
-    . ./src/libs/init.sh
+    . ./src/init.sh
 
     # link dotfiles to both $HOME and $XDG_CONFIG_HOME
-    . ./src/libs/link.sh
-
-    # setup ssh for github
-    . ./src/libs/defaults.sh
+    . ./src/link.sh
 
     # setup mac
-    . ./src/libs/defaults.sh
+    . ./src/defaults.sh
 
-    . ./src/app/finish_message.sh
+    _print_finish_message
   }
 
   main

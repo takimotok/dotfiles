@@ -88,11 +88,12 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 
 # rtx
 # -----
-export RTX_DATA_DIR=$XDG_CONFIG_HOME/rtx
-export RTX_CONFIG_DIR=$XDG_CONFIG_HOME/rtx
-export RTX_CACHE_DIR=$XDG_CACHE_HOME/rtx
-export RTX_LOG_LEVEL="warn"
-eval "$(rtx activate zsh)"
+export MISE_DATA_DIR=$XDG_DATA_HOME/mise
+export MISE_CACHE_DIR=$XDG_CACHE_HOME/mise
+export MISE_INSTALL_PATH=$XDG_DATA_HOME/mise/bin
+export MISE_LOG_LEVEL="warn"
+export MISE_EXPERIMENTAL=true
+eval "$(mise activate zsh)"
 
 # gh
 # -----

@@ -4,8 +4,6 @@ set -Ceu
 
 (
   main() {
-    . ./src/libs/functions.sh
-
     # check if the os is macOS
     _is_macos
     _exit_with_errors "$?"

@@ -3,7 +3,7 @@
 [user]
 	email = 55965039+takimotok@users.noreply.github.com
 	name = k.takimoto
-	signingkey = 2F477E3410EC799BD585B6263C022CE879BFA58F
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJBeLoTRepd1PCAgT2XfkKaIiRbhChTzNpldgCZn0Ztf
 [init]
 	defaultBranch = master
 	templatedir = ~/.config/git/template
@@ -12,7 +12,6 @@
 	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
 	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
-	allowed =
 	allowed =
 [color]
 	ui = true
@@ -25,7 +24,7 @@
     --decorate \
     --format=format:'%Cgreen[%cd] %C(bold blue)%h %Cred<%an> %Cred<%cn> %C(white)%s %C(bold yellow)%d'
 [gpg]
-	program = gpg
+	format = ssh
 [commit]
 	gpgsign = true
 [tag]
@@ -36,3 +35,5 @@
 	helper = osxkeychain
 [pull]
 	rebase = false
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
