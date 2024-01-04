@@ -10,11 +10,11 @@
 ## Prerequisites
 
 - macOS
-- create the `~/projects` directory due to be set `ghq root` as `/Users/${USER}/projects` in `.gitconfig`
+- create the directory as below due to be set `ghq root` as `/Users/${USER}/projects` in `.gitconfig`
 
 ```sh
 # create the ~/projects directory
-$ mkdir -p ~/projects
+$ mkdir -p ~/projects/github.com/takimotok
 ```
 
 ## Installation
@@ -22,7 +22,23 @@ $ mkdir -p ~/projects
 Run `install.sh` by curl:
 
 ```sh
-$ curl -L raw.githubusercontent.com/takimotok/dotfiles/main/install.sh | bash
+$ cd ~/projects/github.com/takimotok
+
+$ curl \
+  -L https://github.com/takimotok/dotfiles/archive/refs/heads/main.tar.gz \
+  -o dotfiles.tar.gz
+
+$ tar xvf dotfiles.tar.gz
+
+$ mv dotfiles-main dotfiles
+
+$ rm -rf dotfiles.tar.gz
+
+$ cd ./dotfiles
+
+$ chmod u+x install.sh
+
+$ ./install.sh
 ```
 
 Alternatively run the commands below:
