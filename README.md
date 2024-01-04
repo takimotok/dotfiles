@@ -9,12 +9,14 @@
 
 ## Prerequisites
 
+Almost all dotfiles are resides in `~/.config` directory.
+
 - macOS
-- create the directory as below due to be set `ghq root` as `/Users/${USER}/projects` in `.gitconfig`
+- set `ZDOTDIR` environment variable to use `zsh` under the XDG Base Directory specification
 
 ```sh
-# create the ~/projects directory
-$ mkdir -p ~/projects/github.com/takimotok
+# set ZDOTDIR to use XDG Base Directories
+$ echo "export ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zshenv
 ```
 
 ## Installation
@@ -31,13 +33,11 @@ $ curl \
 $ tar xvf dotfiles.tar.gz
 
 $ mv dotfiles-main dotfiles
-
 $ rm -rf dotfiles.tar.gz
 
 $ cd ./dotfiles
-
 $ chmod u+x install.sh
-
+$ chmod -R u+x ./src
 $ ./install.sh
 ```
 
@@ -46,6 +46,7 @@ Alternatively run the commands below:
 ```sh
 $ git clone https://github.com/takimotok/dotfiles.git
 $ chmod u+x install.sh
+$ chmod -R u+x ./src
 $ ./install.sh
 ```
 
@@ -59,3 +60,28 @@ $ mise install -y
 ```
 
 Then, we can search installed repositories with `^]` key.
+
+## Setup rust
+
+```sh
+# setup rust
+# select `1` below
+$ rustup-init
+
+...
+1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
+...
+
+```
+
+## Firefox data migration
+
+I followed the instruction below but no luck.  
+Alternatively, I just copied whole of `Firefox` folder to another machine and it works.
+
+cf)
+
+- [Back up and restore information in Firefox profiles | Firefox Help](https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
+

@@ -58,6 +58,15 @@ if [ "$(uname -m)" = "arm64" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# rtx (mise)
+# -----
+export MISE_DATA_DIR=$XDG_DATA_HOME/mise
+export MISE_CACHE_DIR=$XDG_CACHE_HOME/mise
+export MISE_INSTALL_PATH=$XDG_DATA_HOME/mise/bin
+export MISE_LOG_LEVEL="warn"
+export MISE_EXPERIMENTAL=true
+eval "$(mise activate zsh)"
+
 # fzf
 # -----
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -80,20 +89,12 @@ MYPY_CACHE_DIR="/dev/null"
 
 # rust
 # -----
-. "$HOME/.cargo/env"
+. "$XDG_DATA_HOME/mise/installs/rust/lts/env"
+
 
 # ruby
 # -----
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
-
-# rtx
-# -----
-export MISE_DATA_DIR=$XDG_DATA_HOME/mise
-export MISE_CACHE_DIR=$XDG_CACHE_HOME/mise
-export MISE_INSTALL_PATH=$XDG_DATA_HOME/mise/bin
-export MISE_LOG_LEVEL="warn"
-export MISE_EXPERIMENTAL=true
-eval "$(mise activate zsh)"
 
 # gh
 # -----

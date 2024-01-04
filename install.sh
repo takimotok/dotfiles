@@ -4,12 +4,10 @@ set -Ceu
 
 (
   main() {
+    . ./src/libs/variables.sh
     . ./src/libs/functions.sh
 
     _print_start_message
-
-    # set global variables which are used in other `*.sh`
-    PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
     # initial setup
     . ./src/init.sh
@@ -19,6 +17,9 @@ set -Ceu
 
     # setup mac
     . ./src/defaults.sh
+
+    # setup some tools
+    . ./src/tools.sh
 
     _print_finish_message
   }
