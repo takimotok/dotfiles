@@ -28,13 +28,16 @@ set -Ceu
     # set key repeat recognition time
     defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
-    # use Fn keys as standard function keyas
+    # use Fn keys as standard function keys
     defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
     # Dock
     # -----
     # arrange dock to right
     defaults write com.apple.dock orientation right
+
+    # enable auto hide
+    defaults write com.apple.dock "autohide" -bool true
 
     # delete all apps. from dock
     defaults write com.apple.dock persistent-apps -array
@@ -70,6 +73,9 @@ set -Ceu
 
     # show path bar
     defaults write com.apple.finder ShowPathbar -bool true
+
+    # set default view style as list view
+    defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
 
     # disable warning to empty trash
     defaults write com.apple.finder WarnOnEmptyTrash -bool "false"
