@@ -18,7 +18,7 @@ config = {
   automatically_reload_config = true,
 
   -- spawn a zsh shell in login mode
-  default_prog = { "/usr/local/bin/zsh", "-l" },
+  default_prog = { "/bin/zsh", "-l" },
 
   --[[ fonts ]]
   use_ime = font.use_ime,
