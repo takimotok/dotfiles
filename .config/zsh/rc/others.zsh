@@ -16,8 +16,9 @@ colors
 # complement
 # -----
 
+# @TODO: investigate whether zinit calls below or not
+#
 # enable commands completion
-# zinit で呼ばれている ??
 # autoload -Uz compinit
 # compinit
 
@@ -76,7 +77,6 @@ eval "$(mise activate zsh)"
 # For AWS-CLI assume-role & direnv
 # -----
 eval "$(direnv hook zsh)"
-# export EDITOR=vim
 export EDITOR=nvim
 
 # gpg
@@ -86,11 +86,6 @@ export GPG_TTY=$(tty)
 # mypy (python linter)
 # -----
 MYPY_CACHE_DIR="/dev/null"
-
-# rust
-# -----
-. "$XDG_DATA_HOME/mise/installs/rust/lts/env"
-
 
 # ruby
 # -----

@@ -10,6 +10,14 @@ function list-ghq-with-peco() {
 }
 zle -N list-ghq-with-peco
 
+function select-history() {
+  # show selected histories to buffer
+  BUFFER=$(history -n -r 1 | fzf --reverse --query="$LBUFFER" --prompt="> ")
+  # set cursor position to end of the line
+  CURSOR=${#BUFFER}
+}
+zle -N select-history
+
 # memo: use `$ cd ./**<TAB>` instead
 #
 # fd - cd to selected directory
