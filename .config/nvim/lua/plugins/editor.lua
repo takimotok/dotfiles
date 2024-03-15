@@ -357,4 +357,12 @@ return {
       })
     end,
   },
+  {
+    "echasnovski/mini.nvim",
+    version = false,
+    config = function()
+      -- require("mini").setup()
+      require("mini.align").setup()
+    end,
+  },
 }

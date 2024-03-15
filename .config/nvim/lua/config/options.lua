@@ -50,6 +50,7 @@ vim.opt.breakindent = true
 -- tabstops
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- show <Tab> and <EOL>
 vim.opt.list = true
