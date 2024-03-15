@@ -5,14 +5,12 @@ M.ensure_installed = {
   "blade-formatter",
   "codelldb",
   "editorconfig_checker",
+  "hadolint",
   "isort",
-  "jq",
-  "luacheck",
   "php-cs-fixer",
   "phpstan",
   "prettier",
   "ruff",
-  "shellcheck",
   "shfmt",
   "stylua",
   -- "cspell",
@@ -22,7 +20,6 @@ M.ensure_installed = {
 M.diagnostic_config = {
   virtual_text = false,
 }
-
 
 -- #{m}: message
 -- #{s}: source name (defaults to null-ls if not specified)
@@ -43,26 +40,17 @@ local function set_sources(null_ls)
     formatting.shfmt.with({
       filetypes = { "zsh", "sh" },
     }),
-    diagnostics.shellcheck.with({
-      filetypes = { "zsh", "sh" },
-    }),
-    code_actions.shellcheck.with({
-      filetypes = { "zsh", "sh" },
-    }),
 
     -- lua
     formatting.stylua,
-    diagnostics.luacheck.with({
-      extra_args = { "--globals", "vim" },
-    }),
 
     -- python
     formatting.black.with({
       extra_args = { "--line-length=120" },
     }),
     formatting.isort,
-    formatting.ruff,
-    diagnostics.ruff,
+    -- formatting.ruff,
+    -- diagnostics.ruff,
     -- code_actions.ruff,
 
     -- php, laravel
@@ -111,6 +99,12 @@ local function set_sources(null_ls)
 
     -- editorconfig
     diagnostics.editorconfig_checker,
+
+    -- hadolint
+    -- diagnostics.hadolint.with({
+    --   filetypes = { "Dockerfile", "dockerfile" },
+    -- }),
+    diagnostics.hadolint,
 
     -- cspell
     -- diagnostics.cspell.with({
