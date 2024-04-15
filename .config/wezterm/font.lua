@@ -1,7 +1,9 @@
 local wezterm = require("wezterm")
 
--- local font_name = 'SauceCodePro Nerd Font Mono'
-local font_name = "Iosevka Nerd Font"
+-- local font_name = "Iosevka Nerd Font Mono"
+-- local font_name = "Hack Nerd Font Mono"
+-- local font_name = "PlemolJP Console NF"
+local font_name = "HackGen Console NF"
 
 local M = {
   use_ime = true,
@@ -9,6 +11,10 @@ local M = {
   font = wezterm.font_with_fallback({
     {
       family = font_name,
+      weight = "Regular",
+    },
+    {
+      family = "PlemolJP Console NF",
       weight = "Regular",
     },
     {
@@ -22,8 +28,16 @@ local M = {
   }),
   font_rules = {
     {
-      intensity = "Bold",
       italic = true,
+      intensity = "Normal",
+      font = wezterm.font({
+        family = font_name,
+        style = "Italic",
+      }),
+    },
+    {
+      italic = true,
+      intensity = "Bold",
       font = wezterm.font({
         family = "Victor Mono",
         weight = "Bold",
@@ -36,14 +50,6 @@ local M = {
       font = wezterm.font({
         family = "Victor Mono",
         weight = "DemiBold",
-        style = "Italic",
-      }),
-    },
-    {
-      italic = true,
-      intensity = "Normal",
-      font = wezterm.font({
-        family = font_name,
         style = "Italic",
       }),
     },
