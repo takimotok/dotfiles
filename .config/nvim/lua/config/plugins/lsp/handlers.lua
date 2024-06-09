@@ -200,10 +200,27 @@ function M.setup(lspconfig, capabilities)
       lspconfig.pyright.setup({
         on_attach = on_attach,
         capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern(".venv"),
+        cmd = { "zsh", "-c", "source .venv/bin/activate" },
+        -- cmd = { "zsh", "-c", "source .venv/bin/activate && .venv/bin/pyright-langserver --stdio" },
+        -- @TODO: 2024-06-05 もし warning がウザかったら comment in する
+        -- settings = {
+        --   pyright = {
+        --     -- Using Ruff's import organizer
+        --     disableOrganizeImports = true,
+        --   },
+        --   python = {
+        --     analysis = {
+        --       -- Ignore all files for analysis to exclusively use Ruff for linting
+        --       ignore = { "*" },
+        --     },
+        --   },
+        -- },
       })
     end,
 
     -- ruff_lsp
+    -- [astral-sh/ruff-lsp: A Language Server Protocol implementation for Ruff.](https://github.com/astral-sh/ruff-lsp)
     ["ruff_lsp"] = function()
       lspconfig.ruff_lsp.setup({
         on_attach = on_attach,

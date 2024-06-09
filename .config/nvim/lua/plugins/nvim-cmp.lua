@@ -16,7 +16,7 @@ return {
       "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
-      "uga-rosa/cmp-dictionary",
+      -- "uga-rosa/cmp-dictionary",
       "zbirenbaum/copilot-cmp",
     },
     config = function()
@@ -24,9 +24,9 @@ return {
 
       local cmp = require("cmp")
       local lspkind = require("lspkind")
-      local luasnip = require('luasnip')
+      local luasnip = require("luasnip")
 
-      require('luasnip/loaders/from_snipmate').lazy_load()
+      require("luasnip/loaders/from_snipmate").lazy_load()
 
       cmp.setup({
         snippet = {
@@ -131,18 +131,18 @@ return {
         }),
       })
 
-      local dict = require("cmp_dictionary")
-      dict.setup({
-        -- The following are default values.
-        exact = 2,
-        first_case_insensitive = false,
-        document = false,
-        document_command = "wn %s -over",
-        sqlite = false,
-        max_items = -1,
-        capacity = 5,
-        debug = false,
-      })
+      -- local dict = require("cmp_dictionary")
+      -- dict.setup({
+      --   -- The following are default values.
+      --   exact = 2,
+      --   first_case_insensitive = false,
+      --   document = false,
+      --   document_command = "wn %s -over",
+      --   sqlite = false,
+      --   max_items = -1,
+      --   capacity = 5,
+      --   debug = false,
+      -- })
     end,
   },
 }

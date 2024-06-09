@@ -308,8 +308,6 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local bufferline = require("bufferline")
-      -- local font_color = "#1E2326"
-      -- local bg_color = "#D3C6AA"
       bufferline.setup({
         options = {
           mode = "tabs",
