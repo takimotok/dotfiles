@@ -210,8 +210,7 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc =
-        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
@@ -234,21 +233,6 @@ return {
       return vim.fn.executable("make") == 1
     end,
   },
-  -- {
-  --   'lambdalisue/fern.vim',
-  --   dependencies = {
-  --     'lambdalisue/nerdfont.vim',
-  --     'lambdalisue/fern-git-status.vim',
-  --     'lambdalisue/fern-renderer-nerdfont.vim',
-  --   },
-  --   config = function()
-  --     -- icons
-  --     vim.g['fern#renderer'] = 'nerdfont'
-
-  --     -- keymaps
-  --     km.nmap('<leader>e', '<cmd>Fern . -reveal=% -drawer<cr>', { desc = 'Open file tree as project drawer style' })
-  --   end,
-  -- },
   {
     "kosayoda/nvim-lightbulb",
     event = { "LspAttach" },
@@ -308,8 +292,6 @@ return {
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local bufferline = require("bufferline")
-      -- local font_color = "#1E2326"
-      -- local bg_color = "#D3C6AA"
       bufferline.setup({
         options = {
           mode = "tabs",
@@ -326,21 +308,13 @@ return {
         },
         highlights = {
           buffer_selected = {
-            -- fg = font_color,
-            -- bg = bg_color,
             bold = true,
             italic = true,
           },
           numbers_selected = {
-            -- fg = font_color,
-            -- bg = bg_color,
             bold = true,
             italic = true,
           },
-          -- tab_selected = {
-          --   fg = font_color,
-          --   bg = bg_color,
-          -- },
         },
       })
 
