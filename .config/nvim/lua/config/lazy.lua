@@ -13,7 +13,10 @@ lazy.setup("plugins", {
     missing = true,
     colorscheme = { vim.env.NVIM_COLORSCHEME },
   },
-  checker = { enabled = true },
+  checker = {
+    enabled = true, -- automatically check for plugin updates
+    notify = false, -- get a notification when new updates are found
+  },
   change_detection = {
     enabled = true,
     notify = false,
