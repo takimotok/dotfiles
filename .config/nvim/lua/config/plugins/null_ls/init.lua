@@ -12,6 +12,7 @@ M.ensure_installed = {
   "prettier",
   "ruff",
   "shfmt",
+  "sqlfluff",
   "stylua",
   -- "cspell",
   -- "phpcs",
@@ -105,6 +106,39 @@ local function set_sources(null_ls)
     --   filetypes = { "Dockerfile", "dockerfile" },
     -- }),
     diagnostics.hadolint,
+
+    -- sqlfluff
+    -- @TODO: can I set a config file ?
+    -- @TODO: bug: be overwritten whenever we save it. how can I solve that ?
+    diagnostics.sqlfluff.with({
+      extra_args = {
+        "--dialect",
+        "mysql",
+        "--encoding",
+        "utf8",
+        "--exclude-rules",
+        "AL09",
+        "--disable-progress-bar",
+        "-f",
+        "github-annotation",
+        "-n",
+        -- "$FILENAME",
+        -- "-",
+      },
+    }),
+    formatting.sqlfluff.with({
+      extra_args = {
+        "--dialect",
+        "mysql",
+        "--encoding",
+        "utf8",
+        "-n",
+        "--disable-noqa",
+        "--disable-progress-bar",
+        -- "$FILENAME",
+        -- "-",
+      },
+    }),
 
     -- cspell
     -- diagnostics.cspell.with({
