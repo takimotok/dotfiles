@@ -16,7 +16,6 @@ return {
       "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
-      "uga-rosa/cmp-dictionary",
       "zbirenbaum/copilot-cmp",
     },
     config = function()
@@ -24,9 +23,9 @@ return {
 
       local cmp = require("cmp")
       local lspkind = require("lspkind")
-      local luasnip = require('luasnip')
+      local luasnip = require("luasnip")
 
-      require('luasnip/loaders/from_snipmate').lazy_load()
+      require("luasnip/loaders/from_snipmate").lazy_load()
 
       cmp.setup({
         snippet = {
@@ -99,20 +98,6 @@ return {
         },
       })
 
-      -- @TODO: think later
-      -- Set configuration for specific filetype.
-      -- cmp.setup.filetype("gitcommit", {
-      --   sources = cmp.config.sources(
-      --     {
-      --       -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-      --       { name = "git" },
-      --     },
-      --     {
-      --       { name = "buffer" },
-      --     }
-      --   )
-      -- })
-
       -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
@@ -129,19 +114,6 @@ return {
         }, {
           { name = "cmdline" },
         }),
-      })
-
-      local dict = require("cmp_dictionary")
-      dict.setup({
-        -- The following are default values.
-        exact = 2,
-        first_case_insensitive = false,
-        document = false,
-        document_command = "wn %s -over",
-        sqlite = false,
-        max_items = -1,
-        capacity = 5,
-        debug = false,
       })
     end,
   },
