@@ -57,6 +57,12 @@ runner](https://github.com/jdx/mise).
 
 ```sh
 $ mise install -y
+
+# check
+$ mise ls
+
+# e.g.) use Python 3.11 as global
+$ mise use --global python@3.11
 ```
 
 Then, we can search installed repositories with `^]` key.
@@ -84,4 +90,3 @@ Alternatively, I just copied whole of `Firefox` folder to another machine and it
 cf)
 
 - [Back up and restore information in Firefox profiles | Firefox Help](https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
-

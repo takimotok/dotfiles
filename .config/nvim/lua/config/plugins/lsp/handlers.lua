@@ -200,10 +200,16 @@ function M.setup(lspconfig, capabilities)
       lspconfig.pyright.setup({
         on_attach = on_attach,
         capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern(".venv"),
+        cmd = { "zsh", "-c", "source .venv/bin/activate" },
       })
     end,
 
     -- ruff_lsp
+    -- @TODO: suppress double warnings
+    -- e.g.)
+    --    [Ruff]: `sys` imported but unused [F401]
+    --    [Ruff]: `sys` imported but unused [F401]
     ["ruff_lsp"] = function()
       lspconfig.ruff_lsp.setup({
         on_attach = on_attach,
