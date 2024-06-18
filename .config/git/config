@@ -23,6 +23,9 @@
     --date=short \
     --decorate \
     --format=format:'%Cgreen[%cd] %C(bold blue)%h %Cred<%an> %Cred<%cn> %C(white)%s %C(bold yellow)%d'
+  lg = log \
+    --pretty=format:'%C(auto)%h %C(cyan)%cd %C(green bold)%cn %C(reset)%s' \
+    --date=format:'%Y-%m-%d %H:%M:%S'
 [gpg]
 	format = ssh
 [commit]
