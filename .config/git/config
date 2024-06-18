@@ -1,5 +1,6 @@
 [core]
   editor = nvim
+	quotepath = false
 [user]
 	email = 55965039+takimotok@users.noreply.github.com
 	name = k.takimoto
