@@ -16,5 +16,4 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 
 # poetry (python package manager)
 # -----
-export PATH="/usr/local/opt/poetry/bin:$PATH"
 export POETRY_VIRTUALENVS_IN_PROJECT=true
