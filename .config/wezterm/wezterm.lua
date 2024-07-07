@@ -1,7 +1,6 @@
 local on = require("on")
 local key_tables = require("key_tables")
 local keys = require("keys")
-local sample = require("sample")
 local font = require("font")
 local tab_bar_style = require("tab_bar_style")
 local debug = require("debug")
