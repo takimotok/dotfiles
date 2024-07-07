@@ -112,6 +112,8 @@ local function set_sources(null_ls)
     -- @TODO: bug: be overwritten whenever we save it. how can I solve that ?
     diagnostics.sqlfluff.with({
       extra_args = {
+        "--config",
+        ".sqlfluff",
         "--dialect",
         "mysql",
         "--encoding",
@@ -128,6 +130,8 @@ local function set_sources(null_ls)
     }),
     formatting.sqlfluff.with({
       extra_args = {
+        "--config",
+        ".sqlfluff",
         "--dialect",
         "mysql",
         "--encoding",
