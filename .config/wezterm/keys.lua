@@ -100,10 +100,10 @@ module = {
   },
 
   --[[ tabs ]]
-  -- list tabs like tmux's `show windows`
+  -- Switch tabs like tmux's `show windows`
   {
-    key = 't',
-    mods = 'LEADER',
+    key = "t",
+    mods = "LEADER",
     action = act.ShowTabNavigator,
   },
 
@@ -117,34 +117,23 @@ module = {
   -- rename current tab name
   -- cf.) https://wezfurlong.org/wezterm/config/lua/keyassignment/PromptInputLine.html#example-of-interactively-renaming-the-current-tab
   {
-    key = "e",
+    key = ",",
     mods = "LEADER",
-    action = act.PromptInputLine {
-      description = 'Enter new tab name:',
+    action = act.PromptInputLine({
+      description = "Enter new tab name:",
       action = wezterm.action_callback(function(window, pane, line)
         if line then
           window:active_tab():set_title(line)
         end
       end),
-    },
+    }),
   },
 
   --[[ window ]]
   { key = "f", mods = "CTRL|CMD", action = act.ToggleFullScreen },
 
   --[[ workspaces ]]
-  -- list
-  {
-    key = "w",
-    mods = "LEADER",
-    action = act.ShowLauncherArgs({
-      flags = "WORKSPACES",
-      title = "Select workspace",
-    }),
-  },
-
-  -- Switch between workspaces
-  -- @TODO: 2024-07-07 これ, 理解する
+  -- Switch workspaces
   {
     key = "w",
     mods = "LEADER",
@@ -156,64 +145,45 @@ module = {
           label = string.format("%d. %s", i, name),
         })
       end
-      local current = wezterm.mux.get_active_workspace()
-      win:perform_action(
-        act.InputSelector({
-          action = wezterm.action_callback(function(_, _, id, label)
-            if not id and not label then
-              wezterm.log_info("Workspace selection canceled")
-            else
-              win:perform_action(act.SwitchToWorkspace({ name = id }), pane)
-            end
-          end),
-          title = "Switch workspace",
-          choices = workspaces,
-          fuzzy = true,
-          fuzzy_description = string.format("Switch workspace: %s -> ", current), -- requires nightly build
-        }),
-        pane
-      )
+
+      local active_workspace = wezterm.mux.get_active_workspace()
+      local keyAssignment = act.InputSelector({
+        action = wezterm.action_callback(function(_, _, id, label)
+          if not id or not label then
+            -- > `id` and `label` hold the corresponding fields from the selected choice.
+            -- > Both will be nil if the overlay is cancelled without selecting anything.
+            -- > cf.) https://wezfurlong.org/wezterm/config/lua/keyassignment/InputSelector.html?h=input+selector
+            wezterm.log_info("Canceled workspace selection.")
+          else
+            win:perform_action(act.SwitchToWorkspace({ name = id }), pane)
+          end
+        end),
+        title = "Switch workspace",
+        choices = workspaces,
+        fuzzy = true,
+        fuzzy_description = string.format("Switch workspace from: %s -> to:", active_workspace),
+      })
+      win:perform_action(keyAssignment, pane)
     end),
-  },
-
-
-  -- create
-  {
-    key = "W",
-    mods = "LEADER|SHIFT",
-    action = act.PromptInputLine({
-      description = "(wezterm) Create new workspace:",
-      action = wezterm.action_callback(function(window, pane, line)
-        if line then
-          window:perform_action(
-            act.SwitchToWorkspace({
-              name = line,
-            }),
-            pane
-          )
-        end
-      end),
-    }),
   },
 
   -- rename
   {
-    key = 'F2',
-    mods = 'LEADER',
-    action = act.PromptInputLine {
-      description = '(wezterm) Enter workspace name:',
+    key = "$",
+    mods = "LEADER",
+    action = act.PromptInputLine({
+      description = "(wezterm) Enter workspace name:",
       action = wezterm.action_callback(function(win, pane, line)
         if line then
           wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
         end
       end),
-    },
+    }),
   },
 
   -- select
-  { key = 'n', mods = 'LEADER', action = act.SwitchWorkspaceRelative(1) },
-  { key = 'p', mods = 'LEADER', action = act.SwitchWorkspaceRelative(-1) },
-
+  { key = "n", mods = "LEADER",   action = act.SwitchWorkspaceRelative(1) },
+  { key = "p", mods = "LEADER",   action = act.SwitchWorkspaceRelative(-1) },
 }
 
 -- move tabs to specified position

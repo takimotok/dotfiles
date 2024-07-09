@@ -1,10 +1,9 @@
-local on = require("on")
+require("on")
 local key_tables = require("key_tables")
 local keys = require("keys")
 local font = require("font")
-local tab_bar_style = require("tab_bar_style")
-local debug = require("debug")
-local wezterm = require("wezterm")
+require("tab_bar_style")
+-- local wezterm = require("wezterm")
 
 local config = {}
 

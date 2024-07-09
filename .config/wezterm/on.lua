@@ -17,7 +17,6 @@ local wezterm = require("wezterm")
 -- end)
 
 -- tab title
--- @TODO: 2024-07-07: tab 名を変更したら任意の format で反映したい
 -- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 --   if tab.is_active then
 --     return {
