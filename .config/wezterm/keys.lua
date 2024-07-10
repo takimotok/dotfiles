@@ -167,6 +167,25 @@ module = {
     end),
   },
 
+  -- create
+  {
+    key = "W",
+    mods = "LEADER|SHIFT",
+    action = act.PromptInputLine({
+      description = "(wezterm) Create new workspace:",
+      action = wezterm.action_callback(function(window, pane, line)
+        if line then
+          window:perform_action(
+            act.SwitchToWorkspace({
+              name = line,
+            }),
+            pane
+          )
+        end
+      end),
+    }),
+  },
+
   -- rename
   {
     key = "$",
@@ -182,8 +201,8 @@ module = {
   },
 
   -- select
-  { key = "n", mods = "LEADER",   action = act.SwitchWorkspaceRelative(1) },
-  { key = "p", mods = "LEADER",   action = act.SwitchWorkspaceRelative(-1) },
+  { key = "n", mods = "LEADER", action = act.SwitchWorkspaceRelative(1) },
+  { key = "p", mods = "LEADER", action = act.SwitchWorkspaceRelative(-1) },
 }
 
 -- move tabs to specified position
