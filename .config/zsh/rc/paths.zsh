@@ -8,7 +8,6 @@ export PATH=$PATH:$GOPATH/bin
 # for android
 # use command line tools
 # -----
-export ANDROID_USER_HOME=$XDG_CONFIG_HOME/android
 export ANDROID_HOME=$HOME/Library/Android/sdk/
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 export PATH=$ANDROID_HOME/tools:$PATH
