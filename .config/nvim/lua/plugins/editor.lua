@@ -210,7 +210,8 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc =
+        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
@@ -231,24 +232,6 @@ return {
     build = "make",
     cond = function()
       return vim.fn.executable("make") == 1
-    end,
-  },
-  {
-    "kosayoda/nvim-lightbulb",
-    event = { "LspAttach" },
-    opts = function()
-      return {
-        autocmd = {
-          enabled = false,
-          events = { "CursorHold", "CursorHoldI" },
-          pattern = { "*" },
-        },
-        sign = { enabled = false },
-        virtual_text = { enabled = true },
-        ignore = {
-          ft = { "markdown" },
-        },
-      }
     end,
   },
   {

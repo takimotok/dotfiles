@@ -2,6 +2,7 @@ local M = {}
 
 M.ensure_installed = {
   "awk_ls",
+  "biome",
   "bashls",
   "eslint",
   "jsonls",
@@ -61,9 +62,8 @@ local function setup_diagnostic()
   vim.diagnostic.config(config)
 end
 
-function M.setup(lspconfig, capabilities)
+function M.setup()
   setup_diagnostic()
-  --  setup_servers(lspconfig, capabilities)
 end
 
 return M

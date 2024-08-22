@@ -1,21 +1,26 @@
 local M = {}
 
 M.ensure_installed = {
-  "black",
-  "blade-formatter",
-  "codelldb",
-  "editorconfig_checker",
+  --[[ linter ]]
+  "editorconfig-checker",
   "hadolint",
-  "isort",
-  "php-cs-fixer",
   "phpstan",
-  "prettier",
-  "ruff",
-  "shfmt",
+  "ruff", -- LSP, Linter, Formatter 全てで存在している
   "sqlfluff",
-  "stylua",
   -- "cspell",
   -- "phpcs",
+
+  -- formatter
+  "black",
+  "blade-formatter",
+  "isort",
+  "php-cs-fixer",
+  "prettierd",
+  "shfmt",
+  "stylua",
+
+  -- DAP
+  "codelldb",
 }
 
 M.diagnostic_config = {
@@ -95,8 +100,15 @@ local function set_sources(null_ls)
       end,
     }),
 
-    -- markdown
-    formatting.prettier,
+    --  "javascript", "typescript",
+    --  "markdown",
+    --  etc...
+    --  cf.) https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md#prettierd
+    formatting.prettierd.with({
+      condition = function(utils)
+        return not utils.root_has_file({ "biome.json", "biome.jsonc" })
+      end,
+    }),
 
     -- editorconfig
     diagnostics.editorconfig_checker,

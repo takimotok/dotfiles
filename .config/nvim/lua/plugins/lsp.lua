@@ -35,7 +35,25 @@ return {
         ensure_installed = configs.ensure_installed,
         handlers = handlers.setup(lspconfig, capabilities),
       })
-      configs.setup(lspconfig, capabilities)
+      configs.setup()
+    end,
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    event = { "LspAttach" },
+    opts = function()
+      return {
+        autocmd = {
+          enabled = false,
+          events = { "CursorHold", "CursorHoldI" },
+          pattern = { "*" },
+        },
+        sign = { enabled = false },
+        virtual_text = { enabled = true },
+        ignore = {
+          ft = { "markdown" },
+        },
+      }
     end,
   },
 }
