@@ -28,12 +28,9 @@ return {
       require("mason").setup()
 
       local mason_lspconfig = require("mason-lspconfig")
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       mason_lspconfig.setup({
         ensure_installed = configs.ensure_installed,
-        handlers = handlers.setup(lspconfig, capabilities),
+        handlers = handlers.setup(),
       })
       configs.setup()
     end,
