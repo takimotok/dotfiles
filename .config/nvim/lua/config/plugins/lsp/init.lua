@@ -9,7 +9,8 @@ M.ensure_installed = {
   "ltex",
   "lua_ls",
   "marksman",
-  "phpactor@2022.11.12", -- for php7.x
+  -- "phpactor@2022.11.12", -- for php7.x
+  "phpactor", -- for php7.x
   -- "intelephense",
   "pyright",
   "ruff_lsp",
@@ -17,7 +18,7 @@ M.ensure_installed = {
   -- "sqlls",
   "sqls",
   "stylelint_lsp",
-  "tailwindcss",
+  -- "tailwindcss",
   "tsserver",
   "volar",
   "yamlls",
