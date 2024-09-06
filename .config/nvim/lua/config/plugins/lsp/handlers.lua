@@ -197,6 +197,14 @@ function M.setup()
       })
     end,
 
+    ["biome"] = function()
+      lspconfig.biome.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact", "astro", "css" },
+      })
+    end,
+
     -- stylelint_lsp
     -- cf.) https://github.com/bmatcuk/stylelint-lsp/issues/30#issuecomment-1047317921
     ["stylelint_lsp"] = function()
