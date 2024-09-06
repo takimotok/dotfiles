@@ -263,6 +263,8 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        -- https://github.com/zbirenbaum/copilot-cmp
+        -- w/ zbirenbaum/copilot-cmp
         suggestion = { enabled = false },
         panel = { enabled = false },
       })
@@ -271,7 +273,8 @@ return {
 
   {
     "akinsho/bufferline.nvim",
-    version = "*",
+    -- cf.) https://github.com/akinsho/bufferline.nvim/issues/903#issuecomment-2135155062
+    -- tag = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local bufferline = require("bufferline")
@@ -306,6 +309,7 @@ return {
       km.nmap("[b", ":BufferLineCyclePrev<CR>", { desc = "[G]o [T]o the previous tab page" })
     end,
   },
+
   {
     "RRethy/vim-illuminate",
     config = function()
