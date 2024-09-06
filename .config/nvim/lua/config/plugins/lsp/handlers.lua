@@ -5,15 +5,44 @@ ltex_config.init()
 
 local M = {}
 
+---@param plugin_names string[]
+---@return string[]
+local function get_plugin_paths(plugin_names)
+  local plugins = require("lazy.core.config").plugins
+  local paths = {}
+  for _, name in ipairs(plugin_names) do
+    if plugins[name] then
+      table.insert(paths, plugins[name].dir .. "/lua")
+    else
+      vim.notify("Invalid plugin name: " .. name)
+    end
+  end
+  return paths
+end
+
+---@param plugins string[]
+---@return string[]
+local function library(plugins)
+  local paths = get_plugin_paths(plugins)
+  table.insert(paths, vim.fn.stdpath("config") .. "/lua")
+  table.insert(paths, vim.env.VIMRUNTIME .. "/lua")
+  table.insert(paths, "${3rd}/luv/library")
+  table.insert(paths, "${3rd}/busted/library")
+  table.insert(paths, "${3rd}/luassert/library")
+  return paths
+end
+
 ---@param client "client"
 ---@param bufnr number
 local function on_attach(client, bufnr)
   keymaps.setup(bufnr)
 end
 
----@param lspconfig SettingsPlugin
----@param capabilities  ("cmp_nvim_lsp").default_capabilities()
-function M.setup(lspconfig, capabilities)
+---@return table
+function M.setup()
+  local lspconfig = require("lspconfig")
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
   return {
     -- default handler
     function(server_name)
@@ -118,21 +147,24 @@ function M.setup(lspconfig, capabilities)
         capabilities = capabilities,
         settings = {
           Lua = {
-            -- runtime = {
-            --   version = "LuaJIT",
-            -- },
+            runtime = {
+              version = "LuaJIT",
+              pathStrit = true,
+              path = {
+                "?.lua",
+                "?/init.lua"
+              },
+            },
+            workspace = {
+              -- cf.) https://zenn.dev/uga_rosa/articles/afe384341fc2e1
+              library = library({ "lazy.nvim" }),
+              checkThirdParty = "Disable",
+
+            },
             diagnostics = {
               globals = {
                 "vim",
               },
-            },
-            workspace = {
-              -- commented out for saving memory
-              -- library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            telemetry = {
-              enable = false,
             },
           },
         },
@@ -161,7 +193,15 @@ function M.setup(lspconfig, capabilities)
       lspconfig.volar.setup({
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+        filetypes = { "vue" },
+      })
+    end,
+
+    ["biome"] = function()
+      lspconfig.biome.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact", "astro", "css" },
       })
     end,
 

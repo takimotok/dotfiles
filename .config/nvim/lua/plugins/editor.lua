@@ -210,7 +210,8 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc =
+        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
@@ -231,24 +232,6 @@ return {
     build = "make",
     cond = function()
       return vim.fn.executable("make") == 1
-    end,
-  },
-  {
-    "kosayoda/nvim-lightbulb",
-    event = { "LspAttach" },
-    opts = function()
-      return {
-        autocmd = {
-          enabled = false,
-          events = { "CursorHold", "CursorHoldI" },
-          pattern = { "*" },
-        },
-        sign = { enabled = false },
-        virtual_text = { enabled = true },
-        ignore = {
-          ft = { "markdown" },
-        },
-      }
     end,
   },
   {
@@ -280,6 +263,8 @@ return {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
+        -- https://github.com/zbirenbaum/copilot-cmp
+        -- w/ zbirenbaum/copilot-cmp
         suggestion = { enabled = false },
         panel = { enabled = false },
       })
@@ -288,7 +273,8 @@ return {
 
   {
     "akinsho/bufferline.nvim",
-    version = "*",
+    -- cf.) https://github.com/akinsho/bufferline.nvim/issues/903#issuecomment-2135155062
+    -- tag = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local bufferline = require("bufferline")
@@ -323,6 +309,7 @@ return {
       km.nmap("[b", ":BufferLineCyclePrev<CR>", { desc = "[G]o [T]o the previous tab page" })
     end,
   },
+
   {
     "RRethy/vim-illuminate",
     config = function()
