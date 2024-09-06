@@ -2,13 +2,15 @@ local M = {}
 
 M.ensure_installed = {
   "awk_ls",
+  "biome",
   "bashls",
   "eslint",
   "jsonls",
   "ltex",
   "lua_ls",
   "marksman",
-  "phpactor@2022.11.12", -- for php7.x
+  -- "phpactor@2022.11.12", -- for php7.x
+  "phpactor", -- for php7.x
   -- "intelephense",
   "pyright",
   "ruff_lsp",
@@ -16,7 +18,7 @@ M.ensure_installed = {
   -- "sqlls",
   "sqls",
   "stylelint_lsp",
-  "tailwindcss",
+  -- "tailwindcss",
   "tsserver",
   "volar",
   "yamlls",
@@ -61,9 +63,8 @@ local function setup_diagnostic()
   vim.diagnostic.config(config)
 end
 
-function M.setup(lspconfig, capabilities)
+function M.setup()
   setup_diagnostic()
-  --  setup_servers(lspconfig, capabilities)
 end
 
 return M

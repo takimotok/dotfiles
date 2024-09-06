@@ -57,8 +57,12 @@ if [ "$(uname -m)" = "arm64" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# rtx (mise)
+# mise (rtx)
 # -----
+# for installing php8.x
+export PATH="/usr/local/opt/m4/bin:$PATH"
+
+# for mise itself
 export MISE_DATA_DIR=$XDG_DATA_HOME/mise
 export MISE_CACHE_DIR=$XDG_CACHE_HOME/mise
 export MISE_INSTALL_PATH=$XDG_DATA_HOME/mise/bin

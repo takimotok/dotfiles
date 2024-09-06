@@ -10,6 +10,7 @@ function M.setup(bufnr)
 
   km.nmap("<leader>ls", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
   km.nmap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- cf.) lua/plugins/conform.lua
   km.nmap("gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
   km.nmap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   km.nmap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
