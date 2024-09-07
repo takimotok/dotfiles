@@ -2,6 +2,9 @@
 -- @see `:h vim.opt`
 -- @see `:h option-list`
 
+-- Prepend mise shims to PATH
+vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+
 -- leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -81,8 +84,8 @@ vim.opt.showtabline = 1
 vim.opt.visualbell = true
 vim.opt.signcolumn = "yes"
 vim.opt.showmatch = true
-vim.opt.winblend = 30    -- pseudo-transparency for a floating window
-vim.opt.pumblend = 10    -- pseudo-transparency for the popup-menu
+vim.opt.winblend = 30 -- pseudo-transparency for a floating window
+vim.opt.pumblend = 10 -- pseudo-transparency for the popup-menu
 vim.opt.conceallevel = 0 -- hide url links in buffers
 
 vim.opt.spelllang = "en_us,cjk"
