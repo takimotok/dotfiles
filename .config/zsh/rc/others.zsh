@@ -93,6 +93,10 @@ MYPY_CACHE_DIR="/dev/null"
 # -----
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
 
+# rust
+# -----
+. "$HOME/.cargo/env"
+
 # gh
 # -----
 eval "$(gh completion -s zsh)"
