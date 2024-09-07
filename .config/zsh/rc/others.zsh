@@ -60,7 +60,11 @@ fi
 # mise (rtx)
 # -----
 # for installing php8.x
-export PATH="/usr/local/opt/m4/bin:$PATH"
+if [ "$(uname -m)" = 'arm64' ]; then
+  export PATH="/opt/homebrew/opt/m4/bin:$PATH"
+elif [ "$(uname -m)" = 'x86_64' ]; then
+  export PATH="/usr/local/opt/m4/bin:$PATH"
+fi
 
 # for mise itself
 export MISE_DATA_DIR=$XDG_DATA_HOME/mise
@@ -92,6 +96,10 @@ MYPY_CACHE_DIR="/dev/null"
 # ruby
 # -----
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+
+# rust
+# -----
+. "$HOME/.cargo/env"
 
 # gh
 # -----
