@@ -19,7 +19,7 @@ function M.set_formatters_by_ft()
   t.lua = { "stylua" }
   t.sh = { "shfmt" }
   t.bash = { "shfmt" }
-  t._ = { "trim_whitespace" }
+  -- t._ = { "trim_whitespace" } -- avoid formmating in .md files
 
   return t
 end

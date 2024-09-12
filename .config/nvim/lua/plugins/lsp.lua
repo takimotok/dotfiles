@@ -32,6 +32,7 @@ return {
         ensure_installed = configs.ensure_installed,
         handlers = handlers.setup(),
       })
+
       configs.setup()
     end,
   },

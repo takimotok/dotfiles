@@ -1,4 +1,7 @@
 return {
+  -- @TODO: tab 補完の記事を読解し, この plugin と協調できるか検討
+  -- cf.) [simple-tab-complete | A guide on Neovim's LSP client | Devlog](https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/#simple-tab-complete)
+
   {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
@@ -25,7 +28,7 @@ return {
       local lspkind = require("lspkind")
       local luasnip = require("luasnip")
 
-      require("luasnip/loaders/from_snipmate").lazy_load()
+      require("luasnip.loaders.from_snipmate").lazy_load()
 
       cmp.setup({
         snippet = {
