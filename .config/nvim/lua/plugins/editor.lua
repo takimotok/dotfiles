@@ -83,13 +83,14 @@ return {
       space_char_blankline = " ",
     },
     config = function()
-      -- @TODO: toggle below
-      -- vim.opt.listchars:append "space:⋅"
+      -- @TODO: think about which is better to display:
+      --  - indnet-blankline
+      --  - OR spaces by a character (e.g.) `vim.opt.listchars:append "space:⋅"`
 
       -- keymaps
       km.nmap(
-        "<leader>ti",
-        ":IndentBlanklineToggle<CR>",
+        "<leader>t",
+        ":IBLToggle<CR>",
         { desc = "Toggles between IndentBlanklineEnable and IndentBlanklineDisable" }
       )
     end,
@@ -210,8 +211,7 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc =
-        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
