@@ -20,6 +20,11 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    opts = {
+      triggers = {
+        { "<cmd>WhichKey", mode = { "n", "v" } },
+      },
+    },
   },
   {
     "numToStr/Comment.nvim",
