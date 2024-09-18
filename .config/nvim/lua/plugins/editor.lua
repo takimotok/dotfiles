@@ -20,6 +20,11 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    opts = {
+      triggers = {
+        { "<cmd>WhichKey", mode = { "n", "v" } },
+      },
+    },
   },
   {
     "numToStr/Comment.nvim",
@@ -210,8 +215,7 @@ return {
       --   }
       -- )
       km.nmap("<leader>ch", builtin.command_history, {
-        desc =
-        "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "[C]ommand [H]istory. Lists available help tags and opens a new window with the relevant help info on <cr>",
       })
       km.nmap(
         "<leader>fr",
