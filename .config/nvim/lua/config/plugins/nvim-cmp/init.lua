@@ -60,7 +60,6 @@ cmp.setup({
   -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-get-types-on-the-left-and-offset-the-menu
   window = {
     completion = {
-      winhighlight = "Normal:NormalFloat,FloatBorder:Pmenu,Search:None",
       col_offset = -3,
       side_padding = 0,
     },
