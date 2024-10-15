@@ -19,7 +19,7 @@ M.ensure_installed = {
   "sqls",
   "stylelint_lsp",
   -- "tailwindcss",
-  "tsserver",
+  "ts_ls",
   "volar",
   "yamlls",
   "zk",

@@ -21,9 +21,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      triggers = {
-        { "<cmd>WhichKey", mode = { "n", "v" } },
-      },
+      triggers = { "<cmd>WhichKey" },
     },
   },
   {
