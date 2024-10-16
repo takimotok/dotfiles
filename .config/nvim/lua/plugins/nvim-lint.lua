@@ -7,5 +7,6 @@ return {
   config = function()
     config.setLinters()
     config.setTriggers()
+    config.setKeymaps()
   end,
 }

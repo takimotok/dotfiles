@@ -22,7 +22,7 @@ M.linters = {
   "editorconfig-checker",
   "eslint_d",
   "hadolint",
-  "jsonlint",
+  -- "jsonlint", -- let biome handle it
   "phpstan",
   "ruff", -- @TODO: LSP, Linter, Formatter 全てで存在している. LSP のみの設定で OK?
   "sqlfluff",

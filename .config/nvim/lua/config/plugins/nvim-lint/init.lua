@@ -11,18 +11,6 @@ function M.setLinters()
     dockerfile = { "hadolint" },
     editorconfig = { "editorconfig-checker" },
 
-    -- javascript = { "eslint_d" },
-    -- javascriptreact = { "eslint_d" },
-    -- typescript = { "eslint_d" },
-    -- typescriptreact = { "eslint_d" },
-    -- json = { "jsonlint" },
-
-    javascript = { "biomejs" },
-    javascriptreact = { "biomejs" },
-    typescript = { "biomejs" },
-    typescriptreact = { "biomejs" },
-    json = { "biomejs" },
-
     php = { "phpstan" },
     python = { "ruff" },
     sql = { "sqlfluff" },
@@ -71,42 +59,63 @@ function M.setLinters()
   }
 end
 
-function M.try_js_linters()
-  local cwd = vim.fn.getcwd()
-  local bufnr = vim.api.nvim_get_current_buf()
-
+-- @return boolean
+local function ft_is_js()
   local js_file_types = {
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "json",
+    "jsonc",
+    "css",
   }
 
-  -- if no js related files are opened in the current buffer, then return
   local ft = vim.bo.filetype
   if not vim.tbl_contains(js_file_types, ft) then
+    return false
+  end
+
+  return true
+end
+
+-- @return void
+local function try_biomejs()
+  local biome_config_files = { "biome.json", "biome.jsonc" }
+  if vim.fs.root(0, biome_config_files) then
+    require("lint").try_lint("biomejs")
+  end
+end
+
+-- @return void
+local function try_eslint_d()
+  local eslint_config_files = {
+    ".eslintrc",
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+    "eslint.config.js",
+    "eslint.config.mjs",
+    "eslint.config.cjs",
+    "eslint.config.ts",
+    "eslint.config.mts",
+    "eslint.config.cts",
+  }
+  if vim.fs.root(0, eslint_config_files) then
+    require("lint").try_lint("eslint_d")
+  end
+end
+
+local function try_js_linters()
+  if not ft_is_js() then
     return
   end
 
-  -- @TODO: 2024-10-15 root path に config file が存在するか, のチェック実装から
-  -- vim.fs.root()
+  try_biomejs()
 
-  -- if the cwd has the biome related config files, then try_lint("biomejs")
-  if M.hasBiomeConfig(cwd) then
-    require("lint").try_lint("biomejs")
-  end
-
-  -- if the cwd has the eslint related config files, then try_lint("eslint_d")
-  if M.hasEslintConfig(cwd) then
-    require("lint").try_lint("eslint_d")
-  end
-
-  return ft == "javascript" or ft == "javascriptreact" or ft == "typescript" or ft == "typescriptreact"
-
-  -- check if configuration files are exist in the `cwd`
-  -- local eslint = vim.fn.glob(".eslintrc*", 0, 1)
-  -- return #eslint > 0
+  try_eslint_d()
 end
 
 function M.setTriggers()
@@ -120,7 +129,7 @@ function M.setTriggers()
       lint.try_lint()
 
       -- run the js linters
-      M.try_js_linters()
+      try_js_linters()
     end,
   })
 end
