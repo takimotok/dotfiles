@@ -11,17 +11,11 @@ function M.setLinters()
     dockerfile = { "hadolint" },
     editorconfig = { "editorconfig-checker" },
 
-    -- javascript = { "eslint_d" },
-    -- javascriptreact = { "eslint_d" },
-    -- typescript = { "eslint_d" },
-    -- typescriptreact = { "eslint_d" },
-    -- json = { "jsonlint" },
-
-    javascript = { "biomejs" },
-    javascriptreact = { "biomejs" },
-    typescript = { "biomejs" },
-    typescriptreact = { "biomejs" },
-    json = { "biomejs" },
+    javascript = { "biomejs", "eslint_d" },
+    javascriptreact = { "biomejs", "eslint_d" },
+    typescript = { "biomejs", "eslint_d" },
+    typescriptreact = { "biomejs", "eslint_d" },
+    json = { "biomejs", "jsonlint" },
 
     php = { "phpstan" },
     python = { "ruff" },
@@ -127,7 +121,11 @@ end
 
 function M.setKeymaps()
   local km = require("core.key_mapper")
-  local opts = { noremap = true, silent = true }
+  local opts = {
+    noremap = true,
+    silent = true,
+    desc = "[L]int [L]int!",
+  }
   km.nmap("<leader>ll", function()
     require("lint").try_lint()
   end, opts)

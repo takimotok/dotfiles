@@ -184,20 +184,21 @@ function M.setup()
       })
     end,
 
+    -- js, ts
     ["biome"] = function()
       lspconfig.biome.setup({
         capabilities = capabilities,
-        filetypes = {
-          "javascript",
-          "javascriptreact",
-          "json",
-          "jsonc",
-          "typescript",
-          "typescript.tsx",
-          "typescriptreact",
-          "astro",
-          "css",
-        },
+        -- filetypes = {
+        --   "javascript",
+        --   "javascriptreact",
+        --   "json",
+        --   "jsonc",
+        --   "typescript",
+        --   "typescript.tsx",
+        --   "typescriptreact",
+        --   "astro",
+        --   "css",
+        -- },
       })
     end,
 
