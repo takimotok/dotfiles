@@ -136,7 +136,11 @@ end
 
 function M.setKeymaps()
   local km = require("core.key_mapper")
-  local opts = { noremap = true, silent = true }
+  local opts = {
+    noremap = true,
+    silent = true,
+    desc = "[L]int [L]int!",
+  }
   km.nmap("<leader>ll", function()
     require("lint").try_lint()
   end, opts)

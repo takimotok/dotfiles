@@ -35,7 +35,7 @@ M.linters = {
 M.formatters = {
   "black",
   -- "blade-formatter",
-  "biome",
+  -- "biome",
   "isort",
   "latexindent",
   "php-cs-fixer",
