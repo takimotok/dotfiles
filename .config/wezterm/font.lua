@@ -7,7 +7,7 @@ local font_name = "HackGen Console NF"
 
 local M = {
   use_ime = true,
-  font_size = 13.0,
+  font_size = 12.0,
   font = wezterm.font_with_fallback({
     {
       family = font_name,
