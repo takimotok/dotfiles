@@ -31,6 +31,16 @@ set -Ceu
     # use Fn keys as standard function keys
     defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
+    # system sound volume
+    # -----
+    # turn on
+    # sudo nvram StartupMute=%00
+    # sudo nvram SystemAudioVolume=%30
+
+    # turn off
+    sudo nvram StartupMute=%01
+    sudo nvram SystemAudioVolume=%30
+
     # Dock
     # -----
     # arrange dock to right
@@ -135,8 +145,22 @@ set -Ceu
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool "false"
     defaults -currentHost write -g com.apple.mouse.tapBehavior -bool "false"
 
+    # enable dragging without drag lock
+    #
+    # Thanks to this setting, we can select a word by double tapping in a web browswer.
+    #
+    # Note: seems not working the settings below in macOS 14.6.1 Sonoma.
+    #       So we have to set it manually like this:
+    #
+    #       `Accessibility > Pointer Control > Trackpad Options` then:
+    #       - turn on `Use trackpad for dragging`
+    #       - select `Without Drag Lock`
+    #
+    # defaults write com.apple.AppleMultitouchTrackpad "Dragging" -bool "true"
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Dragging" -bool "true"
+
     # set trackpad speed
-    defaults write -g com.apple.trackpad.scaling 3
+    defaults write -g com.apple.trackpad.scaling -float "5"
 
     # set scrolling direction
     defaults write -g com.apple.swipescrolldirection -bool "false"
@@ -144,7 +168,7 @@ set -Ceu
     # Mouse
     # -----
     # set mouse speed
-    defaults write -g com.apple.trackpad.scaling -float 5.0
+    defaults write NSGlobalDomain com.apple.mouse.scaling -float "16"
 
     # set scrolling speed
     defaults write -g com.apple.scrollwheel.scaling 5
