@@ -25,15 +25,15 @@ function M.set_formatters_by_ft()
 end
 
 function M.format_on_save(bufnr)
-  -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#autoformat-with-extra-features
   -- Disable autoformat for files in a certain path
+  -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#autoformat-with-extra-features
   local bufname = vim.api.nvim_buf_get_name(bufnr)
   if bufname:match("/node_modules/") then
     return
   end
 
   return {
-    lsp_format = "first",
+    lsp_format = "never",
     async = false,
     timeout_ms = 500,
   }

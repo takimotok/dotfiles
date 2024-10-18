@@ -26,7 +26,6 @@ M.ensure_installed = {
 }
 
 local function setup_diagnostic()
-  -- local errorSign = ""
   local errorSign = "✘"
   local warnSign = "⚠️"
   local hintSign = "💡"
