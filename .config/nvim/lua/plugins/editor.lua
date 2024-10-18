@@ -21,9 +21,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      triggers = {
-        { "<cmd>WhichKey", mode = { "n", "v" } },
-      },
+      triggers = { "<cmd>WhichKey" },
     },
   },
   {
@@ -88,13 +86,14 @@ return {
       space_char_blankline = " ",
     },
     config = function()
-      -- @TODO: toggle below
-      -- vim.opt.listchars:append "space:⋅"
+      -- @TODO: think about which is better to display:
+      --  - indnet-blankline
+      --  - OR spaces by a character (e.g.) `vim.opt.listchars:append "space:⋅"`
 
       -- keymaps
       km.nmap(
-        "<leader>ti",
-        ":IndentBlanklineToggle<CR>",
+        "<leader>t",
+        ":IBLToggle<CR>",
         { desc = "Toggles between IndentBlanklineEnable and IndentBlanklineDisable" }
       )
     end,

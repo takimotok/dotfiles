@@ -1,5 +1,3 @@
-local keymaps = require("config.plugins.lsp.keymaps")
-
 local M = {}
 
 -- user defined dictionaries
@@ -37,25 +35,25 @@ function M.download_dictionaries()
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/data-science.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/data-science/dict/data-science.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/data-science/dict/data-science.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/data-science.txt" .. " " .. url)
   end
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/docker.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/docker/src/docker-words.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/docker/src/docker-words.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/docker.txt" .. " " .. url)
   end
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/en_US.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/en_US/src/en_US.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/en_US/src/en_US.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/en_US.txt" .. " " .. url)
   end
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/fonts.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/fonts/dict/fonts.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/fonts/dict/fonts.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/fonts.txt" .. " " .. url)
   end
 
@@ -66,7 +64,7 @@ function M.download_dictionaries()
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/latex.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/latex/dict/latex.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/latex/dict/latex.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/latex.txt" .. " " .. url)
   end
 
@@ -92,7 +90,7 @@ function M.download_dictionaries()
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/python.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/python/src/python/python.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/python/src/python/python.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/python.txt" .. " " .. url)
   end
 
@@ -103,7 +101,7 @@ function M.download_dictionaries()
 
   if vim.fn.filereadable(vim.fn.expand("~/.local/share/cspell/shell.txt")) ~= 1 then
     local url =
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/shell/dict/shell-all-words.txt"
+      "https://raw.githubusercontent.com/streetsidesoftware/cspell-dicts/main/dictionaries/shell/dict/shell-all-words.txt"
     io.popen("curl --create-dirs -fsSLo ~/.local/share/cspell/shell.txt" .. " " .. url)
   end
 end
@@ -116,7 +114,7 @@ function M.read_dictionaries()
   -- specify ja-JP dictionary
   local userDefinedJaJPDictionary = M.getUserDefinedDictionaryByLang("ja-JP")
   local lang = vim.fn.fnamemodify(userDefinedJaJPDictionary, ":t:r")
-  local fullpath = vim.fs.normalize(userDefinedJaJPDictionary, ":p")
+  local fullpath = vim.fs.normalize(userDefinedJaJPDictionary)
   files[lang] = { ":" .. fullpath }
 
   -- expand words in the en-US dictionaries
@@ -148,9 +146,7 @@ function M.read_dictionaries()
   return files
 end
 
-function M.on_attach(client, bufnr)
-  keymaps.setup(bufnr)
-
+function M.on_attach(client, _)
   local addToDict = function(command, _)
     --[[
     -- command = {
@@ -190,6 +186,10 @@ function M.addWrodsToUserDictionary(lang, words)
   end
 
   local file = io.open(userDictionary, "a+")
+  if file == nil then
+    return
+  end
+
   for _, word in ipairs(words) do
     file:write(word .. "\n")
   end

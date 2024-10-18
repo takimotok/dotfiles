@@ -19,33 +19,28 @@ M.ensure_installed = {
   "sqls",
   "stylelint_lsp",
   -- "tailwindcss",
-  "tsserver",
+  "ts_ls",
   "volar",
   "yamlls",
   "zk",
 }
 
 local function setup_diagnostic()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "⚠️" },
-    { name = "DiagnosticSignHint", text = "💡" },
-    { name = "DiagnosticSignInfo", text = "󰙎" },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {
-      text = sign.text,
-      texthl = sign.name,
-      numhl = sign.name,
-    })
-  end
+  local errorSign = "✘"
+  local warnSign = "⚠️"
+  local hintSign = "💡"
+  local infoSign = "󰙎"
 
   local config = {
     virtual_text = false,
     update_in_insert = false,
     signs = {
-      active = signs,
+      text = {
+        [vim.diagnostic.severity.ERROR] = errorSign,
+        [vim.diagnostic.severity.WARN] = warnSign,
+        [vim.diagnostic.severity.HINT] = hintSign,
+        [vim.diagnostic.severity.INFO] = infoSign,
+      },
     },
     severity_sort = true,
     float = {
@@ -63,8 +58,38 @@ local function setup_diagnostic()
   vim.diagnostic.config(config)
 end
 
+local function setup_hover()
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+end
+
+local function setup_signature_help()
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
+end
+
+local function setup_keymaps()
+  local lsp_keymaps = require("config.plugins.lsp.keymaps")
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client == nil then
+        return
+      end
+
+      lsp_keymaps.setup(args.buf)
+    end,
+  })
+end
+
 function M.setup()
   setup_diagnostic()
+  setup_hover()
+  setup_signature_help()
+  setup_keymaps()
 end
 
 return M
