@@ -1,8 +1,3 @@
-local keymaps = require("config.plugins.lsp.keymaps")
-local ltex_config = require("config.plugins.lsp.ltex")
-
-ltex_config.init()
-
 local M = {}
 
 ---@param plugin_names string[]
@@ -32,12 +27,6 @@ local function library(plugins)
   return paths
 end
 
----@param client "client"
----@param bufnr number
-local function on_attach(client, bufnr)
-  keymaps.setup(bufnr)
-end
-
 ---@return table
 function M.setup()
   local lspconfig = require("lspconfig")
@@ -47,7 +36,6 @@ function M.setup()
     -- default handler
     function(server_name)
       lspconfig[server_name].setup({
-        on_attach = on_attach,
         capabilities = capabilities,
       })
     end,
@@ -55,7 +43,6 @@ function M.setup()
     -- bashls
     ["bashls"] = function()
       lspconfig.bashls.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { "zsh", "sh" },
       })
@@ -91,7 +78,6 @@ function M.setup()
     --       return vim.fs.dirname(vim.fs.find({'composer.json'}, { upward = true })[1])
     --     end,
     --     capabilities = capabilities,
-    --     on_attach = on_attach,
     --   })
     -- end,
 
@@ -109,6 +95,10 @@ function M.setup()
 
     -- ltex
     ["ltex"] = function()
+      local ltex_config = require("config.plugins.lsp.ltex")
+
+      ltex_config.init()
+
       lspconfig.ltex.setup({
         on_attach = ltex_config.on_attach,
         capabilities = capabilities,
@@ -143,23 +133,22 @@ function M.setup()
     ["lua_ls"] = function()
       -- cf.) https://github.com/neovim/neovim/issues/21686#issuecomment-1522446128
       lspconfig.lua_ls.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
           Lua = {
+            hint = { enable = true },
             runtime = {
               version = "LuaJIT",
               pathStrit = true,
               path = {
                 "?.lua",
-                "?/init.lua"
+                "?/init.lua",
               },
             },
             workspace = {
               -- cf.) https://zenn.dev/uga_rosa/articles/afe384341fc2e1
               library = library({ "lazy.nvim" }),
               checkThirdParty = "Disable",
-
             },
             diagnostics = {
               globals = {
@@ -174,7 +163,6 @@ function M.setup()
     -- rust
     ["rust_analyzer"] = function()
       lspconfig.rust_analyzer.setup({
-        on_attach = on_attach,
         settings = {
           ["rust-analyzer"] = {
             -- checkOnSave = {
@@ -191,17 +179,15 @@ function M.setup()
     -- volar (vue.js language server)
     ["volar"] = function()
       lspconfig.volar.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { "vue" },
       })
     end,
 
+    -- js, ts
     ["biome"] = function()
       lspconfig.biome.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { "javascript", "javascriptreact", "json", "jsonc", "typescript", "typescript.tsx", "typescriptreact", "astro", "css" },
       })
     end,
 
@@ -209,7 +195,6 @@ function M.setup()
     -- cf.) https://github.com/bmatcuk/stylelint-lsp/issues/30#issuecomment-1047317921
     ["stylelint_lsp"] = function()
       lspconfig.stylelint_lsp.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
         filetypes = {
           "css",
@@ -230,7 +215,6 @@ function M.setup()
     -- zk
     -- ["zk"] = function()
     --   lspconfig.zk.setup({
-    --     on_attach = on_attach,
     --     -- settings = {},
     --   })
     -- end,
@@ -238,7 +222,6 @@ function M.setup()
     -- pyright
     ["pyright"] = function()
       lspconfig.pyright.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern(".venv"),
         cmd = { "zsh", "-c", "source .venv/bin/activate" },
@@ -252,7 +235,6 @@ function M.setup()
     --    [Ruff]: `sys` imported but unused [F401]
     ["ruff_lsp"] = function()
       lspconfig.ruff_lsp.setup({
-        on_attach = on_attach,
         capabilities = capabilities,
       })
     end,

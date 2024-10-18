@@ -2,11 +2,13 @@ local km = require("core.key_mapper")
 
 local M = {}
 
-function M.setup(bufnr)
+---@param buffer integer|boolean
+---@return nil
+function M.setup(buffer)
   -- km.nmap('<C-k>', '<cmd>vim.lsp.buf.signature_help()<CR>')
   -- km.nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
   -- km.nmap('gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>'
-  local opts = { noremap = true, silent = true, buffer = bufnr }
+  local opts = { noremap = true, silent = true, buffer = buffer }
 
   km.nmap("<leader>ls", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
   km.nmap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
