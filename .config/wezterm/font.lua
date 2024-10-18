@@ -3,7 +3,8 @@ local wezterm = require("wezterm")
 -- local font_name = "Iosevka Nerd Font Mono"
 -- local font_name = "Hack Nerd Font Mono"
 -- local font_name = "PlemolJP Console NF"
-local font_name = "HackGen Console NF"
+-- local font_name = "HackGen Console NF"
+local font_name = "IBM Plex Mono"
 
 local M = {
   use_ime = true,
