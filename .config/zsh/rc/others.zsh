@@ -109,6 +109,10 @@ eval "$(gh completion -s zsh)"
 # -----
 eval "$(op signin)"
 
-# vim
+# vim & nvim
 # -----
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
+
+# to show image inside nvim
+# cf.) https://github.com/3rd/image.nvim?tab=readme-ov-file#installing-imagemagick
+export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"

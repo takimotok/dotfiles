@@ -10,6 +10,13 @@ local config = {}
 config = {
   leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 },
 
+  -- cf.) https://wezfurlong.org/wezterm/config/lua/config/term.html?h=term
+  -- tempfile=$(mktemp) \
+  -- && curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo \
+  -- && tic -x -o ~/.terminfo $tempfile \
+  -- && rm $tempfile
+  term = "wezterm",
+
   use_ime = true,
   macos_forward_to_ime_modifier_mask = "SHIFT|CTRL",
 
@@ -19,7 +26,6 @@ config = {
   default_prog = { "/bin/zsh", "-l" },
 
   --[[ fonts ]]
-  use_ime = font.use_ime,
   font_size = font.font_size,
   font = font.font,
   font_rules = font.font_rules,

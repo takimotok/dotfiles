@@ -181,8 +181,10 @@ return {
         },
       })
 
+      -- extensions
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("file_browser")
+      require("telescope").load_extension("nerdy")
 
       -- keymappings
       -- See `:help telescope.builtin`
@@ -228,6 +230,9 @@ return {
 
       -- for git
       km.nmap("<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus. Lists git status for current directory" })
+
+      -- for emoji (nerdy)
+      km.nmap("<leader>fe", ":Telescope nerdy<CR>", { desc = "[F]ind [E]moji" })
     end,
   },
   {
@@ -350,5 +355,70 @@ return {
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim",
     },
+  },
+  {
+    "stevearc/aerial.nvim",
+    -- opts = {},
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("aerial").setup({
+        -- set keymaps when aerial has attached to a buffer
+        -- on_attach = function(bufnr)
+        --   -- keymaps
+        --   -- km.nmap("{", ":AerialPrev<CR>", {
+        --   --   buffer = bufnr,
+        --   --   desc = "AerialPrev",
+        --   -- })
+        --   -- km.nmap("}", ":AerialNext<CR>", {
+        --   --   buffer = bufnr,
+        --   --   desc = "AerialNext",
+        --   -- })
+        -- end,
+
+        layout = {
+          max_width = { 60, 0.3 },
+          width = nil,
+          min_width = 0.2, -- 20%
+          default_direction = "prefer_left",
+        },
+        update_events = "BufWritePost",
+      })
+
+      -- keymaps
+      km.nmap("<leader>a", ":AerialToggle!<CR>", { desc = "AerialToggle" })
+
+      -- also be set autocmd in lua/config/autocmds.lua
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}, -- use default settings
+    config = function()
+      local todo_comments = require("todo-comments")
+      todo_comments.setup()
+
+      -- keymaps
+      km.nmap("]t", todo_comments.jump_next, { desc = "Next todo comment" })
+      km.nmap("[t", todo_comments.jump_prev, { desc = "Previous todo comment" })
+
+      -- commands
+      -- :TodoTelescope
+      -- :TodoTrouble
+      -- :TodoLocList
+      -- :TodoQuickFix
+      -- :TodoFzfLua
+    end,
+  },
+  {
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Nerdy",
   },
 }
