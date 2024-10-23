@@ -482,4 +482,23 @@ return {
   --     end, { desc = "Peek Fold" })
   --   end,
   -- },
+  {
+    "theKnightsOfRohan/csvlens.nvim",
+    dependencies = {
+      "akinsho/toggleterm.nvim",
+    },
+    opts = {},
+
+    -- keymaps
+    -- H: help
+  },
+  {
+    "godlygeek/tabular",
+    fg = { "csv" },
+    config = function()
+      -- keymaps
+      km.nmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
+      km.xmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
+    end,
+  },
 }
