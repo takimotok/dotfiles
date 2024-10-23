@@ -24,6 +24,9 @@ return {
       indent = {
         enable = true,
       },
+      fold = {
+        enable = true,
+      },
       query_linter = {
         enable = true,
         use_virtual_text = true,
@@ -77,6 +80,15 @@ return {
           goto_previous_end = {
             ["[]"] = "@function.outer",
           },
+        },
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-n>",
+          node_incremental = "<C-n>",
+          scope_incremental = false,
+          node_decremental = "<C-p>",
         },
       },
     })

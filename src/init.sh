@@ -63,6 +63,17 @@ set -Ceu
     # install brew packages from Brewfile
     brew bundle --file=./packages/Brewfile
     _exit_with_errors "$?"
+
+    # install `wezterm` TERM definition
+    # **NOTE** need to set `term = "wezterm"` in config file.
+    # cf.) https://wezfurlong.org/wezterm/config/lua/config/term.html
+    if [ ! -d "$HOME/.terminfo" ]; then
+      tempfile=$(mktemp) &&
+        curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo &&
+        tic -x -o ~/.terminfo $tempfile &&
+        rm $tempfile
+    fi
+
   }
 
   main

@@ -93,6 +93,18 @@ vim.opt.spelllang = "en_us,cjk"
 -- @TODO: disable the newline continuation of comments
 -- seems not work
 -- vim.opt.formatoptions = "tqj"
+--
+
+-- foldings
+vim.o.foldcolumn = "0"
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldtext = ""
+-- w/ treesitter
+vim.wo.foldmethod = "expr"
+vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- status line
 vim.opt.laststatus = 2

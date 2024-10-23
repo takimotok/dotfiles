@@ -41,7 +41,7 @@ return {
       "godlygeek/tabular",
     },
     config = function()
-      vim.g.vim_markdown_folding_disabled = 1
+      -- vim.g.vim_markdown_folding_disabled = 1
       vim.g.vim_markdown_strikethrough = 1
       vim.g.vim_markdown_auto_insert_bullets = 1
       vim.g.vim_markdown_toc_autofit = 1
@@ -100,7 +100,6 @@ return {
         -- },
         bullet = {
           enabled = true,
-          -- icons = { "-", "-", "-", "-" },
           icons = { "○", "○", "○", "○" },
           left_pad = 0,
           right_pad = 0,
