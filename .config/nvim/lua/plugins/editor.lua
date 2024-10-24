@@ -327,14 +327,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.nvim",
-    version = false,
-    config = function()
-      -- require("mini").setup()
-      require("mini.align").setup()
-    end,
-  },
-  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
@@ -499,6 +491,31 @@ return {
       -- keymaps
       km.nmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
       km.xmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
+    end,
+  },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    config = function()
+      local oil = require("oil")
+      oil.setup({
+        delete_to_trash = true,
+        keymaps = {
+          ["g?"] = "actions.show_help",
+        },
+        view_options = {
+          show_hidden = true,
+        },
+      })
+
+      -- keymaps
+      -- cf.) Telescope settings realise to loanch file browser
+      -- for file_browser
+      -- km.nmap("<leader>e", ":Telescope file_browser<CR>", { desc = "use the telescope-file-browser" })
+      km.nmap("<leader>o", oil.open, { desc = "[O]pen oil browser for a directory" })
     end,
   },
 }
