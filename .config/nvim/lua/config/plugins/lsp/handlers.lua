@@ -212,13 +212,6 @@ function M.setup()
       })
     end,
 
-    -- zk
-    -- ["zk"] = function()
-    --   lspconfig.zk.setup({
-    --     -- settings = {},
-    --   })
-    -- end,
-
     -- pyright
     ["pyright"] = function()
       lspconfig.pyright.setup({

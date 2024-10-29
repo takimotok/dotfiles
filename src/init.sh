@@ -27,11 +27,6 @@ set -Ceu
     chsh -s "$(which zsh)"
     _exit_with_errors "$?"
 
-    # copy aliases
-    if [ ! -f "$PROJECT_ROOT/.config/zsh/rc/aliases.zsh" ]; then
-      cp .config/zsh/rc/aliases.zsh.example .config/zsh/rc/aliases.zsh
-    fi
-
     # install Rosetta 2 for Apple Silicon
     if [ "$(uname -m)" = "arm64" ]; then
       /usr/sbin/softwareupdate \
