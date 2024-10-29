@@ -23,6 +23,7 @@ vim.opt.swapfile = false
 -- NOTE: make sure the terminal supports this
 vim.o.termguicolors = true
 vim.o.background = "dark"
+vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 
 -- Search
