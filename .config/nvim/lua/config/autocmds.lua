@@ -24,15 +24,15 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- Markdown, Text, and Txt files
-local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {
-  clear = true,
-})
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  group = md_files,
-  pattern = { "*.md", "*.txt" },
-  command = "AerialOpen",
-  desc = "Open TOC by aerial",
-})
+-- local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {
+--   clear = true,
+-- })
+-- vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+--   group = md_files,
+--   pattern = { "*.md", "*.txt" },
+--   command = "AerialOpen",
+--   desc = "Open TOC by aerial",
+-- })
 
 -- enable :spell command on .md and .txt
 -- local spell_texts = vim.api.nvim_create_augroup("SpellTexts", {
