@@ -64,16 +64,30 @@ set -Ceu
     brew bundle --file=./packages/Brewfile
     _exit_with_errors "$?"
 
+    # WezTerm
+    # -----
     # install `wezterm` TERM definition
     # **NOTE** need to set `term = "wezterm"` in config file.
     # cf.) https://wezfurlong.org/wezterm/config/lua/config/term.html
     if [ ! -d "$HOME/.terminfo" ]; then
       tempfile=$(mktemp) &&
-        curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo &&
-        tic -x -o ~/.terminfo $tempfile &&
-        rm $tempfile
+        curl -o "$tempfile" https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo &&
+        tic -x -o ~/.terminfo "$tempfile" &&
+        rm "$tempfile"
     fi
 
+    # install fonts
+    FONT_NAME="LigalexMono"
+    TARGET_URL="https://github.com/ToxicFrog/Ligaturizer/releases/download/v5/LigaturizedFontsWithCharacters.zip"
+    TARGET_FILE_NAME="LigaturizedFontsWithCharacters.zip"
+
+    if [ ! -f "$HOME/Library/Fonts/$FONT_NAME".ttf ]; then
+      temp_dir=$(mktemp -d) &&
+        curl -fsSL -o "$temp_dir/$TARGET_FILE_NAME" "$TARGET_URL" &&
+        unzip -n "$temp_dir/LigaturizedFontsWithCharacters.zip" -d "$temp_dir" &&
+        cp "$temp_dir/$FONT_NAME"* "$HOME/Library/Fonts/" &&
+        rm -rf "$temp_dir"
+    fi
   }
 
   main
