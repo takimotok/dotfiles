@@ -30,3 +30,4 @@
 .config/zsh/.zsh_sessions
 .config/zsh/rc/alias.zsh
 .config/**/*.zwc
+.config/**/*.db

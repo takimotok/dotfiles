@@ -1,3 +1,5 @@
+local km = require("core.key_mapper")
+
 return {
   {
     "iamcco/markdown-preview.nvim",
@@ -25,6 +27,12 @@ return {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     build = ":call mkdp#util#install()",
+
+    -- write down one of below if TOC is needed
+    -- ${toc}
+    -- [[toc]]
+    -- [toc]
+    -- [[_toc_]]
   },
   {
     "preservim/vim-markdown",
@@ -33,7 +41,7 @@ return {
       "godlygeek/tabular",
     },
     config = function()
-      vim.g.vim_markdown_folding_disabled = 1
+      -- vim.g.vim_markdown_folding_disabled = 1
       vim.g.vim_markdown_strikethrough = 1
       vim.g.vim_markdown_auto_insert_bullets = 1
       vim.g.vim_markdown_toc_autofit = 1
@@ -67,5 +75,129 @@ return {
     end,
     -- :TableModeToggle mapped to <Leader>tm by default
     -- @see: https://github.com/dhruvasagar/vim-table-mode#creating-table-on-the-fly
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("render-markdown").setup({
+        heading = {
+          sign = false,
+          icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+          width = { "full", "full", "block", "block", "block", "block" },
+        },
+        -- callout = {
+        --   note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
+        --   tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "RenderMarkdownSuccess" },
+        --   tldr = { raw = "[!TLDR]", rendered = "󰨸 Tldr", highlight = "RenderMarkdownInfo" },
+        --   info = { raw = "[!INFO]", rendered = "󰋽 Info", highlight = "RenderMarkdownInfo" },
+        --   todo = { raw = "[!TODO]", rendered = "󰗡 Todo", highlight = "RenderMarkdownInfo" },
+        --   question = { raw = "[!QUESTION]", rendered = "󰘥 Question", highlight = "RenderMarkdownWarn" },
+        --   fail = { raw = "[!FAIL]", rendered = "󰅖 Fail", highlight = "RenderMarkdownError" },
+        --   example = { raw = "[!EXAMPLE]", rendered = "󰉹 Example", highlight = "RenderMarkdownHint" },
+        --   quote = { raw = "[!QUOTE]", rendered = "󱆨 Quote", highlight = "RenderMarkdownQuote" },
+        -- },
+        bullet = {
+          enabled = true,
+          icons = { "○", "○", "○", "○" },
+          left_pad = 0,
+          right_pad = 0,
+          highlight = "RenderMarkdownBullet",
+        },
+        checkbox = {
+          enabled = true,
+          position = "inline",
+          unchecked = {
+            icon = "[ ] ",
+            highlight = "RenderMarkdownUnchecked",
+            scope_highlight = nil,
+          },
+          checked = {
+            icon = "✅ ",
+            highlight = "RenderMarkdownChecked",
+            scope_highlight = nil,
+          },
+          custom = {
+            todo = { raw = "[-]", rendered = "🕛 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
+            important = { raw = "[~]", rendered = "🌟 ", highlight = "DiagnosticWarn" },
+          },
+        },
+        code = {
+          sign = false,
+          width = "block",
+          position = "right",
+          left_pad = 2,
+          right_pad = 2,
+        },
+        pipe_table = { preset = "round" },
+        link = {
+          enabled = true,
+          image = " ",
+          email = "📧 ",
+          hyperlink = "🔗 ",
+          highlight = "RenderMarkdownLink",
+          wiki = { icon = "🔗 ", highlight = "RenderMarkdownWikiLink" },
+          custom = {
+            web = { pattern = "^http[s]?://", icon = "🔗 ", highlight = "RenderMarkdownLink" },
+          },
+        },
+      })
+
+      -- keymaps
+      km.nmap("<leader>m", ":RenderMarkdown toggle<CR>", { desc = "[R]ender Markdown Toggle" })
+    end,
+  },
+  {
+    "3rd/image.nvim",
+    dependencies = {
+      "leafo/magick",
+    },
+    opts = {},
+    config = function()
+      local image = require("image")
+      image.setup({
+        backend = "kitty",
+        integrations = {
+          markdown = {
+            enabled = true,
+            only_render_image_at_cursor = true,
+            filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+          },
+          neorg = {
+            enabled = true,
+            only_render_image_at_cursor = true,
+            filetypes = { "norg" },
+          },
+        },
+        max_width_window_percentage = 60,
+        max_height_window_percentage = 40,
+        -- hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
+      })
+    end,
+  },
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({})
+
+      -- keymaps
+      -- Open notes associated with the selected tags.
+      km.nmap("<leader>zt", "<Cmd>ZkTags<CR>", { desc = "With [Z]k-nvim, search notes by [T]ags" })
+
+      -- Search for the notes matching a given query.
+      km.nmap(
+        "<leader>zf",
+        "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+        { desc = "With [Z]k-nvim, [F]search notes by given queries" }
+      )
+
+      -- Search for the notes matching the current visual selection.
+      km.vmap(
+        "<leader>zf",
+        ":'<,'>ZkMatch<CR>",
+        { desc = "With [Z]k-nvim, [F]search notes in selection by given queries" }
+      )
+    end,
   },
 }

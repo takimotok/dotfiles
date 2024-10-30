@@ -23,6 +23,7 @@ vim.opt.swapfile = false
 -- NOTE: make sure the terminal supports this
 vim.o.termguicolors = true
 vim.o.background = "dark"
+vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
 
 -- Search
@@ -93,6 +94,19 @@ vim.opt.spelllang = "en_us,cjk"
 -- @TODO: disable the newline continuation of comments
 -- seems not work
 -- vim.opt.formatoptions = "tqj"
+--
+
+-- foldings
+vim.o.foldcolumn = "0"
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldnestmax = 5 -- Only fold up to this many nested levels.
+vim.o.foldminlines = 2 -- Only fold if there are at least this many lines.
+-- temporary disabled these settings for treesitter folding function
+-- vim.wo.foldmethod = "expr"
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 -- status line
 vim.opt.laststatus = 2

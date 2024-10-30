@@ -44,3 +44,7 @@ alias rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
 # WIFI_STATUS="$(ifconfig en0 | awk '/status:/{print $2}')"
 alias twn="networksetup -setairportpower en0 on"
 alias twf="networksetup -setairportpower en0 off"
+
+# bat
+alias bat='bat --style="numbers,grid"'
+
