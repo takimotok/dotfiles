@@ -180,6 +180,24 @@ return {
     "zk-org/zk-nvim",
     config = function()
       require("zk").setup({})
+
+      -- keymaps
+      -- Open notes associated with the selected tags.
+      km.nmap("<leader>zt", "<Cmd>ZkTags<CR>", { desc = "With [Z]k-nvim, search notes by [T]ags" })
+
+      -- Search for the notes matching a given query.
+      km.nmap(
+        "<leader>zf",
+        "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+        { desc = "With [Z]k-nvim, [F]search notes by given queries" }
+      )
+
+      -- Search for the notes matching the current visual selection.
+      km.vmap(
+        "<leader>zf",
+        ":'<,'>ZkMatch<CR>",
+        { desc = "With [Z]k-nvim, [F]search notes in selection by given queries" }
+      )
     end,
   },
 }
