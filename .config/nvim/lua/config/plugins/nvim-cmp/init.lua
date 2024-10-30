@@ -23,6 +23,7 @@ M.source_group_first = {
   { name = "nvim_lsp" },
   { name = "nvim_lsp_signature_help" },
   { name = "dap" },
+  { name = "emoji" },
   { name = "copilot" },
   { name = "path" },
   { name = "cmdline" },
@@ -39,7 +40,6 @@ M.source_group_second = {
 }
 M.source_group_third = {
   { name = "calc" },
-  { name = "emoji" },
   { name = "luasnip" },
   { name = "treesitter" },
   {

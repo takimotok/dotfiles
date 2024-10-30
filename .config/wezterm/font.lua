@@ -3,10 +3,10 @@ local wezterm = require("wezterm")
 -- local font_name = "Iosevka Nerd Font Mono"
 -- local font_name = "Hack Nerd Font Mono"
 -- local font_name = "PlemolJP Console NF"
-local font_name = "HackGen Console NF"
+-- local font_name = "HackGen Console NF"
+local font_name = "Ligalex Mono"
 
 local M = {
-  use_ime = true,
   font_size = 12.0,
   font = wezterm.font_with_fallback({
     {

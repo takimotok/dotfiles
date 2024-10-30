@@ -181,8 +181,10 @@ return {
         },
       })
 
+      -- extensions
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("file_browser")
+      require("telescope").load_extension("nerdy")
 
       -- keymappings
       -- See `:help telescope.builtin`
@@ -228,6 +230,9 @@ return {
 
       -- for git
       km.nmap("<leader>gs", builtin.git_status, { desc = "[G]it [S]tatus. Lists git status for current directory" })
+
+      -- for emoji (nerdy)
+      km.nmap("<leader>fe", ":Telescope nerdy<CR>", { desc = "[F]ind [E]moji" })
     end,
   },
   {
@@ -322,14 +327,6 @@ return {
     end,
   },
   {
-    "echasnovski/mini.nvim",
-    version = false,
-    config = function()
-      -- require("mini").setup()
-      require("mini.align").setup()
-    end,
-  },
-  {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
@@ -350,5 +347,175 @@ return {
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim",
     },
+  },
+  {
+    "stevearc/aerial.nvim",
+    -- opts = {},
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("aerial").setup({
+        -- set keymaps when aerial has attached to a buffer
+        -- on_attach = function(bufnr)
+        --   -- keymaps
+        --   -- km.nmap("{", ":AerialPrev<CR>", {
+        --   --   buffer = bufnr,
+        --   --   desc = "AerialPrev",
+        --   -- })
+        --   -- km.nmap("}", ":AerialNext<CR>", {
+        --   --   buffer = bufnr,
+        --   --   desc = "AerialNext",
+        --   -- })
+        -- end,
+
+        layout = {
+          max_width = { 60, 0.3 },
+          width = nil,
+          min_width = 0.2, -- 20%
+          default_direction = "prefer_left",
+        },
+        update_events = "BufWritePost",
+      })
+
+      -- keymaps
+      km.nmap("<leader>a", ":AerialToggle!<CR>", { desc = "AerialToggle" })
+
+      -- also be set autocmd in lua/config/autocmds.lua
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}, -- use default settings
+    config = function()
+      local todo_comments = require("todo-comments")
+      todo_comments.setup()
+
+      -- keymaps
+      km.nmap("]t", todo_comments.jump_next, { desc = "Next todo comment" })
+      km.nmap("[t", todo_comments.jump_prev, { desc = "Previous todo comment" })
+
+      -- commands
+      -- :TodoTelescope
+      -- :TodoTrouble
+      -- :TodoLocList
+      -- :TodoQuickFix
+      -- :TodoFzfLua
+    end,
+  },
+  {
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Nerdy",
+  },
+  -- temporary disabled due to cause unexpected behaviors:
+  --  - forced to be folded when texts changed
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   dependencies = {
+  --     "kevinhwang91/promise-async",
+  --   },
+  --   config = function()
+  --     local handler = function(virtText, lnum, endLnum, width, truncate)
+  --       local newVirtText = {}
+  --       local suffix = (" 󰁂 %d "):format(endLnum - lnum)
+  --       local sufWidth = vim.fn.strdisplaywidth(suffix)
+  --       local targetWidth = width - sufWidth
+  --       local curWidth = 0
+  --       for _, chunk in ipairs(virtText) do
+  --         local chunkText = chunk[1]
+  --         local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+  --         if targetWidth > curWidth + chunkWidth then
+  --           table.insert(newVirtText, chunk)
+  --         else
+  --           chunkText = truncate(chunkText, targetWidth - curWidth)
+  --           local hlGroup = chunk[2]
+  --           table.insert(newVirtText, { chunkText, hlGroup })
+  --           chunkWidth = vim.fn.strdisplaywidth(chunkText)
+  --           -- str width returned from truncate() may less than 2nd argument, need padding
+  --           if curWidth + chunkWidth < targetWidth then
+  --             suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+  --           end
+  --           break
+  --         end
+
+  --         curWidth = curWidth + chunkWidth
+  --       end
+
+  --       table.insert(newVirtText, { suffix, "MoreMsg" })
+
+  --       return newVirtText
+  --     end
+
+  --     local ufo = require("ufo")
+  --     ufo.setup({
+  --       fold_virt_text_handler = handler,
+  --       -- open_fold_hl_timeout = 0,
+  --       provider_selector = function(bufnr, filetype, buftype)
+  --         return { "lsp", "indent" }
+  --       end,
+  --     })
+
+  --     -- keymaps
+  --     -- 'zR': openAllFolds
+  --     -- 'zM': closeAllFolds
+  --     km.nmap("zR", ufo.openAllFolds, { desc = "Open all folds" })
+  --     km.nmap("zM", ufo.closeAllFolds, { desc = "Close all folds" })
+  --     km.nmap("zK", function()
+  --       local winid = ufo.peekFoldedLinesUnderCursor()
+  --       if not winid then
+  --         vim.lsp.buf.hover()
+  --       end
+  --     end, { desc = "Peek Fold" })
+  --   end,
+  -- },
+  {
+    "theKnightsOfRohan/csvlens.nvim",
+    dependencies = {
+      "akinsho/toggleterm.nvim",
+    },
+    opts = {},
+
+    -- keymaps
+    -- H: help
+  },
+  {
+    "godlygeek/tabular",
+    fg = { "csv" },
+    config = function()
+      -- keymaps
+      km.nmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
+      km.xmap("t,", ":Tabularize /,<CR>", { desc = "format csv by comma" })
+    end,
+  },
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    config = function()
+      local oil = require("oil")
+      oil.setup({
+        delete_to_trash = true,
+        keymaps = {
+          ["g?"] = "actions.show_help",
+        },
+        view_options = {
+          show_hidden = true,
+        },
+      })
+
+      -- keymaps
+      -- cf.) Telescope settings realise to loanch file browser
+      -- for file_browser
+      -- km.nmap("<leader>e", ":Telescope file_browser<CR>", { desc = "use the telescope-file-browser" })
+      km.nmap("<leader>o", oil.open, { desc = "[O]pen oil browser for a directory" })
+    end,
   },
 }

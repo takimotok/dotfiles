@@ -52,8 +52,7 @@ $ ./install.sh
 
 After that, we might need to reboot and/or restart.
 
-In addition, the command below enable us to install some programming languages thanks to [jdx/mise: dev tools, env vars, task
-runner](https://github.com/jdx/mise).
+In addition, the commands below enable us to install some programming languages thanks to [jdx/mise: dev tools, env vars, task runner](https://github.com/jdx/mise).
 
 ```sh
 $ mise install -y
