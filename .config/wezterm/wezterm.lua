@@ -2,8 +2,7 @@ require("on")
 local key_tables = require("key_tables")
 local keys = require("keys")
 local font = require("font")
-require("tab_bar_style")
--- local wezterm = require("wezterm")
+-- require("tab_bar_style")
 
 local config = {}
 
@@ -58,7 +57,6 @@ config = {
   tab_max_width = 25,
   switch_to_last_active_tab_when_closing_tab = true,
 
-  -- tab_bar_style = tab_bar_style,
   colors = {
     tab_bar = {
       background = "#000000",
@@ -70,13 +68,16 @@ config = {
         bg_color = "#1b1032",
         fg_color = "#808080",
       },
-      inactive_tab_edge = "#0d0d0d",
+      inactive_tab_edge = "none",
       new_tab = {
         bg_color = "#2b2042",
         fg_color = "#c0c0c0",
       },
     },
   },
+
+  show_new_tab_button_in_tab_bar = false,
+  show_close_tab_button_in_tabs = false,
 
   -- panes
   inactive_pane_hsb = {
@@ -85,7 +86,12 @@ config = {
   },
 
   -- window
-  window_background_opacity = 0.7,
+  window_background_opacity = 0.8,
+  macos_window_background_blur = 20,
+  window_decorations = "RESIZE",
+  window_background_gradient = {
+    colors = { "#000000" },
+  },
   window_padding = {
     left = 0,
     right = 0,
