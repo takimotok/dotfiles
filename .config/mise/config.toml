@@ -29,3 +29,7 @@ raw = false  # set to true to directly pipe plugins to stdin/stdout/stderr
 experimental = true
 # log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
 
+trusted_config_paths = [
+  '~/.config/mise/config.toml',
+  '~/projects/github.com/takimotok/dotfiles/.config/mise/config.toml'
+]
