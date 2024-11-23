@@ -148,34 +148,34 @@ return {
       km.nmap("<leader>m", ":RenderMarkdown toggle<CR>", { desc = "[R]ender Markdown Toggle" })
     end,
   },
-  {
-    "3rd/image.nvim",
-    dependencies = {
-      "leafo/magick",
-    },
-    opts = {},
-    config = function()
-      local image = require("image")
-      image.setup({
-        backend = "kitty",
-        integrations = {
-          markdown = {
-            enabled = true,
-            only_render_image_at_cursor = true,
-            filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-          },
-          neorg = {
-            enabled = true,
-            only_render_image_at_cursor = true,
-            filetypes = { "norg" },
-          },
-        },
-        max_width_window_percentage = 60,
-        max_height_window_percentage = 40,
-        -- hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
-      })
-    end,
-  },
+  -- {
+  --   "3rd/image.nvim",
+  --   dependencies = {
+  --     "leafo/magick",
+  --   },
+  --   opts = {},
+  --   config = function()
+  --     local image = require("image")
+  --     image.setup({
+  --       backend = "kitty",
+  --       integrations = {
+  --         markdown = {
+  --           enabled = true,
+  --           only_render_image_at_cursor = true,
+  --           filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+  --         },
+  --         neorg = {
+  --           enabled = true,
+  --           only_render_image_at_cursor = true,
+  --           filetypes = { "norg" },
+  --         },
+  --       },
+  --       max_width_window_percentage = 60,
+  --       max_height_window_percentage = 40,
+  --       -- hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
+  --     })
+  --   end,
+  -- },
   {
     "zk-org/zk-nvim",
     config = function()

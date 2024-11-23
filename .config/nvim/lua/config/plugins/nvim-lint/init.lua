@@ -62,6 +62,7 @@ end
 -- @return boolean
 local function ft_is_js()
   local js_file_types = {
+    "astro",
     "javascript",
     "javascriptreact",
     "typescript",
