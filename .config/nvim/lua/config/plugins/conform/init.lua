@@ -4,6 +4,7 @@ function M.set_formatters_by_ft()
   local t = {}
 
   local js_formatter = { "biome-check", "prettierd", stop_after_first = true }
+  t.astro = js_formatter
   t.json = js_formatter
   t.javascript = js_formatter
   t.javascriptreact = js_formatter
