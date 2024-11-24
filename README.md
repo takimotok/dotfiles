@@ -92,7 +92,7 @@ The files below should be linked into `~/.config/zed/{here}`.
 $ pwd
 /path/to/dotfiles
 
-$ mkdir -p "${HOME}/.config/zed/"
+$ mkdir -p $HOME/.config/zed/
 
 $ ln -sf $PWD/.config/zed/keymap.json $HOME/.config/zed/keymap.json
 
