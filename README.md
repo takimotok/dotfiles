@@ -81,6 +81,33 @@ $ rustup-init
 
 ```
 
+## Setup zed
+
+The files below will be linked into `~/.config/zed/{here}`.
+
+- keymap.json
+- settings.json
+
+```sh
+$ pwd
+/path/to/dotfiles
+
+$ mkdir -p "${HOME}/.config/zed/"
+
+$ ln -sf $PWD/.config/zed/keymap.json $HOME/.config/zed/keymap.json
+
+$ ln -sf $PWD/.config/zed/settings.json $HOME/.config/zed/settings.json
+```
+
+We can find the installed extensions location like:
+
+```sh
+$ ls ~/Library/Application\ Support/Zed/extensions/installed/
+
+```
+
+cf.) [Configuring Zed - Zed](https://zed.dev/docs/configuring-zed#auto-install-extensions)
+
 ## Firefox data migration
 
 I followed the instruction below but no luck.  
