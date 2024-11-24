@@ -1,6 +1,7 @@
 local M = {}
 
 M.ensure_installed = {
+  "astro",
   "awk_ls",
   "biome",
   "bashls",
