@@ -83,7 +83,7 @@ $ rustup-init
 
 ## Setup zed
 
-The files below will be linked into `~/.config/zed/{here}`.
+The files below should be linked into `~/.config/zed/{here}`.
 
 - keymap.json
 - settings.json
