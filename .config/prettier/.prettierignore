@@ -1,0 +1,12 @@
+# defaults
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# added
+*.md
+next.config.js
+package.json
+yarn.lock
+
