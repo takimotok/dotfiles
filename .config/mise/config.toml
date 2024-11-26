@@ -35,4 +35,5 @@ trusted_config_paths = [
   '~/projects/github.com//takimotok/memoapp/src/.mise.toml',
   '~/projects/github.com/takimotok/dotfiles/.config/mise/config.toml',
   '~/projects/github.com/takimotok/takimotok.github.io',
+  '~/projects/github.com/takimotok/learn_astro_by_creating_blog',
 ]

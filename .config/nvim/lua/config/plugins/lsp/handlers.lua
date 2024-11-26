@@ -188,6 +188,15 @@ function M.setup()
     ["biome"] = function()
       lspconfig.biome.setup({
         capabilities = capabilities,
+        cmd = { "biome", "lsp-proxy" },
+        on_new_config = function(new_config)
+          local yarn = lspconfig.util.root_pattern(".yarn", "yarn.lock", ".yarnrc.yaml")(vim.api.nvim_buf_get_name(0))
+          local cmd = { "npx", "biome", "lsp-proxy" }
+          if yarn then
+            cmd = { "yarn", "biome", "lsp-proxy" }
+          end
+          new_config.cmd = cmd
+        end,
       })
     end,
 
