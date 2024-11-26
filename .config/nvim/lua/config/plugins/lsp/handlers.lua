@@ -221,13 +221,13 @@ function M.setup()
       })
     end,
 
-    -- ruff_lsp
+    -- ruff
     -- @TODO: suppress double warnings
     -- e.g.)
     --    [Ruff]: `sys` imported but unused [F401]
     --    [Ruff]: `sys` imported but unused [F401]
-    ["ruff_lsp"] = function()
-      lspconfig.ruff_lsp.setup({
+    ["ruff"] = function()
+      lspconfig.ruff.setup({
         capabilities = capabilities,
       })
     end,
