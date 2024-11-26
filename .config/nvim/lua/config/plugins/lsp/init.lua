@@ -14,7 +14,7 @@ M.ensure_installed = {
   "phpactor", -- for php7.x
   -- "intelephense",
   "pyright",
-  "ruff_lsp",
+  "ruff",
   "rust_analyzer",
   -- "sqlls",
   "sqls",
