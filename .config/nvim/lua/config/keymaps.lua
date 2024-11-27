@@ -9,3 +9,6 @@ km.imap("<F3>", '<C-R>=strftime("%Y-%m-%d")<CR>', { desc = "insert date" })
 
 -- stop the hilighting
 km.nmap("<ESC><ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
+
+-- Escape
+km.imap("jk", "<ESC>", { desc = "leave insert mode" })
