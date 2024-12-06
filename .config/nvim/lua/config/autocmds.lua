@@ -23,6 +23,62 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+-- [[for Markdown files]]
+
+-- retain folding view
+-- List of file types to avoid in the display save state
+local excluded_filetypes = {
+  "git",
+  "gitcommit",
+  "gitrebase",
+  "term",
+  "terminal",
+  "help",
+  "nofile",
+  "quickfix",
+}
+
+local function is_excluded(ft)
+  return vim.tbl_contains(excluded_filetypes, ft)
+end
+
+local function can_save_view()
+  local is_markdown = vim.bo.filetype == "markdown"
+
+  local not_excluded = not is_excluded(vim.bo.filetype)
+
+  local is_normal_buffer = vim.bo.buftype == ""
+
+  return is_markdown and not_excluded and is_normal_buffer
+end
+
+-- define a directory to save view
+vim.opt.viewdir = vim.fn.stdpath("data") .. "/view"
+
+-- define which info is savaed
+-- e.g.) "folds,cursor,curdir"
+vim.opt.viewoptions = "folds"
+
+-- automatically save when the file is closed
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+  pattern = { "*.md" },
+  callback = function()
+    if can_save_view() then
+      vim.cmd("silent! mkview")
+    end
+  end,
+})
+
+-- automatically load when the file is opened
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = { "*.md" },
+  callback = function()
+    if can_save_view() then
+      vim.cmd("silent! loadview")
+    end
+  end,
+})
+
 -- Markdown, Text, and Txt files
 -- local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {
 --   clear = true,
