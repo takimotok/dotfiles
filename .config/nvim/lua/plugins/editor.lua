@@ -332,7 +332,7 @@ return {
     config = function()
       local model = "gpt-4o-2024-05-13"
       require("chatgpt").setup({
-        api_key_cmd = "op read op://Personal/ChatGPT_API/Credentials/api-key --no-newline",
+        api_key_cmd = "op read op://Personal/ChatGPT_API_for_nvim/Credentials/api-key --no-newline",
         openai_params = {
           model = model,
         },
