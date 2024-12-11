@@ -79,6 +79,17 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
+-- format a table on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.md",
+  callback = function()
+    -- search for '||' pattern which likely indicates a table
+    if vim.fn.search("\\|.*\\|", "nw") > 0 then
+      vim.cmd("TableModeRealign")
+    end
+  end,
+})
+
 -- Markdown, Text, and Txt files
 -- local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {
 --   clear = true,
