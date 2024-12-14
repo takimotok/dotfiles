@@ -7,6 +7,7 @@ function M.set_formatters_by_ft()
   t.astro = { "prettierd", "biome-check" }
   t.markdown = { "prettierd" }
   t.json = { "prettierd" }
+  t.jsonc = { "prettierd" }
   t.javascript = js_formatter
   t.javascriptreact = js_formatter
   t.typescript = js_formatter
@@ -64,11 +65,6 @@ M.formatters = {
       "$FILENAME",
     },
     stdin = false,
-  },
-  prettier = {
-    prepend_args = {
-      "--use-editorconfig",
-    },
   },
 }
 
