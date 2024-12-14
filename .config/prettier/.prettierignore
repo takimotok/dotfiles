@@ -4,9 +4,10 @@
 **/.hg
 **/node_modules
 
-# added
-*.md
-next.config.js
-package.json
-yarn.lock
+# json
+package*.json
+!package.json
+
+# yarn
+yarn*.lock
 

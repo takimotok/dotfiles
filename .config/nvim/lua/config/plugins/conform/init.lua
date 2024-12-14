@@ -5,6 +5,7 @@ function M.set_formatters_by_ft()
 
   local js_formatter = { "biome-check", "prettierd", stop_after_first = true }
   t.astro = { "prettierd", "biome-check" }
+  t.markdown = { "prettierd" }
   t.json = { "prettierd" }
   t.javascript = js_formatter
   t.javascriptreact = js_formatter
@@ -63,6 +64,11 @@ M.formatters = {
       "$FILENAME",
     },
     stdin = false,
+  },
+  prettier = {
+    prepend_args = {
+      "--use-editorconfig",
+    },
   },
 }
 
