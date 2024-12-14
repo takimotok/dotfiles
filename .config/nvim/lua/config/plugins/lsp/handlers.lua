@@ -94,40 +94,40 @@ function M.setup()
     end,
 
     -- ltex
-    ["ltex"] = function()
-      local ltex_config = require("config.plugins.lsp.ltex")
+    -- ["ltex"] = function()
+    --   local ltex_config = require("config.plugins.lsp.ltex")
 
-      ltex_config.init()
+    --   ltex_config.init()
 
-      lspconfig.ltex.setup({
-        on_attach = ltex_config.on_attach,
-        capabilities = capabilities,
-        use_spellfile = false,
-        filetypes = { "latex", "tex", "bib", "markdown", "gitcommit", "text" },
-        settings = {
-          ltex = {
-            enabled = { "latex", "tex", "bib", "markdown" },
-            language = "en-US",
-            diagnosticSeverity = "information",
-            sentenceCacheSize = 2000,
-            additionalRules = {
-              enablePickyRules = true,
-              motherTongue = "ja-JP",
-            },
-            dictionary = ltex_config.read_dictionaries(),
-            markdown = {
-              nodes = {
-                AutoLink = "ignore",
-                Code = "dummy",
-                CodeBlock = "ignore",
-                FencedCodeBlock = "ignore",
-                Link = "ignore",
-              },
-            },
-          },
-        },
-      })
-    end,
+    --   lspconfig.ltex.setup({
+    --     on_attach = ltex_config.on_attach,
+    --     capabilities = capabilities,
+    --     use_spellfile = false,
+    --     filetypes = { "latex", "tex", "bib", "markdown", "gitcommit", "text" },
+    --     settings = {
+    --       ltex = {
+    --         enabled = { "latex", "tex", "bib", "markdown" },
+    --         language = "en-US",
+    --         diagnosticSeverity = "information",
+    --         sentenceCacheSize = 2000,
+    --         additionalRules = {
+    --           enablePickyRules = true,
+    --           motherTongue = "ja-JP",
+    --         },
+    --         dictionary = ltex_config.read_dictionaries(),
+    --         markdown = {
+    --           nodes = {
+    --             AutoLink = "ignore",
+    --             Code = "dummy",
+    --             CodeBlock = "ignore",
+    --             FencedCodeBlock = "ignore",
+    --             Link = "ignore",
+    --           },
+    --         },
+    --       },
+    --     },
+    --   })
+    -- end,
 
     -- lua_ls
     ["lua_ls"] = function()
