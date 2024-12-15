@@ -90,6 +90,17 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+    vim.bo.expandtab = true
+    -- vim.opt_local.formatoptions:remove({ "t" })
+    -- vim.opt_local.formatoptions:append({ "p" })
+  end,
+})
+
 -- Markdown, Text, and Txt files
 -- local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {
 --   clear = true,

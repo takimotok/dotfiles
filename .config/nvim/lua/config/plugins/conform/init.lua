@@ -5,7 +5,9 @@ function M.set_formatters_by_ft()
 
   local js_formatter = { "biome-check", "prettierd", stop_after_first = true }
   t.astro = { "prettierd", "biome-check" }
+  t.markdown = { "markdownlint-cli2" }
   t.json = { "prettierd" }
+  t.jsonc = { "prettierd" }
   t.javascript = js_formatter
   t.javascriptreact = js_formatter
   t.typescript = js_formatter
