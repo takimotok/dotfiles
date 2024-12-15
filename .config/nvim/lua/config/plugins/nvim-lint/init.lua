@@ -7,7 +7,7 @@ function M.setLinters()
   -- cf.) lua/config/plugins/mason-tool-installer/init.lua
   lint.linters_by_ft = {
     -- lua = { "luacheck" },
-    -- markdown = { "markdownlint" },
+    markdown = { "markdownlint-cli2" },
     dockerfile = { "hadolint" },
     editorconfig = { "editorconfig-checker" },
 
@@ -55,6 +55,12 @@ function M.setLinters()
     "--config-file",
     vim.fn.stdpath("config") .. "/yamllint/config",
     "--format=parsable",
+    "-",
+  }
+
+  linters["markdownlint-cli2"].args = {
+    "--config",
+    vim.env.XDG_CONFIG_HOME .. "/markdownlint-cli2/config.jsonc",
     "-",
   }
 end

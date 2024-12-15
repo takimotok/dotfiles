@@ -36,6 +36,7 @@ M.formatters = {
   "black",
   -- "blade-formatter",
   -- "biome",
+  "markdownlint-cli2",
   "isort",
   "latexindent",
   "php-cs-fixer",
