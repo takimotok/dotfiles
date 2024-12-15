@@ -7,7 +7,7 @@ M.ensure_installed = {
   "bashls",
   "eslint",
   "jsonls",
-  "ltex",
+  -- "ltex",
   "lua_ls",
   "marksman",
   -- "phpactor@2022.11.12", -- for php7.x

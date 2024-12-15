@@ -16,6 +16,8 @@ set -Ceu
     # enable Stow to access
     if [ ! -d "$HOME/.config" ]; then
       mkdir -p "$HOME/.config"
+    elif [ -d "$HOME/.config/zed" ]; then
+      rm -rf "$HOME/.config/zed"
     fi
 
     # enable 1Password-cli to access
