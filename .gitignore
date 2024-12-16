@@ -42,3 +42,7 @@
 .config/rtx/*
 !.config/rtx/config/toml
 
+# zed
+# -----
+conversations
+prompts

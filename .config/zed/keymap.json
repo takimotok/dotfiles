@@ -1,10 +1,48 @@
 [
-	{
-		"context": "Workspace",
-		"bindings": {}
-	},
-	{
-		"context": "Editor",
-		"bindings": {}
-	}
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-w x": "pane::exchange_adjacent"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {}
+  },
+  // Workspace
+  {
+    "context": "Dock || Terminal || Editor || AssistantPanel",
+    "bindings": {
+      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-w c": "editor::close_buffer"
+    }
+  },
+  // vim mode
+  {
+    "context": "Editor && VimControl && !menu",
+    "bindings": {
+      "space f t": "tab_switcher::Toggle", // same as `ctrl-tab`
+      "space t": "workspace::NewCenterTerminal"
+    }
+  },
+  // vim normal mode
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "ctrl-n": "search::SelectNextMatch",
+      "ctrl-p": "search::SelectPrevMatch"
+    }
+  },
+  // vim visual mode
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  }
 ]
