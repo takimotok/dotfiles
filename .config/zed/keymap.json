@@ -2,7 +2,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-w x": "pane::exchange_adjacent"
+      "ctrl-w x": "pane::exchange_adjacent",
+      "ctrl-`": "workspace::ToggleBottomDock"
     }
   },
   {
@@ -24,7 +25,7 @@
   {
     "context": "Editor && VimControl && !menu",
     "bindings": {
-      "space f t": "tab_switcher::Toggle", // same as `ctrl-tab`
+      "space f t": "tab_switcher::Toggle", // [F]ind [T]abs, same as `ctrl-tab`
       "space t": "workspace::NewCenterTerminal"
     }
   },
@@ -32,7 +33,7 @@
   {
     "context": "vim_mode == normal && !menu",
     "bindings": {
-      "space f f": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle", // [F]ind [F]iles
       "ctrl-n": "search::SelectNextMatch",
       "ctrl-p": "search::SelectPrevMatch"
     }
