@@ -165,11 +165,15 @@ return {
           },
           layout_strategy = "vertical",
           file_ignore_patterns = {
-            "node_modules",
+            ".git/",
+            ".yarn/",
             "build",
-            "dist",
-            "yarn.lock",
             "composer.lock",
+            "dist",
+            "dist",
+            "node_modules",
+            "package-lock.json",
+            "yarn.lock",
           },
         },
         pickers = {
@@ -189,11 +193,13 @@ return {
       -- keymappings
       -- See `:help telescope.builtin`
       local builtin = require("telescope.builtin")
+
       km.nmap(
         "<leader>ff",
         builtin.find_files,
         { desc = "[F]ind [F]iles. Lists files in your current working directory, respects .gitignore" }
       )
+
       km.nmap("<leader>lg", builtin.live_grep, {
         desc = [[
             [L]ive [G]rep.
