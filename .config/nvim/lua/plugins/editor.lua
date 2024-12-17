@@ -518,4 +518,7 @@ return {
       km.nmap("<leader>o", oil.open, { desc = "[O]pen oil browser for a directory" })
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+  },
 }
