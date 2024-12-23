@@ -27,6 +27,9 @@
   lg = log \
     --pretty=format:'%C(auto)%h %C(cyan)%cd %C(green bold)%cn %C(reset)%s' \
     --date=format:'%Y-%m-%d %H:%M:%S'
+  sl = stash list \
+    --format='%C(yellow)%h%C(reset) %C(blue)%cd%C(reset) %s' \
+    --date=format:'%Y-%m-%d %H:%M:%S'
 [gpg]
 	format = ssh
 [commit]
