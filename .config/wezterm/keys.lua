@@ -4,6 +4,14 @@ local act = wezterm.action
 local module = {}
 
 module = {
+  --[[ fonts ]]
+  -- toggle ligatures
+  {
+    key = "t",
+    mods = "CTRL",
+    action = wezterm.action.EmitEvent("toggle-ligature"),
+  },
+
   --[[ custum events ]]
   {
     key = "v",
