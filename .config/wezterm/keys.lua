@@ -7,8 +7,8 @@ module = {
   --[[ fonts ]]
   -- toggle ligatures
   {
-    key = "t",
-    mods = "CTRL",
+    key = "g",
+    mods = "LEADER",
     action = wezterm.action.EmitEvent("toggle-ligature"),
   },
 
