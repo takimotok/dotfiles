@@ -13,7 +13,9 @@
     "insert": "bar",
     "visual": "underline"
   },
-  "ui_font_size": 14,
+  "show_whitespaces": "all",
+  "tab_size": 2,
+  "ui_font_size": 12,
   "buffer_font_size": 12,
   "theme": {
     "mode": "system",
