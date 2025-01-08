@@ -12,6 +12,6 @@
     // MD040: コードブロックの言語指定を許容
     "fenced-code-language": false,
   },
-  "globs": ["**/*.md"],
-  "ignores": ["node_modules"],
+  "globs": ["**/*.md", "**/*.mdx"],
+  "ignores": ["node_modules", "dist"],
 }
