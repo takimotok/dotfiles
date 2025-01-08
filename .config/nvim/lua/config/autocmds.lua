@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 -- format a table on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.md",
+  pattern = { "*.md", "*.mdx" },
   callback = function()
     -- search for '||' pattern which likely indicates a table
     if vim.fn.search("\\|.*\\|", "nw") > 0 then
