@@ -20,7 +20,8 @@
     "lineWidth": 120,
     "ignore": [
       "**/node_modules/**"
-    ]
+    ],
+    "attributePosition": "multiline"
   },
   "javascript": {
     "globals": ["Astro"],
