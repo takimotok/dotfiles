@@ -206,11 +206,30 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-telekasten/calendar-vim",
       "nvim-telescope/telescope-symbols.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
     },
     config = function()
       local vaultPath = "~/takimoto.kengo@gmail.com - Google Drive/My Drive/Vault"
       require("telekasten").setup({
         home = vim.fn.expand(vaultPath),
+        image_subdir = "images",
+        follow_creates_nonexisting = false,
+        dailies_create_nonexisting = false,
+        weeklies_create_nonexisting = false,
+        image_link_style = "markdown",
+        sort = "modified",
+        media_previewer = "telescope-media-files",
+        media_extensions = {
+          ".png",
+          ".jpg",
+          ".svg",
+          ".bmp",
+          ".gif",
+          ".pdf",
+          ".mp4",
+          ".webm",
+          ".webp",
+        },
       })
     end,
   },
