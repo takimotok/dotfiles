@@ -200,4 +200,18 @@ return {
       )
     end,
   },
+  {
+    "renerocksai/telekasten.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-telekasten/calendar-vim",
+      "nvim-telescope/telescope-symbols.nvim",
+    },
+    config = function()
+      local vaultPath = "~/takimoto.kengo@gmail.com - Google Drive/My Drive/Vault"
+      require("telekasten").setup({
+        home = vim.fn.expand(vaultPath),
+      })
+    end,
+  },
 }
