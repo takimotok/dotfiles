@@ -108,6 +108,7 @@ eval "$(gh completion -s zsh)"
 # 1Password
 # -----
 eval "$(op signin)"
+eval "$(op completion zsh)"; compdef _op op
 
 # vim & nvim
 # -----
