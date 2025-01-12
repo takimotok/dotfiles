@@ -21,6 +21,7 @@ extension = "md"
 template = "default.md"
 
 # Path globs ignored while indexing existing notes.
+# @TODO: can I reffer to the .gitignore ?
 ignore = [
   "drafts/*",
   "log.md",
@@ -29,6 +30,7 @@ ignore = [
   ".old/*",
   ".archive/*",
   ".archives/*",
+  ".git/*",
 ]
 
 # Configure random ID generation.
