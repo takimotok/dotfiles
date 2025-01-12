@@ -29,7 +29,6 @@
 .config/zsh/.zcompcache/*
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions
-.config/zsh/rc/alias.zsh
 .config/**/*.zwc
 
 # karabiner
