@@ -206,12 +206,74 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-telekasten/calendar-vim",
       "nvim-telescope/telescope-symbols.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
     },
     config = function()
-      local vaultPath = "~/takimoto.kengo@gmail.com - Google Drive/My Drive/Vault"
+      local notePath = vim.env.NOTES
+
+      -- Common date format specifiers:
+      -- - `%Y`: Year with century (2024)
+      -- - `%m`: Month as number (01-12)
+      -- - `%d`: Day of the month (01-31)
+      -- - `%H`: Hour (00-23)
+      -- - `%M`: Minute (00-59)
+      -- - `%S`: Second (00-59)
+      local year = os.date("%Y")
+      local month = os.date("%m")
+      local day = os.date("%d")
+
       require("telekasten").setup({
-        home = vim.fn.expand(vaultPath),
+        home = vim.fn.expand(notePath),
+        dailies = vim.fn.expand(notePath .. "/journal/dailies" .. year .. month),
+        weeklies = vim.fn.expand(notePath .. "/journal/weeklies" .. year),
+        follow_creates_nonexisting = false,
+        dailies_create_nonexisting = false,
+        weeklies_create_nonexisting = false,
+        new_note_filename = "uuid-title",
+        uuid_type = "%Y%m%d%H%M%S",
+        uuid_sep = "_",
+        filename_space_subst = "_",
+        filename_small_case = true,
+        template_new_note = vim.fn.expand(vim.env.XDG_CONFIG_HOME .. "/zk/templates/default.md"),
+        template_new_daily = vim.fn.expand(vim.env.XDG_CONFIG_HOME .. "/zk/templates/default.md"),
+        template_new_weekly = vim.fn.expand(vim.env.XDG_CONFIG_HOME .. "/zk/templates/default.md"),
+        tag_notation = "#tag", -- #tag, @tag, :tag:, yaml-bare
+        new_note_location = "prefer_home",
+        enable_create_new = false,
+        image_link_style = "markdown",
+        sort = "modified",
+        media_previewer = "telescope-media-files",
+        media_extensions = {
+          ".png",
+          ".jpg",
+          ".svg",
+          ".bmp",
+          ".gif",
+          ".pdf",
+          ".mp4",
+          ".webm",
+          ".webp",
+        },
       })
+
+      -- Launch panel if nothing is typed after <leader>z
+      km.nmap("<leader>z", "<Cmd>Telekasten panel<CR>", { desc = "Launch panel if nothing is typed after <leader>z" })
+      --
+      -- -- Most used functions
+      -- vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
+      -- vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
+      -- vim.keymap.set("n", "<leader>zd", "<cmd>Telekasten goto_today<CR>")
+      -- vim.keymap.set("n", "<leader>zz", "<cmd>Telekasten follow_link<CR>")
+      -- vim.keymap.set("n", "<leader>zn", "<cmd>Telekasten new_note<CR>")
+      -- vim.keymap.set("n", "<leader>zb", "<cmd>Telekasten show_backlinks<CR>")
+      -- vim.keymap.set("n", "<leader>zI", "<cmd>Telekasten insert_img_link<CR>")
+      --
+      -- -- Call insert link automatically when we start typing a link
+      -- vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
+
+      km.nmap("<leader>zc", "<Cmd>Telekasten show_calendar<CR>", { desc = "With Telekasten, show [C]alendar" })
+      km.nmap("<leader>zf", "<Cmd>Telekasten find_notes<CR>", { desc = "With Telekasten, [F]ind notes" })
+      km.nmap("<leader>zs", "<Cmd>Telekasten search_notes<CR>", { desc = "With Telekasten, [S]earch notes" })
     end,
   },
 }

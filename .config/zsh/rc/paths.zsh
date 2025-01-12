@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# for Cloud Strages
+# -----
+export CLOUD_STRAGE="${HOME}/Library/CloudStorage"
+export G_ACCOUNT=$(op read op://development/Google/DRIVE/username --no-newline)
+
+export G_DRIVE_PATH="${CLOUD_STRAGE}/GoogleDrive-${G_ACCOUNT}/My\ Drive"
+export VAULT="${G_DRIVE_PATH}/Vault"
+export NOTES="${G_DRIVE_PATH}/Notes"
+export GOOD_NOTES="${G_DRIVE_PATH}/GoodNotes"
+
 # for go (ghq)
 # -----
 export GOPATH=$XDG_CONFIG_HOME/go
