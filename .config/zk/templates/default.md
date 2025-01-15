@@ -1,6 +1,6 @@
 ---
-title:
-aliases: ['']
+title: {{title}}
+aliases: [{{id}}, ]
 tags: ['']
 id: {{id}}
 created_at: {{format-date now '%Y-%m-%d'}}
