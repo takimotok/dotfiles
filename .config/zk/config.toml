@@ -70,10 +70,16 @@ author = "kengo"
 # the group. This can be useful to quickly declare a group by the name of the
 # directory it applies to.
 
-#[group."<NAME>"]
-#paths = ["<DIR1>", "<DIR2>"]
-#[group."<NAME>".note]
-#filename = "{{format-date now}}"
+[group."journal"]
+paths = [
+  "journal/dailies",
+]
+
+[group."journal".note]
+filename = "{{format-date now '%Y-%m-%d'}}"
+default-title = "{{format-date now '%Y-%m-%d'}}"
+template = "daily.md"
+
 #[group."<NAME>".extra]
 #key = "value"
 
