@@ -13,24 +13,24 @@ updated_at:
 
 ## THOUGHTS
 
-## MORNING
+## READ: BOOKS
+
+## READ: ARTICLES
+
+## MORNING REVIEW
 
 ### 感謝 x3
 
 ### 今日を素晴らしい一日にするためにできることは?
 
-## READ: BOOKS
-
-## READ: ARTICLES
-
 ## NIGHT REVIEW
-
-### 達成したこと
 
 ### 一日の感想
 
-### 今日ももっと良くするためにできることは?
+### 今日上手くいったこと, 達成したことは?
 
-### 明日やることは?
+### 今日をもっと良くするためにできることは?
+
+### 明日達成したいことは?
 
 ## FUTURE WORKS
