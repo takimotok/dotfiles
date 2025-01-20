@@ -70,37 +70,52 @@ author = "kengo"
 # the group. This can be useful to quickly declare a group by the name of the
 # directory it applies to.
 
-[group."journal"]
+[group."journal/daily"]
 paths = [
   "journal/dailies",
 ]
 
-[group."journal".note]
+[group."journal/daily".note]
 filename = "{{format-date now '%Y-%m-%d'}}"
 default-title = "{{format-date now '%Y-%m-%d'}}"
 template = "daily.md"
 
-#[group."<NAME>".extra]
-#key = "value"
+[group."journal/weekly"]
+paths = [
+  "journal/weeklies",
+]
 
+[group."journal/weekly".note]
+template = "weekly.md"
+filename = "{{format-date (date 'last week') '%y%m%d'}}-{{format-date now '%y%m%d'}}-W{{format-date (date 'last week') '%V'}}"
+default-title = "{{format-date (date 'last week') '%y%m%d'}}-{{format-date now '%y%m%d'}}-W{{format-date (date 'last week') '%V'}}"
+
+# [group."journal/weekly".extra]
+# Monday is the first day of the week
+# last_week_number = "{{format-date (date 'last week') '%V'}}"
 
 # MARKDOWN SETTINGS
 [format.markdown]
 
 # Format used to generate links between notes.
 # Either "wiki", "markdown" or a custom template. Default is "markdown".
-#link-format = "wiki"
+# link-format = "wiki"
+link-format = "[[{{metadata.id}} | {{title}}]]"
+
 # Indicates whether a link's path will be percent-encoded.
 # Defaults to true for "markdown" format and false for "wiki" format.
 #link-encode-path = true
+
 # Indicates whether a link's path file extension will be removed.
 # Defaults to true.
-#link-drop-extension = true
+link-drop-extension = true
 
 # Enable support for #hashtags.
 hashtags = true
+
 # Enable support for :colon:separated:tags:.
 colon-tags = false
+
 # Enable support for Bear's #multi-word tags#
 # Hashtags must be enabled for multi-word tags to work.
 multiword-tags = false
@@ -193,3 +208,12 @@ slides = "zk list --interactive --quiet --format path --delimiter0 $@ | xargs -0
 
 # Edit this configuration file.
 conf = '$EDITOR "$XDG_CONFIG_HOME/zk/config.toml"'
+
+# create a daily journal
+# usage: zk daily $(date '+%Y/%m')
+daily = 'zk new -g "journal/daily" "$ZK_NOTEBOOK_DIR/journal/dailies/$@"'
+
+# usage: zk weekly $(date '+%Y')
+weekly = 'zk new -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
+
+
