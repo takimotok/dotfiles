@@ -26,3 +26,7 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 # poetry (python package manager)
 # -----
 export POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# zk
+# -----
+export ZK_NOTEBOOK_DIR=${NOTES}

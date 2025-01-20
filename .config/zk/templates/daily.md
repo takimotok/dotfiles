@@ -3,7 +3,6 @@ title: {{format-date now '%Y-%m-%d'}}
 aliases: [{{id}}, ]
 tags: ['daily note', 'note']
 id: {{id}}
-created_at: {{format-date now '%Y-%m-%d'}}
 date: {{format-date now '%Y-%m-%d'}}
 created_at: {{format-date now '%Y-%m-%d'}}
 updated_at:
