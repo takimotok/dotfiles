@@ -99,8 +99,7 @@ default-title = "{{format-date (date 'last week') '%y%m%d'}}-{{format-date now '
 
 # Format used to generate links between notes.
 # Either "wiki", "markdown" or a custom template. Default is "markdown".
-# link-format = "wiki"
-link-format = "[[{{metadata.id}} | {{title}}]]"
+link-format = "wiki"
 
 # Indicates whether a link's path will be percent-encoded.
 # Defaults to true for "markdown" format and false for "wiki" format.
@@ -215,5 +214,4 @@ daily = 'zk new -g "journal/daily" "$ZK_NOTEBOOK_DIR/journal/dailies/$@"'
 
 # usage: zk weekly $(date '+%Y')
 weekly = 'zk new -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
-
 
