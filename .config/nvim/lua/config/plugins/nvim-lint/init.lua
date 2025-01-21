@@ -60,8 +60,8 @@ function M.setLinters()
 
   linters["markdownlint-cli2"].args = {
     "--config",
-    vim.env.XDG_CONFIG_HOME .. "/markdownlint-cli2/config.jsonc",
-    "-",
+    vim.env.XDG_CONFIG_HOME .. "/markdownlint-cli2/.markdownlint-cli2.jsonc",
+    "--",
   }
 end
 
