@@ -189,14 +189,14 @@ return {
       km.nmap(
         "<leader>zf",
         "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
-        { desc = "With [Z]k-nvim, [F]search notes by given queries" }
+        { desc = "With [Z]k-nvim, [F]ind notes by given queries" }
       )
 
       -- Search for the notes matching the current visual selection.
       km.vmap(
-        "<leader>zf",
+        "<leader>zm",
         ":'<,'>ZkMatch<CR>",
-        { desc = "With [Z]k-nvim, [F]search notes in selection by given queries" }
+        { desc = "With [Z]k-nvim, search notes [M]atching the current visual selection" }
       )
     end,
   },
@@ -224,8 +224,8 @@ return {
 
       require("telekasten").setup({
         home = vim.fn.expand(notePath),
-        dailies = vim.fn.expand(notePath .. "/journal/dailies" .. year .. month),
-        weeklies = vim.fn.expand(notePath .. "/journal/weeklies" .. year),
+        dailies = vim.fn.expand(notePath .. "/journal/dailies/" .. year .. "/" .. month),
+        weeklies = vim.fn.expand(notePath .. "/journal/weeklies/" .. year),
         follow_creates_nonexisting = false,
         dailies_create_nonexisting = false,
         weeklies_create_nonexisting = false,
@@ -256,9 +256,6 @@ return {
         },
       })
 
-      -- Launch panel if nothing is typed after <leader>z
-      km.nmap("<leader>z", "<Cmd>Telekasten panel<CR>", { desc = "Launch panel if nothing is typed after <leader>z" })
-      --
       -- -- Most used functions
       -- vim.keymap.set("n", "<leader>zf", "<cmd>Telekasten find_notes<CR>")
       -- vim.keymap.set("n", "<leader>zg", "<cmd>Telekasten search_notes<CR>")
@@ -271,9 +268,16 @@ return {
       -- -- Call insert link automatically when we start typing a link
       -- vim.keymap.set("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
+      -- km.nmap(
+      --   "<leader>zs",
+      --   "<Cmd>Telekasten search_notes<CR>",
+      --   { desc = "live grep with the word under the cursor via Telekasten, [S]earch notes via Telescope live grep" }
+      -- )
+
+      -- Launch panel if nothing is typed after <leader>z
+      km.nmap("<leader>z", "<Cmd>Telekasten panel<CR>", { desc = "Launch panel if nothing is typed after <leader>z" })
+
       km.nmap("<leader>zc", "<Cmd>Telekasten show_calendar<CR>", { desc = "With Telekasten, show [C]alendar" })
-      km.nmap("<leader>zf", "<Cmd>Telekasten find_notes<CR>", { desc = "With Telekasten, [F]ind notes" })
-      km.nmap("<leader>zs", "<Cmd>Telekasten search_notes<CR>", { desc = "With Telekasten, [S]earch notes" })
     end,
   },
 }
