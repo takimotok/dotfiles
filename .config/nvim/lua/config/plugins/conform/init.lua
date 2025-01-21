@@ -66,6 +66,14 @@ M.formatters = {
     },
     stdin = false,
   },
+  ["markdownlint-cli2"] = {
+    args = {
+      "--config",
+      vim.env.XDG_CONFIG_HOME .. "/markdownlint-cli2/.markdownlint-cli2.jsonc",
+      "--fix",
+      "$FILENAME",
+    },
+  },
 }
 
 return M
