@@ -108,6 +108,15 @@ $ ls ~/Library/Application\ Support/Zed/extensions/installed/
 
 cf.) [Configuring Zed - Zed](https://zed.dev/docs/configuring-zed#auto-install-extensions)
 
+## Setup Cursor
+
+See `.config/cursor/extensions.txt` and then run the command below:
+
+```sh
+$ cursor --install-extension "extension name here"
+
+```
+
 ## Firefox data migration
 
 I followed the instruction below but no luck.  

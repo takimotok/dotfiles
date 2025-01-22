@@ -1,0 +1,10 @@
+{
+	"window.commandCenter": 1,
+	"vscode_custom_css.imports": [
+		"file:///Users/kengo/.cursor/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+	],
+	"animations.Install-Method": "Apc Customize UI++",
+	"apc.imports": [
+		"file://${userHome}/.cursor/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+	]
+}

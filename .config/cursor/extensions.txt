@@ -1,0 +1,9 @@
+brandonkirbyson.vscode-animations
+cocopon.iceberg-theme
+drcika.apc-extension
+enhancedjax.vscode-ayu-zed
+katsute.code-background
+tompollak.lazygit-vscode
+tomrijndorp.find-it-faster
+vscodevim.vim
+yoshinorin.current-file-path
