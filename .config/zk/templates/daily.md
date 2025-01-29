@@ -10,7 +10,7 @@ updated_at:
 
 ## TIMELINE
 
-## THOUGHTS
+## TIL (Today I Learned)
 
 ## READ: BOOKS
 
