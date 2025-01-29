@@ -102,7 +102,7 @@ vim.o.foldenable = true
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldnestmax = 5 -- Only fold up to this many nested levels.
-vim.o.foldminlines = 2 -- Only fold if there are at least this many lines.
+vim.o.foldminlines = 1 -- Only fold if there are at least this many lines.
 -- temporary disabled these settings for treesitter folding function
 -- vim.wo.foldmethod = "expr"
 -- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
