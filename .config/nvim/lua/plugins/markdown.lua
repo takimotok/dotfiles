@@ -240,6 +240,10 @@ return {
         tag_notation = "#tag", -- #tag, @tag, :tag:, yaml-bare
         new_note_location = "prefer_home",
         enable_create_new = false,
+        calendar_opts = {
+          weeknm = 1, -- e.g.) WK01
+          calendar_monday = 1, -- weeks start on Mondays
+        },
         image_link_style = "markdown",
         sort = "modified",
         media_previewer = "telescope-media-files",
