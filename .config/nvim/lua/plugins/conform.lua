@@ -22,7 +22,7 @@ return {
     local fmt = function()
       conform.format({
         lsp_fallback = "never",
-        async = false,
+        async = true,
         timeout_ms = 500,
       })
     end
