@@ -32,7 +32,7 @@ alias tips="${NOTES}/dev/01_tips"
 alias prj="${NOTES}/dev/02_prj"
 alias wiki="${NOTES}/wiki"
 
-alias hitotsuto="${VAULT}/Areas/hitotsuto"
+alias hitotsuto="${VAULT}/areas/hitotsuto"
 
 # Dropbox
 alias db="${CLOUD_STRAGE}/Dropbox"
