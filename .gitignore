@@ -45,3 +45,7 @@
 # -----
 conversations
 prompts
+
+# project local
+# -----
+biome.jsonc
