@@ -392,7 +392,7 @@ return {
           max_width = { 60, 0.3 },
           width = nil,
           min_width = 0.2, -- 20%
-          default_direction = "prefer_left",
+          default_direction = "prefer_right",
         },
         update_events = "BufWritePost",
       })
