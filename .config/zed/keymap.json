@@ -2,7 +2,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-w x": "pane::exchange_adjacent",
+      // "ctrl-w x": ["window::SwapItemRight", "workspace::SwapItemLeft"],
       "ctrl-`": "workspace::ToggleBottomDock"
     }
   },
@@ -18,7 +18,7 @@
       "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-w c": "editor::close_buffer"
+      "ctrl-w c": "pane::CloseActiveItem"
     }
   },
   // vim mode
