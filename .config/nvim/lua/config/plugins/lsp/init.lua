@@ -9,7 +9,7 @@ M.ensure_installed = {
   "jsonls",
   -- "ltex",
   "lua_ls",
-  "marksman",
+  -- "marksman",
   -- "phpactor@2022.11.12", -- for php7.x
   "phpactor", -- for php7.x
   -- "intelephense",

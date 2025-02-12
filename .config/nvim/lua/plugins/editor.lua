@@ -179,9 +179,12 @@ return {
           file_ignore_patterns = {
             ".git/",
             ".yarn/",
+            "drafts/",
+            ".bin/",
+            "%old/",
+            "%.archive%/",
             "build",
             "composer.lock",
-            "dist",
             "dist",
             "node_modules",
             "package-lock.json",
