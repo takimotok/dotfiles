@@ -26,10 +26,8 @@ ignore = [
   "drafts/*",
   "log.md",
   "**/.bin/*",
-  "_old/*",
-  ".old/*",
-  ".archive/*",
-  ".archives/*",
+  "*old/*",
+  ".archive*/*",
   ".git/*",
 ]
 
@@ -87,8 +85,18 @@ paths = [
 
 [group."journal/weekly".note]
 template = "weekly.md"
-filename = "{{format-date (date 'last week') '%y%m%d'}}-{{format-date now '%y%m%d'}}-W{{format-date (date 'last week') '%V'}}"
-default-title = "{{format-date (date 'last week') '%y%m%d'}}-{{format-date now '%y%m%d'}}-W{{format-date (date 'last week') '%V'}}"
+filename = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date  (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
+default-title = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
+
+[group."journal/monthly"]
+paths = [
+  "journal/months",
+]
+
+[group."journal/monthly".note]
+template = "monthly.md"
+filename = '{{sh "date -v-1m -v1d +%y%m%d"}}-{{sh "date -v1d -v-1m -v+1m -v-1d +%y%m%d"}}-M{{format-date (date "last month") "%m"}}'
+default-title = '{{sh "date -v-1m -v1d +%y%m%d"}}-{{sh "date -v1d -v-1m -v+1m -v-1d +%y%m%d"}}-M{{format-date (date "last month") "%m"}}'
 
 # [group."journal/weekly".extra]
 # Monday is the first day of the week
@@ -168,6 +176,8 @@ dead-link = "error"
 
 
 # NAMED FILTERS
+# cf.) https://zk-org.github.io/zk/notes/note-filtering.html#filter-by-creation-or-modification-date
+# available options: --created-before, --created-after, --modified-before and --modified-after
 [filter]
 
 # Matches the notes created the last two weeks. For example:
@@ -175,6 +185,11 @@ dead-link = "error"
 #    $ zk edit recents --interactive
 #recents = "--sort created- --created-after 'last two weeks'"
 
+# e.g.)
+# $ zk ll thisweek
+lastweek = "--sort created- --created-after 'last monday' --created-before 'last sunday'"
+thisweek = "--sort created- --created-after 'last monday' --created-before 'today'"
+lastmonth = "--sort created- --created-after 'last month' --created-before 'last month'"
 
 # COMMAND ALIASES
 #
@@ -214,4 +229,7 @@ daily = 'zk new -g "journal/daily" "$ZK_NOTEBOOK_DIR/journal/dailies/$@"'
 
 # usage: zk weekly $(date '+%Y')
 weekly = 'zk new -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
+
+# usage: zk monthly $(date '+%Y')
+monthly = 'zk new -g "journal/monthly" "$ZK_NOTEBOOK_DIR/journal/months/$@"'
 

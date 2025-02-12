@@ -1,5 +1,5 @@
 ---
-title: {{format-date (date 'last week') '%y%m%d'}}-{{format-date now '%y%m%d'}}-W{{format-date (date 'last week') '%V'}}
+title: {{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}
 aliases: [{{id}}, ]
 tags: ['weekly note', 'note']
 id: {{id}}
@@ -23,3 +23,13 @@ updated_at:
 ## 1w を通してあまり上手くいかなかったこと
 
 ## あまり上手くいかなかったことのなかで, 来週集中して取組むことは?
+
+## FUTURE WORKS
+
+### dev
+
+### dream
+
+### read later
+
+### others
