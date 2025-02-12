@@ -18,15 +18,16 @@ set -Ceu
     fi
 
     ln -sf "${PWD}/.config/cursor/settings.json" "${CURSOR_PATH}/settings.json"
+    ln -sf "${PWD}/.config/cursor/keybindings.json" "${CURSOR_PATH}/keybindings.json"
 
     # avoid error:
     #   SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)"
     codesign --force --deep --sign - /Applications/Cursor.app
 
-    # @TODO: install extensions extensions.txt
+    # @TODO: install extensions via extensions.txt
     # cf.) https://github.com/getcursor/cursor/issues/1985
     #
-    # Ut seems the command below doesn't work:
+    # It seems the command below doesn't work:
     #   `$ cursor --install-extensions`
   }
 
