@@ -1,7 +1,7 @@
 require("on")
+local font = require("font")
 local key_tables = require("key_tables")
 local keys = require("keys")
-local font = require("font")
 -- require("tab_bar_style")
 
 local config = {}
@@ -101,6 +101,10 @@ config = {
 
   --[[ scrollback ]]
   scrollback_lines = 5000,
+
+  --[[ reflesh rate ]]
+  -- Limits the maximum number of frames per second that wezterm will attempt to draw
+  max_fps = 200,
 }
 
 return config
