@@ -20,7 +20,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Catppuccin Mocha"
+    "dark": "Rosé Pine"
   },
   "telemetry": {
     "diagnostics": false,
@@ -49,5 +49,9 @@
         "font_style": "italic"
       }
     }
+  },
+  "file_types": {
+    // https://github.com/zed-industries/zed/pull/12655
+    "JSONC": ["settings.json", "tasks.json", "keymap.json"]
   }
 }
