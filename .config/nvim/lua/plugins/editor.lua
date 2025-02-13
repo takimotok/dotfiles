@@ -351,7 +351,6 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      -- local model = "gpt-4o-2024-05-13"
       local model = "gpt-4o"
       require("chatgpt").setup({
         api_key_cmd = "op read op://Personal/ChatGPT_API_for_nvim/Credentials/api-key --no-newline",
@@ -549,16 +548,14 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    -- cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat", "CodeCompanionCmd" },
     config = function()
       local codecompanion = require("codecompanion")
       codecompanion.setup({
+        -- cf.) available adapters found here:
+        --  https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adap
         adapters = {
           copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
-              -- env = {
-              --   api_key = "cmd:op read op://Personal/ChatGPT_API_for_nvim/Credentials/api-key --no-newline",
-              -- },
               schema = {
                 model = {
                   -- default = "gpt-4o",
@@ -578,7 +575,7 @@ return {
         },
         display = {
           action_palette = {
-            provider = "telescope", -- default|telescope|mini_pick
+            provider = "default", -- default|telescope|mini_pick
             opts = {
               show_default_actions = true, -- Show the default actions in the action palette?
               show_default_prompt_library = true, -- Show the default prompt library in the action palette?
@@ -596,7 +593,7 @@ return {
       })
 
       -- keymaps
-      km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle chat window" })
+      km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle [C]hat window" })
     end,
   },
 }
