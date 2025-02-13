@@ -78,14 +78,22 @@ return {
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown" },
+    ft = { "markdown", "mdx", "codecompanion" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = function()
       require("render-markdown").setup({
+        -- https://github.com/olimorris/codecompanion.nvim/discussions/456
+        render_modes = true, -- render in all modes
+        sign = {
+          enabled = false, -- Turn off in the status column
+        },
+
         heading = {
           sign = false,
           icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
           width = { "full", "full", "block", "block", "block", "block" },
+          left_pad = 0,
+          right_pad = 4,
         },
         -- callout = {
         --   note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
@@ -140,6 +148,12 @@ return {
           wiki = { icon = "🔗 ", highlight = "RenderMarkdownWikiLink" },
           custom = {
             web = { pattern = "^http[s]?://", icon = "🔗 ", highlight = "RenderMarkdownLink" },
+            youtube = { pattern = "youtube%.com", icon = "󰗃 " },
+            github = { pattern = "github%.com", icon = "󰊤 " },
+            neovim = { pattern = "neovim%.io", icon = " " },
+            stackoverflow = { pattern = "stackoverflow%.com", icon = "󰓌 " },
+            discord = { pattern = "discord%.com", icon = "󰙯 " },
+            reddit = { pattern = "reddit%.com", icon = "󰑍 " },
           },
         },
       })

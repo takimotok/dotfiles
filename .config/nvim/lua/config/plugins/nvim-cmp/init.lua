@@ -98,6 +98,19 @@ cmp.setup({
   },
 })
 
+-- Use buffer source for filetyps
+cmp.setup.filetype({ "markdown" }, {
+  sources = {
+    { name = "buffer" },
+    { name = "path" },
+    { name = "emoji" },
+    {
+      name = "dictionary",
+      keyword_length = 2,
+    },
+  },
+})
+
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won"t work anymore).
 cmp.setup.cmdline({ "/", "?" }, {
   mapping = cmp.mapping.preset.cmdline(),
