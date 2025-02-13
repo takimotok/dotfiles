@@ -1,5 +1,3 @@
--- local configs = require("config.plugins.nvim-cmp")
-
 return {
   {
     "hrsh7th/nvim-cmp",

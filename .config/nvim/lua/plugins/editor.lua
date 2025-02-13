@@ -351,7 +351,8 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      local model = "gpt-4o-2024-05-13"
+      -- local model = "gpt-4o-2024-05-13"
+      local model = "gpt-4o"
       require("chatgpt").setup({
         api_key_cmd = "op read op://Personal/ChatGPT_API_for_nvim/Credentials/api-key --no-newline",
         openai_params = {
@@ -541,5 +542,61 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
+  },
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    -- cmd = { "CodeCompanion", "CodeCompanionActions", "CodeCompanionChat", "CodeCompanionCmd" },
+    config = function()
+      local codecompanion = require("codecompanion")
+      codecompanion.setup({
+        adapters = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              -- env = {
+              --   api_key = "cmd:op read op://Personal/ChatGPT_API_for_nvim/Credentials/api-key --no-newline",
+              -- },
+              schema = {
+                model = {
+                  -- default = "gpt-4o",
+                  default = "claude-3.5-sonnet",
+                },
+              },
+            })
+          end,
+        },
+        strategies = {
+          chat = {
+            adapter = "copilot",
+          },
+          inline = {
+            adapter = "copilot",
+          },
+        },
+        display = {
+          action_palette = {
+            provider = "telescope", -- default|telescope|mini_pick
+            opts = {
+              show_default_actions = true, -- Show the default actions in the action palette?
+              show_default_prompt_library = true, -- Show the default prompt library in the action palette?
+            },
+          },
+          chat = {
+            show_settings = true, -- a yaml block will be present at the top of the chat buffer which can be modified in between responses
+          },
+        },
+        opts = {
+          send_code = true, -- prevent any code from being sent to the LLM
+          log_level = "INFO", -- TRACE|DEBUG|ERROR|INFO
+          language = "English",
+        },
+      })
+
+      -- keymaps
+      km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle chat window" })
+    end,
   },
 }
