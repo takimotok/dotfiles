@@ -40,7 +40,7 @@ local M = {
       intensity = "Bold",
       font = wezterm.font({
         family = "Victor Mono",
-        weight = "Bold",
+        weight = "ExtraBold",
         style = "Italic",
       }),
     },

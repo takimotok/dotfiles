@@ -101,8 +101,13 @@ cmp.setup({
 -- Use buffer source for filetyps
 cmp.setup.filetype({ "markdown" }, {
   sources = {
+    { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
+    { name = "copilot" },
     { name = "buffer" },
     { name = "path" },
+    { name = "luasnip" },
+    { name = "treesitter" },
     { name = "emoji" },
     {
       name = "dictionary",

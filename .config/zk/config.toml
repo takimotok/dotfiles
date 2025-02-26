@@ -203,6 +203,10 @@ lastmonth = "--sort created- --created-after 'last month' --created-before 'last
 [alias]
 # list notes for editing
 ls = "zk edit --interactive $@"
+
+# list notes
+# e.g.) zk ll --sort created- --created-after "2025-02-10" --created-before "2025-02-16"
+
 ll = "zk list --quiet --format oneline $@"
 
 # Edit the last modified note.
