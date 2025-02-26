@@ -177,18 +177,23 @@ return {
           },
           layout_strategy = "vertical",
           file_ignore_patterns = {
+            "%.archive./",
+            "%.jpeg",
+            "%.jpg",
+            "%.lock",
+            "%.pdf",
+            "%.png",
+            "%lock%.",
+            "%old/",
+            ".DS_Store",
+            ".bin/",
             ".git/",
             ".yarn/",
-            "drafts/",
-            ".bin/",
-            "%old/",
-            "%.archive%/",
+            ".zk/",
             "build",
-            "composer.lock",
             "dist",
+            "drafts/",
             "node_modules",
-            "package-lock.json",
-            "yarn.lock",
           },
         },
         pickers = {
@@ -552,14 +557,19 @@ return {
       local codecompanion = require("codecompanion")
       codecompanion.setup({
         -- cf.) available adapters found here:
-        --  https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adap
+        --  https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
         adapters = {
           copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
                   -- default = "gpt-4o",
+                  -- default = "o3-mini-2025-01-31",
                   default = "claude-3.5-sonnet",
+                  -- default = "gemini-2.0-flash-001",
+                },
+                max_tokens = {
+                  default = 8192,
                 },
               },
             })
@@ -583,6 +593,8 @@ return {
           },
           chat = {
             show_settings = true, -- a yaml block will be present at the top of the chat buffer which can be modified in between responses
+            -- show_header_separator = true,
+            -- separator = "-",
           },
         },
         opts = {
