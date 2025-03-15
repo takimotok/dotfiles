@@ -562,6 +562,7 @@ return {
       codecompanion.setup({
         -- cf.) available adapters found here:
         --  https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
+        --  https://github.com/olimorris/codecompanion.nvim/discussions/858
         adapters = {
           copilot = function()
             return require("codecompanion.adapters").extend("copilot", {
@@ -569,11 +570,13 @@ return {
                 model = {
                   -- default = "gpt-4o",
                   -- default = "o3-mini-2025-01-31",
-                  default = "claude-3.5-sonnet",
+                  -- default = "claude-3.5-sonnet",
                   -- default = "gemini-2.0-flash-001",
+                  default = "claude-3.7-sonnet",
                 },
                 max_tokens = {
                   default = 8192,
+                  -- default = 16384,
                 },
               },
             })
@@ -582,6 +585,17 @@ return {
         strategies = {
           chat = {
             adapter = "copilot",
+            slash_commands = {
+              ["file"] = {
+                -- Location to the slash command in CodeCompanion
+                callback = "strategies.chat.slash_commands.file",
+                description = "Select a file using Telescope",
+                opts = {
+                  provider = "telescope", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
+                  contains_code = true,
+                },
+              },
+            },
           },
           inline = {
             adapter = "copilot",
@@ -610,6 +624,8 @@ return {
 
       -- keymaps
       km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle [C]hat window" })
+      km.nmap("<C-a>", "<cmd>CodeCompanionActions<cr>")
+      km.vmap("<C-a>", "<cmd>CodeCompanionActions<cr>")
     end,
   },
 }
