@@ -27,6 +27,7 @@ M.source_group_first = {
   { name = "copilot" },
   { name = "path" },
   { name = "cmdline" },
+  { name = "codecompanion" },
 }
 M.source_group_second = {
   {
@@ -105,6 +106,7 @@ cmp.setup.filetype({ "markdown" }, {
     { name = "nvim_lsp_signature_help" },
     { name = "copilot" },
     { name = "buffer" },
+    { name = "codecompanion" },
     { name = "path" },
     { name = "luasnip" },
     { name = "treesitter" },
