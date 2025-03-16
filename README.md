@@ -71,6 +71,8 @@ Then, we can search installed repositories with `^]` key.
 
 ## Setup rust
 
+cf.) `packages/mise/install.sh`
+
 ```sh
 # setup rust
 # select `1` below
