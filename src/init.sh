@@ -58,7 +58,7 @@ set -Ceu
     _exit_with_errors "$?"
 
     # install brew packages from Brewfile
-    brew bundle --file=./packages/Brewfile
+    brew bundle --force --file=./packages/Brewfile
     _exit_with_errors "$?"
 
     # WezTerm

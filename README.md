@@ -24,6 +24,9 @@ $ echo "export ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zshenv
 Run `install.sh` by curl:
 
 ```sh
+$ mkdir -p ~/.config && \
+  mkdir -p ~/projects/github.com/takimotok
+
 $ cd ~/projects/github.com/takimotok
 
 $ curl \
