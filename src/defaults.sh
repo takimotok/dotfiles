@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# cf.) [macOS defaults list](https://macos-defaults.com/)
+
 set -Ceu
 
 (
@@ -67,6 +69,9 @@ set -Ceu
     # disable waiting time before it is displayed
     defaults write com.apple.dock autohide-delay -float 0
 
+    # set the icon size of Dock items in pixels
+    defaults write com.apple.dock "tilesize" -int "36"
+
     # Finder
     # -----
     # disable animation
@@ -83,6 +88,9 @@ set -Ceu
 
     # show path bar
     defaults write com.apple.finder ShowPathbar -bool true
+
+    # show quit option. enable the `Command + q` to close Finder
+    defaults write com.apple.finder QuitMenuItem -bool true
 
     # set default view style as list view
     defaults write com.apple.finder "FXPreferredViewStyle" -string "Nlsv" && killall Finder
@@ -103,6 +111,11 @@ set -Ceu
 
     # Display battery level in the menu bar
     defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+    # Menu bar
+    # -----
+    defaults -currentHost write -globalDomain NSStatusItemSpacing -int 6
+    defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 6
 
     # Terminal
     # -----
