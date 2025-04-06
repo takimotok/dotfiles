@@ -99,7 +99,7 @@ MYPY_CACHE_DIR="/dev/null"
 
 # ruby
 # -----
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${HOMEBREW_PREFIX}/opt/openssl@3"
 
 # rust
 # -----
@@ -120,4 +120,5 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 
 # to show image inside nvim
 # cf.) https://github.com/3rd/image.nvim?tab=readme-ov-file#installing-imagemagick
-export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+export DYLD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib:$DYLD_LIBRARY_PATH"
+

@@ -85,11 +85,20 @@ function M.setup()
     ["phpactor"] = function()
       lspconfig.phpactor.setup({
         name = "phpactor",
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
         capabilities = capabilities,
         init_options = {
           ["language_server_php_cs_fixer.enabled"] = false,
           ["language_server_phpstan.enabled"] = false,
         },
+        cmd = { "phpactor", "language-server" },
+        root_dir = function(fname)
+          -- 次の順で project root を探す
+          return lspconfig.util.root_pattern(".phpactor.json", "composer.json", ".git")(fname)
+        end,
       })
     end,
 
@@ -244,3 +253,4 @@ function M.setup()
 end
 
 return M
+

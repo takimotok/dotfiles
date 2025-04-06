@@ -14,3 +14,13 @@ km.nmap("<ESC><ESC>", "<CMD>nohlsearch<CR>", { desc = "Unhighlight" })
 
 -- Escape
 km.imap("jk", "<ESC>", { desc = "leave insert mode" })
+
+-- Toggle listchars visibility
+km.nmap("<leader>lt", function()
+  if vim.opt.list:get() then
+    vim.opt.list = false
+  else
+    vim.opt.list = true
+  end
+end, { desc = "[L]istchars Toggle visibility" })
+

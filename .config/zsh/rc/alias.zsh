@@ -2,8 +2,6 @@
 
 # alias
 # -----
-#
-
 alias aria2c='aria2c -d $HOME/Desktop'
 
 alias delds='pushd $(pwd) && cd ~ && find / -name ".DS_Store" -delete && popd'
@@ -23,10 +21,9 @@ alias grep='ggrep'
 
 # Cloud Storages
 # cf.) rc/paths.zsh
-alias google="${GDRIVE}/"
+alias gdrive="${G_DRIVE_PATH}/"
 alias vault="${VAULT}/"
 alias n="${NOTES}/"
-alias gn="${GOOD_NOTES}/"
 
 alias tips="${NOTES}/dev/01_tips"
 alias prj="${NOTES}/dev/02_prj"
@@ -34,17 +31,14 @@ alias wiki="${NOTES}/wiki"
 
 alias hitotsuto="${VAULT}/areas/hitotsuto"
 
-# Dropbox
-alias db="${CLOUD_STRAGE}/Dropbox"
-
 # iCloud
 alias icloud="${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs"
-
 
 # restart touchbar@MBP2019
 alias rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
 
 # toggle Wi-fi
+# -----
 # cf.)
 # - https://apple.stackexchange.com/questions/368046/how-to-check-status-of-wi-fi-adapter-through-command-line
 # - https://www.mattcrampton.com/blog/managing_wifi_connections_using_the_mac_osx_terminal_command_line/
@@ -54,3 +48,4 @@ alias rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
 # @TODO: Raycast の script を作成してもいいかも
 alias twn="networksetup -setairportpower en0 on"
 alias twf="networksetup -setairportpower en0 off"
+

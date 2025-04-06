@@ -11,13 +11,66 @@ function M.setLinters()
     dockerfile = { "hadolint" },
     editorconfig = { "editorconfig-checker" },
 
-    php = { "phpstan" },
+    php = { "phpstan", "phpcs" },
     python = { "ruff" },
     sql = { "sqlfluff" },
     yaml = { "yamllint" },
 
     sh = { "shellcheck" },
     -- zsh = { "zsh" },
+  }
+
+  local function get_phpcs_args()
+    -- プロジェクトローカルの phpcs.xml を探す
+    local local_config = vim.fn.findfile("phpcs.xml", vim.fn.getcwd() .. ";")
+    if local_config ~= "" then
+      return {
+        "--report=json",
+        "--standard=" .. vim.fn.fnamemodify(local_config, ":p"), -- 絶対パスに変換
+        "-",
+      }
+    end
+
+    -- ローカル設定が見つからない場合はデフォルトの PSR12 を使用
+    return {
+      "--report=json",
+      "--standard=PSR12",
+      "-",
+    }
+  end
+
+  linters.phpcs = {
+    cmd = "phpcs",
+    args = get_phpcs_args(),
+    stdin = true,
+    ignore_exitcode = true,
+    parser = function(output)
+      local diagnostics = {}
+      if output == "" then
+        return diagnostics
+      end
+
+      local decoded = vim.json.decode(output)
+      if not decoded or not decoded.files or vim.tbl_isempty(decoded.files) then
+        return diagnostics
+      end
+
+      for _, file in pairs(decoded.files) do
+        for _, message in ipairs(file.messages) do
+          table.insert(diagnostics, {
+            lnum = message.line - 1,
+            col = message.column - 1,
+            end_lnum = message.line - 1,
+            end_col = message.column,
+            severity = message.type == "ERROR" and vim.diagnostic.severity.ERROR or vim.diagnostic.severity.WARN,
+            message = message.message,
+            source = "phpcs",
+          })
+        end
+      end
+
+      return diagnostics
+    end,
   }
 
   linters.phpstan.args = {
@@ -62,6 +115,12 @@ function M.setLinters()
     "--config",
     vim.env.XDG_CONFIG_HOME .. "/markdownlint-cli2/.markdownlint-cli2.jsonc",
     "--",
+  }
+
+  linters.editorconfig = {
+    cmd = "editorconfig-checker",
+    args = { "$FILENAME" },
+    stdin = false,
   }
 end
 
@@ -154,3 +213,4 @@ function M.setKeymaps()
 end
 
 return M
+

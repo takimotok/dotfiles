@@ -58,8 +58,18 @@ vim.opt.expandtab = true
 
 -- show <Tab> and <EOL>
 vim.opt.list = true
--- vim.opt.listchars = { tab = '▸-', trail = '-', nbsp = '+', space = '⋅'}
-vim.opt.listchars = { tab = "▸-", trail = "-", nbsp = "+" }
+vim.opt.listchars = {
+  tab = "▸-",
+  trail = "-",
+  nbsp = "+",
+  -- eol = "↲",
+  space = "⋅",
+  --   extends = "»",
+  --   precedes = "«",
+}
+-- vim.opt.fillchars = {
+--   eob = "~", -- 空行を表示
+-- }
 
 -- command history
 vim.opt.history = 512
@@ -126,6 +136,20 @@ vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = vim.env.MISE_DATA_DIR .. "/installs/python/3/bin/python"
 
+-- file format and line endings
+-- vim.opt.endofline = true             -- ファイル末尾の改行を保持
+vim.opt.fileformat = "unix" -- デフォルトの改行コード
+vim.opt.fileformats = "unix,mac,dos" -- 優先順位付きの改行コード
+vim.opt.fixendofline = false -- ファイル末尾の改行を自動的に追加
+-- vim.opt.binary = true
+-- vim.opt.nofixeol= true
+
+-- 仮想行の表示設定
+-- vim.opt.virtualedit = "block"        -- visual-blockモードで仮想編集を有効化
+-- vim.opt.display = "lastline,msgsep"  -- 長い行の表示方法を制御
+-- vim.opt.display = "lastline"  -- 長い行の表示方法を制御
+
 -- @TODO: think later
 -- @see `:h modeline`
 -- vim: ts=2 sts=2 sw=2 et
+

@@ -2,8 +2,9 @@
   editor = nvim
 	quotepath = false
 [user]
-	email = 55965039+takimotok@users.noreply.github.com
+  email = 55965039+takimotok@users.noreply.github.com
 	name = k.takimoto
+  # signingkey = 6D978FF94C3AEB9B
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIID7HVkNPH3XSPk039LwjhTRpf0XHBQwSdIeG/FsO+Kp
 [init]
 	defaultBranch = master
@@ -32,6 +33,7 @@
     --date=format:'%Y-%m-%d %H:%M:%S'
 [gpg]
 	format = ssh
+	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = true
 [tag]
@@ -44,3 +46,4 @@
 	rebase = false
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+

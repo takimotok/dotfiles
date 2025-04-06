@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <description>Custom ruleset for PHP 7.0.2 project</description>
+
+    <!-- PSR2 をベースに使用（PHP 7.0.2 互換） -->
+    <rule ref="PSR2"/>
+
+    <!-- PHP 7.0.2 を明示的に指定 -->
+    <config name="php_version" value="70002"/>
+
+    <!-- 定数の visibility チェックを完全に無効化（PHP 7.0.2 では使用不可） -->
+    <rule ref="PSR12.Properties.ConstantVisibility">
+        <severity>0</severity>
+    </rule>
+
+    <!-- 連続する空行を禁止するルール -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <!-- 連続する空行を検出 -->
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines"/>
+
+    <!-- ファイル末尾の空行が多すぎるエラーを無視 -->
+    <rule ref="PSR2.Files.EndFileNewline.TooMany">
+        <severity>0</severity>
+    </rule>
+
+    <!-- 除外するディレクトリ -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/cache/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+</ruleset>
+

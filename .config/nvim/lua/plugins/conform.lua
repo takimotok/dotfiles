@@ -11,6 +11,7 @@ return {
     local conform = require("conform")
     conform.setup({
       formatters_by_ft = config.set_formatters_by_ft(),
+      -- cf.) nvim/lua/config/autocmds.lua で BufWritePre event 時に呼び出している
       format_on_save = config.format_on_save,
       formatters = config.formatters,
       default_format_opts = {
@@ -29,3 +30,4 @@ return {
     km.nmap("<leader>gf", fmt, { desc = " Format & Save" })
   end,
 }
+

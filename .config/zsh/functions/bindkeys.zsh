@@ -29,3 +29,4 @@ zle -N select-history
 #     cd "$dir"
 # }
 # zle -N fcd
+

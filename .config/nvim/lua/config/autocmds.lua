@@ -23,6 +23,20 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+-- [[for all files]]
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_echo({ { "Running conform.nvim format", "WarningMsg" } }, true, {})
+    require("conform").format({
+      lsp_fallback = "never", -- LSP フォーマットを無効化
+      async = false, -- 同期的に実行
+      timeout_ms = 500, -- タイムアウトを設定
+    })
+  end,
+  desc = "Format file on save using conform.nvim",
+})
+
 -- [[for Markdown files]]
 
 -- retain folding view
@@ -139,3 +153,4 @@ vim.api.nvim_create_autocmd("FileType", {
 --   ]],
 --   desc = "Source $MYVIMRC when make changes",
 -- })
+

@@ -7,8 +7,8 @@ set -Ceu
 (
   main() {
     # check if the os is macOS
-    _is_macos
-    _exit_with_errors "$?"
+    # _is_macos
+    # _exit_with_errors "$?"
 
     # base
     # -----
@@ -181,7 +181,7 @@ set -Ceu
     # Mouse
     # -----
     # set mouse speed
-    defaults write NSGlobalDomain com.apple.mouse.scaling -float "16"
+    defaults write NSGlobalDomain com.apple.mouse.scaling -float "12"
 
     # set scrolling speed
     defaults write -g com.apple.scrollwheel.scaling 5
@@ -189,7 +189,7 @@ set -Ceu
     # Others
     # -----
     # use Google's public DNS
-    networksetup -setdnsservers Wi-Fi 2001:4860:4860::8844 2001:4860:4860::8888 8.8.4.4 8.8.8.8
+    # networksetup -setdnsservers Wi-Fi 2001:4860:4860::8844 2001:4860:4860::8888 8.8.4.4 8.8.8.8
 
     # reflect settings
     # -----
