@@ -11,7 +11,8 @@ language = "en"
 default-title = "Untitled"
 
 # Template used to generate a note's filename, without extension.
-filename = "{{format-date now '%Y-%m-%d'}}-{{format-date now 'timestamp'}}"
+# filename = "{{format-date now '%Y-%m-%d'}}-{{format-date now 'timestamp'}}"
+filename = "index"
 
 # The file extension used for the notes.
 extension = "md"
@@ -225,15 +226,17 @@ t = "zk edit --interactive --tag $@"
 slides = "zk list --interactive --quiet --format path --delimiter0 $@ | xargs -0 slides"
 
 # Edit this configuration file.
-conf = '$EDITOR "$XDG_CONFIG_HOME/zk/config.toml"'
+config = '$EDITOR "$XDG_CONFIG_HOME/zk/config.toml"'
 
 # create a daily journal
 # usage: zk daily $(date '+%Y/%m')
-daily = 'zk new -g "journal/daily" "$ZK_NOTEBOOK_DIR/journal/dailies/$@"'
+# options:
+#    -p, --print-path: Print the path of the created note instead of editing it.
+daily = 'zk new -p -g "journal/daily" "$ZK_NOTEBOOK_DIR/journal/dailies/$@"'
 
 # usage: zk weekly $(date '+%Y')
-weekly = 'zk new -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
+weekly = 'zk new -p -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
 
 # usage: zk monthly $(date '+%Y')
-monthly = 'zk new -g "journal/monthly" "$ZK_NOTEBOOK_DIR/journal/months/$@"'
+monthly = 'zk new -p -g "journal/monthly" "$ZK_NOTEBOOK_DIR/journal/months/$@"'
 
