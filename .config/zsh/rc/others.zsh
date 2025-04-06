@@ -57,6 +57,10 @@ if [ "$(uname -m)" = "arm64" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+export HOMEBREW_NO_ENV_HINTS=true
+export HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
+export HOMEBREW_BUNDLE_FILE_GLOBAL="${XDG_CONFIG_HOME}/homebrew/Brewfile"
+
 # mise (rtx)
 # -----
 # for installing php8.x
