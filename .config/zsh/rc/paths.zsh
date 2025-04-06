@@ -18,10 +18,14 @@ export PATH=$PATH:$GOPATH/bin
 # for android
 # use command line tools
 # -----
-export ANDROID_HOME=$HOME/Library/Android/sdk/
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/tools/bin:$PATH
+export ANDROID_HOME="${HOME}/Library/Android/sdk/"
+export PATH="${ANDROID_HOME}/platform-tools":$PATH
+export PATH="${ANDROID_HOME}/emulator":$PATH
+
+# ↓ 実体をみたら下記 path は存在しなかった
+# @TODO: もしかしたら cpu architecture によって異なるのかも
+# export PATH=$ANDROID_HOME/tools:$PATH
+# export PATH=$ANDROID_HOME/tools/bin:$PATH
 
 # poetry (python package manager)
 # -----

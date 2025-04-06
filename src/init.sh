@@ -58,7 +58,19 @@ set -Ceu
     _exit_with_errors "$?"
 
     # install brew packages from Brewfile
-    brew bundle --force --file=./packages/Brewfile
+    BREWFILE=./.config/homebrew/Brewfile
+    brew bundle --force --file="${BREWFILE}"
+    _exit_with_errors "$?"
+
+    # install mac packages from maslist.txt
+    grep '^mas ' "${BREWFILE}" | \
+    while read -r line; do
+      masid=$(echo "${line}" | sed -nr 's/^mas "(.*)", id: ([0-9]+)$/\2/p')
+      if [ -n "${masid}" ]; then
+        echo "Installing App Store app with ID: ${masid}"
+        mas install "${masid}"
+      fi
+    done
     _exit_with_errors "$?"
 
     # WezTerm
