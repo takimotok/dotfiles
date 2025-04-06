@@ -7,8 +7,7 @@ export G_ACCOUNT=$(op read op://development/Google/DRIVE/username --no-newline)
 
 export G_DRIVE_PATH="${CLOUD_STRAGE}/GoogleDrive-${G_ACCOUNT}/My\ Drive"
 export VAULT="${G_DRIVE_PATH}/Vault"
-export NOTES="${G_DRIVE_PATH}/Notes"
-export GOOD_NOTES="${G_DRIVE_PATH}/GoodNotes"
+export NOTES="${VAULT}/notes"
 
 # for go (ghq)
 # -----
@@ -34,3 +33,4 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 # zk
 # -----
 export ZK_NOTEBOOK_DIR=${NOTES}
+

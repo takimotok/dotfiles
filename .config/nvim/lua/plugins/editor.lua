@@ -94,8 +94,9 @@ return {
     event = "BufEnter",
     opts = {
       char = "┊",
-      show_end_of_line = true,
-      space_char_blankline = " ",
+      show_end_of_line = false,
+      show_trailing_blankline_indent = false,
+      -- space_char_blankline = " ",
     },
     config = function()
       -- @TODO: think about which is better to display:
@@ -194,6 +195,7 @@ return {
             "dist",
             "drafts/",
             "node_modules",
+            "vendor",
           },
         },
         pickers = {
@@ -249,7 +251,9 @@ return {
         builtin.registers,
         { desc = "[F]ind [R]egisteres. Lists vim registers, pastes the contents of the register on <cr>" }
       )
-      km.nmap("<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+
+      -- cf.) lua/config/plugins/lsp/keymaps.lua
+      -- km.nmap("<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
       -- for file_browser
       km.nmap("<leader>e", ":Telescope file_browser<CR>", { desc = "use the telescope-file-browser" })
@@ -568,11 +572,11 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  -- default = "gpt-4o",
+                  default = "gpt-4o",
                   -- default = "o3-mini-2025-01-31",
-                  -- default = "claude-3.5-sonnet",
                   -- default = "gemini-2.0-flash-001",
-                  default = "claude-3.7-sonnet",
+                  -- default = "claude-3.5-sonnet",
+                  -- default = "claude-3.7-sonnet",
                 },
                 max_tokens = {
                   default = 8192,
@@ -628,4 +632,19 @@ return {
       km.vmap("<C-a>", "<cmd>CodeCompanionActions<cr>")
     end,
   },
+  {
+    -- @TODO: remove in the future to use editorconfig alternatively
+    -- we can add a new line at the end of the file thaks to this plugin
+    "cappyzawa/trim.nvim",
+    config = function()
+      local trim = require("trim")
+      trim.setup({
+        trim_last_line = false,
+        patterns = {
+          [[%s/\n*\%$/\r/]],
+        },
+      })
+    end,
+  },
 }
+
