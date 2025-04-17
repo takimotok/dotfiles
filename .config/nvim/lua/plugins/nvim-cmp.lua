@@ -13,7 +13,7 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-path",
       "ray-x/cmp-treesitter",
-      "rcarriga/cmp-dap",
+      -- "rcarriga/cmp-dap",
       "saadparwaiz1/cmp_luasnip",
       "zbirenbaum/copilot-cmp",
 
@@ -28,3 +28,4 @@ return {
     end,
   },
 }
+

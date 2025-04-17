@@ -105,7 +105,7 @@ function M.setLinters()
   }
 
   linters.yamllint.args = {
-    "--config-file",
+    "-c",
     vim.fn.stdpath("config") .. "/yamllint/config",
     "--format=parsable",
     "-",

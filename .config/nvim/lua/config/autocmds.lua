@@ -24,18 +24,18 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- [[for all files]]
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_echo({ { "Running conform.nvim format", "WarningMsg" } }, true, {})
-    require("conform").format({
-      lsp_fallback = "never", -- LSP フォーマットを無効化
-      async = false, -- 同期的に実行
-      timeout_ms = 500, -- タイムアウトを設定
-    })
-  end,
-  desc = "Format file on save using conform.nvim",
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*",
+--   callback = function()
+--     vim.api.nvim_echo({ { "Running conform.nvim format", "WarningMsg" } }, true, {})
+--     require("conform").format({
+--       lsp_fallback = "never", -- LSP フォーマットを無効化
+--       async = false, -- 同期的に実行
+--       timeout_ms = 500, -- タイムアウトを設定
+--     })
+--   end,
+--   desc = "Format file on save using conform.nvim",
+-- })
 
 -- [[for Markdown files]]
 
@@ -114,6 +114,36 @@ vim.api.nvim_create_autocmd("FileType", {
     -- vim.opt_local.formatoptions:append({ "p" })
   end,
 })
+
+-- [[ for LSP ]]
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+--     -- 全ての LSP サーバーの formatting 機能を無効化
+--     client.server_capabilities.documentFormattingProvider = false
+--     client.server_capabilities.documentRangeFormattingProvider = false
+
+--     -- サーバーがハイライト機能をサポートしている場合のみ自動ハイライトを設定
+--     if client and client.server_capabilities.documentHighlightProvider then
+--       local group = vim.api.nvim_create_augroup("lsp_document_highlight_" .. args.buf, { clear = true })
+--       vim.api.nvim_create_autocmd("CursorHold", {
+--         group = group,
+--         buffer = args.buf,
+--         callback = function()
+--           vim.lsp.buf.document_highlight()
+--         end,
+--       })
+--       vim.api.nvim_create_autocmd("CursorMoved", {
+--         group = group,
+--         buffer = args.buf,
+--         callback = function()
+--           vim.lsp.buf.clear_references()
+--         end,
+--       })
+--     end
+--   end,
+-- })
 
 -- Markdown, Text, and Txt files
 -- local md_files = vim.api.nvim_create_augroup("OpenMarkdownFiles", {

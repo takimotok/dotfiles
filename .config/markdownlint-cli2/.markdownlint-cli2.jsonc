@@ -1,6 +1,9 @@
 {
 	"config": {
 		// "default": true,
+    // MD009: 行末のスペースを許可する
+    "MD009": { "br_spaces": 2 },  // Markdown改行（2スペース）を許可
+
 		// Line length
 		"MD013": false,
 		// Dollar signs used before commands without showing output
@@ -23,3 +26,4 @@
 	"globs": ["**/*.md", "**/*.mdx"],
 	"ignores": ["node_modules", "dist", ".zk"]
 }
+

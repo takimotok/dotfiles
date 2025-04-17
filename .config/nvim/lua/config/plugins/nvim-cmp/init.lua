@@ -16,13 +16,13 @@ local source_map = {
   nvim_lsp = "LSP",
   nvim_lsp_signature_help = "Signature",
   path = "Path",
-  dap = "Dap",
+  -- dap = "Dap",
 }
 
 M.source_group_first = {
   { name = "nvim_lsp" },
   { name = "nvim_lsp_signature_help" },
-  { name = "dap" },
+  -- { name = "dap" },
   { name = "emoji" },
   { name = "copilot" },
   { name = "path" },
@@ -135,3 +135,4 @@ cmp.setup.cmdline(":", {
     { name = "cmdline" },
   }),
 })
+

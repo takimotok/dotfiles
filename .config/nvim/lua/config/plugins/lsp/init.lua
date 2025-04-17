@@ -22,7 +22,7 @@ M.ensure_installed = {
   -- "tailwindcss",
   "ts_ls",
   "volar",
-  "yamlls",
+  -- "yamlls",
 }
 
 local function setup_diagnostic()
@@ -93,3 +93,4 @@ function M.setup()
 end
 
 return M
+

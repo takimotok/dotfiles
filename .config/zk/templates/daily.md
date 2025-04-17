@@ -10,8 +10,13 @@ updated_at:
 
 ## TIMELINE
 
+## READ: BOOKS
+
+## READ: ARTICLES
+
 ## TIL (Today I Learned)
 
 ## TIT (Today I Thought)
 
 ## FUTURE WORKS
+

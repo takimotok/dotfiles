@@ -353,9 +353,20 @@ return {
     config = function()
       require("illuminate").configure({
         delay = 100, -- delay: delay in milliseconds
+        filetypes_denylist = {
+          "markdown", -- Markdownファイルで無効化
+          "NvimTree",
+          "TelescopePrompt",
+          "dirbuf",
+          "dirvish",
+          "fugitive",
+          "yaml",
+          "yml",
+        },
       })
     end,
   },
+
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
@@ -572,11 +583,11 @@ return {
             return require("codecompanion.adapters").extend("copilot", {
               schema = {
                 model = {
-                  default = "gpt-4o",
+                  -- default = "gpt-4o",
                   -- default = "o3-mini-2025-01-31",
                   -- default = "gemini-2.0-flash-001",
                   -- default = "claude-3.5-sonnet",
-                  -- default = "claude-3.7-sonnet",
+                  default = "claude-3.7-sonnet",
                 },
                 max_tokens = {
                   default = 8192,

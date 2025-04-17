@@ -7,7 +7,7 @@ export G_ACCOUNT=$(op read op://development/Google/DRIVE/username --no-newline)
 
 export G_DRIVE_PATH="${CLOUD_STRAGE}/GoogleDrive-${G_ACCOUNT}/My\ Drive"
 export VAULT="${G_DRIVE_PATH}/Vault"
-export NOTES="${VAULT}/notes"
+export NOTES="${G_DRIVE_PATH}/Notes"
 
 # for go (ghq)
 # -----

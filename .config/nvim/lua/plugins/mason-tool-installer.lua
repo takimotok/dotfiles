@@ -18,8 +18,9 @@ return {
       integrations = {
         ["mason-lspconfig"] = true,
         ["mason-null-ls"] = false,
-        ["mason-nvim-dap"] = false,
+        -- ["mason-nvim-dap"] = false,
       },
     })
   end,
 }
+

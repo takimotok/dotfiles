@@ -48,6 +48,29 @@ function M.setup()
       })
     end,
 
+    -- yamlls
+    -- ["yamlls"] = function()
+    --   lspconfig.yamlls.setup({
+    --     capabilities = capabilities,
+    --     settings = {
+    --       yaml = {
+    --         schemas = {
+    --           -- プロジェクトごとのスキーマを指定可能
+    --           ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+    --         },
+    --       },
+    --     },
+    --   })
+    -- end,
+
+    -- jsonls
+    -- ["jsonls"] = function()
+    --   lspconfig.jsonls.setup({
+    --     capabilities = capabilities,
+    --     -- Add any specific settings you need
+    --   })
+    -- end,
+
     -- intelephense
     -- @see: https://github.com/bmewburn/intelephense-docs/blob/master/gettingStarted.md
     -- ["intelephense"] = function()
@@ -247,6 +270,19 @@ function M.setup()
     ["ruff"] = function()
       lspconfig.ruff.setup({
         capabilities = capabilities,
+      })
+    end,
+
+    ["zk"] = function()
+      lspconfig.zk.setup({
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+          -- フォーマット機能を無効化
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+          -- documentHighlight機能を無効化
+          client.server_capabilities.documentHighlightProvider = false
+        end,
       })
     end,
   }

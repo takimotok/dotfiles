@@ -43,10 +43,11 @@ M.formatters = {
   "prettierd",
   "shfmt",
   "stylua",
+  "yamlfmt",
 }
 
 M.daps = {
-  "codelldb",
+  -- "codelldb",
 }
 
 M.ensure_installed = {}
@@ -72,7 +73,8 @@ end
 function M.init()
   set_linters()
   set_formatters()
-  set_daps()
+  -- set_daps()
 end
 
 return M
+
