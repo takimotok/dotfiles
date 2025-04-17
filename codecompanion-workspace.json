@@ -1,0 +1,165 @@
+{
+  "name": "Dotfiles Configuration",
+  "description": "Personal dotfiles configuration for development environment",
+  "author": "takimoto.kengo",
+  "version": "1.0.0",
+  "directories": [
+    {
+      "name": "zsh",
+      "path": ".config/zsh",
+      "description": "ZSH shell configuration with zinit plugin manager",
+      "files": [
+        ".zprofile",
+        ".zshenv",
+        ".zshrc",
+        "completions",
+        "functions/bindkeys.zsh",
+        "functions/zcompile.zsh",
+        "rc/alias.zsh",
+        "rc/before_zinit.zsh",
+        "rc/bindkeys.zsh",
+        "rc/cdpath.zsh",
+        "rc/others.zsh",
+        "rc/paths.zsh",
+        "rc/plugin.zsh",
+        "rc/zinit_installer.zsh"
+      ]
+    },
+    {
+      "name": "wezterm",
+      "path": ".config/wezterm",
+      "description": "WezTerm terminal emulator configuration",
+      "files": [
+        "init.lua",
+        "wezterm.lua"
+      ]
+    },
+    {
+      "name": "nvim",
+      "path": ".config/nvim",
+      "description": "Neovim configuration",
+      "files": [
+        "init.lua",
+        "lua/plugins.lua",
+        "lua/settings.lua",
+        "lua/mappings.lua",
+        "lua/autocommands.lua",
+        "lua/colorscheme.lua",
+        "lua/lsp.lua",
+        "lua/cmp.lua",
+        "lua/treesitter.lua",
+        "lua/telescope.lua",
+        "lua/gitsigns.lua",
+        "lua/nvim-tree.lua",
+        "lua/nvim-web-devicons.lua",
+        "lua/nvim-autopairs.lua",
+        "lua/nvim-lualine.lua",
+        "lua/nvim-treesitter.lua",
+        "lua/nvim-treesitter-context.lua",
+        "lua/nvim-treesitter-textobjects.lua"
+      ]
+    },
+    {
+      "name": "tmux",
+      "path": ".config/tmux",
+      "description": "Tmux terminal multiplexer configuration",
+      "files": [
+        "tmux.conf"
+      ]
+    },
+    {
+      "name": "vim",
+      "path": ".config/vim",
+      "description": "Vim editor configuration using vim-plug",
+      "files": [
+        "vimrc"
+      ]
+    },
+    {
+      "name": "karabiner",
+      "path": ".config/karabiner",
+      "description": "Keyboard customization for macOS",
+      "files": [
+        "karabiner.json"
+      ]
+    },
+    {
+      "name": "mise",
+      "path": ".config/mise",
+      "description": "Runtime version manager configuration",
+      "files": [
+        "config.toml"
+      ]
+    },
+    {
+      "name": "homebrew",
+      "path": ".config/homebrew",
+      "description": "Homebrew package manager bundle",
+      "files": [
+        "Brewfile"
+      ]
+    },
+    {
+      "name": "editorconfig",
+      "path": ".config/editorconfig",
+      "description": "EditorConfig for consistent coding styles",
+      "files": [
+        ".editorconfig"
+      ]
+    },
+    {
+      "name": "cursor",
+      "path": ".config/cursor",
+      "description": "Cursor editor configuration",
+      "files": [
+        "settings.json"
+      ]
+    },
+    {
+      "name": "zed",
+      "path": ".config/zed",
+      "description": "Zed editor configuration",
+      "files": [
+        "settings.json"
+      ]
+    },
+    {
+      "name": "php-tools",
+      "path": ".config",
+      "description": "PHP development tools configuration",
+      "files": [
+        "phpactor/.phpactor.json",
+        "phpcs/phpcs.xml",
+        "php-cs-fixer/.php-cs-fixer.php"
+      ]
+    },
+    {
+      "name": "markup-tools",
+      "path": ".config",
+      "description": "Markup and formatting tools configuration",
+      "files": [
+        "markdownlint-cli2/.markdownlint-cli2.jsonc",
+        "prettier/.prettierrc.json",
+        "yamllint/config",
+        "yamlfmt/.yamlfmt"
+      ]
+    }
+  ],
+  "tags": [
+    "dotfiles",
+    "zsh",
+    "vim",
+    "neovim",
+    "wezterm",
+    "tmux",
+    "karabiner",
+    "mise",
+    "macos"
+  ],
+  "environment": {
+    "os": "macOS",
+    "shell": "zsh",
+    "terminal": "WezTerm",
+    "editors": ["Neovim", "Vim", "Zed", "Cursor"]
+  }
+}

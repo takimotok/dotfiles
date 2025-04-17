@@ -1,18 +1,18 @@
 [tools]
 awscli = ["2.17.46"]
 ghq = ["1.6.2"]
-# java = ["21.0.2"]
+java = ["21.0.2"]
 jq = ["1.7.1"]
-# php = ["8.3.11"]
-ruby = ["3.2"]
-python = "2.7.18"
+php = ["8.3.11"]
+ruby = ["3.2.5"]
+python = ["3.12.5"]
 # >  In fact, I don't think you should actually use mise for rust development.
 # > Rust has an official version manager called rustup that is better than what any of the current mise plugins offer.
 # > https://mise.jdx.dev/lang/rust.html#rust
-# rust = ["1.81.0"]
-# node = ["18", "20.19.0", "22"] # 開発環境でコケるのでコメントアウト
-# yarn = ["1.22", "4.4.0"]
-lua = ["5.1", "5.4"]
+rust = ["1.81.0"]
+node = "20.17.0"
+yarn = ["1.22", "4.4.0"]
+lua = ["5.1", "5.4.6"]
 neovim = "0.10.1"
 
 [settings]
@@ -37,3 +37,4 @@ trusted_config_paths = [
   '~/projects/github.com/takimotok/takimotok.github.io',
   '~/projects/github.com/takimotok/learn_astro_by_creating_blog',
 ]
+

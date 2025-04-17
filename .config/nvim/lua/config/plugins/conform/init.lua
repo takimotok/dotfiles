@@ -13,7 +13,7 @@ function M.set_formatters_by_ft()
   t.javascriptreact = js_formatter
   t.typescript = js_formatter
   t.typescriptreact = js_formatter
-  -- t.yaml = js_formatter
+  -- t.yaml = { "yamlfmt" }
   t.html = js_formatter
   t.css = js_formatter
 
@@ -25,7 +25,7 @@ function M.set_formatters_by_ft()
   t.sh = { "shfmt" }
   t.bash = { "shfmt" }
   -- t._ = { "trim_whitespace" } -- avoid formmating in .md files
-  t._ = { "editorconfig" } -- avoid formmating in .md files
+  -- t._ = { "editorconfig" } -- catch-all formatters entirely
 
   return t
 end
@@ -79,6 +79,17 @@ M.formatters = {
       "$FILENAME",
     },
   },
+
+  -- ["yamlfmt"] = {
+  --   command = "yamlfmt",
+  --   args = {
+  --     "-conf",
+  --     -- vim.fn.getcwd() .. "/.yamlfmt", -- プロジェクトごとの設定ファイル
+  --     ".yamlfmt",
+  --     "-",
+  --   },
+  --   stdin = true,
+  -- },
 }
 
 return M

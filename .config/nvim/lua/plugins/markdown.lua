@@ -196,7 +196,20 @@ return {
   {
     "zk-org/zk-nvim",
     config = function()
-      require("zk").setup({})
+      require("zk").setup({
+        -- lsp = {
+        --   -- LSP設定を上書き
+        --   config = {
+        --     on_attach = function(client, bufnr)
+        --       -- フォーマット機能を無効化
+        --       client.server_capabilities.documentFormattingProvider = false
+        --       client.server_capabilities.documentRangeFormattingProvider = false
+        --       -- documentHighlight機能を無効化
+        --       client.server_capabilities.documentHighlightProvider = false
+        --     end,
+        --   },
+        -- },
+      })
 
       -- keymaps
       -- Open notes associated with the selected tags.
@@ -302,3 +315,4 @@ return {
     end,
   },
 }
+
