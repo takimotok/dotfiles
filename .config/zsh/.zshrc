@@ -1,26 +1,23 @@
-#!/bin/bash
+#!/bin/zsh
 
-# author: takimoto.kengo
-
-# before zinit: load files under the rc dir.
-# -----
-
+# before loading package manager:
 # load files under the rc dir.
+# -----
 . "${ZDOTDIR}"/functions/zcompile.zsh
-. "${ZDOTDIR}"/rc/before_zinit.zsh
+. "${ZDOTDIR}"/rc/options.zsh
 
-# zinit
+# load package manager
 # -----
-. "${ZDOTDIR}"/rc/zinit_installer.zsh
+. "${ZDOTDIR}"/rc/sheldon.zsh
+. "${ZDOTDIR}"/rc/plugins.zsh
 
-# after zinit: load files under the rc dir.
+# after loading package manager
+# load files under the rc dir.
 # -----
-
-# load files
-. "${ZDOTDIR}"/rc/plugin.zsh
-. "${ZDOTDIR}"/functions/bindkeys.zsh
+. "${ZDOTDIR}"/functions/user.zsh
 . "${ZDOTDIR}"/rc/others.zsh
 . "${ZDOTDIR}"/rc/paths.zsh
 . "${ZDOTDIR}"/rc/cdpath.zsh
 . "${ZDOTDIR}"/rc/alias.zsh
 . "${ZDOTDIR}"/rc/bindkeys.zsh
+

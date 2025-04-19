@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 function list-ghq-with-peco() {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
@@ -21,7 +21,8 @@ zle -N select-history
 # memo: use `$ cd ./**<TAB>` instead
 #
 # fd - cd to selected directory
-# https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+# cf.) https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+#
 # function fcd() {
 #   local dir
 #   dir=$(find ${1:-.} -path '*/\.*' -prune \

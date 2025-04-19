@@ -1,11 +1,14 @@
-#!/bin/bash
+#!/bin/zsh
 
 # color
 # -----
-
 # enable using colors
 autoload -Uz colors
 colors
+
+# ls command color
+# https://qiita.com/sakurasou/items/10156a46fb7e2d1c300f
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # directory underlines style
 # -----

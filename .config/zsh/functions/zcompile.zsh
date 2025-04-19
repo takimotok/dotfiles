@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # 必要な file のみ zcompile する
 #   $@ : 引数を全て展開
@@ -10,3 +10,4 @@
     ([[ ! -e "${src}".zwc ]] || [ "${src:A}" -nt "${src}" ]) && zcompile "${src}"
   done
 } "${ZDOTDIR}"/rc/*.zsh
+

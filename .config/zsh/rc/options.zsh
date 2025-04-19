@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 
 # history
 # -----
-
 # 履歴ファイル 保存先
 export HISTFILE=${ZDOTDIR}/.zsh_history
 
@@ -27,7 +26,6 @@ setopt inc_append_history
 
 # others
 # -----
-
 # 日本語ファイル名を表示可能にする
 setopt print_eight_bit
 # beep を無効にする
@@ -46,10 +44,3 @@ setopt auto_cd
 # dotfiles を * に含める
 setopt dotglob
 
-# key bind
-# -----
-# as emacs
-bindkey -e
-# ^r (or ^s)で履歴検索をするときに * でワイルドカードを使用出来るようにする
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-search-forward
