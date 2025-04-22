@@ -1,29 +1,37 @@
 #!/bin/zsh
 
-# zsh
+# zsh env. variables
 # -----
 # .zshrc reading path
 export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
 
-# fpath
-export FPATH="${ZDOTDIR}/autoload/:${FPATH}"
+# zsh histories
+# -----
+# メモリに保存される履歴件数
+export HISTSIZE=1000000
+# 履歴ファイルに保存される履歴件数
+export SAVEHIST=1000000
+# 履歴ファイル保存 file
+export HISTFILE=${ZDOTDIR}/.zsh_history
+
+# zsh functions
+# -----
+# defer loading
+fpath=(${ZDOTDIR}/autoload "${fpath[@]}")
+autoload -Uz "${ZDOTDIR}"/autoload/*(:t)
+
+# set zle
+zle -N list-ghq-with-peco
+zle -N select-history
 
 # sheldon
 # -----
 export SHELDON_CONFIG_DIR="${ZDOTDIR}/sheldon"
 export SHELDON_CONFIG_FILE="${SHELDON_CONFIG_DIR}/plugins.toml"
-export SHELDON_DATA_DIR="${XDG_DATA_HOME}/sheldon"
+export SHELDON_DATA_DIR="${SHELDON_CONFIG_DIR}"
 export SHELDON_CACHE_DIR="${XDG_CACHE_HOME}/sheldon"
 
-# homebrew
+# editor
 # -----
-# cf.) https://github.com/sei40kr/dotfiles/blob/23d39ca62788ab767b4e961d84e8edd28b0be255/config/zsh/zprofile
-# brew 使用時, 遅延ロードしたいので fpath に関数を格納してゆく
-if [[ "${OSTYPE}" == darwin* && "${+commands[brew]}" == 1 ]]; then
-  export HOMEBREW_PREFIX=$(brew --prefix)
-
-  path=("${HOMEBREW_PREFIX}/bin" "${HOMEBREW_PREFIX}/sbin" "${path[@]}")
-  fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" "${fpath[@]}")
-  manpath=("${HOMEBREW_PREFIX}/share/man" "${manpath[@]}")
-fi
+export EDITOR=nvim
 

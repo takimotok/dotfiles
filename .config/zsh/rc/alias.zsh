@@ -2,43 +2,45 @@
 
 # aliases
 # -----
-abbr aria2c='aria2c -d $HOME/Desktop'
+alias ls='ls -G -F'
+alias ll='ls -lah -D "%y%m%d %H:%M:%S"'
 
-abbr delds='pushd $(pwd) && cd ~ && find / -name ".DS_Store" -delete && popd'
-abbr delicon='pushd $(pwd) && cd ~ && find / -name "Icon\\r" -delete && popd'
-abbr desk='$HOME/Desktop'
-abbr dl='$HOME/Downloads'
-abbr hosts='cat /private/etc/hosts'
-abbr ll='ls -lah -D "%y%m%d %H:%M:%S"'
-# abbr openssl=/usr/local/opt/openssl@1.1/bin/openssl
-abbr vi=vim
+alias aria2c='aria2c -d $HOME/Desktop'
+
+alias delds='pushd $(pwd) && cd ~ && find / -name ".DS_Store" -delete && popd'
+alias delicon='pushd $(pwd) && cd ~ && find / -name "Icon\\r" -delete && popd'
+alias desk='$HOME/Desktop'
+alias dl='$HOME/Downloads'
+# alias hosts='cat /private/etc/hosts'
+# alias openssl=/usr/local/opt/openssl@1.1/bin/openssl
+# alias vi=vim
 
 # bat
-abbr bat='bat --style="numbers,grid"'
+alias bat='bat --style="numbers,grid"'
 
 # mac の BSD系なので brew 経由で linux sed を inst.
-abbr sed='gsed'
+alias sed='gsed'
 
 # mac の grep は -P をサポートしていないので GNU grep を brew 経由で inst.
-abbr grep='ggrep'
+alias grep='ggrep'
 
 # Cloud Storages
 # cf.) rc/paths.zsh
-abbr gdrive="${G_DRIVE_PATH}/"
-abbr vault="${VAULT}/"
-abbr n="${NOTES}/"
+alias gdrive="${G_DRIVE_PATH}/"
+alias vault="${VAULT}/"
+alias n="${NOTES}/"
 
-abbr tips="${NOTES}/dev/01_tips"
-abbr prj="${NOTES}/dev/02_prj"
-abbr wiki="${NOTES}/wiki"
+alias tips="${NOTES}/dev/01_tips"
+alias prj="${NOTES}/dev/02_prj"
+alias wiki="${NOTES}/wiki"
 
-abbr hitotsuto="${VAULT}/areas/hitotsuto"
+alias hitotsuto="${VAULT}/areas/hitotsuto"
 
 # iCloud
-abbr icloud="${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias icloud="${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 
 # restart touchbar@MBP2019
-abbr rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
+alias rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
 
 # toggle Wi-fi
 # -----
@@ -49,6 +51,6 @@ abbr rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
 
 # WIFI_STATUS="$(ifconfig en0 | awk '/status:/{print $2}')"
 # @TODO: Raycast の script を作成してもいいかも
-abbr twn="networksetup -setairportpower en0 on"
-abbr twf="networksetup -setairportpower en0 off"
+alias twn="networksetup -setairportpower en0 on"
+alias twf="networksetup -setairportpower en0 off"
 

@@ -1,104 +1,46 @@
 #!/bin/zsh
 
-# color
-# -----
-# enable using colors
-autoload -Uz colors
-colors
-
-# ls command color
-# https://qiita.com/sakurasou/items/10156a46fb7e2d1c300f
-export LSCOLORS=gxfxcxdxbxegedabagacad
-
-# directory underlines style
-# -----
-# typeset -gA ZSH_HIGHLIGHT_STYLES
-# ZSH_HIGHLIGHT_STYLES[path]=none
-# ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-
-# complement
-# -----
-
-# enable commands completion
-autoload -Uz compinit
-compinit
-
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# ../ の後は今いるディレクトリを補完しない
-zstyle ':completion:*' ignore-parents parent pwd ..
-
-# sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-  /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-# ps コマンドのプロセス名補完
-zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
-# os
-# -----
-case ${OSTYPE} in
-darwin*)
-  #Mac用の設定
-  export CLICOLOR=1
-  alias ls='ls -G -F'
-  # .DS_Store 削除
-  #そもそも生成しないようにする: $ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
-  alias delds='find . -name ".DS_Store" -type f -ls -delete'
-  alias delicon='find . -type f -name "Icon?" -print -delete;'
-  ;;
-linux*)
-  #Linux用の設定
-  alias ls='ls -F --color=auto'
-  ;;
-esac
-
-# brew
-# -----
-if [ "$(uname -m)" = "arm64" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-export HOMEBREW_NO_ENV_HINTS=true
-export HOMEBREW_BUNDLE_DUMP_NO_VSCODE=true
-export HOMEBREW_BUNDLE_FILE_GLOBAL="${XDG_CONFIG_HOME}/homebrew/Brewfile"
-
 # mise (rtx)
 # -----
-# for installing php8.x
-if [ "$(uname -m)" = 'arm64' ]; then
-  export PATH="/opt/homebrew/opt/m4/bin:$PATH"
-elif [ "$(uname -m)" = 'x86_64' ]; then
-  export PATH="/usr/local/opt/m4/bin:$PATH"
-fi
-
 # for mise itself
-export MISE_DATA_DIR=$XDG_DATA_HOME/mise
-export MISE_CACHE_DIR=$XDG_CACHE_HOME/mise
-export MISE_INSTALL_PATH=$XDG_DATA_HOME/mise/bin
+export MISE_DATA_DIR="${XDG_DATA_HOME}/mise"
+export MISE_CACHE_DIR="$XDG_CACHE_HOME/mise"
+export MISE_INSTALL_PATH="${MISE_DATA_DIR}/bin"
 export MISE_LOG_LEVEL="warn"
 export MISE_EXPERIMENTAL=true
-eval "$(mise activate zsh)"
+
+# eval "$(mise activate zsh)"
+local cmd_mise_activate="mise activate zsh"
+local cache_file_mise_activate="${MISE_CACHE_DIR}/activate.zsh"
+local ref_file_mise="${XDG_CONFIG_HOME}/mise/config.toml"
+cache_eval "${cache_file_mise_activate}" "${cmd_mise_activate}" "${ref_file_mise}"
+source "${cache_file_mise_activate}"
+
+# for installing php8.x
+export PATH="${HOMEBREW_PREFIX}/opt/m4/bin:$PATH"
 
 # fzf
 # -----
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+zsh-defer [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # direnv & assume-role
 #
 # For AWS-CLI assume-role & direnv
 # -----
-eval "$(direnv hook zsh)"
-export EDITOR=nvim
+# eval "$(direnv hook zsh)"
+local cmd_mise_activate="direnv hook zsh"
+local cache_file_direnv_hook="${XDG_CACHE_HOME}/direnv/hook.zsh"
+local ref_file_direnv=""
+cache_eval "${cache_file_direnv_hook}" "${cmd_mise_activate}" "${ref_file_direnv}"
+source "${cache_file_direnv_hook}"
 
 # gpg
 # -----
-export GPG_TTY=$(tty)
+zsh-defer export GPG_TTY=$(tty)
 
 # mypy (python linter)
 # -----
-MYPY_CACHE_DIR="/dev/null"
+export MYPY_CACHE_DIR="/dev/null"
 
 # ruby
 # -----
@@ -106,22 +48,50 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${HOMEBREW_PREFIX}/opt/openssl@3"
 
 # rust
 # -----
-. "$HOME/.cargo/env"
+source "$HOME/.cargo/env"
 
 # gh
 # -----
-eval "$(gh completion -s zsh)"
+# eval "$(gh completion -s zsh)"
+local cmd_gh_completion="gh completion -s zsh"
+local cache_file_gh_completion="${XDG_CACHE_HOME}/gh/completion.zsh"
+local ref_file_gh="${XDG_CONFIG_HOME}/gh/config.yml"
+cache_eval "${cache_file_gh_completion}" "${cmd_gh_completion}" "${ref_file_gh}"
+source "${cache_file_gh_completion}"
 
-# 1Password
-# -----
-eval "$(op signin)"
-eval "$(op completion zsh)"; compdef _op op
 
 # vim & nvim
+# Do not confuse (n)vim env. variables with shell's one.
+# We can not use `${}` syntax in vimrc.
 # -----
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
 
 # to show image inside nvim
 # cf.) https://github.com/3rd/image.nvim?tab=readme-ov-file#installing-imagemagick
 export DYLD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib:$DYLD_LIBRARY_PATH"
+
+# for go (ghq)
+# -----
+export GOPATH="${XDG_CONFIG_HOME}/go"
+export PATH="${PATH}:${GOPATH}/bin"
+
+# for android
+# use command line tools
+# -----
+export ANDROID_HOME="${HOME}/Library/Android/sdk/"
+export PATH="${ANDROID_HOME}/platform-tools":${PATH}
+export PATH="${ANDROID_HOME}/emulator":${PATH}
+
+# ↓ 実体をみたら下記 path は存在しなかった
+# @TODO: もしかしたら cpu architecture によって異なるのかも
+# export PATH=$ANDROID_HOME/tools:$PATH
+# export PATH=$ANDROID_HOME/tools/bin:$PATH
+
+# poetry (python package manager)
+# -----
+export POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# zk
+# -----
+export ZK_NOTEBOOK_DIR=${NOTES}
 

@@ -1,0 +1,10 @@
+# override buildin source command
+# -----
+function source {
+  local src
+  for src in "$@"; do
+    ensure_zcompiled "${src}"
+    builtin source "${src}"
+  done
+}
+

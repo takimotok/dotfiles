@@ -1,12 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
-# setting for zprof restart zsh
-# zmodload zsh/zprof && zprof
-
-# init
-# -----
-
-# avoid registering duplicated paths重複パスを登録しない
+# avoid registering duplicated paths
 #   typeset: 変数宣言
 #   -U: alias を変数展開しない (ユーザが定義した alias と干渉しないように)
 typeset -U path PATH cdpath fpath manpath

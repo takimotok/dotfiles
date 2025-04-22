@@ -1,23 +1,16 @@
 #!/bin/zsh
 
-# before loading package manager:
-# load files under the rc dir.
+# before loading package manager
 # -----
-. "${ZDOTDIR}"/functions/zcompile.zsh
-. "${ZDOTDIR}"/rc/options.zsh
 
 # load package manager
 # -----
-. "${ZDOTDIR}"/rc/sheldon.zsh
-. "${ZDOTDIR}"/rc/plugins.zsh
+source "${SHELDON_CONFIG_DIR}"/init.zsh
 
 # after loading package manager
-# load files under the rc dir.
 # -----
-. "${ZDOTDIR}"/functions/user.zsh
-. "${ZDOTDIR}"/rc/others.zsh
-. "${ZDOTDIR}"/rc/paths.zsh
-. "${ZDOTDIR}"/rc/cdpath.zsh
-. "${ZDOTDIR}"/rc/alias.zsh
-. "${ZDOTDIR}"/rc/bindkeys.zsh
+source "${ZDOTDIR}"/rc/*.zsh
+
+# un-override source command
+zsh-defer unfunction source
 

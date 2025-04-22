@@ -1,14 +1,7 @@
 #!/bin/zsh
 
-# history
+# history options
 # -----
-# 履歴ファイル 保存先
-export HISTFILE=${ZDOTDIR}/.zsh_history
-
-# メモリに保存される履歴件数
-HISTSIZE=1000000
-# 履歴ファイルに保存される履歴件数
-SAVEHIST=1000000
 # 開始と終了を記録
 setopt EXTENDED_HISTORY
 # 異なる terminal で開いた zsh 間で history 共有

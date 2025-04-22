@@ -1,0 +1,38 @@
+# read & write cache files
+# args:
+#   $1: cache file path
+#   $2: cmd
+#   $3: reference file
+# -----
+local cache_file="${1}"
+local cmd="${2}"
+local ref_file="${3:-}"
+
+# $1: cache file
+# $2: ref file
+# @return 0|1   0: need refresh, 1: do not need refresh
+function _need_refresh() {
+  local cache_file="$1"
+  local ref_file="$2"
+
+  [[ ! -f "${cache_file}" ]] && return 0
+  [[ -n "${ref_file}" && -f "${ref_file}" && "${ref_file}" -nt "${cache_file}" ]] && return 0
+
+  return 1
+}
+
+# execute
+#   if 0: true
+#   if 1: false
+if _need_refresh "${cache_file}" "${ref_file}"; then
+  # debug
+  # echo "here ======="
+
+  local cache_dir=$(dirname "$cache_file")
+  [[ -d "${cache_dir}" ]] || mkdir -p "${cache_dir}"
+
+  ${=cmd} > "${cache_file}"
+fi
+
+# source "${cache_file}"
+
