@@ -11,5 +11,9 @@
   "screencastMode.keyboardOptions": {
     "showCommandGroups": true
   },
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "editor.fontFamily": "'Ligalex Mono', monospace",
+  "editor.fontLigatures": true,
+  "terminal.integrated.copyOnSelection": true,
+  "vim.useSystemClipboard": true
 }
