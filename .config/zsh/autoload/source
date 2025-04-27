@@ -1,0 +1,7 @@
+# override buildin source command
+# -----
+function source {
+  ensure_zcompiled "${1}"
+  builtin source "${1}"
+}
+

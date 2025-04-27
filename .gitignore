@@ -29,7 +29,9 @@
 .config/zsh/.zcompcache/*
 .config/zsh/.zsh_history
 .config/zsh/.zsh_sessions
-.config/**/*.zwc
+.config/zsh/sheldon/plugins.lock
+.config/zsh/sheldon/repos
+.config/zsh/**/*.zwc
 
 # karabiner
 # -----
@@ -49,3 +51,4 @@ prompts
 # project local
 # -----
 biome.jsonc
+

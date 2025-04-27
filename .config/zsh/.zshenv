@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/bin/zsh
 
-# setting for zprof restart zsh
+# debug
 # zmodload zsh/zprof && zprof
 
-# init
-# -----
-
-# avoid registering duplicated paths重複パスを登録しない
+# avoid registering duplicated paths
 #   typeset: 変数宣言
 #   -U: alias を変数展開しない (ユーザが定義した alias と干渉しないように)
 typeset -U path PATH cdpath fpath manpath
@@ -22,5 +19,3 @@ export XDG_CACHE_HOME=${HOME}/.cache
 export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_STATE_HOME=${HOME}/.local/state
 
-# .zshrc read path
-export ZDOTDIR=${XDG_CONFIG_HOME}/zsh

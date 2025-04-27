@@ -1,0 +1,12 @@
+local brew_bin="${HOMEBREW_PREFIX}/bin/brew"
+local brewfile="${HOMEBREW_BUNDLE_FILE_GLOBAL:-}"
+
+local ref="${brew_bin}"
+if [[ -f "${brewfile}" ]]; then
+  if [[ "${brewfile}" -nt "${brew_bin}" ]]; then
+    ref="${brewfile}"
+  fi
+fi
+
+echo "${ref}"
+

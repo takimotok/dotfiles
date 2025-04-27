@@ -1,0 +1,19 @@
+# execute zcompile if needed
+# -----
+function ensure_zcompiled {
+  # return when no arguments are passed
+  [[ -z "${1}" ]] && return 1
+
+  # return when no file exists
+  [[ ! -f "${1}" ]] && return 2
+
+  # return when:
+  #   - alreadly compiled
+  #   - compiled file is newer than the passed file
+  local compiled="${1}".zwc
+  [[ -r "${compiled}" && "${compiled}" -nt "${1}" ]] && return 0
+
+  zcompile "${1}"
+  # return $?
+}
+

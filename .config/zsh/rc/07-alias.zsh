@@ -1,17 +1,22 @@
-#!/bin/bash
+#!/bin/zsh
 
-# alias
+# cf.) rc/options.zsh:: setopt auto_cd
 # -----
+
+# aliases
+# -----
+alias ls='ls -G -F'
+alias ll='ls -lah -D "%y%m%d %H:%M:%S"'
+
 alias aria2c='aria2c -d $HOME/Desktop'
 
 alias delds='pushd $(pwd) && cd ~ && find / -name ".DS_Store" -delete && popd'
 alias delicon='pushd $(pwd) && cd ~ && find / -name "Icon\\r" -delete && popd'
 alias desk='$HOME/Desktop'
 alias dl='$HOME/Downloads'
-alias hosts='cat /private/etc/hosts'
-alias ll='ls -lah -D "%y%m%d %H:%M:%S"'
+# alias hosts='cat /private/etc/hosts'
 # alias openssl=/usr/local/opt/openssl@1.1/bin/openssl
-alias vi=vim
+# alias vi=vim
 
 # bat
 alias bat='bat --style="numbers,grid"'
