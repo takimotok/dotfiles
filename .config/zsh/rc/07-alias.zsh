@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# cf.) rc/options.zsh:: setopt auto_cd
+# -----
+
 # aliases
 # -----
 alias ls='ls -G -F'

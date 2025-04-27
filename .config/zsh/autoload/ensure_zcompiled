@@ -1,9 +1,19 @@
-# 必要な file のみ zcompile する
-#   $@ : 引数を全て展開
-#   -nt: newer than
-# https://qiita.com/GeneralD/items/73e31ab8cf9aa01e480f
+# execute zcompile if needed
+# -----
 function ensure_zcompiled {
+  # return when no arguments are passed
+  [[ -z "${1}" ]] && return 1
+
+  # return when no file exists
+  [[ ! -f "${1}" ]] && return 2
+
+  # return when:
+  #   - alreadly compiled
+  #   - compiled file is newer than the passed file
   local compiled="${1}".zwc
-  ([[ ! -r "${compiled}" ]] || [ "${1}" -nt "${compiled}" ]) && zcompile "${1}"
+  [[ -r "${compiled}" && "${compiled}" -nt "${1}" ]] && return 0
+
+  zcompile "${1}"
+  # return $?
 }
 

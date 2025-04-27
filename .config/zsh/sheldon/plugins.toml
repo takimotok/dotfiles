@@ -1,14 +1,7 @@
 # `sheldon` configuration file
-# ----------------------------
 #
-# You can modify this file directly or you can use one of the following
-# `sheldon` commands which are provided to assist in editing the config file:
-#
-# - `sheldon add` to add a new plugin to the config file
-# - `sheldon edit` to open up the config file in the default editor
-# - `sheldon remove` to remove a plugin from the config file
-#
-# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+# cf.) https://github.com/rossmacarthur/sheldon#readme
+# -----
 
 shell = "zsh"
 
@@ -38,24 +31,10 @@ github = "zsh-users/zsh-completions"
 tag = "0.35.0"
 apply = ["defer"]
 
-# commands highlight
-# -----
-[plugins.fast-syntax-highlighting]
-github = "zdharma/fast-syntax-highlighting"
-tag = "v1.66"
-apply = ["defer"]
-
-[plugins.zsh-abbr]
-github = "olets/zsh-abbr"
-tag = "v6.2.1"
-apply = ["defer"]
-
-# need for pure
-# -----
-[plugins.zsh-async]
-github = "mafredri/zsh-async"
-tag = "v1.8.6"
-apply = ["source"]  # Not deferred - needs to load before pure
+# [plugins.zsh-abbr]
+# github = "olets/zsh-abbr"
+# tag = "v6.2.1"
+# apply = ["defer"]
 
 # theme: pure
 # cf.) https://github.com/sindresorhus/pure
@@ -63,8 +42,13 @@ apply = ["source"]  # Not deferred - needs to load before pure
 [plugins.pure]
 github = "sindresorhus/pure"
 tag = "v1.23.0"
-# hooks.pre = "fpath+=($SHELDON_DATA_DIR/repos/github.com/sindresorhus/pure)"
-# hooks.post = "autoload -U promptinit && promptinit && prompt pure"
-#apply = ["defer"]
-apply = ["source"]
+use = ["async.zsh", "pure.zsh"]
+apply = ["source"] # could not be deferred
+
+# commands highlight
+# -----
+[plugins.fast-syntax-highlighting]
+github = "zdharma/fast-syntax-highlighting"
+tag = "v1.66"
+apply = ["defer"]
 

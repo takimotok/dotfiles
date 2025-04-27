@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# debug
+# zmodload zsh/zprof && zprof
+
 # avoid registering duplicated paths
 #   typeset: 変数宣言
 #   -U: alias を変数展開しない (ユーザが定義した alias と干渉しないように)

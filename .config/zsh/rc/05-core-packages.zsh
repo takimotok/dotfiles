@@ -12,7 +12,7 @@ local cmd_op_completion_zsh="op completion zsh"
 local cache_file_op_completion_zsh="${XDG_CACHE_HOME}/op/op_completion.zsh"
 local ref_file_op_completion_zsh=""
 cache_eval "${cache_file_op_completion_zsh}" "${cmd_op_completion_zsh}" "${ref_file_op_completion_zsh}"
-source "${cache_file_op_completion_zsh}"
+zsh-defer source "${cache_file_op_completion_zsh}"
 compdef _op op
 
 # always read cached file

@@ -25,14 +25,9 @@ function _need_refresh() {
 #   if 0: true
 #   if 1: false
 if _need_refresh "${cache_file}" "${ref_file}"; then
-  # debug
-  # echo "here ======="
-
   local cache_dir=$(dirname "$cache_file")
   [[ -d "${cache_dir}" ]] || mkdir -p "${cache_dir}"
 
   ${=cmd} > "${cache_file}"
 fi
-
-# source "${cache_file}"
 

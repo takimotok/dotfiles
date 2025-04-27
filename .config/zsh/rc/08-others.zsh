@@ -12,27 +12,28 @@ export MISE_EXPERIMENTAL=true
 # eval "$(mise activate zsh)"
 local cmd_mise_activate="mise activate zsh"
 local cache_file_mise_activate="${MISE_CACHE_DIR}/activate.zsh"
+local cache_file_mise_activate="${MISE_CACHE_DIR}/activate.zsh"
 local ref_file_mise="${XDG_CONFIG_HOME}/mise/config.toml"
 cache_eval "${cache_file_mise_activate}" "${cmd_mise_activate}" "${ref_file_mise}"
-source "${cache_file_mise_activate}"
+zsh-defer source "${cache_file_mise_activate}"
 
 # for installing php8.x
 export PATH="${HOMEBREW_PREFIX}/opt/m4/bin:$PATH"
 
 # fzf
 # -----
-zsh-defer [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/.fzf.zsh ]] && zsh-defer source ~/.fzf.zsh
 
 # direnv & assume-role
 #
 # For AWS-CLI assume-role & direnv
 # -----
 # eval "$(direnv hook zsh)"
-local cmd_mise_activate="direnv hook zsh"
+local cmd_direnv_hook="direnv hook zsh"
 local cache_file_direnv_hook="${XDG_CACHE_HOME}/direnv/hook.zsh"
 local ref_file_direnv=""
-cache_eval "${cache_file_direnv_hook}" "${cmd_mise_activate}" "${ref_file_direnv}"
-source "${cache_file_direnv_hook}"
+cache_eval "${cache_file_direnv_hook}" "${cmd_direnv_hook}" "${ref_file_direnv}"
+zsh-defer source "${cache_file_direnv_hook}"
 
 # gpg
 # -----
@@ -48,7 +49,7 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${HOMEBREW_PREFIX}/opt/openssl@3"
 
 # rust
 # -----
-source "$HOME/.cargo/env"
+zsh-defer source "$HOME/.cargo/env"
 
 # gh
 # -----
@@ -57,8 +58,7 @@ local cmd_gh_completion="gh completion -s zsh"
 local cache_file_gh_completion="${XDG_CACHE_HOME}/gh/completion.zsh"
 local ref_file_gh="${XDG_CONFIG_HOME}/gh/config.yml"
 cache_eval "${cache_file_gh_completion}" "${cmd_gh_completion}" "${ref_file_gh}"
-source "${cache_file_gh_completion}"
-
+zsh-defer source "${cache_file_gh_completion}"
 
 # vim & nvim
 # Do not confuse (n)vim env. variables with shell's one.

@@ -16,10 +16,6 @@ export HISTFILE=${ZDOTDIR}/.zsh_history
 
 # zsh functions
 # -----
-# defer loading
-fpath=(${ZDOTDIR}/autoload "${fpath[@]}")
-autoload -Uz "${ZDOTDIR}"/autoload/*(:t)
-
 # set zle
 zle -N list-ghq-with-peco
 zle -N select-history
