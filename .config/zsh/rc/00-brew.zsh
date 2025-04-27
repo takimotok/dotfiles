@@ -2,10 +2,6 @@
 
 # homebrew
 # -----
-if [[ "${OSTYPE}" != darwin* || "${+commands[brew]}" != 1 ]]; then
-  return 0
-fi
-
 if [[ "$(uname -m)" == "arm64" ]]; then
   # apple sillicon
   export HOMEBREW_PREFIX="/opt/homebrew"
