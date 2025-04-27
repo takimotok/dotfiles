@@ -26,15 +26,20 @@ export HOMEBREW_TEMP=/tmp
 # - `brew shellenv` does not work
 # -----
 # evaluate cached file
-local cache_file="${HOMEBREW_CACHE}/01-brew.zsh"
+local cache_file="${HOMEBREW_CACHE}/brew.zsh"
 local cmd="${HOMEBREW_PREFIX}/bin/brew shellenv"
 local ref_file=$(get_newest_brew_ref_file)
 cache_eval "${cache_file}" "${cmd}" "${ref_file}"
 source "${cache_file}"
 
-# lazy loading
-# cf.) https://github.com/sei40kr/dotfiles/blob/23d39ca62788ab767b4e961d84e8edd28b0be255/config/zsh/zprofile
-path=("${HOMEBREW_PREFIX}/bin" "${HOMEBREW_PREFIX}/sbin" "${path[@]}")
-fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" "${fpath[@]}")
-manpath=("${HOMEBREW_PREFIX}/share/man" "${manpath[@]}")
+# brew-file
+# -----
+export HOMEBREW_BREWFILE=${HOMEBREW_BUNDLE_FILE_GLOBAL}
+if [[ -f ${HOMEBREW_PREFIX}/etc/brew-wrap ]]; then
+  zsh-defer source ${HOMEBREW_PREFIX}/etc/brew-wrap
+
+  _post_brewfile_update () {
+    brew file update
+  }
+fi
 
