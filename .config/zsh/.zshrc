@@ -13,19 +13,19 @@ source "${SHELDON_CONFIG_DIR}"/init.zsh
 # after loading package manager
 # -----
 local non_lazy_rc=(
-  "${ZDOTDIR}"/rc/00-zsh-modules.zsh
+  "${ZDOTDIR}"/rc/00-brew.zsh
+  "${ZDOTDIR}"/rc/01-zsh-modules.zsh
   # e.g.) need for alias.zsh
   #   - `setopt auto_cd`
-  "${ZDOTDIR}"/rc/01-options.zsh
+  "${ZDOTDIR}"/rc/02-options.zsh
 )
 for non_lazy_rc_file in "${non_lazy_rc[@]}"; do
   source "${non_lazy_rc_file}"
 done
 
 local lazy_rc=(
-  "${ZDOTDIR}"/rc/02-cdpath.zsh
-  "${ZDOTDIR}"/rc/03-bindkeys.zsh
-  "${ZDOTDIR}"/rc/04-brew.zsh
+  "${ZDOTDIR}"/rc/03-cdpath.zsh
+  "${ZDOTDIR}"/rc/04-bindkeys.zsh
   "${ZDOTDIR}"/rc/05-core-packages.zsh
   "${ZDOTDIR}"/rc/06-plugins.zsh
   "${ZDOTDIR}"/rc/07-alias.zsh

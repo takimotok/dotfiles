@@ -157,7 +157,7 @@ brew 'libyaml'
 brew 'libzip'
 brew 'little-cms2'
 brew 'lua'
-brew 'luajit'
+brew 'luajit', args: ['HEAD']
 brew 'luarocks'
 brew 'lz4'
 brew 'lzo'
@@ -356,9 +356,6 @@ brew 'brew-file'
 
 tap 'stripe/stripe-cli'
 brew 'stripe'
-
-# Other Homebrew packages
-brew 'mcrypt'
 
 # App Store applications
 mas 'Amazon Kindle (7.31)', id: 302584613
