@@ -19,3 +19,19 @@ export XDG_CACHE_HOME=${HOME}/.cache
 export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_STATE_HOME=${HOME}/.local/state
 
+# zsh env. variables
+# -----
+# .zshrc reading path
+export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
+
+# package manager (sheldon)
+# -----
+export SHELDON_CONFIG_DIR="${ZDOTDIR}/sheldon"
+export SHELDON_CONFIG_FILE="${SHELDON_CONFIG_DIR}/plugins.toml"
+export SHELDON_DATA_DIR="${SHELDON_CONFIG_DIR}"
+export SHELDON_CACHE_DIR="${XDG_CACHE_HOME}/sheldon"
+
+# editor
+# -----
+export EDITOR=nvim
+

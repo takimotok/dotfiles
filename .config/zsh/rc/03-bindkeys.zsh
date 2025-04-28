@@ -8,8 +8,8 @@ bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-search-forward
 
-# for user defined functions
-# cf) .config/zsh/functions/user.zsh
+# user defined functions
+# cf) .config/zsh/autoload/*
 # -----
 bindkey '^]' list-ghq-with-peco
 bindkey '^r' select-history
