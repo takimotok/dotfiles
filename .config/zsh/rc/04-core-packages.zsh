@@ -22,7 +22,6 @@ local ref_file_op_read=""
 cache_eval "${cache_file_google}" "${cmd_op_read}" "${ref_file_op_read}"
 ensure_zcompiled "${cache_file_google}"
 
-
 # Cloud Strages
 # -----
 export CLOUD_STRAGE="${HOME}/Library/CloudStorage"

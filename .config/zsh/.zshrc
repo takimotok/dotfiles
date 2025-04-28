@@ -40,6 +40,7 @@ done
 zsh-defer unfunction source
 
 # debug
+# cf.) .zshenv
 if (which zprof > /dev/null 2>&1) ;then
   zprof
 fi
