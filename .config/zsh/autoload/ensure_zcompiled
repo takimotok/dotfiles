@@ -14,6 +14,5 @@ function ensure_zcompiled {
   [[ -r "${compiled}" && "${compiled}" -nt "${1}" ]] && return 0
 
   zcompile "${1}"
-  # return $?
 }
 

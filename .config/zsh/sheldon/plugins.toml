@@ -43,7 +43,7 @@ apply = ["defer"]
 github = "sindresorhus/pure"
 tag = "v1.23.0"
 use = ["async.zsh", "pure.zsh"]
-apply = ["source"] # could not be deferred
+apply = ["source"]              # could not be deferred
 
 # commands highlight
 # -----
@@ -51,4 +51,3 @@ apply = ["source"] # could not be deferred
 github = "zdharma/fast-syntax-highlighting"
 tag = "v1.66"
 apply = ["defer"]
-
