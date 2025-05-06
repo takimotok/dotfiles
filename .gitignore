@@ -38,10 +38,9 @@
 .config/karabiner/*
 !.config/karabiner/karabiner.json
 
-# rtx
+# mise
 # -----
-.config/rtx/*
-!.config/rtx/config/toml
+.config/mise/**/*.log
 
 # zed
 # -----
@@ -51,4 +50,5 @@ prompts
 # project local
 # -----
 biome.jsonc
+.markdownlint-cli2.jsonc
 

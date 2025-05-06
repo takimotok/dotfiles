@@ -13,18 +13,16 @@ rust = ["1.81.0"]
 node = "20.17.0"
 yarn = ["1.22", "4.4.0"]
 lua = ["5.1", "5.4.6"]
-neovim = "0.10.4"
+neovim = "0.11.1"
 
 [settings]
-legacy_version_file = true # default
-
 always_keep_download = false # default
-always_keep_install = false # default
+always_keep_install = false  # default
 
 plugin_autoupdate_last_check_duration = '1 week' # 更新を無効にする場合は0に設定する
 
-jobs = 2 # default 4
-raw = false  # set to true to directly pipe plugins to stdin/stdout/stderr
+jobs = 2    # default 4
+raw = false # set to true to directly pipe plugins to stdin/stdout/stderr
 
 experimental = true
 # log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
@@ -37,4 +35,3 @@ trusted_config_paths = [
   '~/projects/github.com/takimotok/takimotok.github.io',
   '~/projects/github.com/takimotok/learn_astro_by_creating_blog',
 ]
-

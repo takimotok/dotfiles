@@ -7,7 +7,7 @@
 #
 # cf.) https://github.com/sindresorhus/pure
 # -----
-zstyle :prompt:pure:path color cyan
+zstyle ':prompt:pure:path' color cyan
 zstyle ':prompt:pure:git:*' color yellow
 
 # zsh-completions

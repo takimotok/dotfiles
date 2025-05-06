@@ -1,29 +1,36 @@
 {
-	"config": {
-		// "default": true,
+  "config": {
+    // "default": true,
     // MD009: 行末のスペースを許可する
-    "MD009": { "br_spaces": 2 },  // Markdown改行（2スペース）を許可
-
-		// Line length
-		"MD013": false,
-		// Dollar signs used before commands without showing output
-		"MD014": false,
-		// Multiple headings with same content
-		"MD024": false,
-		// no-blanks-blockquote
-		"MD028": false,
-		// Ordered list item prefix
-		"MD029": false,
-		// Allow inline HTML
-		"MD033": false,
-		// MD034: URLそのままの表記を許容
-		"no-bare-urls": false,
-		// MD040: コードブロックの言語指定を許容
-		"fenced-code-language": false,
-		// first-line-h1 First line in a file should be a top-level heading
-		"MD041": false
-	},
-	"globs": ["**/*.md", "**/*.mdx"],
-	"ignores": ["node_modules", "dist", ".zk"]
+    "MD009": {
+      "br_spaces": 2
+    }, // Markdown改行（2スペース）を許可
+    // Line length
+    "MD013": false,
+    // Dollar signs used before commands without showing output
+    "MD014": false,
+    // Multiple headings with same content
+    "MD024": false,
+    // no-blanks-blockquote
+    "MD028": false,
+    // Ordered list item prefix
+    "MD029": false,
+    // Allow inline HTML
+    "MD033": false,
+    // MD034: URLそのままの表記を許容
+    "no-bare-urls": false,
+    // MD040: コードブロックの言語指定を許容
+    "fenced-code-language": false,
+    // first-line-h1 First line in a file should be a top-level heading
+    "MD041": false
+  },
+  "globs": [
+    "**/*.md",
+    "**/*.mdx"
+  ],
+  "ignores": [
+    "node_modules",
+    "dist",
+    ".zk"
+  ]
 }
-
