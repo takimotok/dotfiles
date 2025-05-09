@@ -10,9 +10,6 @@ return {
       },
       indent = {
         enabled = true,
-        animate = {
-          enabled = false,
-        },
       },
       explorer = {
         enabled = true,
