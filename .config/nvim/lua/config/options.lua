@@ -12,6 +12,9 @@ vim.opt.swapfile = false
 -- disable mouse
 vim.o.mouse = ""
 
+-- Snacks animations
+vim.g.snacks_animate = false
+
 -- Text area
 -- vim.opt.textwidth = 150
 vim.opt.showtabline = 1
