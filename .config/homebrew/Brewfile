@@ -320,12 +320,12 @@ cask 'gifox'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'google-japanese-ime'
-cask 'gyazo'
 cask 'karabiner-elements'
 cask 'keycastr'
 cask 'keyman'
 cask 'libreoffice'
 cask 'licecap'
+cask 'macast'
 cask 'nordvpn'
 cask 'notunes'
 cask 'obsidian'
@@ -341,7 +341,10 @@ cask 'the-unarchiver'
 cask 'vlc'
 cask 'wezterm@nightly'
 cask 'zed@preview'
+cask 'zen-browser@twilight'
 cask 'zoom'
+
+tap 'homebrew/autoupdate'
 
 tap 'daipeihust/tap'
 brew 'im-select'
@@ -361,15 +364,14 @@ brew 'brew-file'
 tap 'stripe/stripe-cli'
 brew 'stripe'
 
-# Other Homebrew packages
-brew 'mcrypt'
-
 # App Store applications
 mas 'Amazon Kindle (7.31)', id: 302584613
+mas 'GarageBand (10.4.12)', id: 682658836
 mas 'Goodnotes (6.6.36)', id: 1444383602
+mas 'iMovie (10.4.3)', id: 408981434
 mas 'Keynote (14.4)', id: 409183694
 mas 'LINE (9.8.1)', id: 539883307
-mas 'Monosnap (6.21)', id: 540348655
+mas 'Monosnap (6.30)', id: 540348655
 mas 'Numbers (14.4)', id: 409203825
 mas 'Pages (14.4)', id: 409201541
 mas 'PicGIF Lite (2.0.9)', id: 844918735
