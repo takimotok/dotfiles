@@ -173,18 +173,21 @@ set -Ceu
     # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad "Dragging" -bool "true"
 
     # set trackpad speed
-    defaults write -g com.apple.trackpad.scaling -float "5"
+    defaults write -g com.apple.trackpad.scaling -float 12.0
 
     # set scrolling direction
     defaults write -g com.apple.swipescrolldirection -bool "false"
 
+    # increase trackpad scrolling speed (higher values = faster scrolling)
+    defaults write -g com.apple.trackpad.scrolling -float 12.0
+
     # Mouse
     # -----
     # set mouse speed
-    defaults write NSGlobalDomain com.apple.mouse.scaling -float "12"
+    defaults write NSGlobalDomain com.apple.mouse.scaling -float 12.0
 
     # set scrolling speed
-    defaults write -g com.apple.scrollwheel.scaling 5
+    defaults write -g com.apple.scrollwheel.scaling 6
 
     # Others
     # -----
