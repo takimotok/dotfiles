@@ -1,0 +1,7 @@
+enhancedjax.vscode-ayu-zed
+github.copilot
+github.copilot-chat
+haphazarddev.oil-code
+usernamehw.errorlens
+vscodevim.vim
+yoshinorin.current-file-path
