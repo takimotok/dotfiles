@@ -29,7 +29,8 @@ return {
                   -- default = "o3-mini-2025-01-31",
                   -- default = "gemini-2.5-pro",
                   -- default = "claude-3.5-sonnet",
-                  default = "claude-3.7-sonnet",
+                  -- default = "claude-3.7-sonnet",
+                  default = "claude-sonnet-4",
                 },
                 max_tokens = {
                   default = 8192,
@@ -74,7 +75,8 @@ return {
             },
           },
           chat = {
-            show_settings = true, -- a yaml block will be present at the top of the chat buffer which can be modified in between responses
+            -- a yaml block will be present at the top of the chat buffer which can be modified in between responses
+            show_settings = true,
             auto_scroll = false,
             show_header_separator = true,
             -- separator = "-",
@@ -86,6 +88,10 @@ return {
           language = "English",
         },
       })
+
+      -- enable automatic tool mode
+      -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
+      vim.g.codecompanion_auto_tool_mode = true
 
       -- keymaps
       -- km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle [C]hat window" })
