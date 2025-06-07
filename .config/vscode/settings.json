@@ -1,0 +1,65 @@
+{
+    "workbench.colorTheme": "Ayu Mirage Zed",
+    "workbench.iconTheme": "ayu-mirage-zed",
+    "errorLens.messageTemplate": "$severity $message",
+    "errorLens.severityText": [
+        "●",
+        "●",
+        "●",
+        "●"
+    ],
+    "vim.leader": "space",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                // "-"
+                "<space>",
+                "o"
+
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.open"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<cr>"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.select"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<c-l>"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.refresh"
+                }
+            ]
+        },
+        {
+            "before": [
+                "`"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.cd"
+                }
+            ]
+        }
+    ],
+    "oil-code.disableOpenCwdNothingOpen": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Leader>", "p"],
+      "commands": ["currentFilePath.copy"]
+    }
+],
+"window.newWindowProfile": "Default"
+}

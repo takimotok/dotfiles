@@ -1,0 +1,12 @@
+[
+    {
+        "key": "ctrl+v",
+        "command": "oil-code.selectVertical",
+        "when": "inputFocus && vim.mode == 'Normal'",
+    },
+    {
+        "key": "ctrl+p",
+        "command": "oil-code.preview",
+        "when": "inputFocus && vim.mode == 'Normal'",
+    }
+]
