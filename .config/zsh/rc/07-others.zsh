@@ -6,13 +6,13 @@
 # -----
 # for mise itself
 export MISE_DATA_DIR="${XDG_DATA_HOME}/mise"
-export MISE_CACHE_DIR="$XDG_CACHE_HOME/mise"
+export MISE_CACHE_DIR="${XDG_CACHE_HOME}/mise"
 export MISE_GLOBAL_CONFIG_ROOT="${XDG_CONFIG_HOME}/mise"
 export MISE_GLOBAL_CONFIG_FILE="${MISE_GLOBAL_CONFIG_ROOT}/config.toml"
 export MISE_LOG_FILE="${MISE_GLOBAL_CONFIG_ROOT}/mise.log"
 export MISE_LOG_LEVEL="warn"
 
-local cmd_mise_activate="mise activate zsh"
+local cmd_mise_activate="eval $(mise activate zsh)"
 local cache_file_mise_activate="${MISE_CACHE_DIR}/activate.zsh"
 local ref_file_mise="${MISE_GLOBAL_CONFIG_FILE}"
 cache_eval "${cache_file_mise_activate}" "${cmd_mise_activate}" "${ref_file_mise}"
