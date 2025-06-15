@@ -12,11 +12,9 @@ export MISE_GLOBAL_CONFIG_FILE="${MISE_GLOBAL_CONFIG_ROOT}/config.toml"
 export MISE_LOG_FILE="${MISE_GLOBAL_CONFIG_ROOT}/mise.log"
 export MISE_LOG_LEVEL="warn"
 
-local cmd_mise_activate="eval $(mise activate zsh)"
-local cache_file_mise_activate="${MISE_CACHE_DIR}/activate.zsh"
-local ref_file_mise="${MISE_GLOBAL_CONFIG_FILE}"
-cache_eval "${cache_file_mise_activate}" "${cmd_mise_activate}" "${ref_file_mise}"
-source "${cache_file_mise_activate}"
+# mise requires dynamic environment updates, so we can't cache it reliably
+# The _mise_hook function needs to run on every precmd to update PATH correctly
+eval "$(mise activate zsh)"
 
 # for installing php8.x
 export PATH="${HOMEBREW_PREFIX}/opt/m4/bin:$PATH"
