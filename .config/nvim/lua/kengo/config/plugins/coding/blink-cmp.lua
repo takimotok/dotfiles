@@ -86,7 +86,6 @@ local appearance = {
     Event = "",
     Operator = "󰆕",
     TypeParameter = "",
-    Copilot = "",
   },
 }
 
@@ -96,7 +95,7 @@ local sources = {
     copilot = {
       name = "copilot",
       module = "blink-cmp-copilot",
-      score_offset = 100, -- Copilotを優先
+      score_offset = 100, -- copilot を優先
       async = true,
     },
   },
