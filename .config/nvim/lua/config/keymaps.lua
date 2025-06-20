@@ -35,3 +35,7 @@ vim.keymap.del("n", "<C-Up>") -- disable "Increase Window Height"
 vim.keymap.del("n", "<C-Down>") -- disable "Decrease Window Height"
 vim.keymap.del("n", "<C-Left>") -- disable "Decrease Window Width"
 vim.keymap.del("n", "<C-Right>") -- disable "Increase Window Width"
+
+-- unmap defaults: Generals
+-- cf.) https://www.lazyvim.org/keymaps
+vim.keymap.del("n", "<leader>l") -- "lazy"

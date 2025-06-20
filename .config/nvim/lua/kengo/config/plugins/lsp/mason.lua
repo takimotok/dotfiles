@@ -3,51 +3,85 @@ local M = {}
 M.ensure_installed = {}
 
 local lsps = {
+  -- astro
   "astro-language-server",
+  -- awk
   "awk-language-server",
+  -- bash
   "bash-language-server",
+  -- js
   "biome", -- also available as liter and formatter
-  "css-lsp",
   "eslint-lsp",
+  "typescript-language-server",
+  "vtsls",
+  "vue-language-server",
+  -- css
+  "css-lsp",
+  "stylelint-lsp",
+  -- docker
+  "docker-compose-language-service",
+  "dockerfile-language-server",
   "json-lsp",
+  -- lua
   "lua-language-server",
+  -- markdown
   "marksman",
+  -- php
   "phpactor",
+  -- python
   "pyright",
   "ruff",
+  -- rust
   "rust-analyzer",
+  -- sql
   "sqls",
-  "stylelint-lsp",
+  -- tailwind
   "tailwindcss-language-server",
+  -- toml
   "taplo",
-  "typescript-language-server",
-  "vue-language-server",
 }
 
 local linters = {
+  -- spell
   "cspell",
+  -- editorconfig
   "editorconfig-checker",
+  -- js
   "eslint_d",
+  -- docker
   "hadolint",
+  -- lua
   "luacheck",
-  "markdownlint-cli2", -- also available as formatter
+  -- git
+  "gitlint",
+  -- php
+  "phpcs",
   "phpstan",
-  "ruff",
+  -- shell
   "shellcheck",
+  -- sql
   "sqlfluff",
+  -- yaml
   "yamllint",
 }
 
 local formatters = {
+  -- python
   "black",
   "isort",
+  -- latex
   "latexindent",
-  "markdown-toc",
+  -- markdown
+  "markdownlint-cli2", -- also available as linter
+  -- php
   "php-cs-fixer",
+  -- js
   "prettierd",
-  "ruff",
+  -- shell
   "shfmt",
+  -- lua
   "stylua",
+  -- yaml
   "yamlfmt",
 }
 

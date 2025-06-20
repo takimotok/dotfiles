@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "Lua.workspace.library": [
+    "${workspaceFolder}/lua",
+    "~/.local/share/nvim/lazy/conform.nvim/lua",
+    "~/.local/share/nvim/lazy/nvim-lint/lua",
+    "${3rd}/luv/library"
+  ],
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
+  "Lua.hint.enable": true,
+  "Lua.completion.callSnippet": "Replace"
+}
