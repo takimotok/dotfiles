@@ -15,8 +15,8 @@ local default_model = "claude-sonnet-4"
 -- https://github.com/olimorris/codecompanion.nvim/discussions/858
 M.opts = {
   adapters = {
-    default_adapter = function()
-      return require("codecompanion.adapters").extend(default_adapter, {
+    copilot = function()
+      return require("codecompanion.adapters").extend("copilot", {
         schema = {
           model = {
             default = default_model,
