@@ -1,11 +1,12 @@
 local km = require("kengo.core.key_mapper")
+local md_filetypes = { "markdown", "mdx", "mdc", "codecompanion" }
 
 return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "mdx", "mdc", "codecompanion" },
+    ft = md_filetypes,
     opts = {
-      file_types = { "markdown", "codecompanion" },
+      file_types = md_filetypes,
 
       -- https://github.com/olimorris/codecompanion.nvim/discussions/456
       render_modes = true, -- render in all modes
@@ -100,26 +101,35 @@ return {
   },
   {
     "mattn/vim-maketable",
-    ft = { "markdown" },
+    ft = md_filetypes,
   },
   {
-    "zk-org/zk-nvim",
+    "dhruvasagar/vim-table-mode",
+    ft = md_filetypes,
     config = function()
-      require("zk").setup({
-        picker = "select",
-      })
-
-      -- @TODO: couldn't show desc in which-key window w/ `km` functions
-      -- keymaps
-      -- Open notes associated with the selected tags.
-      km.nmap("<leader>zt", "<Cmd>ZkTags<CR>", { desc = "With [Z]k-nvim, search notes by [T]ags" })
-
-      -- Search for the notes matching a given query.
-      km.nmap(
-        "<leader>zf",
-        "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
-        { desc = "With [Z]k-nvim, [F]ind notes by given queries" }
-      )
+      -- km.nmap("<C-;>", ":! tr -s ' ' | column -t -s '|' -o '|'<CR>", { desc = "format csv by comma" })
+      km.nmap("<C-;>", ":TableModeRealign<CR>", { desc = "format md tables" })
     end,
   },
+
+  -- {
+  --   "zk-org/zk-nvim",
+  --   config = function()
+  --     require("zk").setup({
+  --       picker = "select",
+  --     })
+  --
+  --     -- @TODO: couldn't show desc in which-key window w/ `km` functions
+  --     -- keymaps
+  --     -- Open notes associated with the selected tags.
+  --     km.nmap("<leader>zt", "<Cmd>ZkTags<CR>", { desc = "With [Z]k-nvim, search notes by [T]ags" })
+  --
+  --     -- Search for the notes matching a given query.
+  --     km.nmap(
+  --       "<leader>zf",
+  --       "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+  --       { desc = "With [Z]k-nvim, [F]ind notes by given queries" }
+  --     )
+  --   end,
+  -- },
 }
