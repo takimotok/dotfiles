@@ -1,3 +1,10 @@
+---@module "kengo.types"
+
+-- for COMMON
+---@alias FiletypeName string file type name
+---@alias ConfigFileName string config file name
+---@alias FormatterName string formatter name
+---@alias LinterName string linter name
 
 -- for LSP diagnostics
 ---@class DiagnosticConfig
@@ -10,16 +17,12 @@
 
 -- for nvim-lint
 ---@class NvimLintModule
----@field linters_by_ft table<FiletypeName, LinterName[]>
----@field linters table<LinterName, lint.Linter>
+-- @field linters_by_ft table<FiletypeName, LinterName[]>
+-- @field linters table<string,lint.Linter|fun():lint.Linter>
+---@field opts string
+---@field files table<string>
 
 -- for conform.nvim
 ---@class ConformModule
 ---@field formatters_by_ft table<FiletypeName, FormatterName[]>
 ---@field formatters table<FormatterName, conform.FormatterConfig>
-
--- for COMMON
----@alias FiletypeName string file type name
----@alias ConfigFileName string config file name
----@alias FormatterName string formatter name
----@alias LinterName string linter name

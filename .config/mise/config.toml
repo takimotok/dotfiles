@@ -10,7 +10,7 @@ python = ["3.12.5"]
 # > Rust has an official version manager called rustup that is better than what any of the current mise plugins offer.
 # > https://mise.jdx.dev/lang/rust.html#rust
 rust = ["1.81.0"]
-node = "20.17.0"
+node = "22.16.0"
 yarn = ["1.22", "4.4.0"]
 lua = ["5.1", "5.4.6"]
 neovim = "0.11.1"

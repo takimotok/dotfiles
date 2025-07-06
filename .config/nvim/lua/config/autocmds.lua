@@ -19,12 +19,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- linting
-local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost", "InsertLeave", "BufWritePost" }, {
-  group = lint_augroup,
-  callback = function()
-    local lint = require("lint")
-    lint.try_lint()
-  end,
-})

@@ -7,9 +7,7 @@
     "${3rd}/luv/library"
   ],
   "Lua.workspace.checkThirdParty": false,
-  "Lua.diagnostics.globals": [
-    "vim"
-  ],
+  "Lua.diagnostics.globals": ["vim"],
   "Lua.hint.enable": true,
   "Lua.completion.callSnippet": "Replace"
 }
