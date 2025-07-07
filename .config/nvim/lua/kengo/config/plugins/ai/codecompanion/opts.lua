@@ -2,12 +2,16 @@ local M = {}
 
 local default_adapter = "copilot"
 
+-- e.g.) Model multipliers:
+-- https://docs.github.com/ja/copilot/managing-copilot/understanding-and-managing-copilot-usage/understanding-and-managing-requests-in-copilot
 -- e.g.) default models:
 -- default = "gpt-4o",
+-- default = "gpt-4.1",
 -- default = "o3-mini-2025-01-31",
 -- default = "gemini-2.5-pro",
 -- default = "claude-3.5-sonnet",
 -- default = "claude-3.7-sonnet",
+-- default_model = "claude-sonnet-4"
 local default_model = "claude-sonnet-4"
 
 -- available adapters found here:
