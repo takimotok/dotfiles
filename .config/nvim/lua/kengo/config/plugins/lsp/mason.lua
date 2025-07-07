@@ -48,8 +48,6 @@ local linters = {
   "editorconfig-checker",
   -- js
   "eslint_d",
-  -- docker
-  "hadolint",
   -- lua
   "luacheck",
   -- git

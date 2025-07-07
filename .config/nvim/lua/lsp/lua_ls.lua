@@ -9,6 +9,18 @@ return {
       format = {
         enable = false, -- styluaを使用
       },
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          "${workspaceFolder}/lua",
+          "~/.local/share/nvim/lazy/conform.nvim/lua",
+          "~/.local/share/nvim/lazy/nvim-lint/lua",
+          "${3rd}/luv/library",
+        },
+        checkThirdParty = false,
+      },
     },
   },
 }
