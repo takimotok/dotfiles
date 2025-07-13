@@ -1,0 +1,9 @@
+---
+
+defaultIndent: "  "  # 2 spaces
+alwaysLookforSplitBraces: 1
+alwaysLookforSplitBrackets: 1
+indentAfterItems: 1
+indentAfterHeadings: 1
+maximumIndentation: -1
+removeTrailingWhitespace: 1

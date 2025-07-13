@@ -1,6 +1,12 @@
 return {
   filetypes = { "lua" },
-  root_markers = { ".luarc.json", ".luarc.jsonc", ".stylua.toml", "stylua.toml", ".git" },
+  root_markers = {
+    ".luarc.json",
+    ".luarc.jsonc",
+    ".stylua.toml",
+    "stylua.toml",
+    ".git",
+  },
   settings = {
     Lua = {
       runtime = {
@@ -15,6 +21,7 @@ return {
       workspace = {
         library = {
           "${workspaceFolder}/lua",
+          "${workspaceFolder}/lua/types",
           "~/.local/share/nvim/lazy/conform.nvim/lua",
           "~/.local/share/nvim/lazy/nvim-lint/lua",
           "${3rd}/luv/library",

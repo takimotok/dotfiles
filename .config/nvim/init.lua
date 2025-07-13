@@ -1,4 +1,4 @@
 -- 型定義を早期に読み込み
-require("kengo.types")
+require("types")
 
 require("config.lazy")
