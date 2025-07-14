@@ -37,6 +37,10 @@
 ---@field opts string
 ---@field files table<string>
 
+---@class (exact) kengo.LinterConfig
+---@field opts string[] configuration options
+---@field files string[] file names which a linter can reffer
+
 -- -----
 -- Formatting
 --

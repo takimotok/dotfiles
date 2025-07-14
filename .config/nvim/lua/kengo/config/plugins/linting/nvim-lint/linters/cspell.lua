@@ -2,7 +2,7 @@
 local M = {}
 
 --@type string[]
-M.opts = "--config"
+M.opts = { "--config" }
 
 --@type string[]
 M.files = {

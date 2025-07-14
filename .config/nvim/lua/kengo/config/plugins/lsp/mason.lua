@@ -75,6 +75,8 @@ local formatters = {
   "php-cs-fixer",
   -- js
   "prettierd",
+  -- rust
+  "rustfmt",
   -- shell
   "shfmt",
   -- lua

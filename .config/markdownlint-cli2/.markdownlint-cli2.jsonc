@@ -25,7 +25,8 @@
     // 重複ヘッダーを許可（日付ベースのファイルで有用）
     // Multiple headings with same content
     "MD024": {
-      "siblings_only": true
+      // "siblings_only": true
+      "siblings_only": false
     },
 
     // no-blanks-blockquote

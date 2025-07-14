@@ -1,5 +1,3 @@
-require("kengo.types")
-
 ---@class LintersByFtModule ファイルタイプごとのリンター設定モジュール
 ---@field linters_by_ft table<FiletypeName, LinterName[]> ファイルタイプごとのリンター設定
 local M = {}
