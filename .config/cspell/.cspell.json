@@ -1,0 +1,86 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "cspell",
+    "typescript",
+    "javascript",
+    "eslint",
+    "prettier",
+    "webpack",
+    "vscode",
+    "github",
+    "neovim"
+  ],
+  "ignoreWords": [
+    "TODO",
+    "FIXME",
+    "HACK"
+  ],
+  "flagWords": [
+    "hte",
+    "teh",
+    "recieve"
+  ],
+  "dictionaries": [
+    "typescript",
+    "node",
+    "npm",
+    "html",
+    "css",
+    "bash"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./project-words.txt"
+    }
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    "coverage/**",
+    "*.log",
+    "*.map",
+    "package-lock.json",
+    "yarn.lock",
+    "pnpm-lock.yaml"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.md",
+      "language": "en",
+      "dictionaries": ["en_US", "markdown"]
+    },
+    {
+      "filename": "**/*.json",
+      "ignoreRegExpList": ["String"]
+    },
+    {
+      "filename": "**/*.ts",
+      "dictionaries": ["typescript", "node"]
+    }
+  ],
+  "import": [],
+  "allowCompoundWords": true,
+  "caseSensitive": false,
+  "minWordLength": 3,
+  "maxNumberOfProblems": 100,
+  "numSuggestions": 8,
+  "suggestionsTimeout": 5000,
+  "loadDefaultConfiguration": true,
+  "enabledLanguageIds": [
+    "javascript",
+    "typescript",
+    "json",
+    "markdown",
+    "html",
+    "css",
+    "yaml",
+    "python",
+    "go",
+    "rust"
+  ]
+}
+
