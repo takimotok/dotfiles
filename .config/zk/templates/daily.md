@@ -8,15 +8,8 @@ created_at: {{format-date now '%Y-%m-%d'}}
 updated_at:
 ---
 
-## TIMELINE
-
-## READ: BOOKS
-
-## READ: ARTICLES
-
-## TIL (Today I Learned)
+## TID (Today I Did)
 
 ## TIT (Today I Thought)
 
-## FUTURE WORKS
-
+## TID (Tomorrow I Do)
