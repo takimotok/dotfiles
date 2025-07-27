@@ -19,4 +19,3 @@ assignees: takimotok
 <!-- Optional: List of tasks needed for implementation -->
 - [ ]
 - [ ]
-

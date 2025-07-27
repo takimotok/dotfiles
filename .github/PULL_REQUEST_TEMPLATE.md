@@ -6,4 +6,3 @@
 
 ## Notes
 <!-- Any additional information, references, or future tasks -->
-
