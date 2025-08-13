@@ -51,6 +51,6 @@
 ---@field formatters table<kengo.FormatterName, conform.FormatterConfig>
 
 ---@class (exact) kengo.FormatterConfig
----@field prepend_args? string|string[]|fun(self: conform.FormatterConfig, ctx: conform.Context): string|string[]
+---@field append_args? string|string[]|fun(self: conform.FormatterConfig, ctx: conform.Context): string|string[]
 ---@field files table<kengo.FormatterName, conform.FormatterConfig> file names which a formatter can reffer
 ---@field condition? fun(self: conform.JobFormatterConfig, ctx: conform.Context): boolean

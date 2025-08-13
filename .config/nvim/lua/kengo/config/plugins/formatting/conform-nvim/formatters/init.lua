@@ -71,11 +71,11 @@ function M.setup()
       goto continue
     end
 
-    local prepend_args = util.merge_tables({}, configs.prepend_args or {})
-    table.insert(prepend_args, found_config_file_path)
+    local append_args = util.merge_tables({}, configs.append_args or {})
+    table.insert(append_args, found_config_file_path)
 
     local formatter_config = {}
-    formatter_config.prepend_args = prepend_args
+    formatter_config.append_args = append_args
 
     if configs.condition ~= nil then
       formatter_config.condition = configs.condition
