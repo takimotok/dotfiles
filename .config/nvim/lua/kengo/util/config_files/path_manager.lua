@@ -16,6 +16,7 @@ local ROOT_MARKERS = {
   "pom.xml",
   "build.gradle",
   "Makefile",
+  ".zk",
   ".editorconfig",
 }
 
