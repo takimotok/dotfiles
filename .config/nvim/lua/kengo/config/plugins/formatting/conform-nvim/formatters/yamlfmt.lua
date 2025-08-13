@@ -1,7 +1,7 @@
 local M = {}
 
 ---@type string[]
-M.prepend_args = { "-conf" }
+M.append_args = { "-conf" }
 
 ---@type string[]
 M.files = {
