@@ -73,7 +73,6 @@ return {
       "folke/snacks.nvim", -- optional
     },
     cmd = {
-      "Neogen",
       "Neogit",
       "NeogitCommit",
       "NeogitLogCurrent",
