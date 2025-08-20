@@ -6,24 +6,8 @@
   "diagnostics.enabled": true,
   "symfony.enabled": true,
   "phpunit.enabled": true,
-  "indexer.exclude_patterns": [
-    "/vendor/**/Tests/**/*",
-    "/vendor/**/tests/**/*",
-    "/var/cache/**/*"
-  ],
+  "indexer.exclude_patterns": ["/vendor/**/Tests/**/*", "/vendor/**/tests/**/*", "/var/cache/**/*"],
   "completion.enable": true,
   "prophecy.enabled": true,
-  "language_server_worse_reflection.diagnostics": {
-    "disabled": [
-      {
-        "name": "worse.missing_return_type",
-        "paths": ["/tests/**/*"]
-      },
-      {
-        "name": "worse.docblock_missing_return_type",
-        "paths": ["/tests/**/*"]
-      }
-    ]
-  }
+  "language_server.diagnostic_exclude_paths": ["/tests/**/*"]
 }
-
