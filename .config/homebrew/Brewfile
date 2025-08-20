@@ -69,6 +69,7 @@ brew 'gnutls'
 brew 'go'
 brew 'gobject-introspection'
 brew 'gpgme'
+brew 'gpgmepp'
 brew 'gradle'
 brew 'graphite2'
 brew 'grep'
@@ -174,6 +175,7 @@ brew 'ncurses'
 brew 'neofetch'
 brew 'nettle'
 brew 'nkf'
+brew 'nlohmann-json'
 brew 'npth'
 brew 'nspr'
 brew 'nss'
@@ -269,10 +271,12 @@ brew 'wget'
 brew 'x264'
 brew 'x265'
 brew 'xorgproto'
+brew 'xq'
 brew 'xsimd'
 brew 'xvid'
 brew 'xxhash'
 brew 'xz'
+brew 'yq'
 brew 'yt-dlp'
 brew 'zeromq'
 brew 'zimg'
@@ -368,9 +372,9 @@ tap 'stripe/stripe-cli'
 brew 'stripe'
 
 # App Store applications
-mas 'Amazon Kindle (7.37)', id: 302584613
+mas 'Amazon Kindle (7.38.1)', id: 302584613
 mas 'GarageBand (10.4.12)', id: 682658836
-mas 'Goodnotes (6.7.7)', id: 1444383602
+mas 'Goodnotes (6.7.12)', id: 1444383602
 mas 'iMovie (10.4.3)', id: 408981434
 mas 'Keynote (14.4)', id: 409183694
 mas 'LINE (9.10.1)', id: 539883307
@@ -378,5 +382,5 @@ mas 'Monosnap (6.30)', id: 540348655
 mas 'Numbers (14.4)', id: 409203825
 mas 'Pages (14.4)', id: 409201541
 mas 'PicGIF Lite (2.0.9)', id: 844918735
-mas 'Toggl Track (10.11.0)', id: 1291898086
+mas 'Toggl Track (10.13.0)', id: 1291898086
 mas 'Xcode (16.4)', id: 497799835

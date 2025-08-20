@@ -2,8 +2,7 @@
 local M = {}
 
 ---@type string[]
--- @NOTE: 下記または `--standard=/path/to/config_file`
-M.opts = { "--config-set", "intalled_paths" }
+M.opts = { "--standard=" }
 
 ---@type string[]
 M.files = {

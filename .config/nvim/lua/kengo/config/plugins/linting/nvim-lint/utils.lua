@@ -94,8 +94,30 @@ function M.setup()
     end
 
     linter.args = linter.args or {}
-    vim.list_extend(linter.args, config.opts)
-    table.insert(linter.args, found_config_file_path)
+
+    -- config.opts を処理し、= で終わる場合は found_config_file_path と連結
+    local config_args = {}
+    local config_file_added = false
+    for _, opt in ipairs(config.opts) do
+      if opt:sub(-1) == "=" then
+        -- = で終わる場合は found_config_file_path と連結
+        table.insert(config_args, opt .. found_config_file_path)
+        config_file_added = true
+      else
+        -- = で終わらない場合はオプションのみ追加
+        table.insert(config_args, opt)
+      end
+    end
+
+    -- もし config_args に found_config_file_path が含まれない場合、追加
+    if not config_file_added then
+      table.insert(config_args, found_config_file_path)
+    end
+
+    -- 完全な設定引数を元の linter.args の先頭に追加
+    local new_args = vim.deepcopy(config_args)
+    vim.list_extend(new_args, linter.args)
+    linter.args = new_args
 
     res[name] = linter
 
