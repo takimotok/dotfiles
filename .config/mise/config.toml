@@ -1,37 +1,38 @@
 [tools]
-awscli = ["2.17.46"]
-ghq = ["1.6.2"]
-java = ["21.0.2"]
-jq = ["1.7.1"]
-php = ["8.3.11"]
-ruby = ["3.2.5"]
-python = ["3.12.5"]
-# >  In fact, I don't think you should actually use mise for rust development.
-# > Rust has an official version manager called rustup that is better than what any of the current mise plugins offer.
-# > https://mise.jdx.dev/lang/rust.html#rust
-rust = ["1.81.0"]
-node = "22.16.0"
-yarn = ["1.22", "4.4.0"]
-lua = ["5.1", "5.4.6"]
-neovim = "0.11.1"
+  awscli = ["2.17.46"]
+  ghq = ["1.6.2"]
+  java = ["21.0.2"]
+  jq = ["1.7.1"]
+  php = ["8.3.11"]
+  python = ["3.12.5"]
+  ruby = "3.2.5"
+  # >  In fact, I don't think you should actually use mise for rust development.
+  # > Rust has an official version manager called rustup that is better than what any of the current mise plugins offer.
+  # > https://mise.jdx.dev/lang/rust.html#rust
+  lua = ["5.1", "5.4.6"]
+  neovim = "0.11.4"
+  node = "22.20.0"
+  rust = ["1.81.0"]
+  uv = "0.8.23"
+  yarn = ["1.22", "4.4.0"]
 
 [settings]
-always_keep_download = false # default
-always_keep_install = false  # default
+  always_keep_download = false # default
+  always_keep_install = false  # default
 
-plugin_autoupdate_last_check_duration = '1 week' # 更新を無効にする場合は0に設定する
+  plugin_autoupdate_last_check_duration = '1 week' # 更新を無効にする場合は0に設定する
 
-jobs = 2    # default 4
-raw = false # set to true to directly pipe plugins to stdin/stdout/stderr
+  jobs = 2    # default 4
+  raw = false # set to true to directly pipe plugins to stdin/stdout/stderr
 
-experimental = true
-# log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
+  experimental = true
+  # log_level = 'debug' # log verbosity, see `RTX_LOG_LEVEL`
 
-trusted_config_paths = [
-  '~/.config/mise/config.toml',
-  '~/projects/github.com/takimotok/dotfiles/.config/nvim/.mise.toml',
-  '~/projects/github.com/takimotok/memoapp/src/.mise.toml',
-  '~/projects/github.com/takimotok/dotfiles/.config/mise/config.toml',
-  '~/projects/github.com/takimotok/takimotok.github.io',
-  '~/projects/github.com/takimotok/learn_astro_by_creating_blog',
-]
+  trusted_config_paths = [
+    '~/.config/mise/config.toml',
+    '~/projects/github.com/takimotok/dotfiles/.config/nvim/.mise.toml',
+    '~/projects/github.com/takimotok/memoapp/src/.mise.toml',
+    '~/projects/github.com/takimotok/dotfiles/.config/mise/config.toml',
+    '~/projects/github.com/takimotok/takimotok.github.io',
+    '~/projects/github.com/takimotok/learn_astro_by_creating_blog',
+  ]
