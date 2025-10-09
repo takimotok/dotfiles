@@ -4,15 +4,22 @@ local default_adapter = "copilot"
 
 -- e.g.) Model multipliers:
 -- https://docs.github.com/ja/copilot/managing-copilot/understanding-and-managing-copilot-usage/understanding-and-managing-requests-in-copilot
--- e.g.) default models:
--- default = "gpt-4o",
--- default = "gpt-4.1",
--- default = "o3-mini-2025-01-31",
--- default = "gemini-2.5-pro",
--- default = "claude-3.5-sonnet",
--- default = "claude-3.7-sonnet",
--- default_model = "claude-sonnet-4"
-local default_model = "claude-sonnet-4"
+-- we can see the models in th Copilot adaper by `ga` command in a CodeCompanion Chat buffer:
+--  claude-3.5-sonnet
+--  claude-3.7-sonnet
+--  claude-3.7-sonnet-thought
+--  claude-sonnet-4.5
+--  gemini-2.0-flash-001
+--  gemini-2.5-pro
+--  gpt-4.1
+--  gpt-4o
+--  gpt-5
+--  gpt-5-codex
+--  gpt-5-mini
+--  grok-code-fast-1
+--  o3-mini
+--  o4-mini
+local default_model = "claude-sonnet-4.5"
 
 -- available adapters found here:
 -- https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
@@ -31,10 +38,19 @@ M.opts = {
         },
       })
     end,
+    -- https://github.com/olimorris/codecompanion.nvim/discussions/1576#discussioncomment-13681339
+    jina = function()
+      return require("codecompanion.adapters").extend("jina", {
+        env = {
+          api_key = "jina_1635ad2d733f42ffb646a399118f6e08fnWyvJ7tp0fxkULpflAQlrLN_VPT",
+        },
+      })
+    end,
   },
   strategies = {
     chat = {
       adapter = default_adapter,
+      model = default_model,
       roles = {
         llm = function(adapter)
           return "  CodeCompanion (" .. adapter.formatted_name .. ")"
@@ -55,6 +71,16 @@ M.opts = {
     },
     inline = {
       adapter = default_adapter,
+    },
+    cmd = {
+      adapter = default_adapter,
+    },
+    agent = {
+      tools = {
+        ["fetch"] = {
+          rate_limit = 1, -- 1秒間隔でリクエスト制限
+        },
+      },
     },
   },
   display = {
@@ -82,12 +108,81 @@ M.opts = {
     history = {
       enabled = true,
       opts = {
+        -- open history from chat buffer (default: gh)
+        keymap = "gh",
         picker = "snacks",
         title_generation_opts = {
-          adapter = default_adapter,
-          model = default_model,
+          adapter = "copilot",
+          model = "gpt-4o",
         },
         dir_to_save = vim.fn.stdpath("data") .. "/codecompanion/histories",
+
+        -- Summary system
+        summary = {
+          -- Keymap to generate summary for current chat
+          create_summary_keymap = "gcs",
+          -- Keymap to browse summaries
+          browse_summaries_keymap = "gbs",
+
+          generation_opts = {
+            adapter = "copilot",
+            model = "gpt-4o",
+            context_size = 8192, -- max tokens that the model supports
+          },
+        },
+      },
+    },
+    spinner = {},
+    -- https://ravitemer.github.io/mcphub.nvim/extensions/codecompanion.html
+    mcphub = {
+      callback = "mcphub.extensions.codecompanion",
+      opts = {
+        -----
+        -- MCP Tools
+        -----
+        -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
+        make_tools = true,
+        -- Show individual tools in chat completion (when make_tools=true)
+        show_server_tools_in_chat = true,
+        -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
+        add_mcp_prefix_to_tool_names = false,
+        -- Show tool results directly in chat buffer
+        show_result_in_chat = true,
+        -- function(tool_name:string, tool: CodeCompanion.Agent.Tool):
+        --    string Function to format tool names to show in the chat buffer
+        format_tool = nil,
+        -----
+        -- MCP Resources
+        -----
+        -- Convert MCP resources to #variables for prompts
+        make_vars = true,
+        -----
+        -- MCP Prompts
+        -----
+        -- Add MCP prompts as /slash commands
+        make_slash_commands = true,
+      },
+    },
+  },
+  prompt_library = {
+    ["With Instructions"] = {
+      strategy = "chat",
+      description = "general.instructions.md を前提にチャット",
+      opts = {
+        short_name = "inst",
+        auto_submit = false,
+      },
+      context = {
+        {
+          type = "file",
+          path = ".github/instructions/general.instructions.md",
+        },
+      },
+      prompts = {
+        {
+          role = "user",
+          content = "以降、このファイルの内容を前提にchatを行います。",
+        },
       },
     },
   },

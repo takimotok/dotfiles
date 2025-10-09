@@ -34,19 +34,18 @@ return {
   {
     "olimorris/codecompanion.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      { "nvim-lua/plenary.nvim", branch = "master" },
       "nvim-treesitter/nvim-treesitter",
       "j-hui/fidget.nvim",
       "ravitemer/codecompanion-history.nvim",
+      "franco-ruggeri/codecompanion-spinner.nvim",
+      "franco-ruggeri/codecompanion-lualine.nvim",
+      "ravitemer/mcphub.nvim",
     },
     cmd = { "CodeCompanionChat", "CodeCompanionActions" },
     opts = config_codecompanion_opts.opts,
     config = function(_, opts)
       require("codecompanion").setup(opts)
-
-      -- cf.) https://github.com/olimorris/codecompanion.nvim/discussions/813
-      local config_codecompanion = require("kengo.config.plugins.ai.codecompanion.fidget")
-      config_codecompanion:init()
 
       -- enable automatic tool mode
       -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
@@ -56,6 +55,27 @@ return {
       -- km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle [C]hat window" })
       km.nmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { desc = "[C]odecompanion [A]ctions" })
       km.vmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { desc = "[C]odecompanion [A]ctions" })
+    end,
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "Joakker/lua-json5",
+        -- manually executed in $XDG_DATA_HOME/nvim/lazy/lua-json5
+        -- due to not work `build` spec
+        -- e.g.)
+        --  $ cd $XDG_DATA_HOME/nvim/lazy/lua-json5
+        --  $ ./install.sh
+        build = "./install.sh",
+      },
+    },
+    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+    config = function()
+      require("mcphub").setup({
+        json_decode = require("json5").parse,
+      })
     end,
   },
 }

@@ -85,6 +85,11 @@ local formatters = {
   "yamlfmt",
 }
 
+local ai_related_tools = {
+  -- for codecompanion-history
+  "vectorcode",
+}
+
 local function set_lsps()
   for _, lsp in pairs(lsps) do
     table.insert(M.ensure_installed, lsp)
@@ -103,10 +108,17 @@ local function set_formatters()
   end
 end
 
+local function set_ai_related_tools()
+  for _, tool in pairs(ai_related_tools) do
+    table.insert(M.ensure_installed, tool)
+  end
+end
+
 local function set_ensure_installed()
   set_lsps()
   set_linters()
   set_formatters()
+  set_ai_related_tools()
 end
 
 function M.init()
