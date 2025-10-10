@@ -39,3 +39,23 @@ vim.keymap.del("n", "<C-Right>") -- disable "Increase Window Width"
 -- unmap defaults: Generals
 -- cf.) https://www.lazyvim.org/keymaps
 vim.keymap.del("n", "<leader>l") -- "lazy"
+
+-- local function toggle_eol_display()
+--   local current_listchars = vim.opt.listchars:get()
+--
+--   if current_listchars.eol then
+--     -- Remove EOL from listchars while preserving other settings
+--     current_listchars.eol = nil
+--     vim.opt.listchars = current_listchars
+--     print("EOL characters hidden")
+--   else
+--     -- Add EOL to existing listchars
+--     current_listchars.eol = "↲"
+--     vim.opt.listchars = current_listchars
+--     -- Ensure list is enabled when showing EOL
+--     vim.opt.list = true
+--     print("EOL characters visible")
+--   end
+-- end
+--
+-- km.nmap("<leader>te", toggle_eol_display, { desc = "Toggle [E]OL display" })

@@ -21,7 +21,7 @@ local default_adapter = "copilot"
 --  o4-mini
 local default_model = "claude-sonnet-4.5"
 
--- available adapters found here:
+-- @see: Available adapters:
 -- https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
 -- https://github.com/olimorris/codecompanion.nvim/discussions/858
 M.opts = {
@@ -42,6 +42,7 @@ M.opts = {
     jina = function()
       return require("codecompanion.adapters").extend("jina", {
         env = {
+          -- @TODO: save api_key into 1Password and call it here
           api_key = "jina_1635ad2d733f42ffb646a399118f6e08fnWyvJ7tp0fxkULpflAQlrLN_VPT",
         },
       })
@@ -85,7 +86,7 @@ M.opts = {
   },
   display = {
     action_palette = {
-      provider = "default", -- default|telescope|mini_pick
+      provider = "snacks", -- default|telescope|fzf_lua|mini_pick|snacks
       opts = {
         show_default_actions = true, -- Show the default actions in the action palette?
         show_default_prompt_library = true, -- Show the default prompt library in the action palette?
