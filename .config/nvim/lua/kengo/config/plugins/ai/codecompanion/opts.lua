@@ -42,8 +42,7 @@ M.opts = {
     jina = function()
       return require("codecompanion.adapters").extend("jina", {
         env = {
-          -- @TODO: save api_key into 1Password and call it here
-          api_key = "jina_1635ad2d733f42ffb646a399118f6e08fnWyvJ7tp0fxkULpflAQlrLN_VPT",
+          api_key = "cmd:op read op://development/jina.ai/api_key --no-newline",
         },
       })
     end,
