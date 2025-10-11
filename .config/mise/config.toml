@@ -16,6 +16,11 @@
   uv = "0.8.23"
   yarn = ["1.22", "4.4.0"]
 
+  # alternatives w/ `$ npm install ...`
+  "npm:@github/copilot" = "latest"
+  "npm:@google/gemini-cli" = "latest"
+  "npm:mcp-hub" = "latest"
+
 [settings]
   always_keep_download = false # default
   always_keep_install = false  # default

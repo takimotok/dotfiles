@@ -38,6 +38,10 @@ vim.opt.listchars = {
   --   precedes = "«",
 }
 
+-- concealing
+vim.opt.conceallevel = 0
+vim.opt.concealcursor = ""
+
 -- command history
 vim.opt.history = 512
 

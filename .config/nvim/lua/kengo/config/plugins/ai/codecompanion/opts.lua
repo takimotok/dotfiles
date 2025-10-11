@@ -1,5 +1,7 @@
 local M = {}
 
+local xdg_cache_home = os.getenv("XDG_CACHE_HOME") or (os.getenv("HOME") .. "/.cache")
+
 local default_adapter = "copilot"
 
 -- e.g.) Model multipliers:
@@ -46,11 +48,36 @@ M.opts = {
         },
       })
     end,
+    acp = {
+      gemini_cli = function()
+        return require("codecompanion.adapters").extend("gemini_cli", {
+          commands = {
+            default = {
+              "mise",
+              "exec",
+              "gemini-cli",
+              "--",
+              "gemini",
+              "--experimental-acp",
+            },
+          },
+          defaults = {
+            auth_method = "gemini-api-key", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+          },
+          env = {
+            GEMINI_API_KEY = "cmd:op read op://development/gemini_cli/api_key --no-newline",
+          },
+        })
+      end,
+    },
   },
   strategies = {
     chat = {
       adapter = default_adapter,
       model = default_model,
+      opts = {
+        completion_provider = "blink", -- blink|cmp|coc|default
+      },
       roles = {
         llm = function(adapter)
           return "  CodeCompanion (" .. adapter.formatted_name .. ")"
@@ -65,6 +92,22 @@ M.opts = {
             provider = "snacks", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
             contains_code = true,
             show_hidden = true,
+          },
+        },
+        ["fetch"] = {
+          opts = {
+            cache_path = xdg_cache_home .. "/nvim/codecompanion/urls",
+          },
+        },
+      },
+      tools = {
+        opts = {
+          auto_submit_errors = true, -- Send any errors to the LLM automatically?
+          auto_submit_success = true, -- Send any successful output to the LLM automatically?
+        },
+        ["cmd_runner"] = {
+          opts = {
+            requires_approval = true,
           },
         },
       },
@@ -97,6 +140,17 @@ M.opts = {
       auto_scroll = false,
       show_header_separator = true,
       -- separator = "-",
+      icons = {
+        chat_context = " ", -- an icon to the fold
+      },
+      fold_context = true,
+    },
+    inline = {
+      layout = "vertical", -- vertical|horizontal|buffer
+    },
+    diff = {
+      enabled = true,
+      provider = "split", -- mini_diff|split|inline
     },
   },
   opts = {

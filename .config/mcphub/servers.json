@@ -22,7 +22,7 @@
     },
     "github": {
       "headers": {
-        Authorization: "Bearer ${cmd: op read op://Personal/github.com/from_nvim_fine-grained_PAT --no-newline}"
+        "Authorization": "Bearer ${cmd: op read op://Personal/github.com/from_nvim_fine-grained_PAT --no-newline}"
       },
       "url": "https://api.githubcopilot.com/mcp/"
     }

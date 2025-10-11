@@ -47,6 +47,10 @@ return {
     config = function(_, opts)
       require("codecompanion").setup(opts)
 
+      -- Link CodeCompanion highlight groups to Visual
+      vim.api.nvim_set_hl(0, "CodeCompanionChatTool", { link = "Visual" })
+      vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { link = "Visual" })
+
       -- enable automatic tool mode
       -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
       vim.g.codecompanion_auto_tool_mode = true
@@ -71,7 +75,9 @@ return {
         build = "./install.sh",
       },
     },
-    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+    -- install `mcp-hub` node binary globally by mise
+    -- @see ~/.config/mise/config.toml
+    build = "mise use -g npm:mcp-hub@latest",
     config = function()
       require("mcphub").setup({
         json_decode = require("json5").parse,
