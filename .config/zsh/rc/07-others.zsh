@@ -94,3 +94,34 @@ export POETRY_VIRTUALENVS_IN_PROJECT=true
 # -----
 export ZK_NOTEBOOK_DIR=${NOTES}
 
+# github
+# -----
+# always read cached file
+local cmd_gh_auth_token="gh auth token"
+local cache_file_gh_auth_token="${XDG_CACHE_HOME}/gh/auth_token.zsh"
+local ref_file_gh_auth_token=""
+cache_eval "${cache_file_gh_auth_token}" "${cmd_gh_auth_token}" "${ref_file_gh_auth_token}"
+ensure_zcompiled "${cache_file_gh_auth_token}"
+
+export GITHUB_TOKEN=$(cat "${cache_file_gh_auth_token}")
+
+# Notion
+# -----
+# always read cached file
+local cmd_op_read_notion="op read op://Personal/Notion/SECURITY/API_SECRET --no-newline"
+local cache_file_notion="${XDG_CACHE_HOME}/op/notion.zsh"
+local ref_file_op_read_notion=""
+cache_eval "${cache_file_notion}" "${cmd_op_read_notion}" "${ref_file_op_read_notion}"
+ensure_zcompiled "${cache_file_notion}"
+
+export NOTION_API_KEY=$(cat "${cache_file_notion}")
+
+# gemini-cli
+# -----
+local cmd_op_read_gemini_cli="op read op://development/gemini_cli/api_key --no-newline"
+local cache_file_gemini_cli="${XDG_CACHE_HOME}/op/gemini_cli.zsh"
+local ref_file_op_read_gemini_cli=""
+cache_eval "${cache_file_gemini_cli}" "${cmd_op_read_gemini_cli}" "${ref_file_op_read_gemini_cli}"
+ensure_zcompiled "${cache_file_gemini_cli}"
+
+export GEMINI_API_KEY=$(cat "${cache_file_gemini_cli}")

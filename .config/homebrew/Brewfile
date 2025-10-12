@@ -375,7 +375,7 @@ tap 'stripe/stripe-cli'
 brew 'stripe'
 
 # App Store applications
-mas 'Amazon Kindle (7.42.1)', id: 302584613
+mas 'Amazon Kindle (7.43)', id: 302584613
 mas 'GarageBand (10.4.12)', id: 682658836
 mas 'Goodnotes (7.0.4)', id: 1444383602
 mas 'iMovie (10.4.3)', id: 408981434

@@ -39,6 +39,9 @@ local lsps = {
   "tailwindcss-language-server",
   -- toml
   "taplo",
+
+  -- ai
+  "copilot-language-server",
 }
 
 local linters = {

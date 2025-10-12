@@ -5,7 +5,7 @@ local config_nvim_lspconfig = require("kengo.config.plugins.lsp.nvim-lspconfig")
 
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = config_mason.ensure_installed,
     },
