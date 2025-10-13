@@ -5,6 +5,10 @@
 -- Prepend mise shims to PATH
 -- vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
+-- Global options
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- backup, swap files
 vim.opt.backup = false
 vim.opt.swapfile = false
@@ -23,8 +27,8 @@ vim.opt.spelllang = "en_us,cjk"
 
 -- tab treatment
 -- vim.opt.expandtab = false -- Tabキーで実際のTab文字を入力
-vim.opt.tabstop = 2 -- Tab文字の表示幅（お好みで調整）
-vim.opt.shiftwidth = 2 -- インデントの幅（お好みで調整）
+vim.opt.tabstop = 2 -- Tab文字の表示幅
+vim.opt.shiftwidth = 2 -- indent size
 
 -- show <Tab> and <EOL>
 -- vim.opt.list = true
