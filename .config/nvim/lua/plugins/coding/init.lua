@@ -5,4 +5,5 @@ return {
   { import = "plugins.coding.tabular" },
   { import = "plugins.coding.nvim-treesitter" },
   { import = "plugins.coding.markdown" },
+  { import = "plugins.coding.ai" },
 }
