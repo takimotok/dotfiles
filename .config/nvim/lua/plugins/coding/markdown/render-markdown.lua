@@ -1,8 +1,8 @@
+local km = require("util.key_mapper")
 local md_filetypes = require("util").md_filetypes
 
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  lazy = true,
   ft = md_filetypes,
   opts = {
     file_types = md_filetypes,
@@ -40,7 +40,6 @@ return {
     },
     checkbox = {
       enabled = true,
-      position = "inline",
       unchecked = {
         icon = "[ ] ",
         highlight = "RenderMarkdownUnchecked",
@@ -81,5 +80,15 @@ return {
         web = { pattern = "^http[s]?://", icon = "🔗 ", highlight = "RenderMarkdownLink" },
       },
     },
+    latex = { enabled = false },
   },
+  config = function(_, opts)
+    local rm = require("render-markdown")
+    rm.setup(opts)
+
+    -- key mappings
+    km.nmap("<leader>um", function()
+      rm.buf_toggle()
+    end, { desc = "Toggle RenderMarkdown" })
+  end,
 }

@@ -1,7 +1,0 @@
-require("plugins.editor")
-require("plugins.coding")
-require("plugins.ui")
-require("plugins.lsp")
-require("plugins.formatting")
-require("plugins.linting")
-require("plugins.snippets")

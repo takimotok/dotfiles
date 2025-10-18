@@ -3,6 +3,8 @@ local md_filetypes = require("util").md_filetypes
 return {
   "iamcco/markdown-preview.nvim",
   lazy = true,
+  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  ft = md_filetypes,
   init = function()
     vim.g.mkdp_theme = "light"
     vim.g.mkdp_preview_options = {

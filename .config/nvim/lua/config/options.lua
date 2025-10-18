@@ -144,7 +144,7 @@ vw.numberwidth = 2 -- Make the line number column thinner
 vw.number = true -- Set the absolute number
 vw.relativenumber = true -- Set the relative number
 vw.signcolumn = "yes" -- Show information next to the line numbers
-vw.wrap = false -- Do not display text over multiple lines
+vw.wrap = true -- Display text over multiple lines
 vw.winblend = 30 -- pseudo-transparency for a floating window
 
 -- backup, swap files

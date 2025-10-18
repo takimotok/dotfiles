@@ -20,12 +20,16 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { import = "plugins" },
-    -- { import = "plugins.editor" },
-    -- { import = "plugins.coding" },
-    -- { import = "plugins.lsp" },
-    -- { import = "plugins.formatting" },
-    -- { import = "plugins.lintig" },
+    -- Note: `import` searches `init.lua` recursively under the child directory.
+    -- so be careful to make the file names
+    { import = "plugins.editor" },
+    { import = "plugins.ui" },
+    { import = "plugins.coding" },
+    { import = "plugins.coding.ai" },
+    { import = "plugins.coding.markdown" },
+    { import = "plugins.lsp" },
+    { import = "plugins.formatting" },
+    { import = "plugins.linting" },
     -- { import = "plugins.snippets" },
   },
   -- automatically check for plugin updates
@@ -74,8 +78,8 @@ require("config.autocmds")
 vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
   callback = function()
-    require("config.commands")
-    require("config.keymaps")
     require("util")
+    require("config.autocmds")
+    require("config.keymaps")
   end,
 })

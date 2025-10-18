@@ -21,7 +21,8 @@ local default_adapter = "copilot"
 --  grok-code-fast-1
 --  o3-mini
 --  o4-mini
-local default_model = "claude-sonnet-4.5"
+-- local default_model = "claude-sonnet-4.5"
+local default_model = "gpt-4o"
 
 -- @see: Available adapters:
 -- https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters

@@ -1,14 +1,36 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", {
+  clear = true,
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = highlight_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  desc = "Highlight the yanked text when yanked",
+})
 
--- format .md tables on save
-local md_filetypes = { "*.md", "*.mdx", "*.mdc", "*.codecompanion" }
+-- [[ Markdown ]]
+local md_filetypes = require("util").md_filetypes
+
+-- Enable treesitter for markdown files.
+-- ∵ According to `:checkhealth render-markdown`:
+--  ```
+--  render-markdown.nvim [tree-sitter markdown] ~
+--  ❌ ERROR highlighter: not enabled
+--  - ADVICE:
+--    - call vim.treesitter.start on markdown buffers
+--  ```
+-- It causes not to caonceal links.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = md_filetypes,
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
+
+-- format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = md_filetypes,
   callback = function()
@@ -18,4 +40,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
-

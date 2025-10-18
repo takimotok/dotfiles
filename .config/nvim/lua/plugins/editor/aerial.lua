@@ -1,5 +1,8 @@
 return {
   "stevearc/aerial.nvim",
+  keys = {
+    { "<leader>cs", "<cmd>AerialToggle<cr>", desc = "Aerial (Symbols)" },
+  },
   config = function(_, opts)
     require("aerial").setup(opts)
 

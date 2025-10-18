@@ -16,11 +16,13 @@ return {
     km.nmap("<leader>zt", "<Cmd>ZkTags<CR>", { desc = "With [Z]k-nvim, search notes by [T]ags" })
 
     -- keymaps
-    -- Search for the notes matching a given query.
+    -- Search notes by query
     km.nmap(
       "<leader>zf",
       "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
       { desc = "With [Z]k-nvim, [F]ind notes by given queries" }
     )
+    -- Search notes by tags
+    km.nmap("<leader>zt", "<Cmd>ZkTags { sort = { 'name' } }<CR>", { desc = "[Z]k, Find by [T]ags" })
   end,
 }
