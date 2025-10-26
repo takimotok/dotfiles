@@ -1,10 +1,9 @@
 local M = {}
 
--- define functions:
--- M.nmap()
--- M.vmap()
--- M.imap()
--- ...
+-- Usage:
+-- 	local km = require("util.key_mapper")
+-- 	km.nmap("<F2>", 'i<C-R>=strftime("%H:%M")<CR>', { desc = "insert time" })
+
 local local_opts = { noremap = true, silent = true }
 for _, mode in pairs({ "n", "v", "i", "s", "o", "c", "t", "x" }) do
   M[mode .. "map"] = function(lhs, rhs, opts)

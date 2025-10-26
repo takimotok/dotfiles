@@ -1,25 +1,48 @@
-local km = require("util.key_mapper")
-
 return {
-  "lukas-reineke/indent-blankline.nvim",
-  main = "ibl",
-  event = "BufEnter",
-  opts = {
-    indent = {
-      char = "┊",
-      tab_char = "┊",
-      -- char = "│",
-      -- tab_char = "│",
-    },
-    scope = {
-      show_start = false,
-      show_end = false,
-    },
-  },
-  config = function(_, opts)
-    require("ibl").setup(opts)
-
-    -- keymaps
-    km.nmap("<leader>ug", ":IBLToggle<CR>", { desc = "Toggles IndentBlankline" })
-  end,
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   event = "BufEnter",
+  --   opts = function()
+  --     Snacks.toggle({
+  --       name = "Indention Guides",
+  --       get = function()
+  --         return require("ibl.config").get_config(0).enabled
+  --       end,
+  --       set = function(state)
+  --         require("ibl").setup_buffer(0, { enabled = state })
+  --         Snacks.toggle.indent()
+  --       end,
+  --     }):map("<leader>ug")
+  --
+  --     return {
+  --       indent = {
+  --         char = "┊",
+  --         tab_char = "┊",
+  --       },
+  --       scope = {
+  --         char = "│",
+  --         show_start = false,
+  --         show_end = false,
+  --         highlight = "RainbowDelimiterYellow",
+  --       },
+  --       exclude = {
+  --         filetypes = {
+  --           "Trouble",
+  --           "alpha",
+  --           "dashboard",
+  --           "help",
+  --           "lazy",
+  --           "mason",
+  --           "neo-tree",
+  --           "notify",
+  --           "snacks_dashboard",
+  --           "snacks_notif",
+  --           "snacks_terminal",
+  --           "snacks_win",
+  --           "toggleterm",
+  --           "trouble",
+  --         },
+  --       },
+  --     }
+  --   end,
 }

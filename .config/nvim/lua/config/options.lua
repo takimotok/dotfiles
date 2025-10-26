@@ -31,11 +31,10 @@ vb.tabstop = 2 -- Number of spaces in a tab
 
 -- Vim options
 vo.cmdheight = 0 -- Hide the command bar
-vim.schedule(function()
-  vo.clipboard = "unnamedplus" -- Use the system clipboard
-end)
+-- only set clipboard if not in ssh, to make sure the OSC 52
+-- integration works automatically.
+vo.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 vo.completeopt = "menuone,noselect" -- Completion opions for code completion
-vo.cursorlineopt = { "screenline", "number" } -- Highlight the screen line of the cursor with CursorLine and the line number with CursorLineNr
 vo.emoji = false -- Turn off emojis
 vo.fillchars = {
   fold = " ",
@@ -56,7 +55,7 @@ vo.ignorecase = true -- Ignore case
 vo.laststatus = 3 -- Use global statusline
 
 -- Sets how Neovim will display certain whitespace characters in the editor
-vo.list = true
+vw.list = false
 vo.listchars = {
   tab = "▸-",
   trail = "·",
@@ -104,9 +103,8 @@ vo.shortmess = {
 -- vo.showcmd = true -- Do not show me what I'm typing
 vo.showmatch = true -- Show matching brackets by flickering
 vo.showmode = false -- Do not show the mode
-vo.sidescrolloff = 8 -- The minimal number of columns to keep to the left and to the right of the cursor if 'nowrap' is set
 vo.smartcase = true -- Don't ignore case with capitals
-vo.smoothscroll = true -- Smoother scrolling
+vo.smoothscroll = false -- Smoother scrolling
 vo.splitbelow = true -- Put new windows below current
 vo.splitright = true -- Put new windows right of current
 vo.termguicolors = true -- True color support
@@ -147,6 +145,10 @@ vw.signcolumn = "yes" -- Show information next to the line numbers
 vw.wrap = true -- Display text over multiple lines
 vw.winblend = 30 -- pseudo-transparency for a floating window
 
+vw.cursorline = true -- Highlight the current line
+-- vo.cursorlineopt = { "screenline", "number" } -- Highlight the screen line of the cursor with CursorLine and the line number with CursorLineNr
+vw.cursorlineopt = "number"
+
 -- backup, swap files
 vo.backup = false
 vo.swapfile = false
@@ -163,4 +165,3 @@ vo.spelllang = "en_us,cjk"
 
 -- command history
 vo.history = 512
-

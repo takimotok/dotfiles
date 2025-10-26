@@ -29,6 +29,7 @@ return {
       colours_override = function(palette)
         return palette
       end,
+
       ---@param hl Highlights
       ---@param palette Palette
       on_highlights = function(hl, palette)

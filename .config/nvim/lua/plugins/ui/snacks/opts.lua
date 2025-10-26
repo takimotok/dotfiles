@@ -1,65 +1,16 @@
-local logo = require("assets.static.logo").setup()
-
 local M = {}
 
-M.notifier = {
-  enabled = true,
-  timeout = 5000, -- ms
-}
-
-M.indent = {
-  enabled = true,
-}
-
-M.explorer = {
-  enabled = true,
-  show_hidden = true,
-}
-
-M.dashboard = {
-  preset = {
-    header = logo,
-  },
-}
-
-M.picker = {
-  layout = {
-    cycle = true,
-    -- Use the default layout or vertical if the window is too narrow
-    -- cf.) https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#%EF%B8%8F-config
-    preset = function()
-      return vim.o.columns >= 120 and "default" or "vertical"
-    end,
-  },
-
-  -- result list window
-  sources = {
-    files = {
-      hidden = true,
-    },
-    explorer = {
-      hidden = true,
-    },
-    notifications = {
-      layout = {
-        -- Override specific dimensions
-        preset = "vertical",
-
-        -- Override to put preview on top and list on bottom
-        layout = {
-          width = 0.8,
-          height = 0.8,
-        },
-      },
-      confirm = { "copy", "close" },
-    },
-  },
-
-  formatters = {
-    file = {
-      truncate = 80, -- truncate the file path to (roughly) this length
-    },
-  },
-}
+M.notifier = require("plugins.ui.snacks.opts.notifier")
+M.indent = require("plugins.ui.snacks.opts.indent")
+M.scope = require("plugins.ui.snacks.opts.scope")
+M.explorer = require("plugins.ui.snacks.opts.explorer")
+M.dashboard = require("plugins.ui.snacks.opts.dashboard")
+M.picker = require("plugins.ui.snacks.opts.picker")
+M.bigfile = require("plugins.ui.snacks.opts.bigfile")
+M.input = require("plugins.ui.snacks.opts.input")
+M.quickfile = require("plugins.ui.snacks.opts.quickfile")
+M.scroll = require("plugins.ui.snacks.opts.scroll")
+M.statuscolumn = require("plugins.ui.snacks.opts.statuscolumn")
+M.words = require("plugins.ui.snacks.opts.words")
 
 return M
