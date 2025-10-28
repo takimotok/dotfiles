@@ -1,31 +1,42 @@
+local opts = require("plugins.editor.nvim-treesitter.opts")
+
 return {
   -- @see: https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
   -- need tree-sitter-cli
   -- 	`$ cargo install --locked tree-sitter-cli`
   "nvim-treesitter/nvim-treesitter",
-  version = false, -- last release is way too old
+  lazy = false,
   branch = "main",
-  lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-  -- cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-  init = function()
+  build = ":TSUpdate",
+  config = function()
+    local nt = require("nvim-treesitter")
+    nt.setup({})
+    nt.install(opts.languages)
+
+    -- Register the `markdown` parser to be used for `.mdx`
+    vim.treesitter.language.register("markdown", { "mdx" })
+
+    -- set highlighting, indentations and folds
+    local filetypes = {}
+    for _, lang in ipairs(nt.get_available(2)) do
+      for _, filetype in ipairs(vim.treesitter.language.get_filetypes(lang)) do
+        table.insert(filetypes, filetype)
+      end
+    end
+
     vim.api.nvim_create_autocmd("FileType", {
-      callback = function(args)
-        local filetype = args.match
-        local lang = vim.treesitter.language.get_lang(filetype)
-        if vim.treesitter.language.add(lang) then
-          vim.treesitter.start()
-        end
+      pattern = filetypes,
+      group = vim.api.nvim_create_augroup("dotfiles.nvim-treesitter-start", {}),
+      callback = function()
+        -- highlighting
+        pcall(vim.treesitter.start)
+
+        -- folds
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+        -- indentations
+        vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
       end,
     })
   end,
-  opts = {
-    ensure_installed = "all",
-    auto_install = true,
-    highlight = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-  },
 }
