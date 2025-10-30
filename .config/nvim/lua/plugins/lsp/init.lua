@@ -30,17 +30,16 @@ return {
 
       -- @see: `:h vim.diagnostic.Opts` about its options
       -- @see: `:h diagnostic-defaults` about its default keymaps
-      local icons = {
-        [vim.diagnostic.severity.ERROR] = "",
-        [vim.diagnostic.severity.WARN] = "",
-        [vim.diagnostic.severity.INFO] = "",
-        [vim.diagnostic.severity.HINT] = "",
-      }
-
+      local icons = require("util.icons")
       vim.diagnostic.config({
         severity_sort = true,
         signs = {
-          text = icons,
+          text = {
+            [vim.diagnostic.severity.ERROR] = icons.diagnostics.ERROR,
+            [vim.diagnostic.severity.WARN] = icons.diagnostics.WARN,
+            [vim.diagnostic.severity.HINT] = icons.diagnostics.HINT,
+            [vim.diagnostic.severity.INFO] = icons.diagnostics.INFO,
+          },
         },
         -- underline = false, -- default: true. Use underline for diagnostics
         -- update_in_insert = true, -- default: false. if `false`, diagnostics are updated on |InsertLeave|

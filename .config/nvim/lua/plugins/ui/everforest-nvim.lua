@@ -30,7 +30,7 @@ return {
         return palette
       end,
 
-      ---@param hl Highlights
+      ---@param hl Highlights see `:h highlight-groups`
       ---@param palette Palette
       on_highlights = function(hl, palette)
         hl.CursorLineNr = { fg = palette.yellow }
