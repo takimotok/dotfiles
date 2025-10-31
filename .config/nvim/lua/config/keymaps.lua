@@ -38,10 +38,11 @@ km.nmap("<leader>p", ":let @+ = expand('%')<CR>", { desc = "Copy file path" })
 -- [[ Diagnostic ]]
 local diagnostic_goto = function(next, severity)
   return function()
+    -- @see: `:h vim.diagnostic.jump()`
     vim.diagnostic.jump({
       count = (next and 1 or -1) * vim.v.count1,
       severity = severity and vim.diagnostic.severity[severity] or nil,
-      float = true,
+      float = true, -- If `true`, call `vim.diagnostic.open_float()` after moving
     })
   end
 end
