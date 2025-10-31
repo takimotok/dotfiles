@@ -99,7 +99,7 @@ local appearance = {
 }
 
 local sources = {
-  default = { "lsp", "path", "snippets", "buffer", "copilot" },
+  default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
   -- per_filetype = {
   --   codecompanion = { "codecompanion" },
   -- },
@@ -110,6 +110,14 @@ local sources = {
       score_offset = 100, -- copilot を優先
       async = true,
       kind = nil, -- explicity excluded kind field
+    },
+    -- for better lua_ls annotations
+    lazydev = {
+      name = "LazyDev",
+      module = "lazydev.integrations.blink",
+      -- make lazydev completions top priority
+      -- @see `:h blink.cmp`
+      score_offset = 100,
     },
   },
 }
