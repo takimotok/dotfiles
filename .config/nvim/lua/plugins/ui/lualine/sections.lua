@@ -1,7 +1,6 @@
 local icons = require("util.icons")
-local M = {}
 
-M = {
+local M = {
   lualine_a = { "mode" },
   lualine_b = { "branch" },
   lualine_c = {
