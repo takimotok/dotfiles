@@ -12,5 +12,6 @@ M.quickfile = require("plugins.ui.snacks.opts.quickfile")
 M.scroll = require("plugins.ui.snacks.opts.scroll")
 M.statuscolumn = require("plugins.ui.snacks.opts.statuscolumn")
 M.words = require("plugins.ui.snacks.opts.words")
+M.dim = require("plugins.ui.snacks.opts.dim")
 
 return M

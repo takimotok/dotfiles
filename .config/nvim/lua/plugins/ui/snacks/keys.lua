@@ -427,6 +427,13 @@ local M = {
     desc = "Delete Buffer",
   },
   {
+    "<leader>bo",
+    function()
+      Snacks.bufdelete.other()
+    end,
+    desc = "Delete Other Buffers",
+  },
+  {
     "<leader>cR",
     function()
       Snacks.rename.rename_file()
@@ -501,6 +508,16 @@ local M = {
           conceallevel = 3,
         },
       })
+    end,
+  },
+
+  -- [[ Dimming ]]
+  -- HACK: need `:map("<leader>ud")` to toggle snacks.dim
+  {
+    "<leader>ud",
+    desc = "Toggle Dimming",
+    function()
+      Snacks.toggle.dim():map("<leader>ud")
     end,
   },
 }
