@@ -1,5 +1,5 @@
+local config_codecompanion_opts = require("plugins.coding.ai.codecompanion.opts")
 local km = require("util.key_mapper")
-local config_codecompanion_opts = require("kengo.config.plugins.ai.codecompanion.opts")
 
 return {
   "olimorris/codecompanion.nvim",
@@ -18,8 +18,21 @@ return {
     require("codecompanion").setup(opts)
 
     -- Link CodeCompanion highlight groups to Visual
+    vim.api.nvim_set_hl(0, "CodeCompanionChatError", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatFold", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatHeader", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatInfo", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatInfoBanner", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatSeparator", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatSubtext", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatTokens", { link = "Visual" })
     vim.api.nvim_set_hl(0, "CodeCompanionChatTool", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatToolGroups", { link = "Visual" })
     vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatWarn", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionSuperDiffDirectory", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionSuperDiffFilename", { link = "Visual" })
+    vim.api.nvim_set_hl(0, "CodeCompanionVirtualText", { link = "Visual" })
 
     -- enable automatic tool mode
     -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
