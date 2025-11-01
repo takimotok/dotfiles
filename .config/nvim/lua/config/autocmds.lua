@@ -39,7 +39,7 @@ local md_filetypes = require("util").md_filetypes
 --  - ADVICE:
 --    - call vim.treesitter.start on markdown buffers
 --  ```
--- It causes not to caonceal links.
+-- It causes not to  conceal links.
 vim.api.nvim_create_autocmd("FileType", {
   group = dotfiles_markdown,
   pattern = md_filetypes,
