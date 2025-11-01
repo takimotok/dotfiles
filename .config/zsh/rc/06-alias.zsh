@@ -40,7 +40,10 @@ alias wiki="${NOTES}/wiki"
 alias hitotsuto="${VAULT}/areas/hitotsuto"
 
 # iCloud
-alias icloud="${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+export ICLOUD="${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias icloud="${ICLOUD}"
+alias books="${ICLOUD}/Vault/books/"
+alias imat="${ICLOUD}/Vault/books/IMAT/"
 
 # restart touchbar@MBP2019
 alias rt="sudo pkill TouchBarServer; sudo killall 'ControlSrip'"
