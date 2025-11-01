@@ -61,3 +61,10 @@ wezterm.on("toggle-ligature", function(window, pane)
   end
   window:set_config_overrides(overrides)
 end)
+
+-- maximize on start up
+wezterm.on("gui-startup", function()
+  local _, _, window = wezterm.mux.spawn_window({})
+  -- window:gui_window():maximize()
+  window:gui_window():toggle_fullscreen()
+end)
