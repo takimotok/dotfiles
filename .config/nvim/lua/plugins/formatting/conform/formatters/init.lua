@@ -71,7 +71,7 @@ function M.setup()
       goto continue
     end
 
-    local append_args = util.merge_tables({}, configs.append_args or {})
+    local append_args = vim.tbl_extend('force', {}, configs.append_args or {})
     table.insert(append_args, found_config_file_path)
 
     local formatter_config = {}
