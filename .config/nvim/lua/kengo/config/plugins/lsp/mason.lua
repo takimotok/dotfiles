@@ -27,6 +27,7 @@ local lsps = {
   -- markdown
   "marksman",
   -- php
+  -- NOTE: need openssl@1.1
   "phpactor",
   -- python
   "pyright",
