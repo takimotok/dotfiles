@@ -23,14 +23,7 @@ template = "default.md"
 
 # Path globs ignored while indexing existing notes.
 # @TODO: can I reffer to the .gitignore ?
-ignore = [
-  "drafts/*",
-  "log.md",
-  "**/.bin/*",
-  "*old/*",
-  ".archive*/*",
-  ".git/*",
-]
+ignore = ["drafts/*", "log.md", "**/.bin/*", "*old/*", ".archive*/*", ".git/*"]
 
 # Configure random ID generation.
 
@@ -47,7 +40,6 @@ id-length = 8
 
 # Letter case for the random IDs, among lower, upper or mixed.
 id-case = "lower"
-
 
 # EXTRA VARIABLES
 #
@@ -70,34 +62,28 @@ author = "kengo"
 # directory it applies to.
 
 [group."journal/daily"]
-paths = [
-  "journal/dailies",
-]
+paths = ["journal/dailies"]
 
 [group."journal/daily".note]
-filename = "{{format-date now '%Y-%m-%d'}}"
 default-title = "{{format-date now '%Y-%m-%d'}}"
+filename = "{{format-date now '%Y-%m-%d'}}"
 template = "daily.md"
 
 [group."journal/weekly"]
-paths = [
-  "journal/weeklies",
-]
+paths = ["journal/weeklies"]
 
 [group."journal/weekly".note]
-template = "weekly.md"
-filename = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date  (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
 default-title = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
+filename = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date  (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
+template = "weekly.md"
 
 [group."journal/monthly"]
-paths = [
-  "journal/months",
-]
+paths = ["journal/months"]
 
 [group."journal/monthly".note]
-template = "monthly.md"
-filename = '{{sh "date -v-1m -v1d +%y%m%d"}}-{{sh "date -v1d -v-1m -v+1m -v-1d +%y%m%d"}}-M{{format-date (date "last month") "%m"}}'
 default-title = '{{sh "date -v-1m -v1d +%y%m%d"}}-{{sh "date -v1d -v-1m -v+1m -v-1d +%y%m%d"}}-M{{format-date (date "last month") "%m"}}'
+filename = '{{sh "date -v-1m -v1d +%y%m%d"}}-{{sh "date -v1d -v-1m -v+1m -v-1d +%y%m%d"}}-M{{format-date (date "last month") "%m"}}'
+template = "monthly.md"
 
 # [group."journal/weekly".extra]
 # Monday is the first day of the week
@@ -128,7 +114,6 @@ colon-tags = false
 # Hashtags must be enabled for multi-word tags to work.
 multiword-tags = false
 
-
 # EXTERNAL TOOLS
 [tool]
 
@@ -148,7 +133,6 @@ pager = "less -FIRX"
 # bat is a great tool to render Markdown document with syntax highlighting.
 #https://github.com/sharkdp/bat
 fzf-preview = "bat -p --color always {-1}"
-
 
 # LSP
 #
@@ -175,7 +159,6 @@ dead-link = "error"
 # Show the note filename without extension as detail.
 #note-detail = "{{filename-stem}}"
 
-
 # NAMED FILTERS
 # cf.) https://zk-org.github.io/zk/notes/note-filtering.html#filter-by-creation-or-modification-date
 # available options: --created-before, --created-after, --modified-before and --modified-after
@@ -188,9 +171,9 @@ dead-link = "error"
 
 # e.g.)
 # $ zk ll thisweek
+lastmonth = "--sort created- --created-after 'last month' --created-before 'last month'"
 lastweek = "--sort created- --created-after 'last monday' --created-before 'last sunday'"
 thisweek = "--sort created- --created-after 'last monday' --created-before 'today'"
-lastmonth = "--sort created- --created-after 'last month' --created-before 'last month'"
 
 # COMMAND ALIASES
 #
@@ -207,7 +190,6 @@ ls = "zk edit --interactive $@"
 
 # list notes
 # e.g.) zk ll --sort created- --created-after "2025-02-10" --created-before "2025-02-16"
-
 ll = "zk list --quiet --format oneline $@"
 
 # Edit the last modified note.
@@ -239,4 +221,3 @@ weekly = 'zk new -p -g "journal/weekly" "$ZK_NOTEBOOK_DIR/journal/weeklies/$@"'
 
 # usage: zk monthly $(date '+%Y')
 monthly = 'zk new -p -g "journal/monthly" "$ZK_NOTEBOOK_DIR/journal/months/$@"'
-

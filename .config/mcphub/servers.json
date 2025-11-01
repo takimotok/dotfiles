@@ -10,7 +10,7 @@
     },
     "fetch": {
       "command": "uvx",
-      "args": [ "mcp-server-fetch" ],
+      "args": [ "mcp-server-fetch" ]
     },
     "filesystem": {
       "command": "npx",
