@@ -51,7 +51,11 @@ local ai_related_tools = {
 
 ---@return string[]
 local function _get()
-  local merged = vim.tbl_extend("force", {}, linters, formatters, ai_related_tools)
+  local merged = {}
+
+  vim.list_extend(merged, linters)
+  vim.list_extend(merged, formatters)
+  vim.list_extend(merged, ai_related_tools)
 
   return merged
 end
@@ -59,10 +63,8 @@ end
 -- Install Formatters, Linters, DAPs and AI related tools.
 ---@return nil
 function M.install()
-  local mason_registry = require("mason-registry")
-
   ---@type string[]
-  local installed_package_names = mason_registry.get_installed_package_names()
+  local installed_package_names = require("mason-registry").get_installed_package_names()
   local ensure_installed = _get()
 
   -- Filter packages to be installed
@@ -70,6 +72,12 @@ function M.install()
   local should_be_installed = vim.tbl_filter(function(package)
     return not vim.tbl_contains(installed_package_names, package) and type(package) ~= "function"
   end, ensure_installed)
+
+  -- debug start
+  -- vim.notify("🤔 Hi.")
+  -- vim.notify("🤔 insed: " .. vim.inspect(installed_package_names))
+  -- vim.notify("🤔 ensu: " .. vim.inspect(ensure_installed))
+  -- debug end
 
   if vim.tbl_isempty(should_be_installed) then
     return nil
