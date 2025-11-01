@@ -1,5 +1,3 @@
-local M = {}
-
 local keymap = {
   preset = "default", -- 'default' | 'super-tab' | 'enter'
 
@@ -12,9 +10,9 @@ local keymap = {
     -- function() -- sidekick next edit suggestion
     --   return require("sidekick").nes_jump_or_apply()
     -- end,
-    -- function() -- if you are using Neovim's native inline completions
-    --   return vim.lsp.inline_completion.get()
-    -- end,
+    function()
+      return vim.lsp.inline_completion.get()
+    end,
     "fallback",
   },
   ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -136,7 +134,7 @@ local signature = {
 }
 
 -- M.opts = {
-M = {
+local M = {
   keymap = keymap,
   completion = completion,
   appearance = appearance,
