@@ -169,6 +169,8 @@ M.opts = {
     language = "English",
   },
   extensions = {
+    -- @see: https://github.com/franco-ruggeri/codecompanion-spinner.nvim
+    spinner = {},
     history = {
       enabled = true,
       opts = {
