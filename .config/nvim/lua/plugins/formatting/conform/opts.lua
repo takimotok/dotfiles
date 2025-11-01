@@ -7,4 +7,8 @@ M.format_on_save = {
   lsp_fallback = true, -- LSP formatting is used when no other formatters are available
 }
 
+M.format_after_save = {
+  async = true,
+}
+
 return M
