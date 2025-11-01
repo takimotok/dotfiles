@@ -20,10 +20,10 @@ return {
 
       local diagnostics_icons = require("util.icons").diagnostics
       local icons = {
-        [vim.diagnostic.severity.ERROR] = diagnostics_icons.ERROR,
-        [vim.diagnostic.severity.WARN] = diagnostics_icons.WARN,
-        [vim.diagnostic.severity.INFO] = diagnostics_icons.INFO,
-        [vim.diagnostic.severity.HINT] = diagnostics_icons.HINT,
+        [vim.diagnostic.severity.ERROR] = vim.trim(diagnostics_icons.ERROR),
+        [vim.diagnostic.severity.WARN] = vim.trim(diagnostics_icons.WARN),
+        [vim.diagnostic.severity.INFO] = vim.trim(diagnostics_icons.INFO),
+        [vim.diagnostic.severity.HINT] = vim.trim(diagnostics_icons.HINT),
       }
 
       -- [[ diacnostic floating info. settings]]

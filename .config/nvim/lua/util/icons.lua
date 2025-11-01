@@ -10,9 +10,11 @@ return {
     -- HINT = " ",
     -- INFO = " ",
 
+    -- HINT = "💡 ",
+
     ERROR = "✘ ",
     WARN = "⚠️ ",
     INFO = "󰙎 ",
-    HINT = "💡 ",
+    HINT = "󱠂 ",
   },
 }
