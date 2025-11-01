@@ -11,7 +11,7 @@ return {
       lint.linters_by_ft = user_opts.linters_by_ft
     end
 
-    vim.api.nvim_create_autocmd({ "FileType", "BufWritePost", "InsertLeave" }, {
+    vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
       callback = function()
         lint.try_lint()
       end,
