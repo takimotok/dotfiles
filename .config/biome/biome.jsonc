@@ -1,11 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true,
-    "ignore": ["**/node_modules/**"]
-  },
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
   "files": {
-    "ignore": ["**/node_modules/**", "**/dist/**"]
+    "includes": ["**", "!**/node_modules", "!**/dist"]
   },
   "formatter": {
     "enabled": true,
@@ -14,7 +10,6 @@
     "indentWidth": 2,
     "lineWidth": 120,
     "lineEnding": "lf",
-    "ignore": ["**/node_modules/**"],
     "attributePosition": "multiline"
   },
   "javascript": {
@@ -55,6 +50,45 @@
       },
       "nursery": {
         "useExplicitType": "error"
+      }
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              // ===== react packages =====
+              // react関連パッケージを優先してimport
+              { "type": false, "source": ["react*", "react/**"] },
+
+              // ===== npm packages =====
+              // react*,react/**以外のnpmパッケージを全てキャッチ
+              { "type": false, "source": ":PACKAGE:" },
+              ":BLANK_LINE:",
+
+              // ===== lib modules =====
+              // ./libディレクトリを優先してimport
+              { "type": false, "source": "./lib/**" },
+
+              // ===== user modules =====
+              // ./libディレクトリ以外のユーザー定義モジュールをまとめてキャッチ
+              { "type": false, "source": ":PATH:" },
+              ":BLANK_LINE:",
+
+              // ===== other imports =====
+              // 上記に引っかからない全てのimportをここでキャッチ
+              { "type": false },
+              ":BLANK_LINE:",
+
+              // ===== import types =====
+              // 最後にtype-only importをキャッチ
+              { "type": true }
+            ]
+          }
+        }
       }
     }
   }
