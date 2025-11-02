@@ -107,7 +107,7 @@ local sources = {
       module = "blink-cmp-copilot",
       score_offset = 100, -- copilot を優先
       async = true,
-      kind = nil, -- explicity excluded kind field
+      -- kind = nil, -- explicity excluded kind field
     },
     -- for better lua_ls annotations
     lazydev = {

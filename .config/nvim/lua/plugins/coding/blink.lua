@@ -17,8 +17,8 @@ return {
       "giuxtaposition/blink-cmp-copilot",
     },
     opts = opts,
-    config = function(_, opts)
-      require("blink.cmp").setup(opts)
+    config = function(_, user_opts)
+      require("blink.cmp").setup(user_opts)
 
       -- apply custom hilight
       require("plugins.coding.blink.highlights").setup()
