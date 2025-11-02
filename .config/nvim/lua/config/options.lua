@@ -1,7 +1,7 @@
 -- Documentation: https://neovim.io/doc/user/options.html
 
 local vg = vim.g
-local vb = vim.bo
+-- local vb = vim.bo
 local vw = vim.wo
 local vo = vim.opt
 
@@ -22,12 +22,15 @@ vg.netrw_liststyle = 3
 vg.netrw_banner = 0
 
 -- Buffer options
-vb.autoindent = true
-vb.expandtab = true -- Use spaces instead of tabs
-vb.shiftwidth = 2 -- Size of an indent
-vb.smartindent = true -- Insert indents automatically
-vb.softtabstop = 2 -- Number of spaces tabs count for
-vb.tabstop = 2 -- Number of spaces in a tab
+-- TODO: consider which is better for these options:
+--   - vb
+--   - vo
+vo.autoindent = true
+vo.expandtab = true -- Use spaces instead of tabs
+vo.shiftwidth = 2 -- Size of an indent
+vo.smartindent = true -- Insert indents automatically
+vo.softtabstop = 2 -- Number of spaces tabs count for
+vo.tabstop = 2 -- Number of spaces in a tab
 
 -- Vim options
 vo.cmdheight = 0 -- Hide the command bar
