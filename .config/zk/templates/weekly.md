@@ -1,5 +1,5 @@
 ---
-title: {{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}
+title: W{{format-date (date 'this week') '%V'}}-{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}
 aliases: [{{id}}, ]
 tags: ['weekly note', 'note']
 id: {{id}}

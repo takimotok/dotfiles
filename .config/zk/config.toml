@@ -73,8 +73,8 @@ template = "daily.md"
 paths = ["journal/weeklies"]
 
 [group."journal/weekly".note]
-default-title = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
-filename = "{{format-date (date 'last monday') '%y%m%d'}}-{{format-date  (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}"
+default-title = "W{{format-date (date 'this week') '%V'}}-{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}"
+filename = "W{{format-date (date 'this week') '%V'}}-{{format-date (date 'last monday') '%y%m%d'}}-{{format-date  (date 'next sunday') '%y%m%d'}}"
 template = "weekly.md"
 
 [group."journal/monthly"]
