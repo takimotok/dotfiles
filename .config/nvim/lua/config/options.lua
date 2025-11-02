@@ -139,8 +139,8 @@ vo.matchtime = 1
 -- Window options
 -- vw.colorcolumn = "80,120" -- Make a ruler at 80px and 120px
 vw.list = true -- Show some invisible characters like tabs etc
-vw.numberwidth = 2 -- Make the line number column thinner
----Note: Setting number and relative number gives you hybrid mode
+vo.numberwidth = 2 -- Make the line number column thinner
+---NOTE: Setting number and relative number gives you hybrid mode
 ---https://jeffkreeftmeijer.com/vim-number/
 vw.number = true -- Set the absolute number
 vw.relativenumber = true -- Set the relative number
