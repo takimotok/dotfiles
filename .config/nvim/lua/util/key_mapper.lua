@@ -7,6 +7,7 @@ local M = {}
 local local_opts = { noremap = true, silent = true }
 for _, mode in pairs({ "n", "v", "i", "s", "o", "c", "t", "x" }) do
   M[mode .. "map"] = function(lhs, rhs, opts)
+    -- TODO: can I use ` vim.tbl_deep_extend()` here?
     local merged_opts = {}
     for k, v in pairs(opts or {}) do
       merged_opts[k] = v

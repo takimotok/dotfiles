@@ -30,32 +30,15 @@ local dotfiles_markdown = vim.api.nvim_create_augroup("dotfiles.markdown", {
 })
 local md_filetypes = require("util").md_filetypes
 
--- Enable treesitter for markdown files.
---
--- ∵ According to `:checkhealth render-markdown`:
---  ```
---  render-markdown.nvim [tree-sitter markdown] ~
---  ❌ ERROR highlighter: not enabled
---  - ADVICE:
---    - call vim.treesitter.start on markdown buffers
---  ```
--- It causes not to  conceal links.
-vim.api.nvim_create_autocmd("FileType", {
-  group = dotfiles_markdown,
-  pattern = md_filetypes,
-  callback = function()
-    vim.treesitter.start()
-  end,
-})
-
 -- format on save
+-- @see: lua/plugins/formatting/conform.lua
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = dotfiles_markdown,
-  pattern = md_filetypes,
+  pattern = "*",
   callback = function()
-    -- search for '||' pattern which likely indicates a table
-    if vim.fn.search("\\|.*\\|", "nw") > 0 then
-      vim.cmd("TableModeRealign")
+    local ft = vim.bo.filetype
+    if vim.tbl_contains(md_filetypes, ft) then
+      pcall(vim.cmd, "TableModeRealign")
     end
   end,
 })

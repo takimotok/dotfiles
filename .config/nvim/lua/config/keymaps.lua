@@ -1,8 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
---
-
 local km = require("util.key_mapper")
 
 km.nmap("<F2>", 'i<C-R>=strftime("%H:%M")<CR>', { desc = "insert time" })
@@ -34,6 +29,19 @@ end, { desc = "[t]oggle listchars visibility" })
 
 -- [[ File Path ]]
 km.nmap("<leader>p", ":let @+ = expand('%')<CR>", { desc = "Copy file path" })
+
+-- [[ Formatting ]]
+-- km.nmap("<leader>cf", function()
+--   local conform = require("conform")
+--   conform.format({
+--     timeout_ms = 3000,
+--     async = true,
+--     formatters = { "injected" }, -- treesitter injected languages.
+--     lsp_format = "fallback",
+--   })
+-- end, {
+--   desc = "Format Langs",
+-- })
 
 -- [[ Diagnostic ]]
 local diagnostic_goto = function(next, severity)
