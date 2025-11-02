@@ -1,0 +1,49 @@
+return {
+  "folke/trouble.nvim",
+  cmd = { "Trouble" },
+  opts = {
+    modes = {
+      lsp = {
+        win = { position = "right" },
+      },
+    },
+  },
+  keys = {
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+    -- { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+    -- use aeria.nvim instead
+    -- @see: plugins/editor/aerial.lua
+    -- { "<leader>cs", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols (Trouble)" },
+    -- { "<leader>cS", "<cmd>Trouble lsp toggle<cr>", desc = "LSP references/definitions/... (Trouble)" },
+    { "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+    { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+    {
+      "[q",
+      function()
+        if require("trouble").is_open() then
+          require("trouble").prev()
+        else
+          local ok, err = pcall(vim.cmd.cprev)
+          if not ok then
+            vim.notify(err, vim.log.levels.ERROR)
+          end
+        end
+      end,
+      desc = "Previous Trouble/Quickfix Item",
+    },
+    {
+      "]q",
+      function()
+        if require("trouble").is_open() then
+          require("trouble").next()
+        else
+          local ok, err = pcall(vim.cmd.cnext)
+          if not ok then
+            vim.notify(err, vim.log.levels.ERROR)
+          end
+        end
+      end,
+      desc = "Next Trouble/Quickfix Item",
+    },
+  },
+}

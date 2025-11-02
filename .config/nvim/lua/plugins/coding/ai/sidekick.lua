@@ -1,0 +1,29 @@
+return {
+  -- "folke/sidekick.nvim",
+  -- opts = {
+  --   cli = {
+  --     mux = {
+  --       backend = "tmux", -- zllij, tmux
+  --       enabled = true,
+  --     },
+  --     tools = {
+  --       gemini = {
+  --         cmd = { "gemini" },
+  --         env = {
+  --           GEMINI_API_KEY = vim.env.GEMINI_API_KEY,
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+  -- config = function(_, opts)
+  --   local sidekick = require("sidekick")
+  --   sidekick.setup(opts)
+  --
+  --   -- LSP
+  --   vim.lsp.enable({ "copilot" })
+  --
+  --   -- keymaps
+  --   -- km.nmap("<leader>aa", require("sidekick.cli").toggle(), { desc = "Sidekick Toggle" })
+  -- end,
+}

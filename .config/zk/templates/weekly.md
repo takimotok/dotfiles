@@ -1,5 +1,5 @@
 ---
-title: {{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}-W{{format-date (date 'this week') '%V'}}
+title: W{{format-date (date 'this week') '%V'}}-{{format-date (date 'last monday') '%y%m%d'}}-{{format-date (date 'next sunday') '%y%m%d'}}
 aliases: [{{id}}, ]
 tags: ['weekly note', 'note']
 id: {{id}}
@@ -8,28 +8,12 @@ created_at: {{format-date now '%Y-%m-%d'}}
 updated_at:
 ---
 
-## 達成したこと
+## やったこと
 
-## READ: BOOKS
+## 考えたこと, 学んだこと
 
-## READ: ARTICLES
+## 来週やること
+
+## READ
 
 ## NEW NOTES
-
-## 考えたこと, 喜怒哀楽
-
-## 1w を通して上手くいったこと
-
-## 1w を通してあまり上手くいかなかったこと
-
-## あまり上手くいかなかったことのなかで, 来週集中して取組むことは?
-
-## FUTURE WORKS
-
-### dev
-
-### dream
-
-### read later
-
-### others

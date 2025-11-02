@@ -1,3 +1,6 @@
+require("config.options")
+
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -14,65 +17,50 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
-    {
-      "LazyVim/LazyVim",
-      import = "lazyvim.plugins",
-      opts = {
-        colorscheme = "everforest",
-      },
-    },
-
-    -- import extras modules
-    { import = "lazyvim.plugins.extras.ai.copilot", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.coding.blink", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.coding.neogen", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.coding.luasnip", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.editor.aerial", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.editor.snacks_explorer", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.editor.snacks_picker", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.lang.astro" },
-    { import = "lazyvim.plugins.extras.lang.docker" },
-    { import = "lazyvim.plugins.extras.lsp.neoconf", event = "VeryLazy" },
-    { import = "lazyvim.plugins.extras.lang.git" },
-    { import = "lazyvim.plugins.extras.lang.json", ft = { "json", "jsonc" } },
-    { import = "lazyvim.plugins.extras.lang.markdown", ft = { "markdown", "mdx", "mdc", "codecompanion" } },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
-    { import = "lazyvim.plugins.extras.lang.sql" },
-    { import = "lazyvim.plugins.extras.lang.tailwind" },
-    { import = "lazyvim.plugins.extras.lang.toml", ft = { "toml" } },
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.yaml" },
-
-    -- import/override with your plugins
-    { import = "plugins" },
+    -- Note: `import` searches `init.lua` recursively under the child directory.
+    -- so be careful to make the file names
+    { import = "plugins.editor" },
+    { import = "plugins.ui" },
+    { import = "plugins.coding" },
+    { import = "plugins.coding.ai" },
+    { import = "plugins.coding.markdown" },
+    { import = "plugins.lsp" },
+    { import = "plugins.formatting" },
+    { import = "plugins.linting" },
+    -- { import = "plugins.snippets" },
   },
-  defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
-    lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
-  },
-  install = { colorscheme = { "everforest", "habamax" } },
+  -- automatically check for plugin updates
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
-    frequency = 86400, -- check once per day
-  }, -- automatically check for plugin updates
+    frequency = 86400, -- check once per day [sec.]
+  },
+  -- install missing plugins on startup
+  install = {
+    colorscheme = { "everforest" },
+  },
+  ui = {
+    border = "single",
+    -- icons = {},
+  },
+  -- automatically check for config file changes and reload the ui
+  change_detection = {
+    enabled = true,
+    notify = true, -- get a notification when changes are found
+  },
   performance = {
+    cache = {
+      enabled = true,
+    },
     rtp = {
-      -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -80,4 +68,18 @@ require("lazy").setup({
       },
     },
   },
+})
+
+-- Load functions next as our plugins and autocmds require them
+-- require("config.functions")
+-- require("config.autocmds")
+
+-- Autocmds and keymaps can be loaded, lazily, after plugins
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("util")
+    require("config.autocmds")
+    require("config.keymaps")
+  end,
 })

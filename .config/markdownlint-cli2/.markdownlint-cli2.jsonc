@@ -16,6 +16,9 @@
       "br_spaces": 2
     },
 
+    // MD010: Hard tab
+    "MD010": false,
+
     // line length
     "MD013": false,
 

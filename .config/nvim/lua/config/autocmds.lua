@@ -1,21 +1,61 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
-
--- format .md tables on save
-local md_filetypes = { "*.md", "*.mdx", "*.mdc", "*.codecompanion" }
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = md_filetypes,
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", {
+  clear = true,
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = highlight_group,
+  pattern = "*",
   callback = function()
-    -- search for '||' pattern which likely indicates a table
-    if vim.fn.search("\\|.*\\|", "nw") > 0 then
-      vim.cmd("TableModeRealign")
+    vim.highlight.on_yank()
+  end,
+  desc = "Highlight the yanked text when yanked",
+})
+
+-- [[ UI ]]
+local dotfiles_ui = vim.api.nvim_create_augroup("dotfiles.ui", {
+  clear = true,
+})
+vim.api.nvim_create_autocmd("FileType", {
+  group = dotfiles_ui,
+  pattern = "*",
+  callback = function()
+    -- toggle listchars in startup
+    vim.opt.list = not vim.opt.list:get()
+  end,
+})
+
+-- [[ Markdown ]]
+local dotfiles_markdown = vim.api.nvim_create_augroup("dotfiles.markdown", {
+  clear = true,
+})
+local md_filetypes = require("util").md_filetypes
+
+-- format on save
+-- @see: lua/plugins/formatting/conform.lua
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = dotfiles_markdown,
+  pattern = "*",
+  callback = function()
+    local ft = vim.bo.filetype
+    if vim.tbl_contains(md_filetypes, ft) then
+      pcall(vim.cmd, "TableModeRealign")
     end
   end,
 })
 
+-- [[ LSP ]]
+local dotfiles_lsp = vim.api.nvim_create_augroup("dotfiles.lsp", {
+  clear = true,
+})
+local lsp_keymaps = require("config.keymaps")
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = dotfiles_lsp,
+  desc = "LSP actions",
+  callback = function(event)
+    -- local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
+    local bufnr = event.buf
+
+    -- @see: https://neovim.io/doc/user/lsp.html#lsp-defaults
+    lsp_keymaps.on_attach(bufnr)
+  end,
+})

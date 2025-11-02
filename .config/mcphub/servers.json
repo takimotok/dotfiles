@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "aws_docs": {
+      "command": "uvx",
+      "args": [ "awslabs.aws-documentation-mcp-server@latest" ],
+      "env": {
+        "AWS_DOCUMENTATION_PARTITION": "aws",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      }
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": [ "mcp-server-fetch" ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "${workspaceFolder}"
+      ]
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${cmd: op read op://Personal/github.com/from_nvim_fine-grained_PAT --no-newline}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    }
+  }
+}

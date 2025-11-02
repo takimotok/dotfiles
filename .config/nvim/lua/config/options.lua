@@ -1,47 +1,170 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+-- Documentation: https://neovim.io/doc/user/options.html
+
+local vg = vim.g
+-- local vb = vim.bo
+local vw = vim.wo
+local vo = vim.opt
 
 -- Prepend mise shims to PATH
 -- vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
--- backup, swap files
-vim.opt.backup = false
-vim.opt.swapfile = false
+-- Global options
+vg.mapleader = " "
+vg.maplocalleader = "\\"
 
--- disable mouse
-vim.o.mouse = ""
+vg.snacks_animate = false -- Snacks animations
 
--- Snacks animations
-vim.g.snacks_animate = false
+vg.pumblend = 10 -- pseudo-transparency for the popup-menu
 
--- Text area
--- vim.opt.textwidth = 150
-vim.opt.showtabline = 1
-vim.opt.wrap = true
-vim.opt.spelllang = "en_us,cjk"
+-- netrw
+vg.netrw_altv = 1
+vg.netrw_liststyle = 3
+vg.netrw_banner = 0
 
--- show <Tab> and <EOL>
--- vim.opt.list = true
-vim.opt.listchars = {
+-- Buffer options
+-- TODO: consider which is better for these options:
+--   - vb
+--   - vo
+vo.autoindent = true
+vo.expandtab = true -- Use spaces instead of tabs
+vo.shiftwidth = 2 -- Size of an indent
+vo.smartindent = true -- Insert indents automatically
+vo.softtabstop = 2 -- Number of spaces tabs count for
+vo.tabstop = 2 -- Number of spaces in a tab
+
+-- Vim options
+vo.cmdheight = 0 -- Hide the command bar
+-- only set clipboard if not in ssh, to make sure the OSC 52
+-- integration works automatically.
+vo.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+vo.completeopt = "menuone,noselect" -- Completion opions for code completion
+vo.emoji = false -- Turn off emojis
+vo.fillchars = {
+  fold = " ",
+  foldopen = "",
+  foldclose = "",
+  foldsep = " ",
+  diff = " ",
+  eob = " ",
+}
+
+-- @see: https://github.com/kevinhwang91/nvim-ufo
+vo.foldcolumn = "1" -- Show the fold column
+vo.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vo.foldlevelstart = 99
+vo.foldenable = true
+
+vo.ignorecase = true -- Ignore case
+vo.laststatus = 3 -- Use global statusline
+
+-- Sets how Neovim will display certain whitespace characters in the editor
+vw.list = false
+vo.listchars = {
   tab = "▸-",
-  -- trail = " -",
-  nbsp = "+",
+  trail = "·",
+  nbsp = "␣",
   space = "⋅",
+  -- tab = "» ",
+  -- trail = " -",
+  -- nbsp = "+",
   -- eol = "↲",
   --   extends = "»",
   --   precedes = "«",
 }
+vo.modelines = 1 -- Only use folding settings for this file
+vo.mouse = "" -- disable using mouse
+vo.sessionoptions = { "buffers", "curdir", "folds", "resize", "tabpages", "winpos", "winsize" } -- Session options to store in the session
+vo.scrolloff = 5 -- Set the cursor 5 lines down instead of directly at the top of the file
+--[[
+  ShDa (viminfo for vim): [Sh]ared [Da]ta. session data history
+  --------------------------------------------
+  ! - Save and restore global variables (their names should be without lowercase letter).
+  ' - Specify the maximum number of marked files remembered. It also saves the jump list and the change list.
+  < - Maximum of lines saved for each register. All the lines are saved if this is not included, <0 to disable pessistent registers.
+  % - Save and restore the buffer list. You can specify the maximum number of buffer stored with a number.
+  / or : - Number of search patterns and entries from the command-line history saved. o.history is used if it’s not specified.
+  f - Store file (uppercase) marks, use 'f0' to disable.
+  s - Specify the maximum size of an item’s content in KiB (kilobyte).
+      For the viminfo file, it only applies to register.
+      For the shada file, it applies to all items except for the buffer list and header.
+  h - Disable the effect of 'hlsearch' when loading the shada file.
+
+  :oldfiles - all files with a mark in the shada file
+  :rshada   - read the shada file (:rviminfo for vim)
+  :wshada   - write the shada file (:wrviminfo for vim)
+]]
+vo.shada = [[!,'100,<0,f100,s100,h]]
+
+vo.shiftround = true -- Round indent
+vo.shortmess = {
+  A = true, -- ignore annoying swap file messages
+  c = true, -- Do not show completion messages in command line
+  F = true, -- Do not show file info when editing a file, in the command line
+  I = true, -- Do not show the intro message
+  W = true, -- Do not show "written" in command line when writing
+}
+-- vo.showcmd = true -- Do not show me what I'm typing
+vo.showmatch = true -- Show matching brackets by flickering
+vo.showmode = false -- Do not show the mode
+vo.smartcase = true -- Don't ignore case with capitals
+vo.smoothscroll = false -- Smoother scrolling
+vo.splitbelow = true -- Put new windows below current
+vo.splitright = true -- Put new windows right of current
+vo.termguicolors = true -- True color support
+vo.textwidth = 120 -- Total allowed width on the screen
+vo.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete
+vo.updatetime = 250 -- If in this many milliseconds nothing is typed, the swap file will be written to disk
+vo.wildmode = "list:longest" -- Command-line completion mode
+vo.wildignore = { "*/.git/*", "*/node_modules/*" } -- Ignore these files/folders
+
+-- Create folders for our backups, undos, swaps and sessions if they don't exist
+vim.schedule(function()
+  vim.cmd("silent call mkdir(stdpath('data').'/backups', 'p', '0700')")
+  vim.cmd("silent call mkdir(stdpath('data').'/undos', 'p', '0700')")
+  vim.cmd("silent call mkdir(stdpath('data').'/swaps', 'p', '0700')")
+  vim.cmd("silent call mkdir(stdpath('data').'/sessions', 'p', '0700')")
+
+  vo.backupdir = vim.fn.stdpath("data") .. "/backups" -- Use backup files
+  vo.directory = vim.fn.stdpath("data") .. "/swaps" -- Use Swap files
+  vo.undodir = vim.fn.stdpath("data") .. "/undos" -- Set the undo directory
+end)
+
+vo.undofile = true -- Maintain undo history between sessions
+vo.undolevels = 1000 -- Ensure we can undo a lot!
+
+-- Search
+vo.hlsearch = true
+vo.matchtime = 1
+
+-- Window options
+-- vw.colorcolumn = "80,120" -- Make a ruler at 80px and 120px
+vw.list = true -- Show some invisible characters like tabs etc
+vo.numberwidth = 2 -- Make the line number column thinner
+---NOTE: Setting number and relative number gives you hybrid mode
+---https://jeffkreeftmeijer.com/vim-number/
+vw.number = true -- Set the absolute number
+vw.relativenumber = true -- Set the relative number
+vw.signcolumn = "yes" -- Show information next to the line numbers
+vw.wrap = true -- Display text over multiple lines
+vw.winblend = 30 -- pseudo-transparency for a floating window
+
+vw.cursorline = true -- Highlight the current line
+-- vo.cursorlineopt = { "screenline", "number" } -- Highlight the screen line of the cursor with CursorLine and the line number with CursorLineNr
+vw.cursorlineopt = "number"
+
+-- backup, swap files
+vo.backup = false
+vo.swapfile = false
+
+-- Text area
+-- vim.o.textwidth = 150
+vo.showtabline = 1
+-- vo.wrap = true
+vo.spelllang = "en_us,cjk"
+
+-- concealing
+-- vo.conceallevel = 0
+-- vo.concealcursor = ""
 
 -- command history
-vim.opt.history = 512
-
--- @TODO: could not work foldings
--- foldings
--- vim.o.foldtext = ""
--- vim.o.foldcolumn = "0"
--- vim.o.foldenable = true
--- vim.o.foldlevel = 99
--- vim.o.foldlevelstart = 99
--- vim.o.foldnestmax = 5 -- Only fold up to this many nested levels.
--- vim.o.foldminlines = 1 -- Only fold if there are at least this many lines.
+vo.history = 512

@@ -4,16 +4,24 @@ ghq = ["1.6.2"]
 java = ["21.0.2"]
 jq = ["1.7.1"]
 php = ["8.3.11"]
-ruby = ["3.2.5"]
 python = ["3.12.5"]
+ruby = "3.2.5"
 # >  In fact, I don't think you should actually use mise for rust development.
 # > Rust has an official version manager called rustup that is better than what any of the current mise plugins offer.
 # > https://mise.jdx.dev/lang/rust.html#rust
-rust = ["1.81.0"]
-node = "22.16.0"
-yarn = ["1.22", "4.4.0"]
 lua = ["5.1", "5.4.6"]
-neovim = "0.11.1"
+neovim = "0.11.4"
+node = "22.20.0"
+# rust = "1.90.0"
+rust = "nightly"
+uv = "0.8.23"
+yarn = ["1.22", "4.4.0"]
+
+# alternatives w/ `$ npm install ...`
+"npm:@github/copilot" = "latest"
+"npm:@google/gemini-cli" = "latest"
+"npm:mcp-hub" = "latest"
+"npm:@github/copilot-language-server" = "latest"
 
 [settings]
 always_keep_download = false # default
