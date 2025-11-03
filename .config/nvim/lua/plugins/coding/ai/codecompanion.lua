@@ -8,6 +8,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "j-hui/fidget.nvim",
     "ravitemer/codecompanion-history.nvim",
+    "Davidyz/VectorCode",
     "franco-ruggeri/codecompanion-spinner.nvim",
     "franco-ruggeri/codecompanion-lualine.nvim",
     "ravitemer/mcphub.nvim",

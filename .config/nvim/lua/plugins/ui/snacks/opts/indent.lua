@@ -8,18 +8,18 @@ M = {
     char = "┊",
     only_scope = false, -- only show indent guides of the scope
     only_current = false, -- only show indent guides in the current window
-    -- hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+    hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
     -- can be a list of hl groups to cycle through
-    hl = {
-      "SnacksIndent1",
-      "SnacksIndent2",
-      "SnacksIndent3",
-      "SnacksIndent4",
-      "SnacksIndent5",
-      "SnacksIndent6",
-      "SnacksIndent7",
-      "SnacksIndent8",
-    },
+    -- hl = {
+    --   "SnacksIndent1",
+    --   "SnacksIndent2",
+    --   "SnacksIndent3",
+    --   "SnacksIndent4",
+    --   "SnacksIndent5",
+    --   "SnacksIndent6",
+    --   "SnacksIndent7",
+    --   "SnacksIndent8",
+    -- },
   },
   -- animate scopes. Enabled by default for Neovim >= 0.10
   -- Works on older versions but has to trigger redraws during animation.

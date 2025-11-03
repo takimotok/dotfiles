@@ -11,6 +11,10 @@ local keymap = {
     --   return require("sidekick").nes_jump_or_apply()
     -- end,
     function()
+      if not vim.lsp.inline_completion then
+        return nil
+      end
+
       return vim.lsp.inline_completion.get()
     end,
     "fallback",
