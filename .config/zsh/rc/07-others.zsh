@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# globally installed packages' command path
+export PATH="$HOME/.local/bin:$PATH"
+
 # mise (rtx)
 #
 # cf.) https://mise.jdx.dev/configuration.html#environment-variables
