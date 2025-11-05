@@ -279,7 +279,6 @@ brew 'xxhash'
 brew 'xz'
 brew 'yq'
 brew 'yt-dlp'
-brew 'yyjson'
 brew 'zeromq'
 brew 'zimg'
 brew 'zk', args: ['HEAD']
