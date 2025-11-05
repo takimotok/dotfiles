@@ -2,7 +2,7 @@ local opts = require("plugins.editor.nvim-treesitter.opts")
 
 return {
   -- @see: https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
-  -- need tree-sitter-cli
+  -- NOTE: need tree-sitter-cli
   -- 	`$ cargo install --locked tree-sitter-cli`
   "nvim-treesitter/nvim-treesitter",
   lazy = false,

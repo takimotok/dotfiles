@@ -1,22 +1,31 @@
-local config_codecompanion_opts = require("plugins.coding.ai.codecompanion.opts")
-local km = require("util.key_mapper")
+local opts = require("plugins.coding.ai.codecompanion.opts")
+
+-- debug start
+-- vim.notify("opts: " .. vim.inspect(opts))
+-- debug end
 
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
     { "nvim-lua/plenary.nvim", branch = "master" },
-    "nvim-treesitter/nvim-treesitter",
     "j-hui/fidget.nvim",
     "ravitemer/codecompanion-history.nvim",
     "Davidyz/VectorCode",
     "franco-ruggeri/codecompanion-spinner.nvim",
-    "franco-ruggeri/codecompanion-lualine.nvim",
     "ravitemer/mcphub.nvim",
   },
-  cmd = { "CodeCompanionChat", "CodeCompanionActions" },
-  opts = config_codecompanion_opts.opts,
-  config = function(_, opts)
-    require("codecompanion").setup(opts)
+  cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+  keys = {
+    {
+      "<C-a>",
+      "<cmd>CodeCompanionActions<CR>",
+      desc = "Open the action palette",
+      mode = { "n", "v" },
+    },
+  },
+  opts = opts,
+  config = function(_, user_opts)
+    require("codecompanion").setup(user_opts)
 
     -- Link CodeCompanion highlight groups to Visual
     vim.api.nvim_set_hl(0, "CodeCompanionChatError", { link = "Visual" })
@@ -38,10 +47,5 @@ return {
     -- enable automatic tool mode
     -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
     vim.g.codecompanion_auto_tool_mode = true
-
-    -- keymaps
-    -- km.nmap("<leader>cc", codecompanion.toggle, { desc = "[C]odecompanion toggle [C]hat window" })
-    km.nmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { desc = "[C]odecompanion [A]ctions" })
-    km.vmap("<C-a>", "<cmd>CodeCompanionActions<cr>", { desc = "[C]odecompanion [A]ctions" })
   end,
 }
