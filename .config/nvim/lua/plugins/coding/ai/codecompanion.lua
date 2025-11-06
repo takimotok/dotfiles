@@ -1,3 +1,4 @@
+local km = require("util.key_mapper")
 local opts = require("plugins.coding.ai.codecompanion.opts")
 
 -- debug start
@@ -47,5 +48,10 @@ return {
     -- enable automatic tool mode
     -- cf.) https://codecompanion.olimorris.dev/usage/chat-buffer/agents.html#automatic-tool-mode
     vim.g.codecompanion_auto_tool_mode = true
+
+    -- NOTE: show copilot's stats by this command:
+    km.nmap("<C-c><C-c>", function()
+      require("codecompanion.adapters").resolve("copilot").show_copilot_stats()
+    end, { desc = "Show Copilot Stats" })
   end,
 }
