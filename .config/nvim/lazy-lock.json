@@ -8,7 +8,7 @@
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "codecompanion-history.nvim": { "branch": "main", "commit": "eb99d256352144cf3b6a1c45608ec25544a0813d" },
   "codecompanion-spinner.nvim": { "branch": "main", "commit": "c1fa2a84ea1aed687aaed60df65e347c280f4f22" },
-  "codecompanion.nvim": { "branch": "main", "commit": "31f870579124a379eaf9c74b30d8a4870da29e62" },
+  "codecompanion.nvim": { "branch": "main", "commit": "5b454ce8cba1e2f252c5880081d464c27dada836" },
   "conform.nvim": { "branch": "master", "commit": "26c02e1155a4980900bdccabca4516f4c712aae9" },
   "copilot.lua": { "branch": "master", "commit": "389cfc58122b076e2aad1f9f34d1dfdd5a5bfd0e" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
@@ -50,6 +50,7 @@
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "ts-comments.nvim": { "branch": "main", "commit": "123a9fb12e7229342f807ec9e6de478b1102b041" },
   "vim-maketable": { "branch": "master", "commit": "d72e73f333c64110524197ec637897bd1464830f" },
+  "vim-matchup": { "branch": "master", "commit": "ca538c3bb02836510526ff7d07cf7e4c8e9a3b90" },
   "vim-table-mode": { "branch": "master", "commit": "e156dbbedce0bbf61c0919db7678fa246fabd616" },
   "wezterm-types": { "branch": "main", "commit": "39000e439c74cb0394f38eb0b61b12296947101e" },
   "zk-nvim": { "branch": "main", "commit": "575c3e8242d925c87e9a11fd7d304bc223d2f096" }
