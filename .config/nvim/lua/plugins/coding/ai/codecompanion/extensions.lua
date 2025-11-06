@@ -9,7 +9,7 @@ local M = {
       picker = "snacks",
       title_generation_opts = {
         adapter = "copilot",
-        model = "gpt-4o",
+        model = "gpt-4.1",
       },
       dir_to_save = vim.fn.stdpath("data") .. "/codecompanion/histories",
 
@@ -22,7 +22,7 @@ local M = {
 
         generation_opts = {
           adapter = "copilot",
-          model = "gpt-4o",
+          model = "gpt-4.1",
           context_size = 8192, -- max tokens that the model supports
         },
       },

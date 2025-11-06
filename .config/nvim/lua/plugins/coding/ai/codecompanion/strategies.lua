@@ -1,20 +1,15 @@
 -- e.g.) Model multipliers:
 -- https://docs.github.com/ja/copilot/managing-copilot/understanding-and-managing-copilot-usage/understanding-and-managing-requests-in-copilot
--- we can see the models in th Copilot adaper by `ga` command in a CodeCompanion Chat buffer:
---  claude-3.5-sonnet
+-- We can see the models in th Copilot adaper by `ga` command in a CodeCompanion Chat buffer
+-- e.g.) Models
 --  claude-3.7-sonnet
 --  claude-3.7-sonnet-thought
 --  claude-sonnet-4.5
---  gemini-2.0-flash-001
 --  gemini-2.5-pro
 --  gpt-4.1
 --  gpt-4o
 --  gpt-5
 --  gpt-5-codex
---  gpt-5-mini
---  grok-code-fast-1
---  o3-mini
---  o4-mini
 local default_model = "gpt-4.1"
 
 local default_adapter = "copilot"
@@ -29,11 +24,14 @@ local M = {
     opts = {
       completion_provider = "blink", -- blink|cmp|coc|default
     },
+    -- HACK: We can NOT be allowed using spaces into `strategies.chat.roles.user`.
+    -- We'll get an error in `display.chat` senction under the condition above.
+    -- @see: https://github.com/olimorris/codecompanion.nvim/issues/1067#issuecomment-2700520015
     roles = {
       llm = function(adapter)
-        return "  CodeCompanion (" .. adapter.formatted_name .. ")"
+        return string.format("%s %s (%s)", "", "CodeCompanion", adapter.formatted_name)
       end,
-      user = "  Me",
+      user = string.format("%s %s", "", "Me"),
     },
     slash_commands = {
       ["file"] = {
