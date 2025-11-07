@@ -1,4 +1,5 @@
 local keymap = {
+  -- @see: https://cmp.saghen.dev/configuration/keymap#default
   preset = "default", -- 'default' | 'super-tab' | 'enter'
 
   -- keymaps
@@ -35,7 +36,7 @@ local completion = {
     enabled = true,
     min_width = 15,
     max_height = 10,
-    border = "none",
+    border = "single",
     winblend = 0,
     winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
     scrolloff = 2,
@@ -52,7 +53,7 @@ local completion = {
     auto_show_delay_ms = 500,
     update_delay_ms = 50,
     window = {
-      border = "rounded",
+      border = "single",
       winblend = 0,
       winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:Visual,Search:None",
     },
@@ -67,6 +68,15 @@ local completion = {
     },
   },
 }
+
+-- local cmdline = {
+--   enabled = true, -- default: false
+--   keymap = {
+--     preset = "default",
+--     -- NOTE: 251107 Experimentally apply this keymap
+--     ["<CR>"] = { "accept_and_enter", "fallback" },
+--   },
+-- }
 
 local appearance = {
   use_nvim_cmp_as_default = true,
@@ -131,7 +141,7 @@ local snippets = {
 local signature = {
   enabled = true,
   window = {
-    border = "rounded",
+    border = "single",
     winblend = 0,
     winhighlight = "Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder",
   },
@@ -141,6 +151,7 @@ local signature = {
 local M = {
   keymap = keymap,
   completion = completion,
+  -- cmdline = cmdline,
   appearance = appearance,
   sources = sources,
   snippets = snippets,
