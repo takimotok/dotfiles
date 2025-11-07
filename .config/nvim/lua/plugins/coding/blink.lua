@@ -15,6 +15,8 @@ return {
     build = "cargo build --release",
     dependencies = {
       "giuxtaposition/blink-cmp-copilot",
+      "L3MON4D3/LuaSnip",
+      "brenoprata10/nvim-highlight-colors",
     },
     opts = opts,
     config = function(_, user_opts)

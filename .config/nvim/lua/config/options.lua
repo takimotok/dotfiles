@@ -162,6 +162,9 @@ vo.showtabline = 1
 -- vo.wrap = true
 vo.spelllang = "en_us,cjk"
 
+-- Floating windows
+vo.winborder = "single"
+
 -- concealing
 -- vo.conceallevel = 0
 -- vo.concealcursor = ""
