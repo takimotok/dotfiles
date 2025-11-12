@@ -38,6 +38,8 @@ return {
     -- Trigger the autocmd immediately if Everforest is current colorscheme
     if vim.g.colors_name == "everforest" then
       vim.cmd("doautocmd ColorScheme everforest")
+    elseif vim.g.colors_name == "tokyonight-night" then
+      vim.cmd("doautocmd ColorScheme tokyonight-night")
     end
   end,
 }
