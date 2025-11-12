@@ -12,17 +12,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- [[ UI ]]
-local dotfiles_ui = vim.api.nvim_create_augroup("dotfiles.ui", {
-  clear = true,
-})
-vim.api.nvim_create_autocmd("FileType", {
-  group = dotfiles_ui,
-  pattern = "*",
-  callback = function()
-    -- toggle listchars in startup
-    vim.opt.list = not vim.opt.list:get()
-  end,
-})
+-- local dotfiles_ui = vim.api.nvim_create_augroup("dotfiles.ui", {
+--   clear = true,
+-- })
+-- vim.api.nvim_create_autocmd("FileType", {
+--   group = dotfiles_ui,
+--   pattern = "*",
+--   callback = function()
+--     -- toggle listchars in startup
+--     vim.opt.list = not vim.opt.list:get()
+--   end,
+-- })
 
 -- [[ Markdown ]]
 local dotfiles_markdown = vim.api.nvim_create_augroup("dotfiles.markdown", {
