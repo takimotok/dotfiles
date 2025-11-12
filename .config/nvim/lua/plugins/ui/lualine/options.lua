@@ -1,5 +1,5 @@
 local M = {
-  theme = "everforest",
+  theme = "tokyonight-night", -- auto, everforest, tokyonight and it's variant
 }
 
 return M

@@ -16,7 +16,7 @@ local M = {
     -- To avoid it, specify `choices` to `adapters.http.copilot.schema.model` in
     -- `plugins.coding.ai.codecompanion.adapters.lua`.
     show_settings = true, -- Show LLM settings at the top of the chat buffer
-    fold_context = true, -- Fold context in the chat buffer?
+    fold_context = false, -- Fold context in the chat buffer?
   },
   diff = {
     provider = "split", -- mini_diff|split|inline

@@ -37,6 +37,6 @@ return {
       end,
     })
 
-    everforest.load()
+    -- everforest.load()
   end,
 }

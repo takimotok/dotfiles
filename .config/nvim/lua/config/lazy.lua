@@ -40,7 +40,7 @@ require("lazy").setup({
   },
   -- install missing plugins on startup
   install = {
-    colorscheme = { "everforest" },
+    colorscheme = { "tokyonight", "everforest" },
   },
   ui = {
     border = "single",
