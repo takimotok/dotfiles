@@ -27,6 +27,10 @@ km.nmap("<leader>ut", function()
   vim.opt.list = not vim.opt.list:get()
 end, { desc = "[t]oggle listchars visibility" })
 
+-- [[ Tab ]]
+km.nmap("1gt", ":tabfirst<CR>", { desc = "Go to first tab" }) -- Go to the first tab
+km.nmap("9gt", ":tablast<CR>", { desc = "Go to last tab" }) -- Go to the last tab
+
 -- [[ File Path ]]
 km.nmap("<leader>p", ":let @+ = expand('%')<CR>", { desc = "Copy file path" })
 
