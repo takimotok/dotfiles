@@ -1,10 +1,8 @@
-local M = {}
-
-M = {
-  enabled = true,
+local M = {
+  enabled = false,
   indent = {
     priority = 1,
-    enabled = true, -- enable indent guides
+    enabled = false, -- enable indent guides not only current scope but also other scopes
     char = "┊",
     only_scope = false, -- only show indent guides of the scope
     only_current = false, -- only show indent guides in the current window
@@ -51,19 +49,21 @@ M = {
   chunk = {
     -- when enabled, scopes will be rendered as chunks, except for the
     -- top-level scope which will be rendered as a scope.
-    enabled = false,
+    enabled = true,
     -- only show chunk scopes in the current window
-    only_current = false,
+    only_current = true,
     priority = 200,
     hl = "SnacksIndentChunk", ---@type string|string[] hl group for chunk scopes
     char = {
-      corner_top = "┌",
-      corner_bottom = "└",
-      -- corner_top = "╭",
-      -- corner_bottom = "╰",
+      -- corner_top = "┐", -- top-right corner shape
+      -- corner_bottom = "┘", -- bottom-right corner shape
+      -- corner_top = "┌",
+      -- corner_bottom = "└",
+      corner_top = "╭",
+      corner_bottom = "╰",
       horizontal = "─",
       vertical = "│",
-      arrow = ">",
+      arrow = "",
     },
   },
   -- filter for buffers to enable indent guides
