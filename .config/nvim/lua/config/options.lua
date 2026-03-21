@@ -74,7 +74,7 @@ vo.listchars = {
 vo.modelines = 1 -- Only use folding settings for this file
 vo.mouse = "" -- disable using mouse
 vo.sessionoptions = { "buffers", "curdir", "folds", "resize", "tabpages", "winpos", "winsize" } -- Session options to store in the session
-vo.scrolloff = 5 -- Set the cursor 5 lines down instead of directly at the top of the file
+vo.scrolloff = 3 -- Set the cursor specified lines down instead of directly at the top of the file
 --[[
   ShDa (viminfo for vim): [Sh]ared [Da]ta. session data history
   --------------------------------------------
@@ -138,15 +138,20 @@ vo.matchtime = 1
 
 -- Window options
 -- vw.colorcolumn = "80,120" -- Make a ruler at 80px and 120px
-vw.list = true -- Show some invisible characters like tabs etc
+vw.list = false -- Show some invisible characters like tabs etc
 vo.numberwidth = 2 -- Make the line number column thinner
----NOTE: Setting number and relative number gives you hybrid mode
----https://jeffkreeftmeijer.com/vim-number/
+-- NOTE: Setting number and relative number gives you hybrid mode
+-- https://jeffkreeftmeijer.com/vim-number/
 vw.number = true -- Set the absolute number
 vw.relativenumber = true -- Set the relative number
 vw.signcolumn = "yes" -- Show information next to the line numbers
 vw.wrap = true -- Display text over multiple lines
 vw.winblend = 30 -- pseudo-transparency for a floating window
+
+-- Improve visual wrapping so long lines are visible in narrow buffers
+vw.linebreak = true -- 単語単位で改行（単語の途中で折れない）
+vw.breakindent = true -- 折り返し時にインデントを維持
+vw.showbreak = "↪ " -- 折り返し行の先頭に表示
 
 vw.cursorline = true -- Highlight the current line
 -- vo.cursorlineopt = { "screenline", "number" } -- Highlight the screen line of the cursor with CursorLine and the line number with CursorLineNr
@@ -159,7 +164,6 @@ vo.swapfile = false
 -- Text area
 -- vim.o.textwidth = 150
 vo.showtabline = 1
--- vo.wrap = true
 vo.spelllang = "en_us,cjk"
 
 -- Floating windows

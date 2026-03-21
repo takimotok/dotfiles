@@ -23,7 +23,7 @@ local M = {
   },
   lualine_x = { "encoding", "fileformat", "filetype" },
   lualine_y = {
-    { "selectioncount", separator = "", padding = { left = 1, right = 0 } },
+    { "selectioncount", separator = " ", padding = { left = 1, right = 0 } },
     { "location", separator = "", padding = { left = 0, right = 0 } },
     { "progress", padding = { left = 1, right = 1 } },
   },
