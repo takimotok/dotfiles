@@ -1,8 +1,6 @@
-local M = {}
-
-M = {
+local M = {
   enabled = true,
-  timeout = 5000, -- ms
+  timeout = 3000, -- ms
 }
 
 return M
