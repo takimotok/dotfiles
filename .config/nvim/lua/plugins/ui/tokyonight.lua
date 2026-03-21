@@ -11,6 +11,10 @@ return {
       floats = "transparent", -- style for floating windows
     },
     on_highlights = function(hl, c)
+      local lnColor = "#696969"
+      hl.LineNrAbove = { fg = lnColor }
+      hl.LineNrBelow = { fg = lnColor }
+
       hl.WinSeparator = {
         -- @see: https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_night.lua
         fg = c.bg_visual,
