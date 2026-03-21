@@ -18,6 +18,7 @@ local keymap = {
 
       return vim.lsp.inline_completion.get()
     end,
+    "select_and_accept",
     "fallback",
   },
   ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -68,15 +69,6 @@ local completion = {
     },
   },
 }
-
--- local cmdline = {
---   enabled = true, -- default: false
---   keymap = {
---     preset = "default",
---     -- NOTE: 251107 Experimentally apply this keymap
---     ["<CR>"] = { "accept_and_enter", "fallback" },
---   },
--- }
 
 local appearance = {
   use_nvim_cmp_as_default = true,
