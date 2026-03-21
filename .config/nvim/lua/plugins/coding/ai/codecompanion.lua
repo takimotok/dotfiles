@@ -1,5 +1,17 @@
+local constants = require("plugins.coding.ai.codecompanion.constants")
 local km = require("util.key_mapper")
 local opts = require("plugins.coding.ai.codecompanion.opts")
+
+local function chat_status(bufnr)
+  local metadata = _G.codecompanion_chat_metadata and _G.codecompanion_chat_metadata[bufnr]
+  if not metadata or not metadata.adapter then
+    return "CodeCompanion"
+  end
+
+  local adapter = metadata.adapter.name or constants.DEFAULT_ADAPTER_NAME
+  local model = metadata.adapter.model or constants.DEFAULT_ADAPTER_MODEL
+  return string.format("CodeCompanion %s/%s", adapter, model)
+end
 
 -- debug start
 -- vim.notify("opts: " .. vim.inspect(opts))
@@ -7,6 +19,7 @@ local opts = require("plugins.coding.ai.codecompanion.opts")
 
 return {
   "olimorris/codecompanion.nvim",
+  version = "^19.0.0",
   dependencies = {
     { "nvim-lua/plenary.nvim", branch = "master" },
     "j-hui/fidget.nvim",
@@ -19,8 +32,8 @@ return {
   keys = {
     {
       "<C-a>",
-      "<cmd>CodeCompanionActions<CR>",
-      desc = "Open the action palette",
+      "<cmd>CodeCompanionChat<CR>",
+      desc = "Open chat buffer",
       mode = { "n", "v" },
     },
   },
@@ -51,7 +64,7 @@ return {
 
     -- NOTE: show copilot's stats by this command:
     km.nmap("<C-c><C-c>", function()
-      require("codecompanion.adapters").resolve("copilot").show_copilot_stats()
+      require("codecompanion.adapters").resolve(constants.DEFAULT_ADAPTER_NAME).show_copilot_stats()
     end, { desc = "Show Copilot Stats" })
   end,
 }

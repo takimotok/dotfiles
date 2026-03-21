@@ -1,58 +1,52 @@
--- @see: Available adapters:
--- https://github.com/olimorris/codecompanion.nvim/tree/main/lua/codecompanion/adapters
--- https://github.com/olimorris/codecompanion.nvim/discussions/858
+-- available model names:
+-- @see: tests/adapters/http/copilot/test_copilot.lua
+-- OR we can see it by debug as follows:
+--  `vim.notify(vim.inspect(all_models))  `
 
--- e.g.) Model multipliers:
--- @see: https://docs.github.com/ja/copilot/managing-copilot/understanding-and-managing-copilot-usage/understanding-and-managing-requests-in-copilot
--- @see: https://github.com/olimorris/codecompanion.nvim/blob/6ca8768ad9aff0d6f46dcf8db576843e519e2035/tests/adapters/http/copilot/test_copilot.lua#L7
--- we can see the models in th Copilot adaper by `ga` command in a CodeCompanion Chat buffer:
---  e.g.) Models
---  claude-3.7-sonnet-thought
---  claude-sonnet-4.5
---  gemini-2.0-flash-001
---  gemini-2.5-pro
---  gpt-4.1
---  gpt-5
---  gpt-5-codex
-local default_model = "gpt-4.1"
+local constants = require("plugins.coding.ai.codecompanion.constants")
 
 local M = {}
 
 M.http = {
+  opts = {
+    show_presets = false, -- display the adapters defined in the configuration below
+  },
   copilot = function()
     return require("codecompanion.adapters").extend("copilot", {
       schema = {
         model = {
-          default = default_model,
-          choices = {
-            ["claude-3.7-sonnet"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["claude-3.7-sonnet-thought"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["claude-sonnet-4.5"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["gpt-4.1"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["gpt-5"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["gpt-5-codex"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-            ["gemini-2.5-pro"] = {
-              opts = { has_vision = true, can_stream = true, can_use_tools = true },
-            },
-          },
-        },
-        temperature = {
-          default = 0.1,
-        },
-        max_tokens = {
-          default = 524288, -- 2^19
+          -- default = "gpt-4.1",
+          -- default = "gpt-5-mini",
+
+          default = constants.DEFAULT_ADAPTER_MODEL,
+          choices = function(adapter, opts)
+            -- get all models
+            local all_models = require("codecompanion.adapters.http.copilot.get_models").choices(adapter, opts)
+
+            -- debug
+            -- vim.notify(vim.inspect(all_models))
+
+            -- specify model ids which would like to show
+            local allowed_models = {
+              "gpt-5-mini",
+              "gpt-5.4",
+              "gpt-5.4-mini",
+              "claude-opus-4.6",
+              "claude-sonnet-4.6",
+              "gemini-3.1-pro-preview",
+              "gemini-3-flash-preview",
+            }
+
+            -- filtering
+            local filtered_models = {}
+            for model_id, model_data in pairs(all_models or {}) do
+              if vim.tbl_contains(allowed_models, model_id) then
+                filtered_models[model_id] = model_data
+              end
+            end
+
+            return filtered_models
+          end,
         },
       },
     })
@@ -68,6 +62,9 @@ M.http = {
 }
 
 M.acp = {
+  opts = {
+    show_presets = false, -- display the adapters defined in the configuration below
+  },
   gemini_cli = function()
     return require("codecompanion.adapters").extend("gemini_cli", {
       commands = {
@@ -82,6 +79,7 @@ M.acp = {
       },
       defaults = {
         auth_method = "gemini-api-key", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+        mcpServers = "inherit_from_config",
       },
       env = {
         GEMINI_API_KEY = "cmd:op read op://development/gemini_cli/api_key --no-newline",
