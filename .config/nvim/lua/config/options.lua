@@ -149,7 +149,7 @@ vw.wrap = true -- Display text over multiple lines
 vw.winblend = 30 -- pseudo-transparency for a floating window
 
 -- Improve visual wrapping so long lines are visible in narrow buffers
-vw.linebreak = true -- 単語単位で改行（単語の途中で折れない）
+-- vw.linebreak = true -- 単語単位で改行（単語の途中で折れない）
 vw.breakindent = true -- 折り返し時にインデントを維持
 vw.showbreak = "↪ " -- 折り返し行の先頭に表示
 
