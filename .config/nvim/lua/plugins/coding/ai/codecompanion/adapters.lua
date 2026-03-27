@@ -41,7 +41,8 @@ M.http = {
             local filtered_models = {}
             for model_id, model_data in pairs(all_models or {}) do
               if vim.tbl_contains(allowed_models, model_id) then
-                filtered_models[model_id] = model_data
+                -- Use a human-friendly label for the UI: prefer formatted_name, then description, then the raw id
+                filtered_models[model_id] = model_data.formatted_name or model_data.description or model_id
               end
             end
 
