@@ -2,17 +2,6 @@ local constants = require("plugins.coding.ai.codecompanion.constants")
 local km = require("util.key_mapper")
 local opts = require("plugins.coding.ai.codecompanion.opts")
 
-local function chat_status(bufnr)
-  local metadata = _G.codecompanion_chat_metadata and _G.codecompanion_chat_metadata[bufnr]
-  if not metadata or not metadata.adapter then
-    return "CodeCompanion"
-  end
-
-  local adapter = metadata.adapter.name or constants.DEFAULT_ADAPTER_NAME
-  local model = metadata.adapter.model or constants.DEFAULT_ADAPTER_MODEL
-  return string.format("CodeCompanion %s/%s", adapter, model)
-end
-
 -- debug start
 -- vim.notify("opts: " .. vim.inspect(opts))
 -- debug end
