@@ -35,6 +35,16 @@ return {
       end,
     })
 
+    -- Show line numbers in the aerial sidebar and use relative numbers
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "aerial",
+      callback = function()
+        -- Show absolute number for the current line and relative numbers for other lines
+        vim.o.number = true
+        vim.o.relativenumber = true
+      end,
+    })
+
     -- Trigger the autocmd immediately if Everforest is current colorscheme
     if vim.g.colors_name == "everforest" then
       vim.cmd("doautocmd ColorScheme everforest")
