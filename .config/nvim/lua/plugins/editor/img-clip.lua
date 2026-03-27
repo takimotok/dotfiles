@@ -35,6 +35,33 @@ return {
         -- prompt options
         prompt_for_file_name = false,
       },
+      markdown = {
+        -- For markdown files: use an images/ directory next to the buffer's file
+        -- (fall back to the global image cache path for unsaved buffers). We
+        -- create the images/ directory if it doesn't already exist.
+        dir_path = function()
+          local bufname = vim.api.nvim_buf_get_name(0)
+          if bufname == nil or bufname == "" then
+            return image_cache_path
+          end
+
+          local dir = vim.fn.fnamemodify(bufname, ":p:h")
+          local images_dir = dir .. "/images"
+          if vim.fn.isdirectory(images_dir) == 0 then
+            vim.fn.mkdir(images_dir, "p")
+          end
+          return images_dir
+        end,
+
+        file_name = "%y%m%d_%H%M%S",
+        use_absolute_path = false,
+
+        -- Markdown-friendly template. Use the saved image filename as alt text.
+        -- Markdown-friendly template using the built-in $FILE_NAME placeholder
+        template = "![$FILE_NAME](images/$FILE_NAME)",
+
+        prompt_for_file_name = false,
+      },
     }
 
     local img_clip = require("img-clip")
