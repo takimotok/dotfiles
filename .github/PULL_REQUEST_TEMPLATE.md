@@ -6,7 +6,7 @@
 
 ## Related Issue
 <!-- enter issue number -->
-Closes #
+close #
 
 ## Notes
 <!-- Any additional information, references, or future tasks -->
