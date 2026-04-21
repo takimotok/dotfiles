@@ -1,4 +1,5 @@
 local XDG_DATA_HOME = os.getenv("XDG_DATA_HOME") or (os.getenv("HOME") .. "/.local/share")
+local XDG_CONFIG_HOME = os.getenv("XDG_CONFIG_HOME") or (os.getenv("HOME") .. "/.config")
 local MISE_SHIMS_PATH = XDG_DATA_HOME .. "/mise/shims"
 local UVX_COMMAND_PATH = MISE_SHIMS_PATH .. "/uvx"
 local NPX_COMMAND_PATH = MISE_SHIMS_PATH .. "/npx"
@@ -53,6 +54,7 @@ local M = {
 
         local additional_dirs = {
           home .. "/Desktop/tmp",
+          XDG_CONFIG_HOME,
         }
 
         for _, dir in ipairs(additional_dirs) do
@@ -69,7 +71,7 @@ local M = {
     },
   },
   opts = {
-    default_servers = { "context7", "filesystem" },
+    -- default_servers = { "context7", "filesystem" },
   },
 }
 

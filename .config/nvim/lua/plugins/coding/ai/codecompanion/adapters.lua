@@ -1,3 +1,5 @@
+local XDG_CONFIG_HOME = os.getenv("XDG_COHNFIG_HOME") or (os.getenv("HOME") .. "/.config")
+
 -- available model names:
 -- @see: tests/adapters/http/copilot/test_copilot.lua
 -- OR we can see it by debug as follows:
@@ -66,6 +68,24 @@ M.acp = {
   opts = {
     show_presets = false, -- display the adapters defined in the configuration below
   },
+  copilot_acp = function()
+    return require("codecompanion.adapters").extend("copilot_acp", {
+      commands = {
+        default = {
+          "copilot",
+          "--acp",
+          "--config-dir",
+          XDG_CONFIG_HOME .. "/copilot",
+          "--experimental",
+          "--max-autopilot-continues",
+          "3",
+          "--mode", -- "interactive", "plan", "autopilot"
+          "autopilot",
+          "--yolo",
+        },
+      },
+    })
+  end,
   gemini_cli = function()
     return require("codecompanion.adapters").extend("gemini_cli", {
       commands = {

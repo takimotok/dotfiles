@@ -2,13 +2,7 @@ local M = {
   dotfiles_rules = {
     description = "Dotfiles project rules",
     files = {
-      "/Users/kengo/projects/github.com/takimotok/dotfiles/.github/instructions/codecompanion-chat-rule-default.md",
-    },
-  },
-  dotfiles_neovim_rules = {
-    description = "Dotfiles project rules",
-    files = {
-      "/Users/kengo/projects/github.com/takimotok/dotfiles/.github/instructions/codecompanion-chat-rule-neovim.md",
+      "/Users/kengo/projects/github.com/takimotok/dotfiles/.github/copilot-instructions.md",
     },
   },
   opts = {

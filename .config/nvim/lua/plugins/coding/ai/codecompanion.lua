@@ -1,4 +1,3 @@
-local constants = require("plugins.coding.ai.codecompanion.constants")
 local km = require("util.key_mapper")
 local opts = require("plugins.coding.ai.codecompanion.opts")
 
@@ -53,7 +52,7 @@ return {
 
     -- NOTE: show copilot's stats by this command:
     km.nmap("<C-c><C-c>", function()
-      require("codecompanion.adapters").resolve(constants.DEFAULT_ADAPTER_NAME).show_copilot_stats()
+      require("codecompanion.adapters").resolve("copilot").show_copilot_stats()
     end, { desc = "Show Copilot Stats" })
   end,
 }
