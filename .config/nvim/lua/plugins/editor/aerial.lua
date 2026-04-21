@@ -40,8 +40,8 @@ return {
       pattern = "aerial",
       callback = function()
         -- Show absolute number for the current line and relative numbers for other lines
-        vim.o.number = true
-        vim.o.relativenumber = true
+        vim.opt_local.number = true
+        vim.opt_local.relativenumber = true
       end,
     })
 
