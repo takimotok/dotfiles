@@ -14,10 +14,16 @@
   "renderMarkdown": true,
   "screenReader": false,
   "theme": "auto",
-  "trustedFolders": ["/Users/kengo/projects/github.com/takimotok", "/Users/kengo/Desktop"],
+  "trustedFolders": [
+    "/Users/kengo/projects/github.com/takimotok",
+    "/Users/kengo/Desktop"
+  ],
   "firstLaunchAt": "2026-03-11T00:00:00.000Z",
   "experimental": true,
-  "allowedUrls": ["https://docs.github.com", "https://raw.githubusercontent.com"],
+  "allowedUrls": [
+    "https://docs.github.com",
+    "https://raw.githubusercontent.com"
+  ],
   "includeCoAuthoredBy": true,
   "respectGitignore": true,
   "logLevel": "default"

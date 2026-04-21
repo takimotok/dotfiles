@@ -1,13 +1,26 @@
 local M = {
-  dotfiles_rules = {
-    description = "Dotfiles project rules",
+  default = {
+    description = "Collection of common files for all projects",
     files = {
-      "/Users/kengo/projects/github.com/takimotok/dotfiles/.github/copilot-instructions.md",
+      ".clinerules",
+      ".cursorrules",
+      ".goosehints",
+      ".rules",
+      ".windsurfrules",
+      ".github/copilot-instructions.md",
+      "AGENT.md",
+      "AGENTS.md",
+      "~/.config/copilot/AGENTS.md",
+      { path = "CLAUDE.md", parser = "claude" },
+      { path = "CLAUDE.local.md", parser = "claude" },
+      { path = "~/.claude/CLAUDE.md", parser = "claude" },
+      { path = "~/.config/claude/CLAUDE.md", parser = "claude" },
     },
+    is_preset = true,
   },
   opts = {
     chat = {
-      autoload = { "default", "dotfiles_rules" },
+      autoload = { "default" },
     },
   },
 }
