@@ -61,6 +61,7 @@ biome.jsonc
 # -----
 .config/copilot/*
 !.config/copilot/config.json
+!.config/copilot/AGENTS.md
 
 # gemini cli
 # -----
