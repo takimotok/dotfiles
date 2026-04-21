@@ -114,6 +114,10 @@ local sources = {
       score_offset = 100, -- copilot を優先
       async = true,
       -- kind = nil, -- explicity excluded kind field
+      enabled = function()
+        local disabled_filetypes = { [""] = true, ["markdown"] = true, ["codecompanion"] = true }
+        return not disabled_filetypes[vim.bo.filetype]
+      end,
     },
     -- for better lua_ls annotations
     lazydev = {

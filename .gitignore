@@ -52,3 +52,18 @@ prompts
 biome.jsonc
 .markdownlint-cli2.jsonc
 
+# claude code
+# -----
+.config/claude/*
+!.config/claude/settings.json
+
+# copilot cli
+# -----
+.config/copilot/*
+!.config/copilot/config.json
+!.config/copilot/AGENTS.md
+
+# gemini cli
+# -----
+.config/gemini/*
+!.config/gemini/settings.json

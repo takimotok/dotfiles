@@ -128,3 +128,13 @@ cache_eval "${cache_file_gemini_cli}" "${cmd_op_read_gemini_cli}" "${ref_file_op
 ensure_zcompiled "${cache_file_gemini_cli}"
 
 export GEMINI_API_KEY=$(cat "${cache_file_gemini_cli}")
+export GEMINI_CLI_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/gemini"
+
+# copilot cli
+# -----
+export COPILOT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/copilot"
+export COPILOT_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/copilot"
+
+# claude code
+# -----
+export CLAUDE_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/claude"

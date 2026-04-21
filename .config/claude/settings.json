@@ -1,0 +1,14 @@
+{
+  "model": "claude-sonnet-4-6",
+  "effortLevel": "medium",
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl * | sh)",
+      "Bash(sudo *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ]
+  }
+}
